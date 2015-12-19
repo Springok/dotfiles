@@ -1,0 +1,34 @@
+# https://trello.com/c/bgBFooFE/1-tmux-shortcut
+
+set -g prefix `
+bind "'" send-prefix
+
+bind - split-window -v -c "#{pane_current_path}"
+bind \ split-window -h -c "#{pane_current_path}"
+
+bind ` last-window
+
+bind j select-pane -t :.+
+bind k select-pane -t :.-
+
+bind h select-window -p
+bind l next-window
+
+bind -r < swap-window -t-1
+bind -r > swap-window -t+1
+
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+
+bind PageUp copy-mode -u
+bind PageDown copy-mode
+
+bind v copy-mode
+bind p paste-buffer -p
+
+bind c new-window -a -c "#{pane_current_path}"
+
+# vim: filetype=conf

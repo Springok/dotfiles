@@ -1,0 +1,4 @@
+" Vim Markdown (12/14 updated)
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'junegunn/vim-easy-align'
