@@ -2,3 +2,5 @@
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'thinca/vim-quickrun'
+Plugin 'bootleq/vim-qrpsqlpq'
