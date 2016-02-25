@@ -1,14 +1,16 @@
 set nocursorline " don't highlight current line
 set noswapfile
 
+" git commit textwidth limit
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
 set langmenu=en_US.UTF-8
 language messages en_US.UTF-8
 
 " keyboard shortcuts
- nnoremap <silent> <tab> :bn<CR>
- nnoremap <silent> <S-tab> :bp<CR>
+nnoremap <silent> <tab> :bn<CR>
+nnoremap <silent> <S-tab> :bp<CR>
 
-" Keyboard shortcuts,Mapping
 " inoremap jj <ESC>
 
 noremap gr gT
@@ -49,7 +51,7 @@ colorscheme solarized
 "  - Use tmux 1.7 `paste-buffer -p` to paste
 "  - Use <F11> and tmux `send-keys "\e[201~"` for pastetoggle
 
-if &term =~ "xterm" && exists('$TMUX') 
+if &term =~ "xterm" && exists('$TMUX')
   let &t_ti = &t_ti . "\e[?2004h"
   let &t_te = "\e[?2004l" . &t_te
   let &pastetoggle = "\e[201~"
