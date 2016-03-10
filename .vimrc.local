@@ -11,10 +11,14 @@ language messages en_US.UTF-8
 nnoremap <silent> <tab> :bn<CR>
 nnoremap <silent> <S-tab> :bp<CR>
 
-" inoremap jj <ESC>
+" in insert mode jj can return to normal mode
+inoremap jj <ESC>
 
+" vim tab switch convention
 noremap gr gT
 noremap! gr gT
+
+" in all modes ,, can return to normal mode
 noremap  ,, <C-\><C-N>
 noremap!  ,, <C-\><C-N>
 
@@ -23,7 +27,6 @@ let g:vim_markdown_folding_disabled=1
 
 " -- override default ignore comment and string in vim-easy-align
 let g:easy_align_ignore_groups = []
-
 
 " -------------------
 " vim-easy-align
@@ -90,6 +93,7 @@ silent! autocmd VimEnter * RemoveConflictingAlignMaps
 
 
 " https://trello.com/c/pJuYf16V/2-vim-command-shortcut
+" test current file use shortcut
 if has('vim_starting')
   if executable('w')
     " let result = system("w --no-header --short | wc -l")
@@ -276,6 +280,7 @@ function! TmuxNewWindow(...) "{{{
   endif
 endfunction "}}}
 
+" run sql file to give your sql result table! ,r + j, l, r
 function! s:init_qrpsqlpq()
   nmap <buffer> <Leader>r [qrpsqlpq]
   nnoremap <silent> <buffer> [qrpsqlpq]j :call qrpsqlpq#run('split')<CR>
