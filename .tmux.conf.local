@@ -22,7 +22,6 @@ bind -r J resize-pane -D 5
 bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
 
-
 bind PageUp copy-mode -u
 bind PageDown copy-mode
 
@@ -30,5 +29,4 @@ bind v copy-mode
 bind p paste-buffer -p
 
 bind c new-window -a -c "#{pane_current_path}"
-
 # vim: filetype=conf
