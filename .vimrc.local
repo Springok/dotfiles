@@ -37,7 +37,7 @@ nmap <leader>w <C-W>
 " Plugin setting
 let g:vim_markdown_folding_disabled=1
 
-" -- override default ignore comment and string in vim-easy-align
+" Override default ignore comment and string in vim-easy-align
 let g:easy_align_ignore_groups = []
 
 " -------------------
