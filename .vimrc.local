@@ -122,7 +122,7 @@ function! s:init_qrpsqlpq()
     call RailsDetect()
   endif
   if !exists('b:rails_root')
-    let b:qrpsqlpq_db_name = 'postgTes'
+    let b:qrpsqlpq_db_name = 'postgres'
   endif
 endfunction
 
