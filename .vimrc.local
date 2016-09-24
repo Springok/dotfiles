@@ -1,17 +1,15 @@
-set nocursorline " don't highlight current line
-set noswapfile
+set langmenu=en_US.UTF-8
+language messages en_US.UTF-8
 
-set background=dark
-color dracula
-" colorscheme solarized
+set nocursorline " don't highlight current line
+set noswapfile " turn Off Swap Files
+set relativenumber
+set hlsearch
 
 source ~/dotfiles/.vim/minitest_helper.vim
 
 " git commit textwidth limit
 autocmd Filetype gitcommit setlocal spell textwidth=72
-
-set langmenu=en_US.UTF-8
-language messages en_US.UTF-8
 
 " keyboard shortcuts
 nnoremap <silent> <tab> :bn<CR>
@@ -40,6 +38,9 @@ let g:vim_markdown_folding_disabled=1
 " Override default ignore comment and string in vim-easy-align
 let g:easy_align_ignore_groups = []
 
+" Vim-gitgutter
+let g:gitgutter_enabled = 1
+
 " -------------------
 " vim-easy-align
 " -------------------
@@ -65,6 +66,18 @@ endfunction
 command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
 silent! autocmd VimEnter * RemoveConflictingAlignMaps
 
+" -------------------
+" Theme
+" -------------------
+" Dracula
+color dracula
+let g:airline_theme='dracula'
+
+" Solarized
+" syntax enable
+" set background=dark
+" colorscheme solarized
+" let g:airline_theme='solarized'
 
 " -------------------
 " Vim-airline
@@ -72,7 +85,6 @@ silent! autocmd VimEnter * RemoveConflictingAlignMaps
 " Smart tab line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='dracula'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -131,4 +143,4 @@ if executable('psql')
   autocmd FileType sql call s:init_qrpsqlpq()
 endif
 
-set secure " keep this line the last
+set secure " keep this on the last line
