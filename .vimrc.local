@@ -11,6 +11,11 @@ source ~/dotfiles/.vim/minitest_helper.vim
 " git commit textwidth limit
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+" Note that remapping C-s requires flow control to be disabled
+" (in .zshrc)
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
 " keyboard shortcuts
 nnoremap <silent> <tab> :bn<CR>
 nnoremap <silent> <S-tab> :bp<CR>
