@@ -11,6 +11,9 @@ source ~/dotfiles/.vim/minitest_helper.vim
 " git commit textwidth limit
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+" NerdTree Setting
+let NERDTreeQuitOnOpen  = 1
+
 " Note that remapping C-s requires flow control to be disabled
 " (in .zshrc)
 map <C-s> <esc>:w<CR>
