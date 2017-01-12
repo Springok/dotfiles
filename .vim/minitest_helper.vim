@@ -12,7 +12,7 @@ if has('vim_starting')
         let relative = rails#buffer().relative()
         if type =~ '^test' || (type == 'javascript-coffee' && relative =~ '^test/')
           nmap \t [rtest]
-          nnoremap <silent> [rtest]l :call <SID>rails_test_tmux('v')<CR>
+          nnoremap <silent> [rtest]j :call <SID>rails_test_tmux('v')<CR>
           nnoremap <silent> [rtest]w :call <SID>rails_test_tmux('new-window')<CR>
           nnoremap <silent> [rtest]. :call <SID>rails_test_tmux('last')<CR>
         end
@@ -106,7 +106,7 @@ function! TmuxNewWindow(...) "{{{
   let title = get(options, 'title', '')
   let directory = get(options, 'directory', getcwd())
   let method = get(options, 'method', 'new-window')
-  let size = get(options, 'size', '40')
+  let size = get(options, 'size', '20')
   let remember_pane = get(options, 'remember_pane', 0)
   let pane = ''
 
