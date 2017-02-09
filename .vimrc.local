@@ -1,19 +1,4 @@
-set langmenu=en_US.UTF-8
-language messages en_US.UTF-8
-
-syntax on
-set nocursorline " don't highlight current line
-set noswapfile " turn Off Swap Files
-set relativenumber
-set hlsearch
-
-source ~/dotfiles/.vim/minitest_helper.vim
-
-" git commit textwidth limit
-autocmd Filetype gitcommit setlocal spell textwidth=72
-
-" NerdTree Setting
-let NERDTreeQuitOnOpen  = 1
+" ================ General Config ====================
 
 " Note that remapping C-s requires flow control to be disabled
 " (in .zshrc)
@@ -24,39 +9,65 @@ imap <C-s> <esc>:w<CR>
 nnoremap <silent> <tab> :bn<CR>
 nnoremap <silent> <S-tab> :bp<CR>
 
-" in insert mode jj can return to normal mode
-inoremap jj <ESC>
-
-" vim tab switch convention
+" tab switch
 nnoremap gr gT
+
+" window pane switch prefix key 
+nmap <leader>w <C-w>
 
 " in all modes ,, can return to normal mode
 noremap  ,, <C-\><C-N>
 noremap!  ,, <C-\><C-N>
 
+" use jj return to normal mode from insert mode
+inoremap jj <ESC>
+set langmenu=en_US.UTF-8
+language messages en_US.UTF-8
+
+set nocursorline
+set noswapfile
+set number relativenumber
+set hlsearch
+
+source ~/dotfiles/.vim/minitest_helper.vim
+
+" ================ Theme ====================
+
+" Dracula
+color dracula
+let g:airline_theme='dracula'
+
+" Solarized
+" syntax enable
+" set background=dark
+" colorscheme solarized
+" let g:airline_theme='solarized'
+
+" ================ Custom Settings ====================
+
+" override default ignore comment and string in vim-easy-align
+let g:easy_align_ignore_groups = []
+
+" git commit textwidth limit
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+let g:vim_markdown_folding_disabled=1
+
+" vim-gitgutter
+nnoremap <leader>gg :GitGutterToggle<CR>
+let g:gitgutter_enabled = 1
+
 " Fugitive
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
 
-" team key-mapping convention ???
-nmap <leader>w <C-w>
+" NerdTree Setting
+let NERDTreeQuitOnOpen  = 1
 
-" Plugin setting ???
-let g:vim_markdown_folding_disabled=1
-
-" Override default ignore comment and string in vim-easy-align
-let g:easy_align_ignore_groups = []
-
-" Vim-gitgutter
-nnoremap <leader>gg :GitGutterToggle<CR>
-let g:gitgutter_enabled = 1
-
-" -------------------
 " vim-easy-align
-" -------------------
-" Start interactive EasyAlign in visual mode
+" start interactive EasyAlign in visual mode
   vmap <Enter> <Plug>(EasyAlign)
-" Start interactive EasyAlign with a Vim movement
+" start interactive EasyAlign with a Vim movement
 " nmap <Leader>a <Plug>(EasyAlign)vmap <Enter> <Plug>(EasyAlign)
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
@@ -76,23 +87,8 @@ endfunction
 command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
 silent! autocmd VimEnter * RemoveConflictingAlignMaps
 
-" -------------------
-" Theme
-" -------------------
-" Dracula
-color dracula
-let g:airline_theme='dracula'
-
-" Solarized
-" syntax enable
-" set background=dark
-" colorscheme solarized
-" let g:airline_theme='solarized'
-
-" -------------------
-" Vim-airline
-" -------------------
-" Smart tab line
+" vim-airline
+" smart tab line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -108,32 +104,8 @@ let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 
-"然後以下加在 .vimrc，就能辨別 tmux 來的 paste（省得 `set paste`）
-"但從 Mac 剪貼來的可能還是沒辦法
-" Bracketed Paste Mode
-"  Ref http://slashdot.jp/journal/506765/Bracketed-Paste-Mode
-"  - Use tmux 1.7 `paste-buffer -p` to paste
-"  - Use <F11> and tmux `send-keys "\e[201~"` for pastetoggle
-
-if &term =~ "xterm" && exists('$TMUX')
-  let &t_ti = &t_ti . "\e[?2004h"
-  let &t_te = "\e[?2004l" . &t_te
-  let &pastetoggle = "\e[201~"
-  map <F11> <Esc>[201~
-  imap <F11> <Esc>[201~
-
-  function! XTermPasteBegin(ret)
-    set paste
-    return a:ret
-  endfunction
-
-  map <special> <expr> <Esc>[200~ XTermPasteBegin("i")
-  imap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-  cmap <special> <Esc>[200~ <nop>
-  cmap <special> <Esc>[201~ <nop>
-endif
-
-" run sql file to give your sql result table! ,r + j, l, r
+" run sql file to give your the result table!
+" usage: <leader_key>r + j, l, r
 function! s:init_qrpsqlpq()
   nmap <buffer> <Leader>r [qrpsqlpq]
   nnoremap <silent> <buffer> [qrpsqlpq]j :call qrpsqlpq#run('split')<CR>
@@ -153,4 +125,5 @@ if executable('psql')
   autocmd FileType sql call s:init_qrpsqlpq()
 endif
 
-set secure " keep this on the last line
+ " keep set secure on the last line
+set secure
