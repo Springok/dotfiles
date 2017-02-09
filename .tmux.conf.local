@@ -1,5 +1,7 @@
 # https://trello.com/c/bgBFooFE/1-tmux-shortcut
 
+set-option -g repeat-time 1000
+
 set -g prefix `
 bind "'" send-prefix
 
