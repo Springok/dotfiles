@@ -1,6 +1,7 @@
 set langmenu=en_US.UTF-8
 language messages en_US.UTF-8
 
+syntax on
 set nocursorline " don't highlight current line
 set noswapfile " turn Off Swap Files
 set relativenumber
@@ -19,7 +20,7 @@ let NERDTreeQuitOnOpen  = 1
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
-" keyboard shortcuts
+" keyboard team shortcuts
 nnoremap <silent> <tab> :bn<CR>
 nnoremap <silent> <S-tab> :bp<CR>
 
@@ -33,20 +34,21 @@ nnoremap gr gT
 noremap  ,, <C-\><C-N>
 noremap!  ,, <C-\><C-N>
 
-" Fugitive Shortcuts
+" Fugitive
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
 
-" team key-mapping convention
-nmap <leader>w <C-W>
+" team key-mapping convention ???
+nmap <leader>w <C-w>
 
-" Plugin setting
+" Plugin setting ???
 let g:vim_markdown_folding_disabled=1
 
 " Override default ignore comment and string in vim-easy-align
 let g:easy_align_ignore_groups = []
 
 " Vim-gitgutter
+nnoremap <leader>gg :GitGutterToggle<CR>
 let g:gitgutter_enabled = 1
 
 " -------------------

@@ -55,7 +55,7 @@ SPACESHIP_PREFIX_HOST=" @ "
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions)
 
-# disable flow control for vim ctrl-s save
+# Disable flow control then we can use ctrl-s to save in vim editor
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef
