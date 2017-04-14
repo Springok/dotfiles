@@ -1,4 +1,3 @@
-" https://trello.com/c/pJuYf16V/2-vim-command-shortcut
 " test current file use shortcut
 if has('vim_starting')
   if executable('w')
@@ -11,8 +10,8 @@ if has('vim_starting')
         let type = rails#buffer().type_name()
         let relative = rails#buffer().relative()
         if type =~ '^test' || (type == 'javascript-coffee' && relative =~ '^test/')
-          nmap \t [rtest]
-          nnoremap <silent> [rtest]j :call <SID>rails_test_tmux('v')<CR>
+          nmap tt [rtest]
+          nnoremap <silent> [rtest]t :call <SID>rails_test_tmux('h')<CR>
           nnoremap <silent> [rtest]w :call <SID>rails_test_tmux('new-window')<CR>
           nnoremap <silent> [rtest]. :call <SID>rails_test_tmux('last')<CR>
         end

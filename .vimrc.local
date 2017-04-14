@@ -1,37 +1,57 @@
-" ================ General Config ====================
+"================ Team Convention ================
 
-" Note that remapping C-s requires flow control to be disabled
-" (in .zshrc)
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-
-" keyboard team shortcuts
+" buffer switch
 nnoremap <silent> <tab> :bn<CR>
 nnoremap <silent> <S-tab> :bp<CR>
 
 " tab switch
 nnoremap gr gT
 
-" window pane switch prefix key 
-nmap <leader>w <C-w>
-
-" in all modes ,, can return to normal mode
-noremap  ,, <C-\><C-N>
-noremap!  ,, <C-\><C-N>
-
-" use jj return to normal mode from insert mode
-inoremap jj <ESC>
-set langmenu=en_US.UTF-8
-language messages en_US.UTF-8
+"================ General ================
+source ~/dotfiles/.vim/minitest_helper.vim
 
 set nocursorline
 set noswapfile
 set number relativenumber
 set hlsearch
 
-source ~/dotfiles/.vim/minitest_helper.vim
+" NerdTree Setting
+let NERDTreeQuitOnOpen  = 1
 
-" ================ Theme ====================
+" git commit textwidth limit
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+let g:vim_markdown_folding_disabled=1
+let g:gitgutter_enabled = 1
+
+" Note that remapping C-s requires flow control to be disabled (in .zshrc)
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+" in all modes hit ,, can return to normal mode
+noremap  ,, <C-\><C-N>
+noremap!  ,, <C-\><C-N>
+
+" hit jj back to normal mode from insert mode
+inoremap jj <ESC>
+
+" set langmenu=en_US.UTF-8
+" language messages en_US.UTF-8
+
+"================= Navigation =================
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" Fugitive
+nmap <leader>ge :Gedit<cr>
+nmap <silent><leader>gb :Gblame<cr>
+
+" vim-gitgutter
+nnoremap <leader>gg :GitGutterToggle<CR>
+
+"================ Theme ================
 
 " Dracula
 color dracula
@@ -42,50 +62,6 @@ let g:airline_theme='dracula'
 " set background=dark
 " colorscheme solarized
 " let g:airline_theme='solarized'
-
-" ================ Custom Settings ====================
-
-" override default ignore comment and string in vim-easy-align
-let g:easy_align_ignore_groups = []
-
-" git commit textwidth limit
-autocmd Filetype gitcommit setlocal spell textwidth=72
-
-let g:vim_markdown_folding_disabled=1
-
-" vim-gitgutter
-nnoremap <leader>gg :GitGutterToggle<CR>
-let g:gitgutter_enabled = 1
-
-" Fugitive
-nmap <leader>ge :Gedit<cr>
-nmap <silent><leader>gb :Gblame<cr>
-
-" NerdTree Setting
-let NERDTreeQuitOnOpen  = 1
-
-" vim-easy-align
-" start interactive EasyAlign in visual mode
-  vmap <Enter> <Plug>(EasyAlign)
-" start interactive EasyAlign with a Vim movement
-" nmap <Leader>a <Plug>(EasyAlign)vmap <Enter> <Plug>(EasyAlign)
-
-" Disambiguate ,a & ,t from the Align plugin, making them fast again.
-"
-" This section is here to prevent AlignMaps from adding a bunch of mappings
-" that interfere with the very-common ,a and ,t mappings. This will get run
-" at every startup to remove the AlignMaps for the *next* vim startup.
-"
-" If you do want the AlignMaps mappings, remove this section, remove
-" ~/.vim/bundle/Align, and re-run rake in maximum-awesome.
-
-function! s:RemoveConflictingAlignMaps()
-  if exists("g:loaded_AlignMapsPlugin")
-    AlignMapsClean
-  endif
-endfunction
-command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
-silent! autocmd VimEnter * RemoveConflictingAlignMaps
 
 " vim-airline
 " smart tab line
@@ -104,10 +80,39 @@ let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 
+"================= Editing =================
+
+" override default ignore comment and string in vim-easy-align
+let g:easy_align_ignore_groups = []
+
+" vim-easy-align
+" start interactive EasyAlign in visual mode
+  vmap <Enter> <Plug>(EasyAlign)
+" start interactive EasyAlign with a Vim movement
+" nmap <Leader>a <Plug>(EasyAlign)vmap <Enter> <Plug>(EasyAlign)
+
+" Disambiguate ,a & ,t from the Align plugin, making them fast again.
+"
+" This section is here to prevent AlignMaps from adding a bunch of mappings
+" that interfere with the very-common ,a and ,t mappings. This will get run
+" at every startup to remove the AlignMaps for the *next* vim startup.
+"
+" If you do want the AlignMaps mappings, remove this section, remove
+" ~/.vim/bundle/Align, and re-run rake in maximum-awesome.
+function! s:RemoveConflictingAlignMaps()
+  if exists("g:loaded_AlignMapsPlugin")
+    AlignMapsClean
+  endif
+endfunction
+command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
+silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+"================= Helper =================
 " run sql file to give your the result table!
-" usage: <leader_key>r + j, l, r
+" usage: <leader_key>p + j, l, r
+
 function! s:init_qrpsqlpq()
-  nmap <buffer> <Leader>r [qrpsqlpq]
+  nmap <buffer> <Leader>p [qrpsqlpq]
   nnoremap <silent> <buffer> [qrpsqlpq]j :call qrpsqlpq#run('split')<CR>
   nnoremap <silent> <buffer> [qrpsqlpq]l :call qrpsqlpq#run('vsplit')<CR>
   nnoremap <silent> <buffer> [qrpsqlpq]r :call qrpsqlpq#run()<CR>
@@ -125,5 +130,14 @@ if executable('psql')
   autocmd FileType sql call s:init_qrpsqlpq()
 endif
 
- " keep set secure on the last line
+" Vim Tmux Runner
+nnoremap <leader>or :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
+nnoremap <leader>ar :VtrAttachToPane<cr>
+nnoremap <leader>kr :VtrKillRunner<cr>
+nnoremap <leader>sl :VtrSendLinesToRunner<cr>
+nnoremap <leader>sc :VtrSendCommandToRunner<cr>
+nnoremap <leader>cc :VtrFlushCommand<cr>
+nnoremap <leader>orc :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'rc'}<cr>
+
+" keep set secure on the last line
 set secure

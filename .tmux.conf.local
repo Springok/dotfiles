@@ -1,34 +1,71 @@
-# https://trello.com/c/bgBFooFE/1-tmux-shortcut
-
-set-option -g repeat-time 1000
-
+#####################
+# General
+#####################
 set -g prefix `
 bind "'" send-prefix
 
+#####################
+# Navigation
+#####################
 bind - split-window -v -c "#{pane_current_path}"
 bind \ split-window -h -c "#{pane_current_path}"
+bind c new-window -a -c "#{pane_current_path}"
 
 bind ` last-window
-
-bind j select-pane -t :.+
-bind k select-pane -t :.-
-
-bind h select-window -p
 bind l next-window
+bind h previous-window
 
-bind -r < swap-window -t-1
-bind -r > swap-window -t+1
+bind ! break-pane -d
 
 bind -r H resize-pane -L 5
 bind -r J resize-pane -D 5
 bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
 
+set-option -g repeat-time 500
+
+# Number windows starting at 1, renumber as windows are added / removed
+set-option -g base-index 1
+set-option -g renumber-windows on
+
+# hit space to open the tree
+bind C-j choose-tree
+
+# enable smart pane switching with awareness of vim splits
+# need vim plugin vim-tmux-navigatior
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+  | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
+bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
+bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
+bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
+bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+
+#####################
+# Copy Mode
+#####################
 bind PageUp copy-mode -u
 bind PageDown copy-mode
 
 bind v copy-mode
 bind p paste-buffer -p
 
-bind c new-window -a -c "#{pane_current_path}"
+#####################
+# Status Bar
+#####################
+set-option -g status-bg black
+set-option -g pane-active-border-fg black
+set-option -g pane-border-fg black
+
+set-option -g status-keys "emacs"
+
+set-option -g status-left '[#S]'
+set-option -g status-right "#(date '+%a, %b %d - %I:%M')"
+
+# Prompted join-pane
+bind-key j command-prompt -p "join pane from: "  "join-pane -h -s '%%'"
+
+# Easily swap a pane (targeted by pane number) with the current pane
+bind-key s display-panes\; command-prompt -p "pane #: "  "swap-pane -t '%%'"
+
 # vim: filetype=conf

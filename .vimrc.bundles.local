@@ -1,10 +1,11 @@
 Plugin 'junegunn/vim-easy-align'
-Plugin 'thinca/vim-quickrun'
 Plugin 'bootleq/vim-qrpsqlpq'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dracula/vim'
 Plugin 'valloric/youcompleteme'
+Plugin 'christoomey/vim-tmux-runner'
+" Plugin 'janko-m/vim-test'
 
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 Plugin 'godlygeek/tabular'

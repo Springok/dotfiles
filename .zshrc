@@ -53,7 +53,7 @@ SPACESHIP_PREFIX_HOST=" @ "
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions git-extras)
 
 # Disable flow control then we can use ctrl-s to save in vim editor
 # Disable flow control commands (keeps C-s from freezing everything)
@@ -72,16 +72,9 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias clog='cat /dev/null > log/development.log'
-
-alias rc='bin/rails console'
-alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
-alias mig='bin/rake db:migrate'
-alias migs='bin/rake db:migrate:status'
-alias vim ='vim'
-alias roll='bin/rake db:rollback'
-alias rock!='roll && mig'
-alias smig='skip_env mig'
+########################
+# General
+########################
 
 alias tm='tmux attach || tmux new'
 alias rm='rm -i'
@@ -90,45 +83,68 @@ alias mv='mv -i'
 alias c='clear'
 alias aq='ag -Q'
 
-alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
-alias pukill='bundle exec pumactl -P /home/vagrant/nerv/tmp/pids/puma.pid stop'
-alias pukill2='bundle exec pumactl -P /home/vagrant/nerv2/tmp/pids/puma.pid stop'
-alias punerv='RAILS_RELATIVE_URL_ROOT=/nerv bundle exec puma -d -C config/puma.rb config.ru'
-alias punerv2='RAILS_RELATIVE_URL_ROOT=/nerv2 bundle exec puma -d -C config/puma.rb config.ru'
-alias pupry='RAILS_RELATIVE_URL_ROOT=/nerv bundle exec puma -C config/puma.rb config.ru'
-alias pupry2='RAILS_RELATIVE_URL_ROOT=/nerv2 bundle exec puma -C config/puma.rb config.ru'
+alias vt='vim -c :CtrlP'
+alias va='cd /vagrant'
+alias gl='git log'
+alias gdn='git diff --no-ext-diff --word-diff'
 
+########################
+# Project Related
+########################
+
+# CK project
+alias nerv_ck='cd ~/nerv'
+alias pukill_ck='bundle exec pumactl -P /home/vagrant/nerv/tmp/pids/puma.pid stop'
+alias punerv_ck='RAILS_RELATIVE_URL_ROOT=/nerv bundle exec puma -d -C config/puma.rb config.ru'
+alias pupry_ck='RAILS_RELATIVE_URL_ROOT=/nerv bundle exec puma -C config/puma.rb config.ru'
+alias dump_db_ck='~/helper/dumpdb_ck.sh'
+
+# HK project
+alias nerv='cd ~/nerv2'
+alias pukill='bundle exec pumactl -P /home/vagrant/nerv2/tmp/pids/puma.pid stop'
+alias punerv='RAILS_RELATIVE_URL_ROOT=/nerv2 bundle exec puma -d -C config/puma.rb config.ru'
+alias pupry='RAILS_RELATIVE_URL_ROOT=/nerv2 bundle exec puma -C config/puma.rb config.ru'
+alias dump_db='~/helper/dumpdb.sh'
+
+# Gems
+alias be='bundle exec'
 alias seki='be sidekiq'
 alias stopme='be spring stop'
 alias rubo='be rubocop'
 alias rake='be rake'
 
-alias gcon='vim ~/.gitconfig'
-alias sozsh='source ~/.zshrc'
-alias zshrc='vim ~/.zshrc'
-alias vimrc='vim ~/.vimrc.local'
-alias en='vim .env'
+# Rails
+alias rc='bin/rails console'
+alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
+alias mig='bin/rake db:migrate'
+alias migs='bin/rake db:migrate:status'
+alias roll='bin/rake db:rollback'
+alias rock!='roll && mig'
+alias smig='skip_env mig'
 
-alias vt='vim -c :CtrlP'
-
-alias nerv='cd ~/nerv'
-alias nerv2='cd ~/nerv2'
-alias va='cd /vagrant'
-
-alias dump_db='~/helper/dumpdb.sh'
-
-alias be='bundle exec'
-
+# Test
 alias mi='be ruby -Itest'
 alias mii='rake test'
 alias testba='rake test:concepts && rake test:forms && rake test:models'
 
-alias gl='git log'
-alias gdn='git diff --no-ext-diff --word-diff'
+# Amoeba
+alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
+
+########################
+# Jump Into Config File
+########################
+#
+alias gcon='vim ~/.gitconfig'
+alias zshrc='vim ~/.zshrc'
+alias sozsh='source ~/.zshrc'
+alias vimrc='vim ~/.vimrc.local'
+alias en='vim .env'
 
 # You may need to manually set your language environment
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+export EDITOR='vim'
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -143,11 +159,39 @@ export LANG=en_US.UTF-8
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 rmailcatcher() {
- local pid=$(ps h -C ruby -o pid,args | noglob grep '/bin/mailcatcher --http-ip' | cut -d' ' -f 1)
- if [[ -n $pid ]]; then
-   kill $pid && echo "MailCatcher process $pid killed."
- else
-   nohup mailcatcher --http-ip 0.0.0.0 > ~/.nohup/mailcatcher.out 2>&1&
-   disown %nohup
- fi
+  local pid=$(ps h -C ruby -o pid,args | noglob grep '/bin/mailcatcher --http-ip' | cut -d' ' -f 1)
+  if [[ -n $pid ]]; then
+    kill $pid && echo "MailCatcher process $pid killed."
+  else
+    nohup mailcatcher --http-ip 0.0.0.0 > ~/.nohup/mailcatcher.out 2>&1&
+    disown %nohup
+  fi
+}
+
+
+# tmt(){
+#   # local session_name="lalalas"
+#   local session_name="$(basename "$pwd" | tr . -)"
+#   tmux attach || tmux new -As $session_name
+# }
+
+tmt(){
+session_name="$(basename "$PWD" | tr . -)"
+
+session_exists() {
+  tmux list-sessions | sed -E 's/:.*$//' | grep -q "^$session_name$"
+}
+
+not_in_tmux() {
+  [ -z "$TMUX" ]
+}
+
+if not_in_tmux; then
+  tmux new-session -As "$session_name"
+else
+  if ! session_exists; then
+    (TMUX='' tmux new-session -Ad -s "$session_name")
+  fi
+  tmux switch-client -t "$session_name"
+fi
 }
