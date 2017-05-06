@@ -10,8 +10,8 @@ if has('vim_starting')
         let type = rails#buffer().type_name()
         let relative = rails#buffer().relative()
         if type =~ '^test' || (type == 'javascript-coffee' && relative =~ '^test/')
-          nmap tt [rtest]
-          nnoremap <silent> [rtest]t :call <SID>rails_test_tmux('h')<CR>
+          nmap <leader>t [rtest]
+          nnoremap <silent> [rtest]l :call <SID>rails_test_tmux('h')<CR>
           nnoremap <silent> [rtest]w :call <SID>rails_test_tmux('new-window')<CR>
           nnoremap <silent> [rtest]. :call <SID>rails_test_tmux('last')<CR>
         end

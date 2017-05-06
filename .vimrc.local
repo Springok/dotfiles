@@ -1,4 +1,23 @@
-"================ Team Convention ================
+"================ General ================
+source ~/dotfiles/.vim/minitest_helper.vim
+
+set nocursorline
+set relativenumber
+set hlsearch   " highligt all matches for the last used search pattern
+set noswapfile " disable .swp files creation in vim
+set hidden     " allow you to switch between buffers without saving
+
+nmap <leader>vr :vsp ~/dotfiles/.vimrc.local<cr>
+
+nmap 0 ^
+" Move up and down by visible lines if current line is wrapped
+nmap j gj
+nmap k gk
+nmap <leader>p obinding.pry<ESC>^
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
 
 " buffer switch
 nnoremap <silent> <tab> :bn<CR>
@@ -7,26 +26,19 @@ nnoremap <silent> <S-tab> :bp<CR>
 " tab switch
 nnoremap gr gT
 
-"================ General ================
-source ~/dotfiles/.vim/minitest_helper.vim
-
-set nocursorline
-set noswapfile
-set number relativenumber
-set hlsearch
-
 " NerdTree Setting
 let NERDTreeQuitOnOpen  = 1
 
 " git commit textwidth limit
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
-let g:vim_markdown_folding_disabled=1
-let g:gitgutter_enabled = 1
-
 " Note that remapping C-s requires flow control to be disabled (in .zshrc)
-map <C-s> <esc>:w<CR>
+nmap <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
+
+" Close current buffer
+nmap <leader>q <esc>:bw<cr>
+imap <leader>q <esc>:bw<cr>
 
 " in all modes hit ,, can return to normal mode
 noremap  ,, <C-\><C-N>
@@ -35,33 +47,23 @@ noremap!  ,, <C-\><C-N>
 " hit jj back to normal mode from insert mode
 inoremap jj <ESC>
 
-" set langmenu=en_US.UTF-8
-" language messages en_US.UTF-8
-
-"================= Navigation =================
-
-" zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
+" vim-gitgutter
+nnoremap <leader>gg :GitGutterToggle<CR>
 
 " Fugitive
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
+nmap <leader>gd :Gdiff<cr>
 
-" vim-gitgutter
-nnoremap <leader>gg :GitGutterToggle<CR>
+" Rails
+nmap <leader>av :AV<cr>
+nmap <leader>gr :R<cr>
+nmap <leader>ol :Rlog<cr>
 
 "================ Theme ================
-
 " Dracula
 color dracula
 let g:airline_theme='dracula'
-
-" Solarized
-" syntax enable
-" set background=dark
-" colorscheme solarized
-" let g:airline_theme='solarized'
 
 " vim-airline
 " smart tab line
@@ -72,24 +74,23 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
+let g:airline_left_sep         = '⮀'
+let g:airline_left_alt_sep     = '⮁'
+let g:airline_right_sep        = '⮂'
+let g:airline_right_alt_sep    = '⮃'
+let g:airline_symbols.branch   = '⭠'
 let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
+let g:airline_symbols.linenr   = '⭡'
 
-"================= Editing =================
-
-" override default ignore comment and string in vim-easy-align
-let g:easy_align_ignore_groups = []
+"===========================================
 
 " vim-easy-align
+" override default ignore comment and string in vim-easy-align
+let g:easy_align_ignore_groups = []
 " start interactive EasyAlign in visual mode
-  vmap <Enter> <Plug>(EasyAlign)
-" start interactive EasyAlign with a Vim movement
-" nmap <Leader>a <Plug>(EasyAlign)vmap <Enter> <Plug>(EasyAlign)
+vmap <Enter> <Plug>(EasyAlign)
+" start interactive EasyAlign for a motion/text object (e.g. <leader>eaip)
+nmap <Leader>ea <Plug>(EasyAlign)
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
@@ -110,7 +111,6 @@ silent! autocmd VimEnter * RemoveConflictingAlignMaps
 "================= Helper =================
 " run sql file to give your the result table!
 " usage: <leader_key>p + j, l, r
-
 function! s:init_qrpsqlpq()
   nmap <buffer> <Leader>p [qrpsqlpq]
   nnoremap <silent> <buffer> [qrpsqlpq]j :call qrpsqlpq#run('split')<CR>

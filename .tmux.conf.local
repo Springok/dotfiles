@@ -32,7 +32,7 @@ set-option -g renumber-windows on
 bind C-j choose-tree
 
 # enable smart pane switching with awareness of vim splits
-# need vim plugin vim-tmux-navigatior
+# need vim plugin vim-tmux-navigator
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
   | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"

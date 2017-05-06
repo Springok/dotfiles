@@ -82,6 +82,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias c='clear'
 alias aq='ag -Q'
+alias px='ps aux'
 
 alias vt='vim -c :CtrlP'
 alias va='cd /vagrant'
@@ -92,14 +93,13 @@ alias gdn='git diff --no-ext-diff --word-diff'
 # Project Related
 ########################
 
-# CK project
-alias nerv_ck='cd ~/nerv'
+# Nerv CK alias nerv_ck='cd ~/nerv'
 alias pukill_ck='bundle exec pumactl -P /home/vagrant/nerv/tmp/pids/puma.pid stop'
 alias punerv_ck='RAILS_RELATIVE_URL_ROOT=/nerv bundle exec puma -d -C config/puma.rb config.ru'
 alias pupry_ck='RAILS_RELATIVE_URL_ROOT=/nerv bundle exec puma -C config/puma.rb config.ru'
 alias dump_db_ck='~/helper/dumpdb_ck.sh'
 
-# HK project
+# Nerv HK
 alias nerv='cd ~/nerv2'
 alias pukill='bundle exec pumactl -P /home/vagrant/nerv2/tmp/pids/puma.pid stop'
 alias punerv='RAILS_RELATIVE_URL_ROOT=/nerv2 bundle exec puma -d -C config/puma.rb config.ru'
@@ -121,6 +121,8 @@ alias migs='bin/rake db:migrate:status'
 alias roll='bin/rake db:rollback'
 alias rock!='roll && mig'
 alias smig='skip_env mig'
+alias olog='tail -f log/development.log'
+alias clog='cat /dev/null > log/development.log'
 
 # Test
 alias mi='be ruby -Itest'
