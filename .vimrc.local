@@ -9,12 +9,14 @@ set hidden     " allow you to switch between buffers without saving
 
 nmap <leader>vr :vsp ~/dotfiles/.vimrc.local<cr>
 
-nmap 0 ^
+noremap 1 ^
+noremap 0 $
 " Move up and down by visible lines if current line is wrapped
 nmap j gj
 nmap k gk
 nmap <leader>p obinding.pry<ESC>^
 
+nmap <leader>w <C-w>
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
@@ -68,22 +70,27 @@ let g:airline_theme='dracula'
 " vim-airline
 " smart tab line
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-let g:airline_left_sep         = '⮀'
-let g:airline_left_alt_sep     = '⮁'
-let g:airline_right_sep        = '⮂'
-let g:airline_right_alt_sep    = '⮃'
+" let g:airline_left_sep         = '⮀'
+" let g:airline_left_alt_sep     = '⮁'
+" let g:airline_right_sep        = '⮂'
+" let g:airline_right_alt_sep    = '⮃'
+let g:airline_left_sep         = ''
+let g:airline_left_alt_sep     = ''
+let g:airline_right_sep        = ''
+let g:airline_right_alt_sep    = ''
 let g:airline_symbols.branch   = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr   = '⭡'
 
 "===========================================
 
+let g:gitgutter_enabled = 1
 " vim-easy-align
 " override default ignore comment and string in vim-easy-align
 let g:easy_align_ignore_groups = []
@@ -140,4 +147,4 @@ nnoremap <leader>cc :VtrFlushCommand<cr>
 nnoremap <leader>orc :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'rc'}<cr>
 
 " keep set secure on the last line
-set secure
+set secure " safer working with script files in the current directory
