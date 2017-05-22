@@ -1,61 +1,57 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# zplug {{{
 
-source /usr/local/share/chruby/chruby.sh
-test -e /usr/local/share/chruby/auto.sh && source /usr/local/share/chruby/auto.sh
+# install zplug, if necessary
+if [[ ! -d ~/.zplug ]]; then
+  export ZPLUG_HOME=~/.zplug
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+fi
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="spaceship"
-SPACESHIP_PREFIX_HOST=" @ "
+source ~/.zplug/init.zsh
 
-#Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "plugins/chruby",  from:oh-my-zsh
+zplug "plugins/bundler", from:oh-my-zsh
+zplug "plugins/rails",   from:oh-my-zsh
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# zplug "b4b4r07/enhancd", use:init.sh
+zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# zplug 'dracula/zsh', as:theme
+zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
+SPACESHIP_USER_SHOW=false
+SPACESHIP_HOST_SHOW=false
+SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP_PROMPT_SYMBOL='🍺 '
+SPACESHIP_RUBY_SYMBOL='🔥  '
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+zplug "zsh-users/zsh-autosuggestions", defer:3
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+# zim {{{
+zplug "zimframework/zim", as:plugin, use:"init.zsh", hook-build:"ln -sf $ZPLUG_REPOS/zimframework/zim ~/.zim"
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+zmodules=(directory environment history input git spectrum ssh utility meta \
+  syntax-highlighting history-substring-search prompt completion)
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+zhighlighters=(main brackets pattern cursor root)
+# }}}
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+if ! zplug check --verbose; then
+  zplug install
+fi
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+zplug load #--verbose
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+source ~/.zplug/repos/junegunn/fzf/shell/key-bindings.zsh
+source ~/.zplug/repos/junegunn/fzf/shell/completion.zsh
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions git-extras)
+export FZF_COMPLETION_TRIGGER=';'
+export FZF_TMUX=1
 
-# Disable flow control then we can use ctrl-s to save in vim editor
+# }}}
+
+# Disable flow control then we can use ctrl-s to save in vim
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef
@@ -63,14 +59,6 @@ stty stop undef
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
 
 ########################
 # General
@@ -83,27 +71,35 @@ alias mv='mv -i'
 alias c='clear'
 alias aq='ag -Q'
 alias px='ps aux'
+alias ep='exit'
 
 alias vt='vim -c :CtrlP'
 alias va='cd /vagrant'
-alias gl='git log'
-alias gdn='git diff --no-ext-diff --word-diff'
+
+alias gs='git status'
+alias gcom='git checkout master'
+alias ggpush='gpc'
+alias ggpull='git pull origin $(git_current_branch)'
+alias gRs='git remote show origin'
+alias gbda='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
+alias glg='git log --stat --max-count=10'
+alias gddd='git diff master...'
+alias gd='git diff'
 
 ########################
 # Project Related
 ########################
 
+alias pa!='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb'
+alias pa='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb -d'
+alias kpa='bundle exec pumactl -P tmp/pids/puma.pid stop'
+
 # Nerv CK alias nerv_ck='cd ~/nerv'
-alias pukill_ck='bundle exec pumactl -P /home/vagrant/nerv/tmp/pids/puma.pid stop'
-alias punerv_ck='RAILS_RELATIVE_URL_ROOT=/nerv bundle exec puma -d -C config/puma.rb config.ru'
-alias pupry_ck='RAILS_RELATIVE_URL_ROOT=/nerv bundle exec puma -C config/puma.rb config.ru'
+alias nerv_ck='cd ~/nerv'
 alias dump_db_ck='~/helper/dumpdb_ck.sh'
 
 # Nerv HK
 alias nerv='cd ~/nerv2'
-alias pukill='bundle exec pumactl -P /home/vagrant/nerv2/tmp/pids/puma.pid stop'
-alias punerv='RAILS_RELATIVE_URL_ROOT=/nerv2 bundle exec puma -d -C config/puma.rb config.ru'
-alias pupry='RAILS_RELATIVE_URL_ROOT=/nerv2 bundle exec puma -C config/puma.rb config.ru'
 alias dump_db='~/helper/dumpdb.sh'
 
 # Gems
@@ -121,6 +117,7 @@ alias migs='bin/rake db:migrate:status'
 alias roll='bin/rake db:rollback'
 alias rock!='roll && mig'
 alias smig='skip_env mig'
+
 alias olog='tail -f log/development.log'
 alias clog='cat /dev/null > log/development.log'
 
@@ -142,23 +139,10 @@ alias sozsh='source ~/.zshrc'
 alias vimrc='vim ~/.vimrc.local'
 alias en='vim .env'
 
-# You may need to manually set your language environment
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-export EDITOR='vim'
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# Git pager setting
+# export LESS=-R
+# use emacs mode in command line
+bindkey -e
 
 rmailcatcher() {
   local pid=$(ps h -C ruby -o pid,args | noglob grep '/bin/mailcatcher --http-ip' | cut -d' ' -f 1)
@@ -170,13 +154,7 @@ rmailcatcher() {
   fi
 }
 
-
-# tmt(){
-#   # local session_name="lalalas"
-#   local session_name="$(basename "$pwd" | tr . -)"
-#   tmux attach || tmux new -As $session_name
-# }
-
+# From Upcase tmux course
 tmt(){
 session_name="$(basename "$PWD" | tr . -)"
 
