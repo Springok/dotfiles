@@ -60,6 +60,10 @@ stty stop undef
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/bin"
 
+
+# this setting is also affect language in Vim
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 ########################
 # General
 ########################
@@ -82,7 +86,7 @@ alias ggpush='gpc'
 alias ggpull='git pull origin $(git_current_branch)'
 alias gRs='git remote show origin'
 alias gbda='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
-alias glg='git log --stat --max-count=10'
+alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
 alias gddd='git diff master...'
 alias gd='git diff'
 
@@ -140,7 +144,7 @@ alias vimrc='vim ~/.vimrc.local'
 alias en='vim .env'
 
 # Git pager setting
-# export LESS=-R
+export LESS=R
 # use emacs mode in command line
 bindkey -e
 

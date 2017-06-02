@@ -9,8 +9,12 @@ set hidden     " allow you to switch between buffers without saving
 
 nmap <leader>vr :vsp ~/dotfiles/.vimrc.local<cr>
 
-noremap 1 ^
+noremap ! ^
 noremap 0 $
+
+" indenting 
+noremap <leader>i mmgg=G'm
+
 " Move up and down by visible lines if current line is wrapped
 nmap j gj
 nmap k gk
