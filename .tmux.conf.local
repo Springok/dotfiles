@@ -4,6 +4,7 @@
 # `man tmux` could help
 
 set -g prefix `
+set -g prefix2 C-t
 bind "'" send-prefix
 
 #####################
@@ -13,7 +14,7 @@ bind - split-window -v -c "#{pane_current_path}"
 bind \ split-window -h -c "#{pane_current_path}"
 bind c new-window -a -c "#{pane_current_path}"
 
-bind ` resize-pane -Z
+bind m resize-pane -Z
 bind l last-pane
 bind h previous-window
 

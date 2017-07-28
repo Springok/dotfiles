@@ -60,7 +60,6 @@ stty stop undef
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/bin"
 
-
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -68,7 +67,7 @@ export LANG=en_US.UTF-8
 # General
 ########################
 
-alias tm='tmux attach || tmux new'
+alias tm='tmt'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -97,14 +96,15 @@ alias gd='git diff'
 alias pa!='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb'
 alias pa='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb -d'
 alias kpa='bundle exec pumactl -P tmp/pids/puma.pid stop'
+alias kap='kpa'
 
-# Nerv CK alias nerv_ck='cd ~/nerv'
-alias nerv_ck='cd ~/nerv'
-alias dump_db_ck='~/helper/dumpdb_ck.sh'
+# Nerv CK alias
+alias ck='cd ~/nerv_ck'
+alias dump_ck='~/helper/dumpdb_ck.sh'
 
 # Nerv HK
-alias nerv='cd ~/nerv2'
-alias dump_db='~/helper/dumpdb.sh'
+alias hk='cd ~/nerv'
+alias dump_hk='~/helper/dumpdb.sh'
 
 # Gems
 alias be='bundle exec'
@@ -115,6 +115,7 @@ alias rake='be rake'
 
 # Rails
 alias rc='bin/rails console'
+alias rct='bin/rails console test'
 alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
 alias mig='bin/rake db:migrate'
 alias migs='bin/rake db:migrate:status'
