@@ -1,18 +1,24 @@
 "================ General ================
 source ~/dotfiles/.vim/minitest_helper.vim
 
+set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
 set nocursorline
 set relativenumber
-set hlsearch   " highligt all matches for the last used search pattern
+set hlsearch   " highlight all matches for the last used search pattern
 set noswapfile " disable .swp files creation in vim
 set hidden     " allow you to switch between buffers without saving
 
 nmap <leader>vr :vsp ~/dotfiles/.vimrc.local<cr>
+nmap <leader>ns :set nospell<cr>
 
 noremap ! ^
 noremap 0 $
 
-" indenting 
+" indenting
 noremap <leader>i mmgg=G'm
 
 " Move up and down by visible lines if current line is wrapped
@@ -37,6 +43,7 @@ let NERDTreeQuitOnOpen  = 1
 
 " git commit textwidth limit
 autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd BufRead,BufNewFile *.md set nospell
 
 " Note that remapping C-s requires flow control to be disabled (in .zshrc)
 nmap <C-s> <esc>:w<CR>
