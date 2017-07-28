@@ -67,7 +67,19 @@ export LANG=en_US.UTF-8
 # General
 ########################
 
+# For pair
+pairg() { ssh -t $1 ssh -p $2 -t vagrant@localhost 'tmux attach' }
+pairh() { ssh -R $2\:localhost:$2 -t $1 'htop' }
+
+# For vagrant
+alias va=vagrant
+alias vup='va up'
+alias vssh='va ssh'
+alias vhalt='va halt'
+alias vhlat='va halt'
+
 alias tm='tmt'
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
