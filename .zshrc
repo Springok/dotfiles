@@ -68,8 +68,8 @@ export LANG=en_US.UTF-8
 ########################
 
 # For pair
-pairg() { ssh -t $1 ssh -p $2 -t vagrant@localhost 'tmux attach' }
-pairh() { ssh -R $2\:localhost:$2 -t $1 'htop' }
+pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -p $2 -t vagrant@localhost 'tmux attach' }
+pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:$2 -t $1 'watch -en 10 who' }
 
 # For vagrant
 alias va=vagrant
@@ -80,6 +80,7 @@ alias vhlat='va halt'
 
 alias tm='tmt'
 
+alias la='ls -l -a'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
