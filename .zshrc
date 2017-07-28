@@ -89,7 +89,6 @@ alias px='ps aux'
 alias ep='exit'
 
 alias vt='vim -c :CtrlP'
-alias va='cd /vagrant'
 
 alias gs='git status'
 alias gcom='git checkout master'
