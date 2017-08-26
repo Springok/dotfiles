@@ -83,22 +83,20 @@ color dracula
 let g:airline_theme='dracula'
 
 " vim-airline
-" smart tab line
+" smart tab line, automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
+
+" https://github.com/vim-airline/vim-airline#integrating-with-powerline-fonts
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep         = '⮀'
+let g:airline_left_alt_sep     = '⮁'
+let g:airline_right_sep        = '⮂'
+let g:airline_right_alt_sep    = '⮃'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" let g:airline_left_sep         = '⮀'
-" let g:airline_left_alt_sep     = '⮁'
-" let g:airline_right_sep        = '⮂'
-" let g:airline_right_alt_sep    = '⮃'
-let g:airline_left_sep         = ''
-let g:airline_left_alt_sep     = ''
-let g:airline_right_sep        = ''
-let g:airline_right_alt_sep    = ''
 let g:airline_symbols.branch   = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr   = '⭡'
@@ -106,6 +104,7 @@ let g:airline_symbols.linenr   = '⭡'
 "===========================================
 
 let g:gitgutter_enabled = 1
+
 " vim-easy-align
 " override default ignore comment and string in vim-easy-align
 let g:easy_align_ignore_groups = []
