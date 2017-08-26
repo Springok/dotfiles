@@ -8,11 +8,10 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 set nocursorline
 set relativenumber
-set hlsearch   " highlight all matches for the last used search pattern
+" set hlsearch   " highlight all matches for the last used search pattern
 set noswapfile " disable .swp files creation in vim
 set hidden     " allow you to switch between buffers without saving
 
-nmap <leader>vr :vsp ~/dotfiles/.vimrc.local<cr>
 nmap <leader>ns :set nospell<cr>
 
 noremap ! ^
@@ -69,9 +68,14 @@ nmap <silent><leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 
 " Rails
-nmap <leader>av :AV<cr>
-nmap <leader>gr :R<cr>
-nmap <leader>ol :Rlog<cr>
+nmap <leader>AA  :A<CR>
+nmap <leader>AV  :AV<CR>
+nmap <leader>R  :R<CR>
+nmap <leader>ol :Rlog<CR>
+
+" Ag
+nmap <leader>ab :AgBuffer<space>
+nmap <leader>ag :Ag<space>
 
 "================ Theme ================
 " Dracula
