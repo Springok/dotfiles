@@ -6,11 +6,19 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
+" fix the problem on lagging issue on using relativenumber (syntax highlight)
+" ref: vim/vim#282
+"      vim-ruby/vim-ruby#243
+set regexpengine=1
+" set lazyredraw
+
 set nocursorline
 set relativenumber
 " set hlsearch   " highlight all matches for the last used search pattern
 set noswapfile " disable .swp files creation in vim
 set hidden     " allow you to switch between buffers without saving
+" Faster escape
+set noesckeys
 
 nmap <leader>ns :set nospell<cr>
 
@@ -68,10 +76,9 @@ nmap <silent><leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 
 " Rails
-nmap <leader>AA  :A<CR>
-nmap <leader>AV  :AV<CR>
-nmap <leader>R  :R<CR>
-nmap <leader>ol :Rlog<CR>
+nmap <leader>aa  :A<CR>
+nmap <leader>av  :AV<CR>
+nmap <leader>gr  :R<CR>
 
 " Ag
 nmap <leader>ab :AgBuffer<space>

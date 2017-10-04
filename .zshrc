@@ -99,7 +99,9 @@ alias gRs='git remote show origin'
 alias gbda='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
 alias gddd='git diff master...'
-alias ge='vim `git diff --name-only`'
+alias gwe='vim `git diff --name-only`'
+alias gie='vim `git diff --cached --name-only`'
+alias gbs='git branch | grep -v spring'
 
 ########################
 # Project Related
