@@ -4,7 +4,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dracula/vim'
 Plugin 'christoomey/vim-tmux-runner'
+
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-" Plugin 'janko-m/vim-test'
+
+Plugin 'janko-m/vim-test'

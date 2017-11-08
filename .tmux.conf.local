@@ -4,7 +4,6 @@
 # `man tmux` could help
 
 set -g prefix `
-set -g prefix2 C-t
 bind "'" send-prefix
 
 #####################

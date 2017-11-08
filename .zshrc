@@ -98,7 +98,7 @@ alias ggpull='git pull origin $(git_current_branch)'
 alias gRs='git remote show origin'
 alias gbda='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
-alias gddd='git diff master...'
+alias gddd='git diff -b master...'
 alias gwe='vim `git diff --name-only`'
 alias gie='vim `git diff --cached --name-only`'
 alias gbs='git branch | grep -v spring'
@@ -107,18 +107,18 @@ alias gbs='git branch | grep -v spring'
 # Project Related
 ########################
 
+export USE_BOOTSNAP=1
+
 alias pa!='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb'
 alias pa='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb -d'
 alias kpa='bundle exec pumactl -P tmp/pids/puma.pid stop'
 alias kap='kpa'
 
-# Nerv CK alias
-alias ck='cd ~/nerv_ck'
-alias dump_ck='~/helper/dumpdb_ck.sh'
+alias dump_db='~/helper/dumpdb.sh'
 
-# Nerv HK
+# Nerv Project
+alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
-alias dump_hk='~/helper/dumpdb.sh'
 
 # Gems
 alias be='bundle exec'

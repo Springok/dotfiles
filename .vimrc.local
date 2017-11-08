@@ -1,4 +1,10 @@
 "================ General ================
+" unmap some key mapping in maximum awesome
+unmap <leader>t
+unmap <leader>a
+unmap <leader>g
+unmap <leader>l
+
 source ~/dotfiles/.vim/minitest_helper.vim
 
 set omnifunc=rubycomplete#Complete
@@ -22,7 +28,6 @@ set noesckeys
 
 nmap <leader>ns :set nospell<cr>
 
-noremap ! ^
 noremap 0 $
 
 " indenting
@@ -46,7 +51,7 @@ nnoremap <silent> <S-tab> :bp<CR>
 nnoremap gr gT
 
 " NerdTree Setting
-let NERDTreeQuitOnOpen  = 1
+let NERDTreeQuitOnOpen = 1
 
 " git commit textwidth limit
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -74,15 +79,25 @@ nnoremap <leader>gg :GitGutterToggle<CR>
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
+nmap <leader>gs :Gstatus<cr>
 
 " Rails
-nmap <leader>aa  :A<CR>
-nmap <leader>av  :AV<CR>
-nmap <leader>gr  :R<CR>
+nmap <leader>aa :A<CR>
+nmap <leader>av :AV<CR>
+nmap <leader>gr :R<CR>
 
 " Ag
 nmap <leader>ab :AgBuffer<space>
 nmap <leader>ag :Ag<space>
+
+" Vim-test
+" let test#strategy = "dispatch"
+" need to setup this to make binding.pry works...
+let g:test#ruby#minitest#executable = 'bundle exec ruby -Itest'
+" let test#ruby#minitest#options = '--verbose'
+nmap <silent> <leader><C-t> :TestNearest<CR>
+nmap <silent> <leader><C-f> :TestFile<CR>
+nmap <silent> <leader><C-l> :TestLast<CR>
 
 "================ Theme ================
 " Dracula
@@ -118,7 +133,7 @@ let g:easy_align_ignore_groups = []
 " start interactive EasyAlign in visual mode
 vmap <Enter> <Plug>(EasyAlign)
 " start interactive EasyAlign for a motion/text object (e.g. <leader>eaip)
-nmap <Leader>ea <Plug>(EasyAlign)
+nmap <leader>l <Plug>(EasyAlign)
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
