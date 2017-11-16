@@ -131,6 +131,7 @@ alias rake='be rake'
 alias rc='bin/rails console'
 alias rct='bin/rails console test'
 alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
+alias disboot="USE_BOOTSNAP=0"
 alias mig='bin/rake db:migrate'
 alias migs='bin/rake db:migrate:status'
 alias roll='bin/rake db:rollback'

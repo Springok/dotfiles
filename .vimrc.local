@@ -78,7 +78,8 @@ nnoremap <leader>gg :GitGutterToggle<CR>
 " Fugitive
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
-nmap <leader>gd :Gdiff<cr>
+nmap <leader>gdi :Gdiff<cr>
+nmap <leader>gdd :Gdiff ~<cr>
 nmap <leader>gs :Gstatus<cr>
 
 " Rails
@@ -93,7 +94,7 @@ nmap <leader>ag :Ag<space>
 " Vim-test
 " let test#strategy = "dispatch"
 " need to setup this to make binding.pry works...
-let g:test#ruby#minitest#executable = 'bundle exec ruby -Itest'
+let g:test#ruby#minitest#executable = 'disboot bundle exec ruby -Itest'
 " let test#ruby#minitest#options = '--verbose'
 nmap <silent> <leader><C-t> :TestNearest<CR>
 nmap <silent> <leader><C-f> :TestFile<CR>

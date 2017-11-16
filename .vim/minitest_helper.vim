@@ -76,10 +76,10 @@ function! s:rails_test_tmux(method) "{{{
     let title = '☕️'
   elseif rails_type == 'test-integration'
     " TODO why can't just use ruby -Itest?
-    let test_command = printf('RAILS_RELATIVE_URL_ROOT= bundle exec rake test:integration TEST=%s', path)
+    let test_command = printf('disboot RAILS_RELATIVE_URL_ROOT= bundle exec rake test:integration TEST=%s', path)
     let title = matchstr(rails_type, '\vtest-\zs.{4}')
   else
-    let test_command = printf('bundle exec ruby -Itest %s --name /%s/', path, shellescape(escape(it, '()')))
+    let test_command = printf('disboot bundle exec ruby -Itest %s --name /%s/', path, shellescape(escape(it, '()')))
     let type_short = matchstr(rails_type, '\vtest-\zs.{4}')
     if type_short == 'unit'
       let title = type_short
