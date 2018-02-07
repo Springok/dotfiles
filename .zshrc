@@ -21,7 +21,7 @@ zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:them
 SPACESHIP_USER_SHOW=false
 SPACESHIP_HOST_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_PROMPT_SYMBOL='🍺 '
+# SPACESHIP_PROMPT_SYMBOL='🍺 '
 SPACESHIP_RUBY_SYMBOL='🔥  '
 
 zplug "zsh-users/zsh-autosuggestions", defer:3
@@ -69,7 +69,9 @@ export LANG=en_US.UTF-8
 
 # For pair
 pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -p $2 -t vagrant@localhost 'tmux attach' }
-pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:$2 -t $1 'watch -en 10 who' }
+pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22222 -t $1 'watch -en 10 who' }
+
+alias sshc='vim ~/.ssh/config'
 
 # For vagrant
 alias va=vagrant
@@ -77,8 +79,6 @@ alias vup='va up'
 alias vssh='va ssh'
 alias vhalt='va halt'
 alias vhlat='va halt'
-
-alias tm='tmt'
 
 alias la='ls -l -a'
 alias rm='rm -i'
@@ -102,6 +102,7 @@ alias gddd='git diff -b master...'
 alias gwe='vim `git diff --name-only`'
 alias gie='vim `git diff --cached --name-only`'
 alias gbs='git branch | grep -v spring'
+unalias gd
 
 ########################
 # Project Related

@@ -29,6 +29,11 @@ set noesckeys
 nmap <leader>ns :set nospell<cr>
 
 noremap 0 $
+noremap g0 g$
+
+" let mapleader=","
+" sometimes need , to repeat latest f, t, F or T in opposite direction
+noremap \ ,
 
 " indenting
 noremap <leader>i mmgg=G'm
