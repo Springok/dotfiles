@@ -91,14 +91,14 @@ alias ep='exit'
 
 alias vt='vim -c :CtrlP'
 
-alias gs='git status'
+alias gs='git status' # gwS, gws
 alias gcom='git checkout master'
-alias ggpush='gpc'
-alias ggpull='git pull origin $(git_current_branch)'
 alias gRs='git remote show origin'
 alias gbda='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
-alias gddd='git diff -b master...'
+alias gddd='gwd master...'
+alias gddo='gwd ...origin/master'
+alias gddde='vim `gddd --name-only`'
 alias gwe='vim `git diff --name-only`'
 alias gie='vim `git diff --cached --name-only`'
 alias gbs='git branch | grep -v spring'
@@ -108,12 +108,14 @@ unalias gd
 # Project Related
 ########################
 
-export USE_BOOTSNAP=1
+# export USE_BOOTSNAP=1
 
 alias pa!='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb'
 alias pa='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb -d'
 alias kpa='bundle exec pumactl -P tmp/pids/puma.pid stop'
 alias kap='kpa'
+alias rpa='kpa && pa'
+alias rpa!='kpa && pa!'
 
 alias dump_db='~/helper/dumpdb.sh'
 
@@ -131,6 +133,8 @@ alias rake='be rake'
 # Rails
 alias rc='bin/rails console'
 alias rct='bin/rails console test'
+alias rch="tail -f ~/.pry_history | grep -v 'exit'"
+
 alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
 alias disboot="USE_BOOTSNAP=0"
 alias mig='bin/rake db:migrate'
@@ -159,21 +163,13 @@ alias zshrc='vim ~/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='vim ~/.vimrc.local'
 alias en='vim .env'
+alias mc='mailcatcher --http-ip 0.0.0.0'
+alias kmc='pkill -fe mailcatcher'
 
 # Git pager setting
 export LESS=R
 # use emacs mode in command line
 bindkey -e
-
-rmailcatcher() {
-  local pid=$(ps h -C ruby -o pid,args | noglob grep '/bin/mailcatcher --http-ip' | cut -d' ' -f 1)
-  if [[ -n $pid ]]; then
-    kill $pid && echo "MailCatcher process $pid killed."
-  else
-    nohup mailcatcher --http-ip 0.0.0.0 > ~/.nohup/mailcatcher.out 2>&1&
-    disown %nohup
-  fi
-}
 
 # From Upcase tmux course
 tmt(){

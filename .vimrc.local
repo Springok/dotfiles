@@ -97,7 +97,9 @@ nmap <leader>ab :AgBuffer<space>
 nmap <leader>ag :Ag<space>
 
 " Vim-test
-" let test#strategy = "dispatch"
+" https://github.com/janko-m/vim-test#custom-strategies
+" let test#strategy = "vtr"
+
 " need to setup this to make binding.pry works...
 let g:test#ruby#minitest#executable = 'disboot bundle exec ruby -Itest'
 " let test#ruby#minitest#options = '--verbose'
@@ -109,6 +111,10 @@ nmap <silent> <leader><C-l> :TestLast<CR>
 " Dracula
 color dracula
 let g:airline_theme='dracula'
+
+" set background=dark
+" color vim-material
+" let g:airline_theme="material"
 
 " vim-airline
 " smart tab line, automatically displays all buffers when there's only one tab open.

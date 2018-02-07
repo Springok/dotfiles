@@ -3,6 +3,8 @@ Plugin 'bootleq/vim-qrpsqlpq'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dracula/vim'
+Plugin 'hzchirs/vim-material'
+Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'christoomey/vim-tmux-runner'
 
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
