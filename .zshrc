@@ -144,7 +144,7 @@ alias rock!='roll && mig'
 alias smig='skip_env mig'
 
 alias olog='tail -f log/development.log'
-alias clog='cat /dev/null > log/development.log'
+alias clog='cat /dev/null >! log/development.log'
 
 # Test
 alias mi='be ruby -Itest'

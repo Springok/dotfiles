@@ -3,3 +3,5 @@ alias pa='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bu
 alias kpa='bundle exec pumactl -P tmp/pids/puma.pid stop'
 alias kap='kpa'
 alias disboot="USE_BOOTSNAP=0"
+alias rpa='kpa && pa'
+alias rpa!='kpa && pa!'
