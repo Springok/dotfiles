@@ -13,4 +13,5 @@ Plugin 'plasticboy/vim-markdown'
 
 Plugin 'janko-m/vim-test'
 
-Plugin 'mattn/emmet-vim'
+" Plugin 'mattn/emmet-vim'
+Plugin 'vim-scripts/AutoComplPop'

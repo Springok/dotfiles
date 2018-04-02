@@ -96,8 +96,8 @@ alias gcom='git checkout master'
 alias gRs='git remote show origin'
 alias gbda='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
-alias gddd='gwd master...'
-alias gddo='gwd ...origin/master'
+alias gddl='gwd master...'
+alias gddd='gwd origin/master...'
 alias gddde='vim `gddd --name-only`'
 alias gwe='vim `git diff --name-only`'
 alias gie='vim `git diff --cached --name-only`'
@@ -111,6 +111,7 @@ unalias gd
 # export USE_BOOTSNAP=1
 
 alias pa!='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb'
+alias pap!="[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` RAILS_ENV='production' bundle exec puma -C $PWD/config/puma.rb"
 alias pa='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb -d'
 alias kpa='bundle exec pumactl -P tmp/pids/puma.pid stop'
 alias kap='kpa'
@@ -129,6 +130,7 @@ alias seki='be sidekiq'
 alias stopme='be spring stop'
 alias rubo='be rubocop'
 alias rake='be rake'
+alias bundle_install='stopme && bundle install'
 
 # Rails
 alias rc='bin/rails console'
@@ -143,8 +145,8 @@ alias roll='bin/rake db:rollback'
 alias rock!='roll && mig'
 alias smig='skip_env mig'
 
-alias olog='tail -f log/development.log'
-alias clog='cat /dev/null >! log/development.log'
+alias olog='tail -f log/lograge_development.log'
+alias clog='cat /dev/null >! log/lograge_development.log'
 
 # Test
 alias mi='be ruby -Itest'

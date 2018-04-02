@@ -11,16 +11,17 @@ if has('vim_starting')
         let relative = rails#buffer().relative()
         if type =~ '^test' || (type == 'javascript-coffee' && relative =~ '^test/')
           nmap <leader>t [rtest]
-          nnoremap <silent> [rtest]l :call <SID>rails_test_tmux('h')<CR>
-          nnoremap <silent> [rtest]w :call <SID>rails_test_tmux('new-window')<CR>
-          nnoremap <silent> [rtest]. :call <SID>rails_test_tmux('last')<CR>
+          nnoremap <silent> [rtest]l :call <SID>rails_test_tmux('h', 'false')<CR>
+          nnoremap <silent> [rtest]w :call <SID>rails_test_tmux('new-window', 'false')<CR>
+          nnoremap <silent> [rtest]. :call <SID>rails_test_tmux('last', 'false')<CR>
+          nnoremap <silent> [rtest]f :call <SID>rails_test_tmux('h', 'true')<CR>
         end
       endfunction "}}}
     endif
   endif
 endif
 
-function! s:rails_test_tmux(method) "{{{
+function! s:rails_test_tmux(method, test_whole_file) "{{{
   let [it, path] = ['', '']
 
   let rails_type = rails#buffer().type_name()
@@ -79,8 +80,14 @@ function! s:rails_test_tmux(method) "{{{
     let test_command = printf('disboot RAILS_RELATIVE_URL_ROOT= bundle exec rake test:integration TEST=%s', path)
     let title = matchstr(rails_type, '\vtest-\zs.{4}')
   else
-    let test_command = printf('disboot bundle exec ruby -Itest %s --name /%s/', path, shellescape(escape(it, '()')))
+    if a:test_whole_file == 'true'
+      let test_command = printf('disboot bundle exec ruby -Itest %s', path)
+    else
+      let test_command = printf('disboot bundle exec ruby -Itest %s --name /%s/', path, shellescape(escape(it, '()')))
+    endif
+
     let type_short = matchstr(rails_type, '\vtest-\zs.{4}')
+
     if type_short == 'unit'
       let title = type_short
     elseif type_short == 'func'

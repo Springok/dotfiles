@@ -18,6 +18,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 set regexpengine=1
 " set lazyredraw
 
+set nowrap
 set nocursorline
 set relativenumber
 " set hlsearch   " highlight all matches for the last used search pattern
@@ -52,6 +53,8 @@ nnoremap <leader>= :wincmd =<cr>
 nnoremap <silent> <tab> :bn<CR>
 nnoremap <silent> <S-tab> :bp<CR>
 
+nnoremap <C-n> <C-i>
+
 " tab switch
 nnoremap gr gT
 
@@ -83,7 +86,12 @@ nnoremap <leader>gg :GitGutterToggle<CR>
 " Fugitive
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
+
+" compare with working area
 nmap <leader>gdi :Gdiff<cr>
+" reset the diff with working area 
+nmap <leader>gdr :diffget<cr>
+" compare with index
 nmap <leader>gdd :Gdiff ~<cr>
 nmap <leader>gs :Gstatus<cr>
 
