@@ -114,7 +114,7 @@ let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 1
 " Reduce the time that signs appear
-set updatetime=100
+set updatetime=200
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -267,8 +267,10 @@ nnoremap <leader>orc :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd'
 "================================================
 " Dracula
 let g:airline_theme='dracula'
-color desert
-" color dracula
+let g:dracula_italic = 0
+color dracula
+highlight Normal ctermbg=None
+" color desert
 
 " set background=dark
 " color vim-material
