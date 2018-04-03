@@ -6,6 +6,10 @@ if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
+if [[ ! -d ~/.vim/bundle ]]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
 source ~/.zplug/init.zsh
 
 # zplug "plugins/vi-mode", from:oh-my-zsh
@@ -163,7 +167,7 @@ alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 alias gcon='vim ~/.gitconfig'
 alias zshrc='vim ~/.zshrc'
 alias sozsh='source ~/.zshrc'
-alias vimrc='vim ~/.vimrc.local'
+alias vimrc='vim ~/.vimrc'
 alias en='vim .env'
 alias mc='mailcatcher --http-ip 0.0.0.0'
 alias kmc='pkill -fe mailcatcher'
