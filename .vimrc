@@ -47,7 +47,6 @@ set wildmode=longest,list,full
 set nowrap
 set nocursorline
 set relativenumber
-" set hlsearch                                               " highlight all matches for the last used search pattern
 set noswapfile                                               " disable .swp files creation in vim
 set hidden                                                   " allow you to switch between buffers without saving
 set noesckeys                                                " Faster escape
@@ -94,15 +93,19 @@ endif
 " Remap
 "================================================
 let mapleader = ','
+
 " sometimes need , to repeat latest f, t, F or T in opposite direction
 noremap \ ,
 
-noremap 0 $
-noremap g0 g$
+" navigating
+noremap H 0
+noremap L $
+" noremap 0 $
+" noremap g0 g$
 nmap j gj
 nmap k gk
 
-nnoremap <C-n> <C-i>
+noremap <C-n> <C-i>
 
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
@@ -111,25 +114,26 @@ vnoremap p "_dP
 " Plugin
 "================================================
 let g:ctrlp_match_window = 'order:ttb,max:20'
-let g:NERDSpaceDelims=1
-let g:gitgutter_enabled = 1
-" Reduce the time that signs appear
-set updatetime=200
-
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --ignore db/ --nocolor -g ""'
+  let g:ctrlp_use_caching = 0
 endif
+
+" Reduce the time that signs appear when enable gitgutter
+set updatetime=200
 
 " extra rails.vim help
 autocmd User Rails silent! Rnavcommand job app/jobs -glob=**/* -suffix=_job.rb
 
 " NerdTree Setting
-let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+let g:NERDSpaceDelims=1
 
 " Vim-test
 " https://github.com/janko-m/vim-test#custom-strategies
@@ -170,10 +174,6 @@ endif
 "================================================
 " Shortcut
 "================================================
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
@@ -184,25 +184,23 @@ noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
-nmap <leader>ns :set nospell<cr>
 
 " indenting
 noremap <leader>i mmgg=G'm
 
 " Move up and down by visible lines if current line is wrapped
 nmap <leader>p obinding.pry<ESC>^
+nmap <leader>c "ay
+nmap <leader>v "ap
 
 nmap <leader>w <C-w>
+" nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 " zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
+" nnoremap <leader>= :wincmd =<cr>
 
 " buffer switch
 nnoremap <silent> <tab> :bn<CR>
 nnoremap <silent> <S-tab> :bp<CR>
-
-" tab switch
-nnoremap gr gT
 
 " Note that remapping C-s requires flow control to be disabled (in .zshrc)
 nmap <C-s> <esc>:w<CR>
@@ -225,13 +223,12 @@ nnoremap <leader>gg :GitGutterToggle<CR>
 " Fugitive
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
-
 " compare with working area
-nmap <leader>gdi :Gdiff<cr>
+nmap <leader>gdw :Gdiff<cr>
 " reset the diff with working area
 nmap <leader>gdr :diffget<cr>
 " compare with index
-nmap <leader>gdd :Gdiff ~<cr>
+nmap <leader>gdi :Gdiff ~<cr>
 nmap <leader>gs :Gstatus<cr>
 
 " Rails
@@ -254,13 +251,13 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap <leader>l <Plug>(EasyAlign)
 
 " Vim Tmux Runner
-nnoremap <leader>or :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
 nnoremap <leader>ar :VtrAttachToPane<cr>
 nnoremap <leader>kr :VtrKillRunner<cr>
 nnoremap <leader>sl :VtrSendLinesToRunner<cr>
-nnoremap <leader>sc :VtrSendCommandToRunner<cr>
-nnoremap <leader>cc :VtrFlushCommand<cr>
-nnoremap <leader>orc :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'rc'}<cr>
+nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd': 'rc'}<cr>
+" nnoremap <leader>sc :VtrSendCommandToRunner<cr>
+" nnoremap <leader>or :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
+" nnoremap <leader>cc :VtrFlushCommand<cr>
 
 "================================================
 " Theme
@@ -271,10 +268,6 @@ let g:dracula_italic = 0
 color dracula
 highlight Normal ctermbg=None
 " color desert
-
-" set background=dark
-" color vim-material
-" let g:airline_theme="material"
 
 " vim-airline
 " smart tab line, automatically displays all buffers when there's only one tab open.

@@ -83,7 +83,7 @@ function! s:rails_test_tmux(method, test_whole_file) "{{{
     if a:test_whole_file == 'true'
       let test_command = printf('disboot bundle exec ruby -Itest %s', path)
     else
-      let test_command = printf('disboot bundle exec ruby -Itest %s --name /%s/', path, shellescape(escape(it, '()')))
+      let test_command = printf('disboot bundle exec ruby -Itest %s --name /%s/', path, shellescape(escape(it, '()[]?')))
     endif
 
     let type_short = matchstr(rails_type, '\vtest-\zs.{4}')
