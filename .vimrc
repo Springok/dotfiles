@@ -109,6 +109,7 @@ noremap <C-n> <C-i>
 
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
+vnoremap <leader>gp y:Ag <c-r>"<cr>
 
 "================================================
 " Plugin
@@ -263,11 +264,11 @@ nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd':
 " Theme
 "================================================
 " Dracula
+" cause error when fireup vim with `vi`
 let g:airline_theme='dracula'
 let g:dracula_italic = 0
-color dracula
-highlight Normal ctermbg=None
-" color desert
+colorscheme materialtheme
+" colorscheme dracula
 
 " vim-airline
 " smart tab line, automatically displays all buffers when there's only one tab open.

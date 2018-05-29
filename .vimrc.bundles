@@ -47,9 +47,9 @@ Plugin 'vim-scripts/AutoComplPop'
 "================================================
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'dracula/vim'
-Plugin 'hzchirs/vim-material'
-Plugin 'kristijanhusak/vim-hybrid-material'
+
 
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 " Plugin 'godlygeek/tabular'
