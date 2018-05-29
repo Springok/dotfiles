@@ -14,10 +14,8 @@ source ~/.zplug/init.zsh
 
 # zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/chruby",  from:oh-my-zsh
-zplug "plugins/bundler", from:oh-my-zsh
-zplug "plugins/rails",   from:oh-my-zsh
 
-# zplug "b4b4r07/enhancd", use:init.sh
+zplug "b4b4r07/enhancd", use:init.sh
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
 zplug 'dracula/zsh', as:theme
@@ -31,9 +29,9 @@ zplug 'dracula/zsh', as:theme
 zplug "zsh-users/zsh-autosuggestions", defer:3
 
 # zim {{{
-zplug "zimframework/zim", as:plugin, use:"init.zsh", hook-build:"ln -sf $ZPLUG_REPOS/zimframework/zim ~/.zim"
+zplug "zimfw/zimfw", use:"init.zsh", hook-build:"ln -sf $ZPLUG_REPOS/zimfw/zimfw ~/.zim"
 
-zmodules=(directory environment history input git spectrum ssh utility meta \
+zmodules=(directory environment history input git ssh utility \
   syntax-highlighting history-substring-search prompt completion)
 
 zhighlighters=(main brackets pattern cursor root)
@@ -98,7 +96,7 @@ alias vt='vim -c :CtrlP'
 alias gs='git status' # gwS, gws
 alias gcom='git checkout master'
 alias gRs='git remote show origin'
-alias gbda='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
+alias gbda='git branch --merged | egrep -v "(^\*|master|dev|nerv|nerv_ck)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
 alias gddl='gwd master...'
 alias gddd='gwd origin/master...'
@@ -106,7 +104,8 @@ alias gddde='vim `gddd --name-only`'
 alias gwe='vim `git diff --name-only`'
 alias gie='vim `git diff --cached --name-only`'
 alias gbs='git branch | grep -v spring'
-unalias gd
+alias gcoc='git checkout nerv_ck'
+alias gcon='git checkout nerv'
 
 ########################
 # Project Related
@@ -130,11 +129,10 @@ alias hk='cd ~/nerv'
 
 # Gems
 alias be='bundle exec'
-alias seki='be sidekiq'
+alias seki='be sidekiq | tee ./log/sidekiq.log'
 alias stopme='be spring stop'
 alias rubo='be rubocop'
 alias rake='be rake'
-alias bundle_install='stopme && bundle install'
 
 # Rails
 alias rc='bin/rails console'
@@ -164,7 +162,6 @@ alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 # Jump Into Config File
 ########################
 #
-alias gcon='vim ~/.gitconfig'
 alias zshrc='vim ~/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
@@ -197,4 +194,22 @@ else
   fi
   tmux switch-client -t "$session_name"
 fi
+}
+
+cop(){
+  local exts=('rb,thor,jbuilder,builder')
+  local excludes=':(top,exclude)db/schema.rb'
+  local extra_options='--display-cop-names --rails'
+
+  if [[ $# -gt 0 ]]; then
+    local files=$(eval "noglob git diff $@ --name-only -- *.{$exts} $excludes")
+  else
+    local files=$(eval "noglob git status --porcelain -- *.{$exts} $excludes | sed -e '/^\s\?[DRC] /d' -e 's/^.\{3\}//g'")
+  fi
+
+  if [[ -n "$files" ]]; then
+    echo $files | xargs bundle exec rubocop `echo $extra_options`
+  else
+    echo "Nothing to check. Write some *.{$exts} to check.\nYou have 20 seconds to comply."
+  fi
 }
