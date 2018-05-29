@@ -96,7 +96,7 @@ alias vt='vim -c :CtrlP'
 alias gs='git status' # gwS, gws
 alias gcom='git checkout master'
 alias gRs='git remote show origin'
-alias gbda='git branch --merged | egrep -v "(^\*|master|dev|nerv|nerv_ck)" | xargs git branch -d'
+alias gbda='git branch --merged | egrep -v "(^\*|master|dev|nerv)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
 alias gddl='gwd master...'
 alias gddd='gwd origin/master...'
