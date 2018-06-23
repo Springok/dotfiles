@@ -13,9 +13,8 @@ fi
 source ~/.zplug/init.zsh
 
 # zplug "plugins/vi-mode", from:oh-my-zsh
-zplug "plugins/chruby",  from:oh-my-zsh
 
-zplug "b4b4r07/enhancd", use:init.sh
+# zplug "b4b4r07/enhancd", use:init.sh
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
 # zplug 'dracula/zsh', as:theme
@@ -27,12 +26,22 @@ zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tm
 # # SPACESHIP_CHAR_SYMBOL='🍺 '
 # SPACESHIP_RUBY_SYMBOL='🔥  '
 
+setopt prompt_subst # Make sure prompt is able to be generated properly.
+zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  status
+  dir
+  ruby
+  git
+)
+
 zplug "zsh-users/zsh-autosuggestions", defer:3
 
 # zim {{{
 zplug "zimfw/zimfw", use:"init.zsh", hook-build:"ln -sf $ZPLUG_REPOS/zimfw/zimfw ~/.zim"
 
-zmodules=(directory environment history input git ssh utility \
+zmodules=(directory environment history input git git-info ssh utility \
   syntax-highlighting history-substring-search prompt completion)
 
 zhighlighters=(main brackets pattern cursor root)
@@ -58,6 +67,10 @@ export FZF_TMUX=1
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef
+
+# asdf setting
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -136,15 +149,15 @@ alias rubo='be rubocop'
 alias rake='be rake'
 
 # Rails
-alias rc='bin/rails console'
-alias rct='bin/rails console test'
+alias rc='rails console'
+alias rct='rails console test'
 alias rch="tail -f ~/.pry_history | grep -v 'exit'"
 
 alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
 alias disboot="USE_BOOTSNAP=0"
-alias mig='bin/rake db:migrate'
-alias migs='bin/rake db:migrate:status'
-alias roll='bin/rake db:rollback'
+alias mig='rake db:migrate'
+alias migs='rake db:migrate:status'
+alias roll='rake db:rollback'
 alias rock!='roll && mig'
 alias smig='skip_env mig'
 
