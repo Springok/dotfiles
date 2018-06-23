@@ -107,19 +107,19 @@ alias ep='exit'
 
 alias vt='vim -c :CtrlP'
 
+# Git
 alias gs='git status' # gwS, gws
 alias gcom='git checkout master'
 alias gRs='git remote show origin'
 alias gbda='git branch --merged | egrep -v "(^\*|master|dev|nerv)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
-alias gddl='gwd master...'
 alias gddd='gwd origin/master...'
 alias gddde='vim `gddd --name-only`'
 alias gwe='vim `git diff --name-only`'
 alias gie='vim `git diff --cached --name-only`'
 alias gbs='git branch | grep -v spring'
 alias gcoc='git checkout nerv_ck'
-alias gcon='git checkout nerv'
+alias gcoh='git checkout nerv'
 
 ########################
 # Project Related
@@ -136,7 +136,7 @@ alias hk='cd ~/nerv'
 
 # Gems
 alias be='bundle exec'
-alias seki='be sidekiq | tee ./log/sidekiq.log'
+alias seki='be sidekiq'
 alias stopme='be spring stop'
 alias rubo='be rubocop'
 alias rake='be rake'
@@ -155,7 +155,7 @@ alias rock!='roll && mig'
 alias smig='skip_env mig'
 
 alias olog='tail -f log/lograge_development.log'
-alias clog='cat /dev/null >! log/lograge_development.log'
+alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log/development.log'
 
 # Test
 alias mi='be ruby -Itest'
