@@ -126,14 +126,7 @@ alias gcon='git checkout nerv'
 ########################
 
 # export USE_BOOTSNAP=1
-
-alias pa!='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb'
-alias pap!="[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` RAILS_ENV='production' bundle exec puma -C $PWD/config/puma.rb"
-alias pa='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb -d'
-alias kpa='bundle exec pumactl -P tmp/pids/puma.pid stop'
-alias kap='kpa'
-alias rpa='kpa && pa'
-alias rpa!='kpa && pa!'
+alias krpu='rpu kill'
 
 alias dump_db='~/helper/dumpdb.sh'
 
@@ -226,4 +219,98 @@ cop(){
   else
     echo "Nothing to check. Write some *.{$exts} to check.\nYou have 20 seconds to comply."
   fi
+}
+
+# 重啟 puma/unicorn（非 daemon 模式，用於 pry debug）
+rpy() {
+  if bundle show pry-remote > /dev/null 2>&1; then
+    bundle exec pry-remote
+  else
+    rpu pry
+  fi
+}
+
+# 重啟 puma/unicorn
+#
+# - rpu       → 啟動或重啟（如果已有 pid）
+# - rpu kill  → 殺掉 process，不重啟
+# - rpu xxx   → xxx 參數會被丟給 pumactl（不支援 unicorn）
+rpu() {
+  emulate -L zsh
+  if [[ -d tmp ]]; then
+    local action=$1
+    local pid
+    local animal
+
+    if [[ -f config/puma.rb ]]; then
+      animal='puma'
+    elif [[ -f config/unicorn.rb ]]; then
+      animal='unicorn'
+    else
+      echo "No puma/unicorn directory, aborted."
+      return 1
+    fi
+
+    if [[ -r tmp/pids/$animal.pid && -n $(ps h -p `cat tmp/pids/$animal.pid` | tr -d ' ') ]]; then
+      pid=`cat tmp/pids/$animal.pid`
+    fi
+
+    if [[ -n $action ]]; then
+      case "$action" in
+        pry)
+          if [[ -n $pid ]]; then
+            kill -9 $pid && echo "Process killed ($pid)."
+          fi
+          rserver_restart $animal
+          ;;
+        kill)
+          if [[ -n $pid ]]; then
+            kill -9 $pid && echo "Process killed ($pid)."
+          else
+            echo "No process found."
+          fi
+          ;;
+        *)
+          if [[ -n $pid ]]; then
+            # TODO: control unicorn
+            pumactl -p $pid $action
+          else
+            echo 'ERROR: "No running PID (tmp/pids/puma.pid).'
+          fi
+      esac
+    else
+      if [[ -n $pid ]]; then
+        # Alternatives:
+        # pumactl -p $pid restart
+        # kill -USR2 $pid && echo "Process killed ($pid)."
+
+        # kill -9 (SIGKILL) for force kill
+        kill -9 $pid && echo "Process killed ($pid)."
+        rserver_restart $animal $([[ "$animal" == 'puma' ]] && echo '-d' || echo '-D')
+      else
+        rserver_restart $animal $([[ "$animal" == 'puma' ]] && echo '-d' || echo '-D')
+      fi
+    fi
+  else
+    echo 'ERROR: "tmp" directory not found.'
+  fi
+}
+
+rserver_restart() {
+  # what is this for?
+  local app=${$(pwd):t}
+  [[ ! $app =~ '^(amoeba|cam)' ]] && app='nerv' # support app not named 'nerv' (e.g., nerv2)
+
+  case "$1" in
+    puma)
+      shift
+      RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C config/puma.rb config.ru $*
+      ;;
+    unicorn)
+      shift
+      RAILS_RELATIVE_URL_ROOT=/$app bundle exec unicorn -c config/unicorn.rb $* && echo 'unicorn running'
+      ;;
+    *)
+      echo 'invalid argument'
+  esac
 }
