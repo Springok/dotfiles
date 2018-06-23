@@ -18,12 +18,13 @@ zplug "plugins/chruby",  from:oh-my-zsh
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
-zplug 'dracula/zsh', as:theme
-# zplug "denysdovhan/spaceship-zsh-theme", use:spaceship.zsh, from:github, as:theme
+# zplug 'dracula/zsh', as:theme
+
+# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 # SPACESHIP_USER_SHOW=false
 # SPACESHIP_HOST_SHOW=false
 # SPACESHIP_VI_MODE_SHOW=false
-# SPACESHIP_PROMPT_SYMBOL='🍺 '
+# # SPACESHIP_CHAR_SYMBOL='🍺 '
 # SPACESHIP_RUBY_SYMBOL='🔥  '
 
 zplug "zsh-users/zsh-autosuggestions", defer:3

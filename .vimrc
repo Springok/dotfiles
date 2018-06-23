@@ -265,10 +265,12 @@ nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd':
 "================================================
 " Dracula
 " cause error when fireup vim with `vi`
-let g:airline_theme='dracula'
-let g:dracula_italic = 0
-colorscheme materialtheme
 " colorscheme dracula
+" let g:dracula_italic = 0
+" let g:airline_theme='dracula'
+
+let g:airline_theme='iceberg'
+colorscheme iceberg
 
 " vim-airline
 " smart tab line, automatically displays all buffers when there's only one tab open.

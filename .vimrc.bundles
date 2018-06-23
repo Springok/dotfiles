@@ -45,11 +45,12 @@ Plugin 'vim-scripts/AutoComplPop'
 "================================================
 " Theme
 "================================================
+Plugin 'dracula/vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'dracula/vim'
-
+Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+Plugin 'cocopon/iceberg.vim', {'rtp': 'vim/'}
 
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 " Plugin 'godlygeek/tabular'
