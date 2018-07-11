@@ -68,17 +68,19 @@ set regexpengine=1
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 " md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+" slim is slim
+autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
 " git commit textwidth limit
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" AutoComplete
-set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" AutoComplete, not working don't why
+" set omnifunc=rubycomplete#Complete
+" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 "================================================
 " Remap
@@ -256,12 +258,15 @@ nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd':
 "================================================
 " Dracula
 " cause error when fireup vim with `vi`
-" colorscheme dracula
-" let g:dracula_italic = 0
-" let g:airline_theme='dracula'
+let g:dracula_italic = 0
+let g:dracula_colorterm = 0
+colorscheme dracula
+let g:airline_theme='dracula'
 
-let g:airline_theme='iceberg'
-colorscheme iceberg
+" let g:airline_theme='iceberg'
+" colorscheme iceberg
+
+" colorscheme materialtheme
 
 " vim-airline
 " smart tab line, automatically displays all buffers when there's only one tab open.

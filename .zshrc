@@ -14,27 +14,26 @@ source ~/.zplug/init.zsh
 
 # zplug "plugins/vi-mode", from:oh-my-zsh
 
-# zplug "b4b4r07/enhancd", use:init.sh
+zplug "b4b4r07/enhancd", use:init.sh
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
-# zplug 'dracula/zsh', as:theme
-
-# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-# SPACESHIP_USER_SHOW=false
-# SPACESHIP_HOST_SHOW=false
-# SPACESHIP_VI_MODE_SHOW=false
-# # SPACESHIP_CHAR_SYMBOL='🍺 '
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+SPACESHIP_USER_SHOW=false
+SPACESHIP_HOST_SHOW=false
+SPACESHIP_VI_MODE_SHOW=false
+# SPACESHIP_CHAR_SYMBOL='🍺 '
 # SPACESHIP_RUBY_SYMBOL='🔥  '
 
-setopt prompt_subst # Make sure prompt is able to be generated properly.
-zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
-BULLETTRAIN_PROMPT_ORDER=(
-  time
-  status
-  dir
-  ruby
-  git
-)
+# zplug 'dracula/zsh', as:theme
+# setopt prompt_subst # Make sure prompt is able to be generated properly.
+# zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
+# BULLETTRAIN_PROMPT_ORDER=(
+#   time
+#   status
+#   dir
+#   ruby
+#   git
+# )
 
 zplug "zsh-users/zsh-autosuggestions", defer:3
 
