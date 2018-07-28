@@ -287,5 +287,8 @@ let g:airline_symbols.branch   = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr   = '⭡'
 
+" let g:unite_source_history_yank_enable = 1
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
 " keep set secure on the last line
 set secure " safer working with script files in the current directory

@@ -57,3 +57,4 @@ Plugin 'cocopon/iceberg.vim'
 " Plugin 'plasticboy/vim-markdown'
 
 Plugin 'janko-m/vim-test'
+Plugin 'Shougo/unite.vim'
