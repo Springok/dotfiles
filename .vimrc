@@ -249,6 +249,7 @@ nnoremap <leader>ar :VtrAttachToPane<cr>
 nnoremap <leader>kr :VtrKillRunner<cr>
 nnoremap <leader>sl :VtrSendLinesToRunner<cr>
 nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd': 'rc'}<cr>
+nnoremap <leader>ry :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd': 'rpy'}<cr>
 " nnoremap <leader>sc :VtrSendCommandToRunner<cr>
 " nnoremap <leader>or :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
 " nnoremap <leader>cc :VtrFlushCommand<cr>
@@ -258,7 +259,7 @@ nmap ]<Space> o<ESC>
 nmap [<Space> O<ESC>
 
 " run commands in vim
-nmap <leader>sr :!rpu<enter>
+nmap <leader>ss :!rpu<enter>
 nmap <leader>ks :!krpu<enter>
 nmap <leader>cop :!cop<enter>
 
