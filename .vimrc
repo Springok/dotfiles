@@ -209,7 +209,7 @@ noremap  ,, <C-\><C-N>
 noremap!  ,, <C-\><C-N>
 
 " hit jj back to normal mode from insert mode
-inoremap jj <ESC>
+" inoremap jj <ESC>
 
 " vim-gitgutter
 nnoremap <leader>gg :GitGutterToggle<CR>
@@ -252,6 +252,10 @@ nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd':
 " nnoremap <leader>sc :VtrSendCommandToRunner<cr>
 " nnoremap <leader>or :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
 " nnoremap <leader>cc :VtrFlushCommand<cr>
+
+" barrow from unimpaired
+nmap ]<Space> o<ESC>
+nmap [<Space> O<ESC>
 
 "================================================
 " Theme
