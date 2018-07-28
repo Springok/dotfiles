@@ -100,7 +100,7 @@ function! s:rails_test_tmux(method, test_whole_file) "{{{
   call TmuxNewWindow({
         \   "text": test_command,
         \   "title": '∫ ' . title,
-        \   "directory": rails#app().root,
+        \   "directory": get(b:, 'rails_root', getcwd()),
         \   "remember_pane": 1,
         \   "method": a:method
         \ })
