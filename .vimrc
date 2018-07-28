@@ -257,6 +257,11 @@ nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd':
 nmap ]<Space> o<ESC>
 nmap [<Space> O<ESC>
 
+" run commands in vim
+nmap <leader>sr :!rpu<enter>
+nmap <leader>ks :!krpu<enter>
+nmap <leader>cop :!cop<enter>
+
 "================================================
 " Theme
 "================================================

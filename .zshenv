@@ -1,7 +1,7 @@
-alias pa!='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb'
-alias pa='[[ -f config/puma.rb ]] && RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C $PWD/config/puma.rb -d'
-alias kpa='bundle exec pumactl -P tmp/pids/puma.pid stop'
-alias kap='kpa'
+source ~/.zshrc_helper
+
+alias rubo='cop master...'
+alias rpu='rpu'
+alias rpy='rpy'
+alias krpu='rpu kill'
 alias disboot="USE_BOOTSNAP=0"
-alias rpa='kpa && pa'
-alias rpa!='kpa && pa!'
