@@ -1,15 +1,6 @@
-# zplug {{{
-
-# install zplug, if necessary
-if [[ ! -d ~/.zplug ]]; then
-  export ZPLUG_HOME=~/.zplug
-  git clone https://github.com/zplug/zplug $ZPLUG_HOME
-fi
-
-if [[ ! -d ~/.vim/bundle ]]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-
+########################
+# Dotfiles
+########################
 if [[ ! -d ~/dotfiles ]]; then
   git clone git@github.com:Springok/dotfiles.git ~/dotfiles
 
@@ -26,20 +17,33 @@ if [[ ! -d ~/dotfiles ]]; then
   ln -sf ~/dotfiles/.zshrc  ~/.zshrc
 fi
 
-source ~/.zplug/init.zsh
 source ~/dotfiles/.zshrc_helper
 
-# zplug "plugins/vi-mode", from:oh-my-zsh
+########################
+# Zplug
+########################
+# install zplug, if necessary
+if [[ ! -d ~/.zplug ]]; then
+  export ZPLUG_HOME=~/.zplug
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+fi
 
+if [[ ! -d ~/.vim/bundle ]]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
+source ~/.zplug/init.zsh
+# zplug "plugins/vi-mode", from:oh-my-zsh
 # zplug "b4b4r07/enhancd", use:init.sh
+
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 SPACESHIP_USER_SHOW=false
 SPACESHIP_HOST_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP_RUBY_SYMBOL='🔥 '
 # SPACESHIP_CHAR_SYMBOL='🍺 '
-# SPACESHIP_RUBY_SYMBOL='🔥  '
 
 # zplug 'dracula/zsh', as:theme
 # setopt prompt_subst # Make sure prompt is able to be generated properly.
@@ -54,14 +58,12 @@ SPACESHIP_VI_MODE_SHOW=false
 
 zplug "zsh-users/zsh-autosuggestions", defer:3
 
-# zim {{{
 zplug "zimfw/zimfw", use:"init.zsh", hook-build:"ln -sf $ZPLUG_REPOS/zimfw/zimfw ~/.zim"
 
 zmodules=(directory environment history input git git-info ssh utility \
   syntax-highlighting history-substring-search prompt completion)
 
 zhighlighters=(main brackets pattern cursor root)
-# }}}
 
 if ! zplug check --verbose; then
   zplug install
@@ -76,8 +78,6 @@ source ~/.zplug/repos/junegunn/fzf/shell/completion.zsh
 
 export FZF_COMPLETION_TRIGGER=';'
 export FZF_TMUX=1
-
-# }}}
 
 # Disable flow control then we can use ctrl-s to save in vim
 # Disable flow control commands (keeps C-s from freezing everything)
@@ -145,7 +145,7 @@ alias gcoh='git checkout nerv'
 # export USE_BOOTSNAP=1
 alias krpu='rpu kill'
 
-alias dump_db='~/helper/dumpdb.sh'
+alias dump_db='ruby /vagrant/scripts/db_dump.rb'
 
 # Nerv Project
 alias ck='cd ~/nerv_ck'
