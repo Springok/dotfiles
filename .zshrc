@@ -139,7 +139,7 @@ alias hk='cd ~/nerv'
 alias be='bundle exec'
 alias seki='be sidekiq'
 alias stopme='be spring stop'
-alias rubo='cop master...'
+alias copm='cop master...'
 alias rake='be rake'
 
 # Rails

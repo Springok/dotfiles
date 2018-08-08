@@ -41,6 +41,7 @@ Plugin 'bootleq/vim-qrpsqlpq'
 "================================================
 " Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/AutoComplPop'
+Plugin 'pedrohdz/vim-yaml-folds'
 
 "================================================
 " Theme
