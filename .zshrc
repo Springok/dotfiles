@@ -10,6 +10,22 @@ if [[ ! -d ~/.vim/bundle ]]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
+if [[ ! -d ~/dotfiles ]]; then
+  git clone git@github.com:Springok/dotfiles.git ~/.dotfiles
+
+  ln -sf ~/.dotfiles/.vimrc         ~/.vimrc
+  ln -sf ~/.dotfiles/.pryrc         ~/.pryrc
+  ln -sf ~/.dotfiles/.tigrc         ~/.tigrc
+  ln -sf ~/.dotfiles/.tmux.conf     ~/.tmux.conf
+  ln -sf ~/.dotfiles/.vimrc         ~/.vimrc
+  ln -sf ~/.dotfiles/.vimrc.bundles ~/.vimrc.bundles
+  ln -sf ~/.dotfiles/.default-gems  ~/.default-gems
+  ln -sf ~/.dotfiles/.gitconfig     ~/.gitconfig
+
+  ln -sf ~/.dotfiles/.zshenv ~/.zshenv
+  ln -sf ~/.dotfiles/.zshrc  ~/.zshrc
+fi
+
 source ~/.zplug/init.zsh
 source ~/.zshrc_helper
 
