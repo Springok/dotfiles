@@ -88,6 +88,7 @@ pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/de
 pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22222 -t $1 'watch -en 10 who' }
 
 alias sshc='vim ~/.ssh/config'
+alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
 
 # For vagrant
 alias va=vagrant
