@@ -27,7 +27,7 @@ if [[ ! -d ~/dotfiles ]]; then
 fi
 
 source ~/.zplug/init.zsh
-source ~/.zshrc_helper
+source ~/dotfiles/.zshrc_helper
 
 # zplug "plugins/vi-mode", from:oh-my-zsh
 
