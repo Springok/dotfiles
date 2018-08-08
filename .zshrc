@@ -31,7 +31,7 @@ source ~/.zshrc_helper
 
 # zplug "plugins/vi-mode", from:oh-my-zsh
 
-zplug "b4b4r07/enhancd", use:init.sh
+# zplug "b4b4r07/enhancd", use:init.sh
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
