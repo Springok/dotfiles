@@ -145,9 +145,9 @@ alias gcoh='git checkout nerv'
 # export USE_BOOTSNAP=1
 alias krpu='rpu kill'
 
-alias dump_db='ruby /vagrant/scripts/db_dump.rb'
-alias dump_db2='/vagrant/scripts/dump_db.zsh'
 alias ch_pw='rails runner ~/dotfiles/ch_pw.rb'
+alias dump_db='ruby /vagrant/scripts/db_dump.rb && ch_pw'
+alias dump_db2='/vagrant/scripts/dump_db.zsh'
 
 # Nerv Project
 alias ck='cd ~/nerv_ck'

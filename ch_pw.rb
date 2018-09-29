@@ -42,5 +42,4 @@ Nerv::Pry::DEV_PASSWORD.tap do |pw|
   end
 end
 
-puts 'Done.' if ENV['DEV_PASSWORD'].present?
-'Done.'
+puts '讚讚讚' if ENV['DEV_PASSWORD'].present?
