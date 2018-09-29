@@ -1,0 +1,119 @@
+# set line-graphics  = utf-8
+# set focus-child    = false
+# set wrap-search    = true
+set diff-highlight = true
+
+
+# Views {{{
+  set main-view = \
+                  line-number:no,interval=5 \
+                  id:yes \
+                  date:custom \
+                  author:full,width=7 \
+                  commit-title:yes,graph,refs,overflow=no
+
+                  set main-view-date-format = "%m/%d %H:%M"
+
+                  set blame-view = \
+                  id:yes,color \
+                  author:full,width=2 \
+                  date:relative \
+                  file-name:auto \
+                  line-number:yes,interval=1 \
+                  text
+
+                  set stash-view = \
+                  line-number:no,interval=5 \
+                  id \
+                  date:default \
+                  author:no \
+                  commit-title
+
+                  set refs-view = \
+                  ref \
+                  date:relative \
+                  author:full,width=2 \
+                  commit-title
+# }}}
+
+
+
+# Colors {{{
+  color id           red   default
+  color author       black default bold
+  color graph-commit black default bold
+
+  color cursor      white blue  bold
+  color title-blur  white black
+  color title-focus white blue
+
+# Avoid funcy colors in diff-view
+    color "Author: "     default default
+    color "AuthorDate: " default default
+    color "Commit: "     black   default bold
+    color "CommitDate: " black   default bold
+
+# Add oldsince default blue is too dark
+    color "index "     blue default bold
+    color "diff-tree " blue default bold
+    color "Merge: "    blue default bold
+    color "parent "    blue default bold
+    color "tree "      blue default bold
+    color date         blue default bold
+    color grep.file    blue default bold
+    color help-group   blue default bold
+    color diff-stat    blue default bold
+    color graph-commit blue default bold
+
+    color "--- "       blue default bold
+    color "+++ "       blue default bold
+# }}}
+
+
+
+# Key binding {{{
+  bind generic <F5> :source ~/.tigrc
+
+    bind generic <C-J> next
+    bind generic <C-K> previous
+
+# anti-feature
+# bind generic - none   # move-page-up
+# bind main    C none   # cherry-pick
+# bind diff    ] none   # diff-context +1
+# bind diff    [ none   # diff-context -1
+# bind stage   ] none   # diff-context +1
+# bind stage   [ none   # diff-context -1
+# bind status  M none   # status-merge
+# bind generic W none   # toggle ignore-space
+
+    bind diff  - :toggle diff-context -1
+    bind diff  + :toggle diff-context +1
+    bind stage - :toggle diff-context -1
+    bind stage + :toggle diff-context +1
+
+    bind diff  ] :/^@@
+    bind diff  [ :?^@@
+    bind stage ] :/^@@
+    bind stage [ :?^@@
+    bind log   ] :/^commit\s\w{7}
+  bind log   [ :?^commit\s\w{7}
+
+# Vim-like movement
+  bind generic g  none
+    bind generic gg move-first-line
+    bind main    G  none
+    bind generic G  move-last-line
+
+    bind generic <C-B> move-page-up
+    bind generic <C-F> move-page-down
+    bind generic H move-half-page-up
+    bind generic L move-half-page-down
+
+    bind blame  P parent
+
+# }}}
+
+
+
+# vim: filetype=conf

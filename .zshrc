@@ -10,12 +10,28 @@ if [[ ! -d ~/.vim/bundle ]]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
+if [[ ! -d ~/dotfiles ]]; then
+  git clone git@github.com:Springok/dotfiles.git ~/dotfiles
+
+  ln -sf ~/dotfiles/.vimrc         ~/.vimrc
+  ln -sf ~/dotfiles/.pryrc         ~/.pryrc
+  ln -sf ~/dotfiles/.tigrc         ~/.tigrc
+  ln -sf ~/dotfiles/.tmux.conf     ~/.tmux.conf
+  ln -sf ~/dotfiles/.vimrc         ~/.vimrc
+  ln -sf ~/dotfiles/.vimrc.bundles ~/.vimrc.bundles
+  ln -sf ~/dotfiles/.default-gems  ~/.default-gems
+  ln -sf ~/dotfiles/.gitconfig     ~/.gitconfig
+
+  ln -sf ~/dotfiles/.zshenv ~/.zshenv
+  ln -sf ~/dotfiles/.zshrc  ~/.zshrc
+fi
+
 source ~/.zplug/init.zsh
-source ~/.zshrc_helper
+source ~/dotfiles/.zshrc_helper
 
 # zplug "plugins/vi-mode", from:oh-my-zsh
 
-zplug "b4b4r07/enhancd", use:init.sh
+# zplug "b4b4r07/enhancd", use:init.sh
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
@@ -88,6 +104,7 @@ pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/de
 pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22222 -t $1 'watch -en 10 who' }
 
 alias sshc='vim ~/.ssh/config'
+alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
 
 # For vagrant
 alias va=vagrant
@@ -138,7 +155,7 @@ alias hk='cd ~/nerv'
 alias be='bundle exec'
 alias seki='be sidekiq'
 alias stopme='be spring stop'
-alias rubo='cop master...'
+alias copm='cop master...'
 alias rake='be rake'
 
 # Rails
