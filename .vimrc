@@ -66,8 +66,9 @@ set regexpengine=1
 
 " fdoc is yaml
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+autocmd BufRead,BufNewFile *.yml setlocal spell
 " md is markdown
-autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md setlocal spell filetype=markdown
 " slim is slim
 autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
 " git commit textwidth limit
@@ -229,6 +230,7 @@ nmap <leader>gs :Gstatus<cr>
 nmap <leader>aa :A<CR>
 nmap <leader>av :AV<CR>
 nmap <leader>gr :R<CR>
+nmap <leader>vl :sp<cr><C-^><cr>
 
 " Ag
 nmap <leader>ab :AgBuffer<space>

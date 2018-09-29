@@ -38,14 +38,14 @@ source ~/.zplug/init.zsh
 
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-SPACESHIP_USER_SHOW=false
-SPACESHIP_HOST_SHOW=false
-SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_RUBY_SYMBOL='🔥 '
+# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+# SPACESHIP_USER_SHOW=false
+# SPACESHIP_HOST_SHOW=false
+# SPACESHIP_VI_MODE_SHOW=false
+# SPACESHIP_RUBY_SYMBOL='🔥 '
 # SPACESHIP_CHAR_SYMBOL='🍺 '
 
-# zplug 'dracula/zsh', as:theme
+zplug 'dracula/zsh', as:theme
 # setopt prompt_subst # Make sure prompt is able to be generated properly.
 # zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
 # BULLETTRAIN_PROMPT_ORDER=(
@@ -146,10 +146,13 @@ alias gcoh='git checkout nerv'
 alias krpu='rpu kill'
 
 alias dump_db='ruby /vagrant/scripts/db_dump.rb'
+alias dump_db2='/vagrant/scripts/dump_db.zsh'
+alias ch_pw='rails runner ~/dotfiles/ch_pw.rb'
 
 # Nerv Project
 alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
+alias angel='cd ~/angel'
 
 # Gems
 alias be='bundle exec'
@@ -190,7 +193,7 @@ alias zshrc='vim ~/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
 alias en='vim .env'
-alias mc='mailcatcher --http-ip 0.0.0.0'
+alias mc='mailcatcher --http-ip 0.0.0.0 ; seki'
 alias kmc='pkill -fe mailcatcher'
 
 # Git pager setting
