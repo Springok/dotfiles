@@ -63,6 +63,7 @@ endif
 "      vim-ruby/vim-ruby#243
 set regexpengine=1
 " set lazyredraw
+packadd! matchit
 
 " fdoc is yaml
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
@@ -220,10 +221,10 @@ nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
 " compare with working area
 nmap <leader>gdw :Gdiff<cr>
+" compare with index
+nmap <leader>gdi :Gdiff HEAD<cr>
 " reset the diff with working area
 nmap <leader>gdr :diffget<cr>
-" compare with index
-nmap <leader>gdi :Gdiff ~<cr>
 nmap <leader>gs :Gstatus<cr>
 
 " Rails
