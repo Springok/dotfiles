@@ -302,6 +302,7 @@ syntax on
 colorscheme onedark
 let g:airline_theme='onedark'
 
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " vim-airline
 " smart tab line, automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
