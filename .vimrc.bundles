@@ -39,9 +39,13 @@ Plugin 'bootleq/vim-qrpsqlpq'
 "================================================
 " Editing
 "================================================
-" Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'pedrohdz/vim-yaml-folds'
+
+Plugin 'mattn/emmet-vim'
+Plugin 'w0rp/ale'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 "================================================
 " Theme
@@ -59,3 +63,4 @@ Plugin 'cocopon/iceberg.vim'
 
 Plugin 'janko-m/vim-test'
 Plugin 'Shougo/unite.vim'
+

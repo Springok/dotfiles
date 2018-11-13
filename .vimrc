@@ -267,6 +267,17 @@ nmap <leader>ks :!krpu<enter>
 nmap <leader>cop :!cop<enter>
 
 "================================================
+" Javascript
+"================================================
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends': 'jsx'
+\  },
+\}
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npx eslint'
+"================================================
 " Theme
 "================================================
 " Dracula
