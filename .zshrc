@@ -3,6 +3,7 @@
 ########################
 if [[ ! -d ~/dotfiles ]]; then
   git clone git@github.com:Springok/dotfiles.git ~/dotfiles
+  # git clone git@github.com:ryanoasis/nerd-fonts.git ~/nerd-fonts
 
   ln -sf ~/dotfiles/.vimrc         ~/.vimrc
   ln -sf ~/dotfiles/.pryrc         ~/.pryrc

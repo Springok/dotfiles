@@ -282,15 +282,25 @@ let g:syntastic_javascript_eslint_exe = 'npx eslint'
 "================================================
 " Dracula
 " cause error when fireup vim with `vi`
-let g:dracula_italic = 0
-let g:dracula_colorterm = 0
-colorscheme dracula
-let g:airline_theme='dracula'
+" let g:dracula_italic = 0
+" let g:dracula_colorterm = 0
+" colorscheme dracula
+" let g:airline_theme='dracula'
 
 " let g:airline_theme='iceberg'
 " colorscheme iceberg
 
 " colorscheme materialtheme
+"
+if (empty($TMUX))
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+syntax on
+colorscheme onedark
+let g:airline_theme='onedark'
 
 " vim-airline
 " smart tab line, automatically displays all buffers when there's only one tab open.
