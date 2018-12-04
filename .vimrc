@@ -182,12 +182,12 @@ noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '
 cnoremap w!! %!sudo tee > /dev/null %
 
 " indenting
-noremap <leader>i mmgg=G'm
+noremap <leader>in mmgg=G'm
 
 " Move up and down by visible lines if current line is wrapped
 nmap <leader>p obinding.pry<ESC>^
 nmap <leader>c "ay
-nmap <leader>v "ap
+nmap <leader>vv "ap
 
 nmap <leader>w <C-w>
 " nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
@@ -232,6 +232,7 @@ nmap <leader>aa :A<CR>
 nmap <leader>av :AV<CR>
 nmap <leader>gr :R<CR>
 nmap <leader>vl :sp<cr><C-^><cr>
+nmap <leader>hl :vsp<cr><C-^><cr>
 
 " Ag
 nmap <leader>ab :AgBuffer<space>
@@ -274,6 +275,8 @@ let g:user_emmet_settings = {
 \      'extends': 'jsx'
 \  },
 \}
+
+let g:user_emmet_leader_key='<C-E>'
 
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe = 'npx eslint'

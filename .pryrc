@@ -1,8 +1,8 @@
-require "awesome_print"
+require 'awesome_print'
 
 AwesomePrint.pry!
 
-Pry.config.commands.alias_command "at",  "whereami"
+Pry.config.commands.alias_command('at', 'whereami')
 
 if defined? Nerv
   # BP  = BasicPlan

@@ -12,7 +12,7 @@ if has('vim_starting')
         if type =~ '^test' || (type == 'javascript-coffee' && relative =~ '^test/')
           nmap <leader>t [rtest]
           nnoremap <silent> [rtest]l :call <SID>rails_test_tmux('h', 'false')<CR>
-          nnoremap <silent> [rtest]w :call <SID>rails_test_tmux('new-window', 'false')<CR>
+          nnoremap <silent> [rtest]w :call <SID>rails_test_tmux('v', 'false')<CR>
           nnoremap <silent> [rtest]. :call <SID>rails_test_tmux('last', 'false')<CR>
           nnoremap <silent> [rtest]f :call <SID>rails_test_tmux('h', 'true')<CR>
         end
