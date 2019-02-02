@@ -158,6 +158,7 @@ alias dump_db2='/vagrant/scripts/dump_db.zsh && ch_pw'
 alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
 alias angel='cd ~/angel'
+alias proj='cd ~/projects'
 
 # Gems
 alias be='bundle exec'
