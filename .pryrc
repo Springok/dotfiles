@@ -38,6 +38,8 @@ if defined? Nerv
       fd:  'FundDealing',
       fdi: 'FundDealingItem',
     }
+
+    DEV_PASSWORD = 'foobar'
   end
 
   Pry::Commands.create_command 'nerv-resource' do

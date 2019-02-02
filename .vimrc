@@ -294,7 +294,7 @@ let g:syntastic_javascript_eslint_exe = 'npx eslint'
 " colorscheme dracula
 " let g:airline_theme='dracula'
 
-" let g:airline_theme='iceberg'
+let g:airline_theme='iceberg'
 " colorscheme iceberg
 
 " colorscheme materialtheme
@@ -306,7 +306,7 @@ if (empty($TMUX))
 endif
 
 colorscheme onedark
-let g:airline_theme='onedark'
+" let g:airline_theme='onedark'
 
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " vim-airline
