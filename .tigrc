@@ -1,4 +1,4 @@
-# set line-graphics  = utf-8
+set line-graphics  = utf-8
 # set focus-child    = false
 # set wrap-search    = true
 set diff-highlight = true
