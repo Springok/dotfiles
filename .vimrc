@@ -70,6 +70,8 @@ autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 autocmd BufRead,BufNewFile *.yml setlocal spell
 " md is markdown
 autocmd BufRead,BufNewFile *.md setlocal spell filetype=markdown
+let g:markdown_fenced_languages = ['go', 'css', 'ruby', 'javascript', 'sh', 'json', 'diff', 'html', 'vim']
+au FileType markdown setlocal textwidth=100
 " slim is slim
 autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
 " git commit textwidth limit
@@ -217,6 +219,8 @@ noremap!  ,, <C-\><C-N>
 nnoremap <leader>gg :GitGutterToggle<CR>
 
 " Fugitive
+set diffopt+=vertical
+
 nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
 " compare with working area

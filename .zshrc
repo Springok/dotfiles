@@ -129,6 +129,8 @@ alias vt='vim -c :CtrlP'
 alias gs='git status' # gwS, gws
 alias gcom='git checkout master'
 alias gRs='git remote show origin'
+alias gRp='git remote show origin | grep patch'
+alias gRf='git remote show origin | grep feature'
 alias gbda='git branch --merged | egrep -v "(^\*|master|dev|nerv)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
 alias gddd='gwd origin/master...'
@@ -146,10 +148,11 @@ alias gcoh='git checkout nerv'
 
 # export USE_BOOTSNAP=1
 alias krpu='rpu kill'
+alias pru='rpu'
 
 alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
 alias dump_db='ruby /vagrant/scripts/db_dump.rb && ch_pw'
-alias dump_db2='/vagrant/scripts/dump_db.zsh'
+alias dump_db2='/vagrant/scripts/dump_db.zsh && ch_pw'
 
 # Nerv Project
 alias ck='cd ~/nerv_ck'
@@ -182,7 +185,7 @@ alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log
 # Test
 alias mi='be ruby -Itest'
 alias mii='rake test'
-alias testba='rake test:concepts && rake test:forms && rake test:models'
+alias testba='rake test:controllers && rake test:concepts && rake test:forms && rake test:models'
 
 # Amoeba
 alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
@@ -202,3 +205,10 @@ alias kmc='pkill -fe mailcatcher'
 export LESS=R
 # use emacs mode in command line
 bindkey -e
+
+# use vim mode in command line
+# bindkey -v
+
+# export VISUAL=vim
+# autoload edit-command-line; zle -N edit-command-line
+# bindkey "^Xe" edit-command-line
