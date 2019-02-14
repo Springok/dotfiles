@@ -1,10 +1,13 @@
 [push]
-	default = simple
+  default = simple
+
 [core]
-        editor = vim
-	pager = less -+$LESS -R
+  editor = vim
+  pager = diff-highlight | less
+
 [color]
-	ui = true
+  ui = true
+
 [pager]
   log  = diff-highlight | less
   show = diff-highlight | less
@@ -15,6 +18,7 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
+
 [user]
-	email = wenchuan.lin.tw@gmail.com
-	name = spring
+  email = wenchuan.lin@abagile.com
+  name  = spring
