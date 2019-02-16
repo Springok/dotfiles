@@ -3,6 +3,7 @@ require 'awesome_print'
 AwesomePrint.pry!
 
 Pry.config.commands.alias_command('at', 'whereami')
+Pry.config.commands.alias_command 'ep', 'exit-program'
 
 if defined? Nerv
   # BP  = BasicPlan
