@@ -107,6 +107,10 @@ pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22222 -t $1
 # Use nvim
 alias e='nvim'
 
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
 alias sshc='e ~/.ssh/config'
 alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
 

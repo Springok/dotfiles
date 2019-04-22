@@ -8,14 +8,15 @@ Plugin 'tpope/vim-bundler'
 Plugin 'elixir-editors/vim-elixir'
 " ployglot
 " alchemist
-" neomake
 " neoformat
 
 "================================================
 " Dev Tools
 "================================================
 Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic' " syntax checking
+" Plugin 'scrooloose/syntastic' " syntax checking
+" Plugin 'neomake/neomake'
+Plugin 'w0rp/ale'
 Plugin 'tpope/vim-dispatch'
 Plugin 'bootleq/vim-qrpsqlpq'
 Plugin 'thinca/vim-quickrun'
@@ -30,7 +31,6 @@ Plugin 'majutsushi/tagbar' " list all methods in a file
 "================================================
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
-Plugin 'w0rp/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'slim-template/vim-slim'

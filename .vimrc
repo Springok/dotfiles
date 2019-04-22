@@ -62,7 +62,7 @@ endif
 
 " fix the problem on lagging issue on using relativenumber (syntax highlight)
 " ref: vim/vim#282, vim-ruby/vim-ruby#243
-set regexpengine=1
+" set regexpengine=1
 " set lazyredraw
 
 " fdoc is yaml
@@ -111,6 +111,8 @@ vnoremap <leader>ag y:AgBuffer <c-r>"<cr>
 "================================================
 " Plugin
 "================================================
+" call neomake#configure#automake('nw', 750)
+
 let g:ctrlp_match_window = 'order:ttb,max:20'
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -279,8 +281,6 @@ let g:user_emmet_settings = {
 
 let g:user_emmet_leader_key='<C-E>'
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npx eslint'
 "================================================
 " Theme
 "================================================
