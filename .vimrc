@@ -49,13 +49,15 @@ set nocursorline
 set relativenumber
 set noswapfile                                               " disable .swp files creation in vim
 set hidden                                                   " allow you to switch between buffers without saving
-set noesckeys                                                " Faster escape
+" set noesckeys                                                " Faster escape, https://github.com/neovim/neovim/issues/7661
 " set colorcolumn=80
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
 if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
+  if !has('nvim')
+    set ttymouse=xterm2
+  endif
 endif
 
 " fix the problem on lagging issue on using relativenumber (syntax highlight)
@@ -63,7 +65,6 @@ endif
 "      vim-ruby/vim-ruby#243
 set regexpengine=1
 " set lazyredraw
-packadd! matchit
 
 " fdoc is yaml
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
