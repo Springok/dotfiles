@@ -104,7 +104,10 @@ export LANG=en_US.UTF-8
 pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -p $2 -t vagrant@localhost 'tmux attach' }
 pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22222 -t $1 'watch -en 10 who' }
 
-alias sshc='vim ~/.ssh/config'
+# Use nvim
+alias e='nvim'
+
+alias sshc='e ~/.ssh/config'
 alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
 
 # For vagrant
@@ -123,8 +126,6 @@ alias aq='ag -Q'
 alias px='ps aux'
 alias ep='exit'
 
-alias vt='vim -c :CtrlP'
-
 # Git
 alias gs='git status' # gwS, gws
 alias gcom='git checkout master'
@@ -134,10 +135,10 @@ alias gRf='git remote show origin | grep feature'
 alias gbda='git branch --merged | egrep -v "(^\*|master|dev|nerv)" | xargs git branch -d'
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
 alias gddd='gwd origin/master...'
-alias gdde='vim `gddd --name-only`'
+alias gdde='e `gddd --name-only`'
 alias gddn='gddd --name-only | cat'
-alias gwe='vim `git diff --name-only`'
-alias gie='vim `git diff --cached --name-only`'
+alias gwe='e `git diff --name-only`'
+alias gie='e `git diff --cached --name-only`'
 alias gbs='git branch | grep -v spring'
 alias gcoc='git checkout nerv_ck'
 alias gcoh='git checkout nerv'
@@ -195,10 +196,10 @@ alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 # Jump Into Config File
 ########################
 #
-alias zshrc='vim ~/.zshrc'
+alias zshrc='e ~/.zshrc'
 alias sozsh='source ~/.zshrc'
-alias vimrc='vim ~/.vimrc'
-alias en='vim .env'
+alias vimrc='e ~/.vimrc'
+alias en='e .env'
 alias mc='mailcatcher --http-ip 0.0.0.0 ; seki'
 alias kmc='pkill -fe mailcatcher'
 
