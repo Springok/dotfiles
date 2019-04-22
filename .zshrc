@@ -39,15 +39,15 @@ source ~/.zplug/init.zsh
 
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
-# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-# SPACESHIP_USER_SHOW=false
-# SPACESHIP_HOST_SHOW=false
-# SPACESHIP_VI_MODE_SHOW=false
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+SPACESHIP_USER_SHOW=false
+SPACESHIP_HOST_SHOW=false
+SPACESHIP_VI_MODE_SHOW=false
 # SPACESHIP_RUBY_SYMBOL='🔥 '
 # SPACESHIP_CHAR_SYMBOL='🍺 '
 
-zplug 'dracula/zsh', as:theme
-# setopt prompt_subst # Make sure prompt is able to be generated properly.
+# zplug 'dracula/zsh', as:theme
+setopt prompt_subst # Make sure prompt is able to be generated properly.
 # zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
 # BULLETTRAIN_PROMPT_ORDER=(
 #   time
@@ -141,7 +141,6 @@ alias gwe='e `git diff --name-only`'
 alias gie='e `git diff --cached --name-only`'
 alias gbs='git branch | grep -v spring'
 alias gcoc='git checkout nerv_ck'
-alias gcoh='git checkout nerv'
 
 ########################
 # Project Related
@@ -181,7 +180,7 @@ alias roll='rake db:rollback'
 alias rock!='roll && mig'
 alias smig='skip_env mig'
 
-alias olog='tail -f log/lograge_development.log'
+alias olog='tail -f log/development.log'
 alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log/development.log'
 
 # Test
@@ -200,7 +199,7 @@ alias zshrc='e ~/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/.vimrc'
 alias en='e .env'
-alias mc='mailcatcher --http-ip 0.0.0.0 ; seki'
+alias mc='be mailcatcher --http-ip 0.0.0.0 ; seki'
 alias kmc='pkill -fe mailcatcher'
 
 # Git pager setting

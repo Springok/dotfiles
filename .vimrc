@@ -106,7 +106,7 @@ noremap <C-n> <C-i>
 
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
-vnoremap <leader>gp y:Ag <c-r>"<cr>
+vnoremap <leader>ag y:AgBuffer <c-r>"<cr>
 
 "================================================
 " Plugin
@@ -328,6 +328,10 @@ colorscheme dracula
 
 " let g:unite_source_history_yank_enable = 1
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" change SpellBad style, have to do this after colorscheme setup, otherwise
+" will be overwritten
+hi SpellBad ctermbg=20
 
 " keep set secure on the last line
 set secure " safer working with script files in the current directory

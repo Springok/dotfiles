@@ -5,6 +5,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
+Plugin 'elixir-editors/vim-elixir'
+" ployglot
+" alchemist
+" neomake
+" neoformat
 
 "================================================
 " Dev Tools
