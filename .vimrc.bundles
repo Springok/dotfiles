@@ -1,68 +1,75 @@
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'austintaylor/vim-indentobject'
+"================================================
+" Ruby
+"================================================
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+
+"================================================
+" Dev Tools
+"================================================
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/syntastic' " syntax checking
+Plugin 'tpope/vim-dispatch'
+Plugin 'bootleq/vim-qrpsqlpq'
+Plugin 'thinca/vim-quickrun'
+Plugin 'janko-m/vim-test'
+Plugin 'tpope/vim-cucumber'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
-" Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'majutsushi/tagbar' " list all methods in a file
+
+"================================================
+" Javascript/HTML
+"================================================
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'leafgarland/typescript-vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'rking/ag.vim'
-Plugin 'nathanaelkane/vim-indent-guides'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'wookiehangover/jshint.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'slim-template/vim-slim'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-pastie'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-" Plugin 'tpope/vim-unimpaired'
-" Plugin 'tpope/vim-vividchalk'
-" Plugin 'eventualbuddha/vim-protobuf'
-Plugin 'vim-ruby/vim-ruby'
-" Plugin 'vim-scripts/greplace.vim'
-" Plugin 'vim-scripts/matchit.zip'
-"
-Plugin 'junegunn/vim-easy-align'
-Plugin 'bootleq/vim-qrpsqlpq'
-
-"================================================
-" Editing
-"================================================
-Plugin 'vim-scripts/AutoComplPop'
-Plugin 'pedrohdz/vim-yaml-folds'
-
 Plugin 'mattn/emmet-vim'
 Plugin 'w0rp/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'slim-template/vim-slim'
+Plugin 'tpope/vim-ragtag'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'wookiehangover/jshint.vim'
 
 "================================================
-" Theme
+" Git
 "================================================
-Plugin 'dracula/vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'sonph/onehalf'
-Plugin 'cocopon/iceberg.vim'
-Plugin 'joshdick/onedark.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+
+"================================================
+" Enhance Vim
+"================================================
+Plugin 'austintaylor/vim-indentobject'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'vim-scripts/AutoComplPop'
+Plugin 'pedrohdz/vim-yaml-folds'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'tpope/vim-unimpaired'
+" Plugin 'Shougo/unite.vim'
+" Plugin 'vim-scripts/greplace.vim'
 
 " Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
 " Plugin 'godlygeek/tabular'
 " Plugin 'plasticboy/vim-markdown'
 
-Plugin 'janko-m/vim-test'
-Plugin 'Shougo/unite.vim'
+"================================================
+" Theme
+"================================================
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'ryanoasis/vim-devicons'
-
+Plugin 'joshdick/onedark.vim' " for correct colorscheme
+Plugin 'cocopon/iceberg.vim' " for correct airline theme
+" Plugin 'dracula/vim'
+" Plugin 'tpope/vim-vividchalk'

@@ -61,8 +61,7 @@ if exists('$TMUX')  " Support resizing in tmux
 endif
 
 " fix the problem on lagging issue on using relativenumber (syntax highlight)
-" ref: vim/vim#282
-"      vim-ruby/vim-ruby#243
+" ref: vim/vim#282, vim-ruby/vim-ruby#243
 set regexpengine=1
 " set lazyredraw
 
@@ -81,7 +80,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-" AutoComplete, not working don't why
+" AutoComplete, not working don't know why for now
 " set omnifunc=rubycomplete#Complete
 " autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
@@ -213,9 +212,6 @@ imap <leader>q <esc>:bw<cr>
 noremap  ,, <C-\><C-N>
 noremap!  ,, <C-\><C-N>
 
-" hit jj back to normal mode from insert mode
-" inoremap jj <ESC>
-
 " vim-gitgutter
 nnoremap <leader>gg :GitGutterToggle<CR>
 
@@ -228,7 +224,7 @@ nmap <silent><leader>gb :Gblame<cr>
 nmap <leader>gdw :Gdiff<cr>
 " compare with index
 nmap <leader>gdi :Gdiff HEAD<cr>
-" reset the diff with working area
+" reset the diff with working area in Gdiff mode
 nmap <leader>gdr :diffget<cr>
 nmap <leader>gs :Gstatus<cr>
 
@@ -288,28 +284,14 @@ let g:syntastic_javascript_eslint_exe = 'npx eslint'
 "================================================
 " Theme
 "================================================
-" Dracula
-" cause error when fireup vim with `vi`
-" let g:dracula_italic = 0
-" let g:dracula_colorterm = 0
-" colorscheme dracula
-" let g:airline_theme='dracula'
-
-let g:airline_theme='iceberg'
-" colorscheme iceberg
-
-" colorscheme materialtheme
-"
 if (empty($TMUX))
   if (has("termguicolors"))
     set termguicolors
   endif
 endif
 
-colorscheme onedark
-" let g:airline_theme='onedark'
-
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
 " vim-airline
 " smart tab line, automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
@@ -328,6 +310,21 @@ endif
 let g:airline_symbols.branch   = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr   = '⭡'
+
+" let g:airline_theme='onedark'
+let g:airline_theme='iceberg'
+
+" cause error when fireup vim with `vi`
+" let g:dracula_italic = 0
+" let g:dracula_colorterm = 0
+" let g:airline_theme='dracula'
+
+colorscheme dracula
+" colorscheme onedark
+" colorscheme iceberg
+" colorscheme xemacs
+" colorscheme spacegray
+" colorscheme spring
 
 " let g:unite_source_history_yank_enable = 1
 " call unite#filters#matcher_default#use(['matcher_fuzzy'])
