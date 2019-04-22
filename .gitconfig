@@ -2,7 +2,7 @@
   default = simple
 
 [core]
-  editor = vim
+  editor = nvim
   pager = diff-highlight | less
 
 [color]
