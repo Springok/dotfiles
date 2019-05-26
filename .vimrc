@@ -46,10 +46,10 @@ set wildmenu                                                 " show a navigable 
 set wildmode=longest,list,full
 set nowrap
 set nocursorline
+set nohlsearch
 set relativenumber
 set noswapfile                                               " disable .swp files creation in vim
 set hidden                                                   " allow you to switch between buffers without saving
-" set noesckeys                                                " Faster escape, https://github.com/neovim/neovim/issues/7661
 " set colorcolumn=80
 
 " Enable basic mouse behavior such as resizing buffers.
