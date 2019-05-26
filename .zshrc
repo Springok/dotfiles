@@ -39,15 +39,22 @@ source ~/.zplug/init.zsh
 
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-SPACESHIP_USER_SHOW=false
-SPACESHIP_HOST_SHOW=false
-SPACESHIP_VI_MODE_SHOW=false
+# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+# POWERLEVEL9K_DISABLE_RPROMPT=true
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(battery context dir vcs)
+
+zplug 'mafredri/zsh-async', from:github
+zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
+
+# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+# SPACESHIP_USER_SHOW=false
+# SPACESHIP_HOST_SHOW=false
+# SPACESHIP_VI_MODE_SHOW=false
 # SPACESHIP_RUBY_SYMBOL='🔥 '
 # SPACESHIP_CHAR_SYMBOL='🍺 '
 
 # zplug 'dracula/zsh', as:theme
-setopt prompt_subst # Make sure prompt is able to be generated properly.
+# setopt prompt_subst # Make sure prompt is able to be generated properly.
 # zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
 # BULLETTRAIN_PROMPT_ORDER=(
 #   time
