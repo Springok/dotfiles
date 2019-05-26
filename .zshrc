@@ -153,6 +153,9 @@ alias gie='e `git diff --cached --name-only`'
 alias gbs='git branch | grep -v spring'
 alias gcoc='git checkout nerv_ck'
 
+# JavaScript
+alias nodejs=node
+
 ########################
 # Project Related
 ########################
@@ -169,6 +172,8 @@ alias dump_db2='/vagrant/scripts/dump_db.zsh && ch_pw'
 alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
 alias angel='cd ~/angel'
+alias nface='cd ~/nerv-face'
+alias aface='cd ~/angel-face'
 alias proj='cd ~/projects'
 
 # Gems
