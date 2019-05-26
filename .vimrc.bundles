@@ -11,6 +11,12 @@ Plugin 'elixir-editors/vim-elixir'
 " neoformat
 
 "================================================
+" Clojure
+"================================================
+Plugin 'tpope/vim-salve'
+Plugin 'tpope/vim-fireplace'
+
+"================================================
 " Dev Tools
 "================================================
 Plugin 'rking/ag.vim'
