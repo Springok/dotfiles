@@ -220,8 +220,10 @@ nnoremap <leader>gg :GitGutterToggle<CR>
 " Fugitive
 set diffopt+=vertical
 
-nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gb :Gblame<cr>
+
+nmap <leader>ge :Gedit<Space>
+nmap <leader>gdd :Gdiff<Space>
 " compare with working area
 nmap <leader>gdw :Gdiff<cr>
 " compare with index
