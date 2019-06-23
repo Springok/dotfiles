@@ -286,10 +286,8 @@ let g:user_emmet_leader_key='<C-E>'
 "================================================
 " Theme
 "================================================
-if (empty($TMUX))
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+if (has("termguicolors"))
+  set termguicolors
 endif
 
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
