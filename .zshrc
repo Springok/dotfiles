@@ -103,6 +103,7 @@ export PATH="$PATH:$HOME/bin"
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 ########################
 # General
 ########################
@@ -163,6 +164,8 @@ alias nodejs=node
 # export USE_BOOTSNAP=1
 alias krpu='rpu kill'
 alias pru='rpu'
+alias nook='nface && yarn start'
+alias aook='aface && yarn start'
 
 alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
 alias dump_db='ruby /vagrant/scripts/db_dump.rb && ch_pw'
@@ -172,7 +175,7 @@ alias dump_db2='/vagrant/scripts/dump_db.zsh && ch_pw'
 alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
 alias angel='cd ~/angel'
-alias nface='cd ~/nerv-face'
+alias nface='cd ~/nerv/face'
 alias aface='cd ~/angel-face'
 alias proj='cd ~/projects'
 
@@ -206,6 +209,10 @@ alias testba='rake test:controllers && rake test:concepts && rake test:forms && 
 
 # Amoeba
 alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
+
+# Clojure
+alias l='lein'
+alias repl='l repl'
 
 ########################
 # Jump Into Config File
