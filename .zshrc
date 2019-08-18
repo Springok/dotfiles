@@ -215,7 +215,7 @@ alias zshrc='e ~/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/.vimrc'
 alias en='e .env'
-alias mc='be mailcatcher --http-ip 0.0.0.0 ; seki'
+alias mc='mailcatcher --http-ip 0.0.0.0 ; seki'
 alias kmc='pkill -fe mailcatcher'
 
 # Git pager setting

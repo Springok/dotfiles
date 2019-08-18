@@ -4,3 +4,4 @@ gem-ctags
 rails
 thor
 awesome_print
+mailcatcher
