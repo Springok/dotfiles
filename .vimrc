@@ -60,6 +60,9 @@ if exists('$TMUX')  " Support resizing in tmux
   endif
 endif
 
+" https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
+au InsertLeave * set nopaste
+
 " fix the problem on lagging issue on using relativenumber (syntax highlight)
 " ref: vim/vim#282, vim-ruby/vim-ruby#243
 " set regexpengine=1
@@ -93,6 +96,9 @@ let mapleader = ','
 
 " sometimes need , to repeat latest f, t, F or T in opposite direction
 noremap \ ,
+" Helps when I want to delete something without clobbering my unnamed register.
+nnoremap s "_d
+nnoremap ss "_dd
 
 " navigating
 noremap H ^
@@ -313,6 +319,7 @@ let g:airline_symbols.linenr   = '⭡'
 
 " let g:airline_theme='onedark'
 let g:airline_theme='iceberg'
+" let g:airline_theme='one'
 
 " cause error when fireup vim with `vi`
 " let g:dracula_italic = 0
@@ -321,6 +328,8 @@ let g:airline_theme='iceberg'
 
 colorscheme dracula
 " colorscheme onedark
+" colorscheme one
+" set background=light
 " colorscheme iceberg
 " colorscheme xemacs
 " colorscheme spacegray

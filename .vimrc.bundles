@@ -82,5 +82,6 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'joshdick/onedark.vim' " for correct colorscheme
 Plugin 'cocopon/iceberg.vim' " for correct airline theme
+Plugin 'rakr/vim-one' " for correct airline theme
 " Plugin 'dracula/vim'
 " Plugin 'tpope/vim-vividchalk'
