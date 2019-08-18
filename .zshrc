@@ -14,8 +14,10 @@ if [[ ! -d ~/dotfiles ]]; then
   ln -sf ~/dotfiles/.default-gems  ~/.default-gems
   ln -sf ~/dotfiles/.gitconfig     ~/.gitconfig
 
+  ln -sf ~/dotfiles/init.vim  ~/.config/nvim/init.vim
+
   ln -sf ~/dotfiles/.zshenv ~/.zshenv
-  ln -sf ~/dotfiles/.zshrc  ~/.zshrc
+  ln -sf ~/dotfiles/.zshrc ~/.zshrc
 fi
 
 source ~/dotfiles/.zshrc_helper
