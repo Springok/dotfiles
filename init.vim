@@ -105,11 +105,6 @@ endif
 " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
 au InsertLeave * set nopaste
 
-" fix the problem on lagging issue on using relativenumber (syntax highlight)
-" ref: vim/vim#282, vim-ruby/vim-ruby#243
-" set regexpengine=1
-" set lazyredraw
-
 " fdoc is yaml
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 autocmd BufRead,BufNewFile *.yml setlocal spell
