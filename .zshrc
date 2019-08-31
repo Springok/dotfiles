@@ -5,12 +5,11 @@ if [[ ! -d ~/dotfiles ]]; then
   git clone git@github.com:Springok/dotfiles.git ~/dotfiles
   # git clone git@github.com:ryanoasis/nerd-fonts.git ~/nerd-fonts
 
-  ln -sf ~/dotfiles/.vimrc         ~/.vimrc
   ln -sf ~/dotfiles/.pryrc         ~/.pryrc
   ln -sf ~/dotfiles/.tigrc         ~/.tigrc
   ln -sf ~/dotfiles/.tmux.conf     ~/.tmux.conf
-  ln -sf ~/dotfiles/.vimrc         ~/.vimrc
-  ln -sf ~/dotfiles/.vimrc.bundles ~/.vimrc.bundles
+  # ln -sf ~/dotfiles/.vimrc         ~/.vimrc
+  # ln -sf ~/dotfiles/.vimrc.bundles ~/.vimrc.bundles
   ln -sf ~/dotfiles/.default-gems  ~/.default-gems
   ln -sf ~/dotfiles/.gitconfig     ~/.gitconfig
 
@@ -31,9 +30,9 @@ if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
-if [[ ! -d ~/.vim/bundle ]]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
+# if [[ ! -d ~/.vim/bundle ]]; then
+#   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# fi
 
 source ~/.zplug/init.zsh
 # zplug "plugins/vi-mode", from:oh-my-zsh
@@ -222,7 +221,7 @@ alias repl='l repl'
 #
 alias zshrc='e ~/.zshrc'
 alias sozsh='source ~/.zshrc'
-alias vimrc='e ~/.vimrc'
+alias vimrc='e ~/.config/nvim/init.vim'
 alias en='e .env'
 alias mc='mailcatcher --http-ip 0.0.0.0 ; seki'
 alias kmc='pkill -fe mailcatcher'
