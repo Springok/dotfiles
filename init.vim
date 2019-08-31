@@ -72,24 +72,12 @@ call plug#end()
 "================================================
 " General
 "================================================
-set nocompatible
-syntax enable
-
-set autoindent
-set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
-set backspace=2                                              " Fix broken backspace in some setups
-set backupcopy=yes                                           " see :help crontab
-set clipboard=unnamed                                        " yank and paste with the system clipboard
-set directory-=.                                             " don't store swapfiles in the current directory
-set encoding=utf-8
+" set clipboard=unnamed                                        " yank and paste with the system clipboard
+" set directory-=.                                             " don't store swapfiles in the current directory
 set expandtab                                                " expand tabs to spaces
 set ignorecase                                               " case-insensitive search
-set incsearch                                                " search as you type
-set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
-set listchars=tab:▸\ ,trail:▫
 set number                                                   " show line numbers
-set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 set showcmd
@@ -97,7 +85,6 @@ set smartcase                                                " case-sensitive se
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
 set tabstop=8                                                " actual tabs occupy 8 characters
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
-set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 set nowrap
 set nocursorline
@@ -244,6 +231,7 @@ nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
@@ -343,9 +331,7 @@ let g:user_emmet_leader_key='<C-E>'
 "================================================
 " Theme
 "================================================
-if (has("termguicolors"))
-  set termguicolors
-endif
+set termguicolors
 
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
