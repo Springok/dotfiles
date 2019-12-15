@@ -15,7 +15,7 @@ Plug 'tpope/vim-fireplace'
 " Dev Tools
 "================================================
 Plug 'rking/ag.vim'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dispatch'
 Plug 'bootleq/vim-qrpsqlpq'
 Plug 'thinca/vim-quickrun'
@@ -66,6 +66,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim' " for correct colorscheme
 Plug 'cocopon/iceberg.vim' " for correct airline theme
 Plug 'rakr/vim-one' " for correct airline theme
+Plug 'haishanh/night-owl.vim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -93,14 +95,6 @@ set relativenumber
 set noswapfile                                               " disable .swp files creation in vim
 set hidden                                                   " allow you to switch between buffers without saving
 " set colorcolumn=80
-
-" Enable basic mouse behavior such as resizing buffers.
-set mouse=a
-if exists('$TMUX')  " Support resizing in tmux
-  if !has('nvim')
-    set ttymouse=xterm2
-  endif
-endif
 
 " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
 au InsertLeave * set nopaste
@@ -323,6 +317,9 @@ let g:user_emmet_settings = {
 
 let g:user_emmet_leader_key='<C-E>'
 
+" work with vim-commentary
+" https://github.com/tpope/vim-commentary/issues/68#issuecomment-265496851
+autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 "================================================
 " Theme
 "================================================
@@ -349,18 +346,22 @@ let g:airline_symbols.branch   = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr   = '⭡'
 
-" let g:airline_theme='onedark'
-let g:airline_theme='iceberg'
-" let g:airline_theme='one'
+" colorscheme dracula
 
-color dracula
 " colorscheme onedark
-" colorscheme one
-" set background=light
+" let g:airline_theme='one'
+" let g:airline_theme='onedark'
+
 " colorscheme iceberg
-" colorscheme xemacs
-" colorscheme spacegray
-" colorscheme spring
+" let g:airline_theme='iceberg'
+
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
+
+" colorscheme night-owl
+" To enable the lightline theme
+" let g:lightline = { 'colorscheme': 'nightowl' }
 
 " change SpellBad style, have to do this after colorscheme setup, otherwise
 " will be overwritten
