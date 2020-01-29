@@ -1,5 +1,3 @@
-source ~/.zshrc_helper
-
 ########################
 # Zplug
 ########################
@@ -15,20 +13,23 @@ zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tm
 
 zplug "modules/git", from:prezto
 
+zplug "modules/syntax-highlighting", from:prezto
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
+
 zplug "modules/prompt", from:prezto
 zstyle ':prezto:module:prompt' theme 'pure'
-
-zplug "modules/autosuggestions", from:prezto
-zstyle ':prezto:module:autosuggestions' color 'yes'
 
 zplug "modules/environment", from:prezto
 zplug "modules/completion", from:prezto
 zplug "modules/history", from:prezto
+
+# If this module is used in conjunction with the syntax-highlighting module, this module must be loaded after the syntax-highlighting module.
 zplug "modules/history-substring-search", from:prezto
 zstyle ':prezto:module:history-substring-search' color 'yes'
 
-zplug "modules/syntax-highlighting", from:prezto
-zstyle ':prezto:module:syntax-highlighting' color 'yes'
+zplug "modules/autosuggestions", from:prezto
+zstyle ':prezto:module:autosuggestions' color 'yes'
+zstyle ':prezto:module:autosuggestions:color' found 'fg=white'
 
 zplug "modules/rsync", from:prezto
 zplug "modules/directory", from:prezto
@@ -48,6 +49,8 @@ export FZF_TMUX=1
 ########################
 # General
 ########################
+
+source ~/.zshrc_helper
 
 # Disable flow control then we can use ctrl-s to save in vim
 # Disable flow control commands (keeps C-s from freezing everything)
