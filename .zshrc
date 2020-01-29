@@ -8,8 +8,6 @@ if [[ ! -d ~/dotfiles ]]; then
   ln -sf ~/dotfiles/.pryrc         ~/.pryrc
   ln -sf ~/dotfiles/.tigrc         ~/.tigrc
   ln -sf ~/dotfiles/.tmux.conf     ~/.tmux.conf
-  # ln -sf ~/dotfiles/.vimrc         ~/.vimrc
-  # ln -sf ~/dotfiles/.vimrc.bundles ~/.vimrc.bundles
   ln -sf ~/dotfiles/.default-gems  ~/.default-gems
   ln -sf ~/dotfiles/.gitconfig     ~/.gitconfig
 
@@ -30,49 +28,27 @@ if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
-# if [[ ! -d ~/.vim/bundle ]]; then
-#   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-# fi
-
 source ~/.zplug/init.zsh
-# zplug "plugins/vi-mode", from:oh-my-zsh
-# zplug "b4b4r07/enhancd", use:init.sh
 
 zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
 
-# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-# POWERLEVEL9K_DISABLE_RPROMPT=true
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(battery context dir vcs)
+zplug "modules/git", from:prezto
 
-zplug 'mafredri/zsh-async', from:github
-zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
+zplug "modules/prompt", from:prezto
+zstyle ':prezto:module:prompt' theme 'pure'
 
-# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-# SPACESHIP_USER_SHOW=false
-# SPACESHIP_HOST_SHOW=false
-# SPACESHIP_VI_MODE_SHOW=false
-# SPACESHIP_RUBY_SYMBOL='🔥 '
-# SPACESHIP_CHAR_SYMBOL='🍺 '
+zplug "modules/autosuggestions", from:prezto
+zstyle ':prezto:module:autosuggestions' color 'yes'
 
-# zplug 'dracula/zsh', as:theme
-# setopt prompt_subst # Make sure prompt is able to be generated properly.
-# zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
-# BULLETTRAIN_PROMPT_ORDER=(
-#   time
-#   status
-#   dir
-#   ruby
-#   git
-# )
+zplug "modules/environment", from:prezto
+zplug "modules/completion", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/history-substring-search", from:prezto
+zplug "modules/syntax-highlighting", from:prezto
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
 
-zplug "zsh-users/zsh-autosuggestions", defer:3
-
-zplug "zimfw/zimfw", use:"init.zsh", hook-build:"ln -sf $ZPLUG_REPOS/zimfw/zimfw ~/.zim"
-
-zmodules=(directory environment history input git git-info ssh utility \
-  syntax-highlighting history-substring-search prompt completion)
-
-zhighlighters=(main brackets pattern cursor root)
+zplug "modules/rsync", from:prezto
+zplug "modules/directory", from:prezto
 
 if ! zplug check --verbose; then
   zplug install
@@ -80,13 +56,15 @@ fi
 
 zplug load #--verbose
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white'
-
 source ~/.zplug/repos/junegunn/fzf/shell/key-bindings.zsh
 source ~/.zplug/repos/junegunn/fzf/shell/completion.zsh
 
 export FZF_COMPLETION_TRIGGER=';'
 export FZF_TMUX=1
+
+########################
+# General
+########################
 
 # Disable flow control then we can use ctrl-s to save in vim
 # Disable flow control commands (keeps C-s from freezing everything)
@@ -105,9 +83,6 @@ export PATH="$PATH:$HOME/bin"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-########################
-# General
-########################
 
 # For pair
 pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -p $2 -t vagrant@localhost 'tmux attach' }
