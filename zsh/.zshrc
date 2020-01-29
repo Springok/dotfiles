@@ -25,6 +25,8 @@ zplug "modules/environment", from:prezto
 zplug "modules/completion", from:prezto
 zplug "modules/history", from:prezto
 zplug "modules/history-substring-search", from:prezto
+zstyle ':prezto:module:history-substring-search' color 'yes'
+
 zplug "modules/syntax-highlighting", from:prezto
 zstyle ':prezto:module:syntax-highlighting' color 'yes'
 
