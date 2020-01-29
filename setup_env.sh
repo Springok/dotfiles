@@ -2,7 +2,8 @@
 
 set -e
 
-if ! [ -e $(command -v stow) ]; then
+if ! command -v stow 2>&1 >&/dev/null; then
+  echo 'Installing stow'
   if [ "$(uname)" == "Darwin" ]; then
     echo 'Mac OS X'
     brew install stow
