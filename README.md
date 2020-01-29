@@ -8,13 +8,18 @@ Many thanks for [Maximum-awesome](https://github.com/square/maximum-awesome) & m
 
 `cd dotfiles`
 
-`stow git`
-
+`./setup_env.sh`
 
 ## TODO
 
 1. private stow
 
-2. install shell script
+2. script enhancement
 
-3. stow installation script
+   1. upgrade tig
+
+   2. diff-highlight
+
+   3. config tmux
+
+   4. install neovim
