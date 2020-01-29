@@ -1,22 +1,3 @@
-########################
-# Dotfiles
-########################
-if [[ ! -d ~/dotfiles ]]; then
-  git clone git@github.com:Springok/dotfiles.git ~/dotfiles
-  # git clone git@github.com:ryanoasis/nerd-fonts.git ~/nerd-fonts
-
-  ln -sf ~/dotfiles/.pryrc         ~/.pryrc
-  ln -sf ~/dotfiles/.tigrc         ~/.tigrc
-  ln -sf ~/dotfiles/.tmux.conf     ~/.tmux.conf
-  ln -sf ~/dotfiles/.default-gems  ~/.default-gems
-  ln -sf ~/dotfiles/.gitconfig     ~/.gitconfig
-
-  ln -sf ~/dotfiles/init.vim  ~/.config/nvim/init.vim
-
-  ln -sf ~/dotfiles/.zshenv ~/.zshenv
-  ln -sf ~/dotfiles/.zshrc ~/.zshrc
-fi
-
 source ~/.zshrc_helper
 
 ########################
