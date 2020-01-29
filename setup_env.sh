@@ -7,21 +7,19 @@ if ! command -v stow 2>&1 >&/dev/null; then
   if [ "$(uname)" == "Darwin" ]; then
     echo 'Mac OS X'
     brew install stow
-  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  elif [ "$("(substr $(uname -s) 1 5)")" == "Linux" ]; then
     echo 'Linux'
     sudo apt install stow
   fi
 fi
 
-cd ~
-
 if [[ ! -d ~/dotfiles ]]; then
   git clone git@github.com:Springok/dotfiles.git ~/dotfiles
 fi
 
-cd dotfiles
+cd ~/dotfiles
 
-stow git \
+stow --verbose git \
   zsh \
   nvim \
   tmux \
