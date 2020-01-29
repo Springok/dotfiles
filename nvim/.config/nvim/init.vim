@@ -190,8 +190,9 @@ let g:NERDSpaceDelims=1
 let g:easy_align_ignore_groups = []
 
 "================= Helper =================
-source ~/dotfiles/.vim/minitest_helper.vim
-source ~/dotfiles/.vim/whitespace.vim
+for f in split(globpath('~/dotfiles/script/vim', '*.vim'), '\n')
+  exe 'source' f
+endfor
 
 " run sql file to give your the result table!
 " usage: <leader_key>p + j, l, r

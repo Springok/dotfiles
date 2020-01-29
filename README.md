@@ -1,6 +1,20 @@
 # dotfiles
+
 Many thanks for [Maximum-awesome](https://github.com/square/maximum-awesome) & my lovely colleagues!
 
 ## Installation
 
-`curl -L https://github.com/springok/dotfiles/raw/master/.zshrc > ~/.zshrc`
+`git clone`
+
+`cd dotfiles`
+
+`stow git`
+
+
+## TODO
+
+1. private stow
+
+2. install shell script
+
+3. stow installation script

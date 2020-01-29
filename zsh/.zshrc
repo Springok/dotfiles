@@ -17,7 +17,7 @@ if [[ ! -d ~/dotfiles ]]; then
   ln -sf ~/dotfiles/.zshrc ~/.zshrc
 fi
 
-source ~/dotfiles/.zshrc_helper
+source ~/.zshrc_helper
 
 ########################
 # Zplug

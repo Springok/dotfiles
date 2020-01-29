@@ -1,4 +1,4 @@
-source ~/dotfiles/.zshrc_helper
+source ~/.zshrc_helper
 
 alias rubo='cop master...'
 alias krpu='rpu kill'
