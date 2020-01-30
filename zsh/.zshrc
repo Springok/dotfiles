@@ -43,7 +43,6 @@ zplug load #--verbose
 source ~/.zplug/repos/junegunn/fzf/shell/key-bindings.zsh
 source ~/.zplug/repos/junegunn/fzf/shell/completion.zsh
 
-export FZF_COMPLETION_TRIGGER=';'
 export FZF_TMUX=1
 
 ########################
@@ -131,6 +130,7 @@ alias ys='yarn && yarn start'
 alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
 alias dump_db='ruby /vagrant/scripts/db_dump.rb && ch_pw'
 alias dump_db2='/vagrant/scripts/dump_db.zsh && ch_pw'
+alias cd_sync='cd /vagrant/synced/'
 
 # Nerv Project
 alias ck='cd ~/nerv_ck'
@@ -185,12 +185,21 @@ alias kmc='pkill -fe mailcatcher'
 
 # Git pager setting
 export LESS=R
+
 # use emacs mode in command line
-bindkey -e
+# bindkey -e
 
 # use vim mode in command line
-# bindkey -v
+bindkey -v
 
-# export VISUAL=vim
-# autoload edit-command-line; zle -N edit-command-line
-# bindkey "^Xe" edit-command-line
+# emacs style
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
+# module widget remap
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^r' fzf-history-widget
+bindkey '^t' fzf-completion
+bindkey '^F' autosuggest-accept
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
