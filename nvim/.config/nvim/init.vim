@@ -139,6 +139,11 @@ vnoremap <leader>ag y:AgBuffer <c-r>"<cr>
 "================================================
 " Plugin
 "================================================
+"
+"
+let g:ale_linters = {
+\   'ruby': ['rubocop', 'brakeman', 'debride', 'rails_best_practices', 'ruby', 'standardrb'],
+\}
 
 " Disable documentation window
 set completeopt-=preview
