@@ -142,8 +142,11 @@ vnoremap <leader>ag y:AgBuffer <c-r>"<cr>
 "
 "
 let g:ale_linters = {
-\   'ruby': ['rubocop', 'brakeman', 'debride', 'rails_best_practices', 'ruby', 'standardrb'],
+\   'ruby': ['rubocop', 'ruby'],
 \}
+
+" https://github.com/dense-analysis/ale/pull/1850, make it work with bundle
+let g:ale_ruby_rubocop_executable = 'bundle'
 
 " Disable documentation window
 set completeopt-=preview
@@ -364,13 +367,13 @@ let g:airline_symbols.linenr   = '⭡'
 " colorscheme iceberg
 " let g:airline_theme='iceberg'
 
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
+" let g:gruvbox_contrast_dark='hard'
+" colorscheme gruvbox
+" let g:airline_theme='gruvbox'
 
-" colorscheme night-owl
+colorscheme night-owl
 " To enable the lightline theme
-" let g:lightline = { 'colorscheme': 'nightowl' }
+let g:lightline = { 'colorscheme': 'nightowl' }
 
 " change SpellBad style, have to do this after colorscheme setup, otherwise
 " will be overwritten
