@@ -64,13 +64,13 @@ Plug 'scrooloose/nerdtree'
 "================================================
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim' " for correct colorscheme
 Plug 'cocopon/iceberg.vim' " for correct airline theme
 Plug 'rakr/vim-one' " for correct airline theme
 Plug 'haishanh/night-owl.vim'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -371,9 +371,13 @@ let g:airline_symbols.linenr   = '⭡'
 " colorscheme gruvbox
 " let g:airline_theme='gruvbox'
 
+colorscheme nord
+let g:airline_theme='nord'
+" let g:nord_italic = 1
+
 colorscheme night-owl
-" To enable the lightline theme
-let g:lightline = { 'colorscheme': 'nightowl' }
+let g:lightline = { 'colorscheme': 'nightowl' } " To enable the lightline theme
+
 
 " change SpellBad style, have to do this after colorscheme setup, otherwise
 " will be overwritten
