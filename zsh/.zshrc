@@ -162,8 +162,7 @@ alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log
 
 # Test
 alias mi='be ruby -Itest'
-alias mii='rake test'
-alias testba='rake test:controllers && rake test:concepts && rake test:forms && rake test:models'
+alias testba='rails test test/controllers test/concepts test/forms test/models'
 
 # Amoeba
 alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
@@ -185,6 +184,7 @@ alias kmc='pkill -fe mailcatcher'
 
 # Git pager setting
 export LESS=R
+export GPG_TTY=$(tty)
 
 # use emacs mode in command line
 # bindkey -e
