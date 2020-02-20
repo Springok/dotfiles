@@ -160,7 +160,7 @@ alias olog='tail -f log/development.log'
 alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log/development.log'
 
 # Test
-alias mi='be ruby -Itest'
+alias mi='rails test'
 alias testba='rails test test/controllers test/concepts test/forms test/models'
 
 # Amoeba
@@ -173,7 +173,6 @@ alias repl='l repl'
 ########################
 # Jump Into Config File
 ########################
-#
 alias zshrc='e ~/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/.config/nvim/init.vim'
@@ -183,6 +182,8 @@ alias kmc='pkill -fe mailcatcher'
 
 # Git pager setting
 export LESS=R
+
+# Fix GPG
 export GPG_TTY=$(tty)
 
 # use emacs mode in command line

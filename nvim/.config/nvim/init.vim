@@ -195,9 +195,7 @@ let g:NERDSpaceDelims=1
 " Vim-test
 " https://github.com/janko-m/vim-test#custom-strategies
 " let test#strategy = "vtr"
-" need to setup this to make binding.pry works...
-" let g:test#ruby#minitest#executable = 'disboot bundle exec ruby -Itest'
-" let test#ruby#minitest#options = '--verbose'
+let test#ruby#minitest#options = '--verbose'
 
 " vim-easy-align
 " override default ignore comment and string in vim-easy-align
