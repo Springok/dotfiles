@@ -81,7 +81,7 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 alias sshc='e ~/.ssh/config'
-alias fixssh='eval $(tmux showenv -s SSH_AUTH_SOCK)'
+alias setup_tags='ctags -R'
 
 # For vagrant
 alias va=vagrant
