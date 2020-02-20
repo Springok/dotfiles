@@ -136,6 +136,11 @@ alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
 alias angel='cd ~/angel'
 
+alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
+alias dump_db='ruby /vagrant/scripts/db_dump.rb && ch_pw'
+alias dump_db2='/vagrant/scripts/dump_db.zsh && ch_pw'
+alias cd_sync='cd /vagrant/synced/'
+
 # Gems
 alias be='bundle exec'
 alias seki='be sidekiq'
