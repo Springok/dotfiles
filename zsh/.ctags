@@ -1,0 +1,7 @@
+--exclude=.git
+--exclude=log
+--exclude=tmp
+--exclude=db
+--exclude=face/node_modules
+--exclude=node_modules
+
