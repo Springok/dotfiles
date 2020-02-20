@@ -77,7 +77,7 @@ function! s:rails_test_tmux(method, test_whole_file) "{{{
     let title = '☕️'
   elseif rails_type == 'test-integration'
     " TODO why can't just use ruby -Itest?
-    let test_command = printf('rails test/integration TEST=%s', path)
+    let test_command = printf('rails test %s', path)
     let title = matchstr(rails_type, '\vtest-\zs.{4}')
   else
     if a:test_whole_file == 'true'
