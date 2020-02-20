@@ -148,6 +148,12 @@ let g:ale_linters = {
 " https://github.com/dense-analysis/ale/pull/1850, make it work with bundle
 let g:ale_ruby_rubocop_executable = 'bundle'
 
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
+
 " Disable documentation window
 set completeopt-=preview
 let g:deoplete#enable_at_startup=1

@@ -125,12 +125,11 @@ alias nodejs=node
 # export USE_BOOTSNAP=1
 alias krpu='rpu kill'
 alias pru='rpu'
-alias ys='yarn && yarn start'
 
-alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
-alias dump_db='ruby /vagrant/scripts/db_dump.rb && ch_pw'
-alias dump_db2='/vagrant/scripts/dump_db.zsh && ch_pw'
-alias cd_sync='cd /vagrant/synced/'
+# Yarn
+alias ys='yarn start'
+alias yf="yarn prettier --config .prettierrc --write 'src/**/*.{js,jsx,json,css,scss,md}'"
+alias yt='yarn test'
 
 # Nerv Project
 alias ck='cd ~/nerv_ck'
