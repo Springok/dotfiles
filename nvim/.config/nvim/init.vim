@@ -6,7 +6,6 @@ call plug#begin()
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
-Plug 'elixir-editors/vim-elixir'
 
 "================================================
 " Clojure
@@ -56,7 +55,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
 Plug 'pedrohdz/vim-yaml-folds'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 
 "================================================
@@ -169,17 +169,6 @@ let g:deoplete#sources['javascript.jsx'] = ['around', 'buffer', 'file', 'ultisni
 let g:deoplete#sources.css  = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
 let g:deoplete#sources.scss = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
 let g:deoplete#sources.html = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
-let g:ctrlp_match_window = 'order:ttb,max:20'
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --ignore db/ --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
-endif
 
 " " Reduce the time that signs appear when enable gitgutter
 set updatetime=200
@@ -230,13 +219,18 @@ endif
 "================================================
 " Shortcut
 "================================================
-nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
-nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" fzf search
+nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>cl :GFiles app/controllers<CR>
+nnoremap <leader>ct :GFiles app/concepts<CR>
+let g:fzf_preview_window = 'right:33%'
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
