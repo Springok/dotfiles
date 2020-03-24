@@ -100,7 +100,7 @@ alias px='ps aux'
 alias ep='exit'
 
 # Git
-alias gs='git status' # gwS, gws
+alias gs='git status'
 alias gcom='git checkout master'
 alias gRs='git remote show origin'
 alias gRp='git remote show origin | grep patch'
@@ -137,8 +137,9 @@ alias hk='cd ~/nerv'
 alias angel='cd ~/angel'
 
 alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
-alias dump_db='ruby /vagrant/scripts/db_dump.rb && ch_pw'
-alias dump_db2='/vagrant/scripts/dump_db.zsh && ch_pw'
+alias e_pw='vim /vagrant/synced/ch_pw.rb'
+alias dump_db='/vagrant/scripts/db_dump.rb && ch_pw'
+alias dump_db2='/vagrant/scripts/dump_db.zsh'
 alias cd_sync='cd /vagrant/synced/'
 
 # Gems
@@ -155,14 +156,16 @@ alias rch="tail -f ~/.pry_history | grep -v 'exit'"
 
 alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
 alias disboot="USE_BOOTSNAP=0"
-alias mig='rake db:migrate'
-alias migs='rake db:migrate:status'
-alias roll='rake db:rollback'
+alias mig='rails db:migrate'
+alias migs='rails db:migrate:status'
+alias roll='rails db:rollback'
 alias rock!='roll && mig'
 alias smig='skip_env mig'
 
 alias olog='tail -f log/development.log'
+alias otlog='tail -f log/test.log'
 alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log/development.log'
+alias ctlog='cat /dev/null >! log/lograge_test.log && cat /dev/null >! log/test.log'
 
 # Test
 alias mi='rails test'
