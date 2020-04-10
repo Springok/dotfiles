@@ -37,11 +37,13 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-ragtag'
+Plug 'ap/vim-css-color'
 
 "================================================
 " Git
 "================================================
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
 "================================================
@@ -62,15 +64,17 @@ Plug 'scrooloose/nerdtree'
 "================================================
 " Theme
 "================================================
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
 Plug 'ryanoasis/vim-devicons'
-Plug 'joshdick/onedark.vim' " for correct colorscheme
-Plug 'cocopon/iceberg.vim' " for correct airline theme
-Plug 'rakr/vim-one' " for correct airline theme
+Plug 'joshdick/onedark.vim'
+Plug 'cocopon/iceberg.vim'
+Plug 'rakr/vim-one'
 Plug 'haishanh/night-owl.vim'
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'dracula/vim'
 
 call plug#end()
 
@@ -170,8 +174,8 @@ let g:deoplete#sources.css  = ['around', 'buffer', 'member', 'file', 'omni', 'ul
 let g:deoplete#sources.scss = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
 let g:deoplete#sources.html = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
 
-" " Reduce the time that signs appear when enable gitgutter
-set updatetime=200
+" default updatetime 4000ms is not good for async update signify
+set updatetime=100
 
 " extra rails.vim help
 autocmd User Rails silent! Rnavcommand job app/jobs -glob=**/* -suffix=_job.rb
@@ -220,16 +224,16 @@ endif
 " Shortcut
 "================================================
 nnoremap <leader>d :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " fzf search
 nnoremap <C-p> :GFiles<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>cl :GFiles app/controllers<CR>
-nnoremap <leader>ct :GFiles app/concepts<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fc :Files app/concepts<CR>
 let g:fzf_preview_window = 'right:33%'
 
 " in case you forgot to sudo
@@ -262,7 +266,11 @@ noremap  ,, <C-\><C-N>
 noremap!  ,, <C-\><C-N>
 
 " vim-gitgutter
-nnoremap <leader>gg :GitGutterToggle<CR>
+" nnoremap <leader>gg :GitGutterToggle<CR>
+nnoremap <leader>gg :SignifyToggle<CR>
+nnoremap <leader>gh :SignifyToggleHighlight<CR>
+nnoremap <leader>gdd :SignifyHunkDiff<CR>
+nnoremap <leader>gdr :SignifyHunkUndo<CR>
 
 " Fugitive
 set diffopt+=vertical
@@ -270,13 +278,13 @@ set diffopt+=vertical
 nmap <silent><leader>gb :Gblame<cr>
 
 nmap <leader>ge :Gedit<Space>
-nmap <leader>gdd :Gdiff<Space>
+" nmap <leader>gdd :Gdiff<Space>
 " compare with working area
 nmap <leader>gdw :Gdiff<cr>
 " compare with index
 nmap <leader>gdi :Gdiff HEAD<cr>
 " reset the diff with working area in Gdiff mode
-nmap <leader>gdr :diffget<cr>
+" nmap <leader>gdr :diffget<cr>
 nmap <leader>gs :Gstatus<cr>
 
 " Rails
@@ -337,45 +345,38 @@ set termguicolors
 
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
-" vim-airline
-" smart tab line, automatically displays all buffers when there's only one tab open.
-let g:airline#extensions#tabline#enabled = 1
+" lightline
+set noshowmode
+set showtabline=2
 
-" https://github.com/vim-airline/vim-airline#integrating-with-powerline-fonts
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep         = '⮀'
-let g:airline_left_alt_sep     = '⮁'
-let g:airline_right_sep        = '⮂'
-let g:airline_right_alt_sep    = '⮃'
+" colorscheme night-owl " lightline: night-owl
+" colorscheme gruvbox   " lightline: gruvbox
+" colorscheme one       " lightline: one
+colorscheme onedark   " lightline: onedark
+" colorscheme nord      " lightline: nord
+" let ayucolor="light"  " for light version of theme
+" let ayucolor="mirage" " for mirage version of theme
+" colorscheme ayu       " l lightline: ayu_light / ayu_mirage
+" colorscheme dracula   " lightline: dracula
+" colorscheme iceberg   " lightline: iceberg
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+let g:lightline = {
+\ 'colorscheme': 'onedark',
+\ 'tabline': {
+\   'left': [ ['bufferline'] ]
+\ },
+\ 'component_expand': {
+\   'bufferline': 'LightlineBufferline',
+\ },
+\ 'component_type': {
+\   'bufferline': 'tabsel',
+\ },
+\ }
 
-let g:airline_symbols.branch   = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr   = '⭡'
-
-" colorscheme dracula
-
-" colorscheme onedark
-" let g:airline_theme='one'
-" let g:airline_theme='onedark'
-
-" colorscheme iceberg
-" let g:airline_theme='iceberg'
-
-" let g:gruvbox_contrast_dark='hard'
-" colorscheme gruvbox
-" let g:airline_theme='gruvbox'
-
-colorscheme nord
-let g:airline_theme='nord'
-" let g:nord_italic = 1
-
-colorscheme night-owl
-let g:lightline = { 'colorscheme': 'nightowl' } " To enable the lightline theme
-
+function! LightlineBufferline()
+  call bufferline#refresh_status()
+  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
+endfunction
 
 " change SpellBad style, have to do this after colorscheme setup, otherwise
 " will be overwritten

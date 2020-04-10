@@ -130,6 +130,7 @@ alias pru='rpu'
 alias ys='yarn start'
 alias yf="yarn prettier --config .prettierrc --write 'src/**/*.{js,jsx,json,css,scss,md}'"
 alias yt='yarn test'
+alias ycop='yarn eslint --fix-dry-run src/'
 
 # Nerv Project
 alias ck='cd ~/nerv_ck'
