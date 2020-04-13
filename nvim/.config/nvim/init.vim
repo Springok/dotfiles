@@ -378,6 +378,7 @@ function! LightlineBufferline()
   return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
 endfunction
 let g:bufferline_echo = 0
+let g:bufferline_rotate=1
 
 " change SpellBad style, have to do this after colorscheme setup, otherwise
 " will be overwritten
