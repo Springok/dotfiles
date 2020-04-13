@@ -337,7 +337,7 @@ let g:user_emmet_leader_key='<C-E>'
 
 " work with vim-commentary
 " https://github.com/tpope/vim-commentary/issues/68#issuecomment-265496851
-autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+autocmd FileType javascript.jsx setlocal commentstring=/*\ %s\ */
 "================================================
 " Theme
 "================================================
@@ -377,6 +377,7 @@ function! LightlineBufferline()
   call bufferline#refresh_status()
   return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
 endfunction
+let g:bufferline_echo = 0
 
 " change SpellBad style, have to do this after colorscheme setup, otherwise
 " will be overwritten
