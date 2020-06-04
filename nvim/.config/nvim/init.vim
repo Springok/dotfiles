@@ -68,7 +68,7 @@ Plug 'scrooloose/nerdtree'
 " Theme
 "================================================
 Plug 'itchyny/lightline.vim'
-Plug 'bling/vim-bufferline'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim'
 Plug 'cocopon/iceberg.vim'
@@ -364,25 +364,30 @@ colorscheme onedark   " lightline: onedark
 " colorscheme iceberg   " lightline: iceberg
 
 let g:lightline = {
-\ 'colorscheme': 'onedark',
-\ 'tabline': {
-\   'left': [ ['bufferline'] ],
-\   'right': [ [''] ]
-\ },
-\ 'component_expand': {
-\   'bufferline': 'LightlineBufferline',
-\ },
-\ 'component_type': {
-\   'bufferline': 'tabsel',
-\ },
-\ }
+      \ 'colorscheme': 'onedark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ [''] ]
+      \ },
+      \ 'component_raw': {
+      \   'buffers': 1
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
 
-function! LightlineBufferline()
-  call bufferline#refresh_status()
-  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
-endfunction
-let g:bufferline_echo = 0
-let g:bufferline_rotate=1
+let g:lightline#bufferline#show_number     = 1
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#unnamed         = '[No Name]'
+" let g:lightline#bufferline#clickable       = 1
+
 
 " change SpellBad style, have to do this after colorscheme setup, otherwise
 " will be overwritten
