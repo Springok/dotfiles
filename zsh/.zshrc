@@ -165,6 +165,7 @@ alias roll='rails db:rollback'
 alias rock!='roll && mig'
 alias smig='skip_env mig'
 
+alias unlog='gunzip `ag -g production.log -w`'
 alias olog='tail -f log/development.log'
 alias otlog='tail -f log/test.log'
 alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log/development.log'
