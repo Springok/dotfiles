@@ -141,7 +141,7 @@ alias adm='cd ~/nerv/clojure/adam'
 
 alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
 alias e_pw='vim /vagrant/synced/ch_pw.rb'
-alias dump_db='/vagrant/scripts/db_dump.rb && ch_pw'
+alias dump_db='/vagrant/scripts/db_dump.rb -f && ch_pw'
 alias dump_db2='/vagrant/scripts/dump_db.zsh'
 alias cd_sync='cd /vagrant/synced/'
 
