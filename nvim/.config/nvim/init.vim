@@ -366,7 +366,8 @@ colorscheme onedark   " lightline: onedark
 let g:lightline = {
 \ 'colorscheme': 'onedark',
 \ 'tabline': {
-\   'left': [ ['bufferline'] ]
+\   'left': [ ['bufferline'] ],
+\   'right': [ [''] ]
 \ },
 \ 'component_expand': {
 \   'bufferline': 'LightlineBufferline',
