@@ -132,7 +132,7 @@ alias yf="yarn prettier --config .prettierrc --write 'src/**/*.{js,jsx,json,css,
 alias yt='yarn test'
 alias ycop='yarn eslint --fix-dry-run src/'
 
-# Nerv Project
+# Nerv Projects
 alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
 alias agl='cd ~/angel'
@@ -185,6 +185,7 @@ alias repl='l repl'
 ########################
 # Jump Into Config File
 ########################
+alias dot='cd ~/dotfiles'
 alias zshrc='e ~/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/.config/nvim/init.vim'
