@@ -135,7 +135,9 @@ alias ycop='yarn eslint --fix-dry-run src/'
 # Nerv Project
 alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
-alias angel='cd ~/angel'
+alias agl='cd ~/angel'
+alias ame='cd ~/amoeba'
+alias adm='cd ~/nerv/clojure/adam'
 
 alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
 alias e_pw='vim /vagrant/synced/ch_pw.rb'
