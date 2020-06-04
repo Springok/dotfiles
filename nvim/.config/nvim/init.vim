@@ -1,6 +1,9 @@
 " Install Vim Plug at first setup
 " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+let g:python_host_prog = $HOME . '/.asdf/installs/python/2.7.18/bin/python'
+let g:python3_host_prog = $HOME . '/.asdf/installs/python/3.6.9/bin/python'
+
 call plug#begin()
 
 Plug 'vim-ruby/vim-ruby'
