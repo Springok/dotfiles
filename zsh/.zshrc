@@ -153,7 +153,7 @@ alias copm='cop master...'
 alias rake='be rake'
 
 # Rails
-alias rc='rails console'
+alias rc='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` rails console'
 alias rct='rails console test'
 alias rch="tail -f ~/.pry_history | grep -v 'exit'"
 
