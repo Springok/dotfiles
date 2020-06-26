@@ -1,49 +1,52 @@
 ########################
 # Zplug
 ########################
-# install zplug, if necessary
-if [[ ! -d ~/.zplug ]]; then
-  export ZPLUG_HOME=~/.zplug
-  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+### Added by Zinit's installer
+# install zinit, if necessary
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-source ~/.zplug/init.zsh
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-zplug "junegunn/fzf", as:command, hook-build:"./install --bin", use:"bin/{fzf-tmux,fzf}"
+### End of Zinit's installer chunk
 
-zplug "modules/git", from:prezto
+# need to install svn, `sudo apt-get install subversion`
+zinit ice svn;zinit snippet PZT::modules/git
 
-zplug "modules/syntax-highlighting", from:prezto
-zstyle ':prezto:module:syntax-highlighting' color 'yes'
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-history-substring-search
+zinit light zdharma/fast-syntax-highlighting
 
-zplug "modules/prompt", from:prezto
-zstyle ':prezto:module:prompt' theme 'pure'
+# Binary release in archive, from GitHub-releases page.
+# After automatic unpacking it provides program "fzf".
+zinit ice from"gh-r" as"command"; zinit light junegunn/fzf-bin
 
-zplug "modules/environment", from:prezto
-zplug "modules/completion", from:prezto
-zplug "modules/history", from:prezto
+# git clone junegunn/fzf to get the key-bindings and completion
+zinit light junegunn/fzf
 
-# If this module is used in conjunction with the syntax-highlighting module, this module must be loaded after the syntax-highlighting module.
-zplug "modules/history-substring-search", from:prezto
-zstyle ':prezto:module:history-substring-search' color 'yes'
-
-zplug "modules/autosuggestions", from:prezto
-zstyle ':prezto:module:autosuggestions' color 'yes'
-zstyle ':prezto:module:autosuggestions:color' found 'fg=white'
-
-zplug "modules/rsync", from:prezto
-zplug "modules/directory", from:prezto
-
-if ! zplug check --verbose; then
-  zplug install
-fi
-
-zplug load #--verbose
-
-source ~/.zplug/repos/junegunn/fzf/shell/key-bindings.zsh
-source ~/.zplug/repos/junegunn/fzf/shell/completion.zsh
+source ~/.zinit/plugins/junegunn---fzf/shell/key-bindings.zsh
+source ~/.zinit/plugins/junegunn---fzf/shell/completion.zsh
 
 export FZF_TMUX=1
+
+# Load the pure theme, with zsh-async library that's bundled with it.
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+zstyle :prompt:pure:show show no
+zstyle :prompt:pure:user show no
+
+zinit snippet PZT::modules/environment
+zinit snippet PZT::modules/completion
+zinit snippet PZT::modules/history
+zinit snippet PZT::modules/rsync
+zinit snippet PZT::modules/directory
 
 ########################
 # General
