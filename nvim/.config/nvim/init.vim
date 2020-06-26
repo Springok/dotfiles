@@ -256,6 +256,7 @@ nmap <leader>vv "ap
 
 " window
 nmap <leader>w <C-w>
+nmap <leader>wf <C-w>f<C-w>H
 
 " buffer switch
 nnoremap <silent> <tab> :bn<CR>
@@ -368,18 +369,19 @@ set noshowmode
 set showtabline=2
 
 " colorscheme night-owl " lightline: night-owl
-" colorscheme gruvbox   " lightline: gruvbox
+colorscheme gruvbox   " lightline: gruvbox
 " colorscheme one       " lightline: one
-colorscheme onedark   " lightline: onedark
+" colorscheme onedark   " lightline: onedark
 " colorscheme nord      " lightline: nord
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " colorscheme ayu       " l lightline: ayu_light / ayu_mirage
 " colorscheme dracula   " lightline: dracula
 " colorscheme iceberg   " lightline: iceberg
+set background=dark
 
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
       \ },
@@ -402,7 +404,6 @@ let g:lightline#bufferline#show_number     = 1
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#unnamed         = '[No Name]'
 " let g:lightline#bufferline#clickable       = 1
-
 
 " change SpellBad style, have to do this after colorscheme setup, otherwise
 " will be overwritten
