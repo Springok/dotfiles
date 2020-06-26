@@ -179,6 +179,7 @@ alias testba='rails test test/controllers test/concepts test/forms test/models'
 alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 
 # Clojure
+# Leiningen
 alias l='lein'
 alias repl='l repl'
 

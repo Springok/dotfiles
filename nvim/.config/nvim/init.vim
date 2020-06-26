@@ -13,8 +13,13 @@ Plug 'tpope/vim-bundler'
 "================================================
 " Clojure
 "================================================
+Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-salve'
 Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'luochen1990/rainbow'
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 
 "================================================
 " Dev Tools
@@ -63,7 +68,6 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-
 "================================================
 " Theme
 "================================================
@@ -177,6 +181,7 @@ let g:deoplete#sources.css  = ['around', 'buffer', 'member', 'file', 'omni', 'ul
 let g:deoplete#sources.scss = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
 let g:deoplete#sources.html = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
 
+let g:rainbow_active = 1
 " default updatetime 4000ms is not good for async update signify
 set updatetime=100
 
@@ -341,6 +346,16 @@ let g:user_emmet_leader_key='<C-E>'
 " work with vim-commentary
 " https://github.com/tpope/vim-commentary/issues/68#issuecomment-265496851
 autocmd FileType javascript.jsx setlocal commentstring=/*\ %s\ */
+
+"================================================
+" Clojure
+"================================================
+" a few extra mappings for fireplace
+" evaluate top level form
+au BufEnter *.clj nnoremap <buffer> cpt :Eval<CR>
+" show last evaluation in temp file
+au BufEnter *.clj nnoremap <buffer> cpl :Last<CR>
+
 "================================================
 " Theme
 "================================================
