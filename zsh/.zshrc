@@ -17,9 +17,6 @@ autoload -Uz _zinit
 
 ### End of Zinit's installer chunk
 
-# need to install svn, `sudo apt-get install subversion`
-zinit ice svn;zinit snippet PZT::modules/git
-
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-history-substring-search
 zinit light zdharma/fast-syntax-highlighting
@@ -39,8 +36,11 @@ export FZF_TMUX=1
 # Load the pure theme, with zsh-async library that's bundled with it.
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
-zstyle :prompt:pure:show show no
-zstyle :prompt:pure:user show no
+
+# need to install svn, `sudo apt-get install subversion`
+# keep git after pure, don't know why
+zinit ice svn
+zinit snippet PZT::modules/git
 
 zinit snippet PZT::modules/environment
 zinit snippet PZT::modules/completion
