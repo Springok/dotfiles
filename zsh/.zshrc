@@ -75,6 +75,7 @@ pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22222 -t $1
 
 # Use nvim
 alias e='nvim'
+alias vdiff='nvim -d'
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
@@ -90,7 +91,9 @@ alias vssh='va ssh'
 alias vhalt='va halt'
 alias vhlat='va halt'
 
-alias la='ls -l -a'
+alias ll='ls -l -a --color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -162,7 +165,7 @@ alias disboot="USE_BOOTSNAP=0"
 alias mig='rails db:migrate'
 alias migs='rails db:migrate:status'
 alias roll='rails db:rollback'
-alias rock!='roll && mig'
+alias rock!='rails db:migrate:redo STEP=1'
 alias smig='skip_env mig'
 
 alias unlog='gunzip `ag -g production.log -w`'
