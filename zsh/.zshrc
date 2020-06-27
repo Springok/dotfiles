@@ -94,8 +94,18 @@ alias vssh='va ssh'
 alias vhalt='va halt'
 alias vhlat='va halt'
 
-alias ll='ls -l -a --color=auto'
-alias ls='ls --color=auto'
+case `uname` in
+  Darwin)
+    alias ls='ls -G'
+    alias ll='ls -l -a'
+  ;;
+  Linux)
+    alias ls='ls --color=auto'
+    alias ll='ls -l -a'
+    alias grep='grep --color=auto'
+  ;;
+esac
+
 alias grep='grep --color=auto'
 alias rm='rm -i'
 alias cp='cp -i'
