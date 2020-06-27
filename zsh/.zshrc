@@ -23,7 +23,6 @@ zinit light zdharma/fast-syntax-highlighting
 
 zinit ice as="program" pick="$ZPFX/bin/(fzf|fzf-tmux)" \
   atclone="./install;cp bin/(fzf|fzf-tmux) $ZPFX/bin"
-  # multisrc"shell/key-bindings.zsh shell/completion.zsh"
 zinit light junegunn/fzf
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
