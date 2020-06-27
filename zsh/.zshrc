@@ -21,15 +21,12 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-history-substring-search
 zinit light zdharma/fast-syntax-highlighting
 
-# Binary release in archive, from GitHub-releases page.
-# After automatic unpacking it provides program "fzf".
-zinit ice from"gh-r" as"command"; zinit light junegunn/fzf-bin
-
-# git clone junegunn/fzf to get the key-bindings and completion
+zinit ice as="program" pick="$ZPFX/bin/(fzf|fzf-tmux)" \
+  atclone="./install;cp bin/(fzf|fzf-tmux) $ZPFX/bin"
+  # multisrc"shell/key-bindings.zsh shell/completion.zsh"
 zinit light junegunn/fzf
 
-source ~/.zinit/plugins/junegunn---fzf/shell/key-bindings.zsh
-source ~/.zinit/plugins/junegunn---fzf/shell/completion.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_TMUX=1
 
