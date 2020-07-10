@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -e
 
@@ -32,7 +32,9 @@ cd $HOME
 
 if [ ! -d $asdf_dir ]; then
     echo "Installing asdf..."
-    git clone https://github.com/asdf-vm/asdf.git $asdf_dir
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6 $asdf_dir
+
+    source ~/.zshrc || true
     echo "asdf installation complete"
 else
     echo "asdf already installed"
