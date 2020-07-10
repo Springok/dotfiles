@@ -167,19 +167,6 @@ let g:ale_fix_on_save = 1
 
 " Disable documentation window
 set completeopt-=preview
-let g:deoplete#enable_at_startup=1
-let g:deoplete#enable_refresh_always=0
-let g:deoplete#enable_smart_case=1
-let g:deoplete#file#enable_buffer_path=1
-
-let g:deoplete#sources={}
-let g:deoplete#sources._    = ['around', 'buffer', 'file', 'ultisnips']
-let g:deoplete#sources.ruby = ['around', 'buffer', 'member', 'file', 'ultisnips']
-let g:deoplete#sources.vim  = ['around', 'buffer', 'member', 'file', 'ultisnips']
-let g:deoplete#sources['javascript.jsx'] = ['around', 'buffer', 'file', 'ultisnips', 'ternjs']
-let g:deoplete#sources.css  = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
-let g:deoplete#sources.scss = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
-let g:deoplete#sources.html = ['around', 'buffer', 'member', 'file', 'omni', 'ultisnips']
 
 let g:rainbow_active = 1
 " default updatetime 4000ms is not good for async update signify
