@@ -156,6 +156,11 @@ alias dump_db='/vagrant/scripts/db_dump.rb -f && ch_pw'
 alias dump_db2='/vagrant/scripts/dump_db.zsh'
 alias cd_sync='cd /vagrant/synced/'
 
+# remote dev machine
+alias ch_pw='rails runner ~/synced/ch_pw.rb'
+alias e_pw='vim ~/synced/ch_pw.rb'
+alias dump_db3='~/vm/scripts/db_dump.rb -f && ch_pw'
+
 # Gems
 alias be='bundle exec'
 alias seki='be sidekiq'
