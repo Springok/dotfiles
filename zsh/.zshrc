@@ -44,6 +44,9 @@ zinit snippet PZT::modules/history
 zinit snippet PZT::modules/rsync
 zinit snippet PZT::modules/directory
 
+zinit snippet PZT::modules/ssh
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_ed25519'
+
 ########################
 # General
 ########################

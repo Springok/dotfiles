@@ -4,9 +4,9 @@ Many thanks for [Maximum-awesome](https://github.com/square/maximum-awesome) & m
 
 ## Installation
 
-install `zsh` first.
+install `zsh` first, and set Zsh as your default shell: `chsh -s /bin/zsh`
 
-then
+then run:
 
 `git clone`
 
