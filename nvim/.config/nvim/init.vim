@@ -110,6 +110,8 @@ set noswapfile                                               " disable .swp file
 set hidden                                                   " allow you to switch between buffers without saving
 " set colorcolumn=80
 
+au BufNewFile,BufRead ssh_config,*/.ssh/config.d/*  setf sshconfig
+
 " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
 au InsertLeave * set nopaste
 
@@ -355,8 +357,8 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 set noshowmode
 set showtabline=2
 
-" colorscheme night-owl " lightline: night-owl
-colorscheme gruvbox   " lightline: gruvbox
+colorscheme night-owl " lightline: night-owl
+" colorscheme gruvbox   " lightline: gruvbox
 " colorscheme one       " lightline: one
 " colorscheme onedark   " lightline: onedark
 " colorscheme nord      " lightline: nord
@@ -368,7 +370,7 @@ colorscheme gruvbox   " lightline: gruvbox
 set background=dark
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
       \ },
