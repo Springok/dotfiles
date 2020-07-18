@@ -6,26 +6,6 @@ Pry.config.commands.alias_command('at', 'whereami')
 Pry.config.commands.alias_command 'ep', 'exit-program'
 
 if defined? Nerv
-  # BP  = BasicPlan
-  # CC  = ContributionCollection
-  # CB  = ContributionBatch
-  # CR  = ContributionRecord
-  # PD  = PlanDealing
-  # PDI = PlanDealingItem
-  # FD  = FundDealing
-  # FDI = FundDealingItem
-
-  # got this trick from godwin
-  # def _bp(id_or_no)
-  #   case id_or_no
-  #   when Integer then BP.find(id_or_no)
-  #   when Symbol  then _bp(id_or_no.to_s)
-  #   when String
-  #     id_or_no = id_or_no[0] + '0100' + id_or_no[1..4] if id_or_no =~ /[r|s]\d{4}/i
-  #     BP.find_by(plan_no: id_or_no.upcase)
-  #   end
-  # end
-
   module Nerv::Pry
     RESOURCE_TYPES = {
       bp:  'BasicPlan',
@@ -119,4 +99,27 @@ if defined? Nerv
 
   Pry.commands.alias_command('=', 'nerv-resource')
   Pry.commands.alias_command(/=((?:#{Nerv::Pry::RESOURCE_TYPES.keys.join('|')})\w*)/, "nerv-resource")
+
+  # change-password {{{
+  Pry::Commands.create_command 'change-password' do
+    group 'Nerv'
+    description 'Change user password for development convenience'
+
+    banner <<-BANNER
+      Usage: change-password mt000439     Change user with specific login_id
+             change-password              Change users (predefined within snippet)
+    BANNER
+
+    def process
+      login = args.shift
+      login.downcase!
+      cmd = <<-END.gsub(/^\s{4}/, '')
+          User.find_by!(login_id: '#{login}').tap do |u|
+            u.skip_confirmation! unless u.confirmed?
+            u.update!(password: '#{Nerv::Pry::DEV_PASSWORD}')
+          end
+      END
+      eval_string << cmd
+    end
+  end
 end
