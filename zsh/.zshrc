@@ -62,8 +62,7 @@ stty stop undef
 . $HOME/.asdf/asdf.sh
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$PATH:$HOME/bin"
+export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$PATH
 
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
