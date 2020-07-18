@@ -19,6 +19,8 @@ fi
 
 cd ~/dotfiles
 
+mkdir -p ~/.config/nvim
+
 stow --verbose git \
   zsh \
   nvim \
