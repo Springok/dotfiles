@@ -230,7 +230,7 @@ bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
 # module widget remap
-export FZF_COMPLETION_TRIGGER=''
+export FZF_COMPLETION_TRIGGER=';'
 bindkey '^r' fzf-history-widget
 bindkey '^t' fzf-completion
 bindkey '^F' autosuggest-accept
