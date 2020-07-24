@@ -53,6 +53,8 @@ zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_ed25519'
 
 source ~/.zshrc_helper
 
+[ -f ~/.ssh/abagile-dev.pem ] && ssh-add ~/.ssh/abagile-dev.pem 2&> /dev/null
+
 # Disable flow control then we can use ctrl-s to save in vim
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
@@ -63,7 +65,7 @@ stty stop undef
 . $HOME/.asdf/completions/asdf.bash
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
@@ -141,6 +143,10 @@ alias krpu='rpu kill'
 alias pru='rpu'
 
 # Yarn
+alias n='npm'
+alias nw='npm run watch'
+
+# Yarn
 alias ys='yarn start'
 alias yf="yarn prettier --config .prettierrc --write 'src/**/*.{js,jsx,json,css,scss,md}'"
 alias yt='yarn test'
@@ -149,6 +155,8 @@ alias ycop='yarn eslint --fix-dry-run src/'
 # Nerv Projects
 alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
+alias asuka='cd ~/nerv_asuka/eva/asuka'
+alias aka='cd ~/nerv_asuka'
 alias agl='cd ~/angel'
 alias ame='cd ~/amoeba'
 alias adm='cd ~/nerv/clojure/adam'
@@ -160,9 +168,9 @@ alias dump_db2='/vagrant/scripts/dump_db.zsh'
 alias cd_sync='cd /vagrant/synced/'
 
 # remote dev machine
-alias ch_pw='rails runner ~/synced/ch_pw.rb'
-alias e_pw='vim ~/synced/ch_pw.rb'
-alias dump_db3='~/vm/scripts/db_dump.rb -f && ch_pw'
+# alias ch_pw='rails runner ~/synced/ch_pw.rb'
+# alias e_pw='vim ~/synced/ch_pw.rb'
+# alias dump_db3='~/vm/scripts/db_dump.rb -f && ch_pw'
 
 # Gems
 alias be='bundle exec'
