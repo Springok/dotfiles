@@ -15,7 +15,8 @@ Plug 'tpope/vim-bundler'
 "================================================
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-salve'
-Plug 'tpope/vim-fireplace'
+" Plug 'tpope/vim-fireplace'
+Plug 'Olical/conjure', {'tag': 'v4.2.0'}
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'luochen1990/rainbow'
@@ -68,6 +69,7 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+" Plug 'chaoren/vim-wordmotion'
 "================================================
 " Theme
 "================================================
@@ -115,6 +117,31 @@ au BufNewFile,BufRead ssh_config,*/.ssh/config.d/*  setf sshconfig
 " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
 au InsertLeave * set nopaste
 
+" word means word, override the setup in vim-clojure-static
+" autocmd FileType clojure setlocal iskeyword+=?,*,!,+,/,=,<,>,$
+autocmd FileType clojure setlocal iskeyword-=.
+autocmd FileType clojure setlocal iskeyword-=/
+" autocmd FileType clojure setlocal iskeyword-=:
+
+" let g:wordmotion_mappings = {
+"       \ 'w': 'gw',
+"       \ 'b': 'gb',
+"       \ 'e': 'ge',
+"       \ 'ge': '',
+"       \ 'aw': 'gaw',
+"       \ 'iw': 'giw',
+"       \ '<C-R><C-W>': '',
+"       \ 'W': '',
+"       \ 'B': '',
+"       \ 'E': '',
+"       \ 'gE': '',
+"       \ 'aW': '',
+"       \ 'iW': '',
+"       \ '<C-R><C-A>': '',
+"       \ }
+
+" let g:wordmotion_spaces = '_-.'
+
 " fdoc is yaml
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 autocmd BufRead,BufNewFile *.yml setlocal spell
@@ -125,6 +152,8 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
+" autocmd BufNewFile,BufRead *.cljs setlocal foldmethod=syntax
+" autocmd BufNewFile,BufRead *.cljs setlocal foldlevel=2
 
 "================================================
 " Remap
@@ -153,9 +182,14 @@ vnoremap <leader>ag y:AgBuffer <c-r>"<cr>
 " Plugin
 "================================================
 "
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
+set completeopt-=preview
+"
 "
 let g:ale_linters = {
 \   'ruby': ['rubocop', 'ruby'],
+\   'clojure': ['clj-kondo', 'joker'],
 \}
 
 " https://github.com/dense-analysis/ale/pull/1850, make it work with bundle
@@ -238,6 +272,8 @@ cnoremap w!! %!sudo tee > /dev/null %
 
 " indenting
 noremap <leader>in mmgg=G'm
+
+autocmd FileType clojure nmap <buffer> <leader>p o(js/console.log<Space>
 
 nmap <leader>p obinding.pry<ESC>^
 nmap <leader>c "ay

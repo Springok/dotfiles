@@ -125,6 +125,7 @@ alias gbda='git branch --merged | egrep -v "(^\*|master|dev|nerv)" | xargs git b
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
 alias gddd='gwd origin/master...'
 alias gdde='e `gddd --name-only --relative`'
+alias gle='e `gcs --pretty=format: --name-only`'
 alias gddn='gddd --name-only --relative | cat'
 alias gwe='e `git diff --name-only --relative`'
 alias gie='e `git diff --cached --name-only --relative`'
@@ -142,9 +143,11 @@ alias nodejs=node
 alias krpu='rpu kill'
 alias pru='rpu'
 
-# Yarn
+# Npm
 alias n='npm'
 alias nw='npm run watch'
+alias fight='API_URL="/`basename $PWD`" nw'
+alias eva_fight='eva ; fight'
 
 # Yarn
 alias ys='yarn start'
@@ -155,8 +158,8 @@ alias ycop='yarn eslint --fix-dry-run src/'
 # Nerv Projects
 alias ck='cd ~/nerv_ck'
 alias hk='cd ~/nerv'
-alias asuka='cd ~/nerv_asuka/eva/asuka'
-alias aka='cd ~/nerv_asuka'
+alias ka='cd ~/nerv_asuka'
+alias eva='cd eva/asuka'
 alias agl='cd ~/angel'
 alias ame='cd ~/amoeba'
 alias adm='cd ~/nerv/clojure/adam'
