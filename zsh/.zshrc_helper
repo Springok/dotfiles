@@ -20,24 +20,6 @@ else
 fi
 }
 
-cop(){
-  local exts=('rb,thor,jbuilder,builder')
-  local excludes=':(top,exclude)db/schema.rb'
-  local extra_options='--display-cop-names --rails'
-
-  if [[ $# -gt 0 ]]; then
-    local files=$(eval "noglob git diff $@ --name-only -- *.{$exts} $excludes")
-  else
-    local files=$(eval "noglob git status --porcelain -- *.{$exts} $excludes | sed -e '/^\s\?[DRC] /d' -e 's/^.\{3\}//g'")
-  fi
-
-  if [[ -n "$files" ]]; then
-    echo $files | xargs bundle exec rubocop `echo $extra_options`
-  else
-    echo "Nothing to check. Write some *.{$exts} to check.\nYou have 20 seconds to comply."
-  fi
-}
-
 # 重啟 puma/unicorn（非 daemon 模式，用於 pry debug）
 rpy() {
   if bundle show pry-remote > /dev/null 2>&1; then
