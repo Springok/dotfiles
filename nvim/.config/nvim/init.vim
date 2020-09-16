@@ -60,7 +60,7 @@ Plug 'tpope/vim-fugitive'
 "================================================
 Plug 'austintaylor/vim-indentobject'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -368,10 +368,6 @@ let g:user_emmet_settings = {
 \}
 
 let g:user_emmet_leader_key='<C-E>'
-
-" work with vim-commentary
-" https://github.com/tpope/vim-commentary/issues/68#issuecomment-265496851
-autocmd FileType javascript.jsx setlocal commentstring=/*\ %s\ */
 
 "================================================
 " Clojure

@@ -130,7 +130,7 @@ alias gddn='gddd --name-only --relative | cat'
 alias gwe='e `git diff --name-only --relative`'
 alias gie='e `git diff --cached --name-only --relative`'
 alias gbs='git branch | grep -v spring'
-alias gcoc='git checkout nerv_ck'
+alias gbt='git checkout nerv_ck'
 
 # JavaScript
 alias nodejs=node
