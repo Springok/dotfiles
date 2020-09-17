@@ -189,16 +189,18 @@ set completeopt-=preview
 "
 let g:ale_linters = {
 \   'ruby': ['rubocop', 'ruby'],
-\   'clojure': ['clj-kondo', 'joker'],
+\   'clojure': ['clj-kondo'],
 \}
 
 " https://github.com/dense-analysis/ale/pull/1850, make it work with bundle
 let g:ale_ruby_rubocop_executable = 'bundle'
 
 let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
+" \   'javascript': ['prettier'],
+" \   'css': ['prettier'],
+" \}
 let g:ale_fix_on_save = 1
 
 " Disable documentation window

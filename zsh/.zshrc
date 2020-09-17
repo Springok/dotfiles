@@ -127,6 +127,7 @@ alias gbda='git branch --merged | egrep -v "(^\*|master|dev|nerv)" | xargs git b
 alias glg='git log --stat --max-count=10 --pretty=format:"${_git_log_medium_format}"'
 alias gddd='gwd origin/master...'
 alias gdde='e `gddd --name-only --relative`'
+alias gddc='tig origin/master...'
 alias gle='e `gcs --pretty=format: --name-only`'
 alias gddn='gddd --name-only --relative | cat'
 alias gwe='e `git diff --name-only --relative`'
