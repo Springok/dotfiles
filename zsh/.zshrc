@@ -49,6 +49,10 @@ zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_ed25519'
 
 zinit ice pick'bin/*.zsh'
 zinit light 'bootleq/zsh-cop'
+
+# BurntSushi/ripgrep
+zinit ice as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
+zinit light BurntSushi/ripgrep
 ########################
 # General
 ########################
@@ -116,6 +120,7 @@ alias c='clear'
 alias aq='ag -Q'
 alias px='ps aux'
 alias ep='exit'
+alias ag=rg
 
 # Git
 alias gs='git status'
@@ -198,7 +203,7 @@ alias roll='rails db:rollback'
 alias rock!='rails db:migrate:redo STEP=1'
 alias smig='skip_env mig'
 
-alias unlog='gunzip `ag -g production.log -w`'
+alias unlog='gunzip `rg -g production.log -w`'
 alias olog='tail -f log/development.log'
 alias otlog='tail -f log/test.log'
 alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log/development.log'
