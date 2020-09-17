@@ -25,7 +25,7 @@ Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 "================================================
 " Dev Tools
 "================================================
-Plug 'rking/ag.vim'
+Plug 'dyng/ctrlsf.vim'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dispatch'
 Plug 'bootleq/vim-qrpsqlpq'
@@ -177,12 +177,20 @@ noremap <C-n> <C-i>
 
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
-vnoremap <leader>ag y:AgBuffer <c-r>"<cr>
 
 "================================================
 " Plugin
 "================================================
 "
+" CtrlSF
+ let g:ctrlsf_default_view_mode = 'compact'
+ let g:ctrlsf_ignore_dir = ['vendor/assets', 'public/eva/js/', 'cljs-runtime', 'node_modules']
+ let g:ctrlsf_indent = 2
+ let g:ctrlsf_mapping = {
+       \ "split"   : "gi",
+       \ "vsplit"  : "gs"
+       \ }
+
 " let g:sexp_enable_insert_mode_mappings = 0
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
@@ -266,10 +274,19 @@ noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<C
 
 " fzf search
 nnoremap <C-p> :GFiles<CR>
-nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fc :Files app/concepts<CR>
 let g:fzf_preview_window = 'right:33%'
+
+" CtrlSF
+nmap     <leader>ff <Plug>CtrlSFPrompt
+vmap     <leader>ff <Plug>CtrlSFVwordPath
+vmap     <leader>fF <Plug>CtrlSFVwordExec
+nmap     <leader>fn <Plug>CtrlSFCwordPath
+nmap     <leader>fp <Plug>CtrlSFPwordPath
+nnoremap <leader>fo :CtrlSFOpen<CR>
+nnoremap <leader>ft :CtrlSFToggle<CR>
+inoremap <leader>ft <Esc>:CtrlSFToggle<CR>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
@@ -331,10 +348,6 @@ nmap <leader>av :AV<CR>
 nmap <leader>gr :R<CR>
 nmap <leader>vl :sp<cr><C-^><cr>
 nmap <leader>hl :vsp<cr><C-^><cr>
-
-" Ag
-nmap <leader>ab :AgBuffer<space>
-nmap <leader>ag :Ag<space>
 
 " Vim-test
 nmap <silent> <leader><C-t> :TestNearest<CR>
