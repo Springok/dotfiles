@@ -69,6 +69,7 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'bootleq/vim-cycle'
 " Plug 'chaoren/vim-wordmotion'
 "================================================
 " Theme
@@ -182,6 +183,7 @@ vnoremap <leader>ag y:AgBuffer <c-r>"<cr>
 " Plugin
 "================================================
 "
+" let g:sexp_enable_insert_mode_mappings = 0
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
 set completeopt-=preview
@@ -359,6 +361,10 @@ nmap [<Space> O<ESC>
 nmap <leader>ss :!rpu<enter>
 nmap <leader>ks :!krpu<enter>
 nmap <leader>cop :!cop<enter>
+
+" bootleq cycle
+nmap <silent> gs <Plug>CycleNext
+vmap <silent> gs <Plug>CycleNext
 
 "================================================
 " Javascript
