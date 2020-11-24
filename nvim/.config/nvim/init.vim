@@ -297,7 +297,7 @@ command! -bang -nargs=* Rg
       \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
       \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
-" CtrlSF
+" CtrlSF search (replace ag.vim)
 nmap     <leader>ff <Plug>CtrlSFPrompt
 vmap     <leader>ff <Plug>CtrlSFVwordPath
 vmap     <leader>fF <Plug>CtrlSFVwordExec
@@ -313,9 +313,11 @@ cnoremap w!! %!sudo tee > /dev/null %
 " indenting
 noremap <leader>in mmgg=G'm
 
+" Insert Debugger
 autocmd FileType clojure nmap <buffer> <leader>p o(js/console.log<Space>
-
 nmap <leader>p obinding.pry<ESC>^
+
+" momeorized for multiple copy
 nmap <leader>c "ay
 nmap <leader>vv "ap
 
@@ -341,6 +343,8 @@ noremap!  ,, <C-\><C-N>
 
 " vim-gitgutter
 " nnoremap <leader>gg :GitGutterToggle<CR>
+
+" vim-signify (replace vim-gitgutter)
 nnoremap <leader>gg :SignifyToggle<CR>
 nnoremap <leader>gh :SignifyToggleHighlight<CR>
 nnoremap <leader>gdd :SignifyHunkDiff<CR>
@@ -392,7 +396,7 @@ nmap [<Space> O<ESC>
 " run commands in vim
 nmap <leader>ss :!rpu<enter>
 nmap <leader>ks :!krpu<enter>
-nmap <leader>cop :!cop<enter>
+" nmap <leader>cop :!cop<enter> FIXME: need to find a way to use cop in zshenv
 
 " bootleq cycle
 nmap <silent> gs <Plug>CycleNext
