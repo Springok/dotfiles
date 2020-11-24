@@ -6,21 +6,25 @@ let g:python3_host_prog = $HOME . '/.asdf/installs/python/3.6.9/bin/python'
 
 call plug#begin()
 
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
+Plug 'dstein64/vim-startuptime'
 
 "================================================
-" Clojure
+" Enhance Vim
 "================================================
-Plug 'guns/vim-clojure-static'
-" Plug 'guns/vim-clojure-highlight'
-" Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-salve'
-Plug 'Olical/conjure', {'tag': 'v4.2.0'}
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+Plug 'austintaylor/vim-indentobject'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align'
+Plug 'pedrohdz/vim-yaml-folds'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'bootleq/vim-cycle'
+Plug 'luochen1990/rainbow'
+" Plug 'chaoren/vim-wordmotion'
 
 "================================================
 " Dev Tools
@@ -56,23 +60,6 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
 "================================================
-" Enhance Vim
-"================================================
-Plug 'austintaylor/vim-indentobject'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/vim-easy-align'
-Plug 'pedrohdz/vim-yaml-folds'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'bootleq/vim-cycle'
-Plug 'luochen1990/rainbow'
-" Plug 'chaoren/vim-wordmotion'
-"================================================
 " Theme
 "================================================
 Plug 'itchyny/lightline.vim'
@@ -86,6 +73,25 @@ Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim'
+
+"================================================
+" Ruby/Rails
+"================================================
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
+
+"================================================
+" Clojure
+"================================================
+Plug 'guns/vim-clojure-static'
+" Plug 'guns/vim-clojure-highlight'
+" Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-salve'
+Plug 'Olical/conjure', {'tag': 'v4.2.0'}
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 
 call plug#end()
 
