@@ -14,12 +14,12 @@ Plug 'tpope/vim-bundler'
 " Clojure
 "================================================
 Plug 'guns/vim-clojure-static'
-Plug 'tpope/vim-salve'
+" Plug 'guns/vim-clojure-highlight'
 " Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-salve'
 Plug 'Olical/conjure', {'tag': 'v4.2.0'}
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'luochen1990/rainbow'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 
 "================================================
@@ -70,6 +70,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'bootleq/vim-cycle'
+Plug 'luochen1990/rainbow'
 " Plug 'chaoren/vim-wordmotion'
 "================================================
 " Theme
@@ -118,12 +119,6 @@ au BufNewFile,BufRead ssh_config,*/.ssh/config.d/*  setf sshconfig
 " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
 au InsertLeave * set nopaste
 
-" word means word, override the setup in vim-clojure-static
-" autocmd FileType clojure setlocal iskeyword+=?,*,!,+,/,=,<,>,$
-autocmd FileType clojure setlocal iskeyword-=.
-autocmd FileType clojure setlocal iskeyword-=/
-" autocmd FileType clojure setlocal iskeyword-=:
-
 " let g:wordmotion_mappings = {
 "       \ 'w': 'gw',
 "       \ 'b': 'gb',
@@ -161,7 +156,7 @@ autocmd VimResized * :wincmd =
 "================================================
 let mapleader = ','
 
-" sometimes need , to repeat latest f, t, F or T in opposite direction
+" sometimes need, to repeat latest f, t, F or T in opposite direction
 noremap \ ,
 " Helps when I want to delete something without clobbering my unnamed register.
 nnoremap s "_d
@@ -181,7 +176,21 @@ vnoremap p "_dP
 "================================================
 " Plugin
 "================================================
-"
+
+" vim-clojure-static
+let g:clojure_align_multiline_strings = 1
+" let g:clojure_fold = 1
+
+" word means word, override the setup in vim-clojure-static
+" autocmd FileType clojure setlocal iskeyword+=?,*,!,+,/,=,<,>,$
+autocmd FileType clojure setlocal iskeyword-=.
+autocmd FileType clojure setlocal iskeyword-=/
+" autocmd FileType clojure setlocal iskeyword-=:
+
+" vim-clojure-highlight
+let g:clojure_highlight_local_vars = 1
+let g:clojure_highlight_references = 1
+
 " CtrlSF
  let g:ctrlsf_default_view_mode = 'compact'
  let g:ctrlsf_ignore_dir = ['vendor/assets', 'public/eva/js/', 'cljs-runtime', 'node_modules']
@@ -410,7 +419,7 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 set noshowmode
 set showtabline=2
 
-colorscheme night-owl " lightline: night-owl
+" colorscheme night-owl " lightline: night-owl
 " colorscheme gruvbox   " lightline: gruvbox
 " colorscheme one       " lightline: one
 " colorscheme onedark   " lightline: onedark
@@ -418,7 +427,7 @@ colorscheme night-owl " lightline: night-owl
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " colorscheme ayu       " l lightline: ayu_light / ayu_mirage
-" colorscheme dracula   " lightline: dracula
+colorscheme dracula   " lightline: dracula
 " colorscheme iceberg   " lightline: iceberg
 set background=dark
 
