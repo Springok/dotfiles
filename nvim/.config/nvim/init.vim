@@ -216,10 +216,9 @@ let g:ale_ruby_rubocop_executable = 'bundle'
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
 \}
-" \   'javascript': ['prettier'],
-" \   'css': ['prettier'],
-" \}
 let g:ale_fix_on_save = 1
 
 " Disable documentation window
