@@ -282,9 +282,14 @@ noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<C
 
 " fzf search
 nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>rg :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fc :Files app/concepts<CR>
 let g:fzf_preview_window = 'right:33%'
+
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+      \ fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
 " CtrlSF
 nmap     <leader>ff <Plug>CtrlSFPrompt

@@ -28,6 +28,7 @@ zinit light junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_TMUX=1
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
 # Load the pure theme, with zsh-async library that's bundled with it.
 zinit ice pick"async.zsh" src"pure.zsh"
@@ -117,7 +118,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias c='clear'
-alias aq='ag -Q'
+alias aq='ag -F'
 alias px='ps aux'
 alias ep='exit'
 alias ag=rg
