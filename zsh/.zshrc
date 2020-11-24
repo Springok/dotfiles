@@ -155,8 +155,7 @@ alias pru='rpu'
 # Npm
 alias n='npm'
 alias nw='npm run watch'
-alias fight='API_URL="/`basename $PWD`" nw'
-alias eva_fight='eva ; fight'
+alias cnw='NERV_BASE="/nerv_ck" nw'
 
 # Yarn
 alias ys='yarn start'
