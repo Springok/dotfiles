@@ -31,8 +31,10 @@ export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
 # Load the pure theme, with zsh-async library that's bundled with it.
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+# zinit ice pick"async.zsh" src"pure.zsh"
+# zinit light sindresorhus/pure
+
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # need to install svn, `sudo apt-get install subversion`
 # keep git after pure, don't know why
@@ -255,3 +257,6 @@ bindkey '^t' fzf-completion
 bindkey '^F' autosuggest-accept
 bindkey '^p' history-substring-search-up
 bindkey '^n' history-substring-search-down
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
