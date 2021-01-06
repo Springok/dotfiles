@@ -290,8 +290,11 @@ noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<C
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>rg :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
-nnoremap <leader>fc :Files app/concepts<CR>
-let g:fzf_preview_window = 'right:33%'
+nnoremap <leader>fC :Files app/concepts<CR>
+let g:fzf_preview_window = 'right:30%'
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+
+" let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
@@ -299,9 +302,9 @@ command! -bang -nargs=* Rg
 
 " CtrlSF search (replace ag.vim)
 nmap     <leader>ff <Plug>CtrlSFPrompt
+nmap     <leader>fc <Plug>CtrlSFCwordExec
 vmap     <leader>ff <Plug>CtrlSFVwordPath
 vmap     <leader>fF <Plug>CtrlSFVwordExec
-nmap     <leader>fn <Plug>CtrlSFCwordPath
 nmap     <leader>fp <Plug>CtrlSFPwordPath
 nnoremap <leader>fo :CtrlSFOpen<CR>
 nnoremap <leader>ft :CtrlSFToggle<CR>
