@@ -71,10 +71,10 @@ stty stop undef
 
 # asdf setting
 . $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# . $HOME/.asdf/completions/asdf.bash
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:$PATH
 
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
@@ -83,7 +83,7 @@ export LC_CTYPE=en_US.UTF-8
 
 # For pair
 pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -p $2 -t ${3:-vagrant}@localhost 'tmux attach' }
-pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:dev.localhost:22222 -t $1 'watch -en 10 who' }
+pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:dev.localhost:22 -t $1 'watch -en 10 who' }
 
 # Use nvim
 alias e='nvim'
@@ -150,6 +150,8 @@ alias nodejs=node
 # Project Related
 ########################
 
+alias proj='cd ~/proj'
+
 # export USE_BOOTSNAP=1
 alias krpu='rpu kill'
 alias pru='rpu'
@@ -166,18 +168,19 @@ alias yt='yarn test'
 alias ycop='yarn eslint --fix-dry-run src/'
 
 # Nerv Projects
-alias ck='cd ~/nerv_ck'
-alias hk='cd ~/nerv'
-alias ka='cd ~/nerv_asuka'
+alias ck='cd ~/proj/nerv_ck'
+alias hk='cd ~/proj/nerv'
+alias ka='cd ~/proj/nerv_asuka'
 alias eva='cd eva/asuka'
-alias agl='cd ~/angel'
-alias ame='cd ~/amoeba'
-alias adm='cd ~/nerv/clojure/adam'
+alias agl='cd ~/proj/angel'
+alias ame='cd ~/proj/amoeba'
+alias adm='cd ~/proj/nerv/clojure/adam'
 
-alias ch_pw='rails runner /vagrant/synced/ch_pw.rb'
-alias e_pw='vim /vagrant/synced/ch_pw.rb'
-alias dump_db='/vagrant/scripts/db_dump.rb -f && ch_pw'
-alias dump_db2='/vagrant/scripts/dump_db.zsh'
+alias ch_pw='rails runner ~/proj/vagrant/synced/ch_pw.rb'
+alias e_pw='vim ~/proj/vagrant/synced/ch_pw.rb'
+alias dump_db='~/proj/vagrant/scripts/db_dump.rb && ch_pw'
+alias dump_db_f='~/proj/vagrant/scripts/db_dump.rb -f && ch_pw'
+alias dump_db2='~/proj/vagrant/scripts/dump_db.zsh'
 alias cd_sync='cd /vagrant/synced/'
 
 # remote dev machine
@@ -232,7 +235,7 @@ alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/.config/nvim/init.vim'
 alias en='e .env'
 alias mc='mailcatcher --http-ip 0.0.0.0 ; seki'
-alias kmc='pkill -fe mailcatcher'
+alias kmc='pkill -f mailcatcher'
 
 # Git pager setting
 export LESS=R

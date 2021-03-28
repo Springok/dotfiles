@@ -1,7 +1,7 @@
 java corretto-8.232.09.1
-clojure 1.10.1
+clojure 1.10.1.739
 rust 1.40.0
-python 3.6.9 2.7.18
+/* python 3.6.9 2.7.18 */
 golang 1.13
 ruby 2.7.0
 nodejs 10.16.3
