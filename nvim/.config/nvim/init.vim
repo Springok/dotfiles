@@ -24,6 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'bootleq/vim-cycle'
 Plug 'luochen1990/rainbow'
+Plug 'tpope/vim-projectionist'
 " Plug 'chaoren/vim-wordmotion'
 
 "================================================
@@ -173,6 +174,7 @@ noremap H ^
 noremap L $
 nmap j gj
 nmap k gk
+nnoremap ,gv V`]
 
 noremap <C-n> <C-i>
 
@@ -182,6 +184,10 @@ vnoremap p "_dP
 "================================================
 " Plugin
 "================================================
+
+" conjure
+let g:conjure#log#hud#width = 1
+let g:conjure#log#hud#anchor = "SE"
 
 " vim-clojure-static
 let g:clojure_align_multiline_strings = 1
@@ -324,6 +330,10 @@ nmap <leader>p obinding.pry<ESC>^
 nmap <leader>c "ay
 nmap <leader>vv "ap
 
+" use system clipboard
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
 " window
 nmap <leader>w <C-w>
 nmap <leader>wf <C-w>f<C-w>H
@@ -356,7 +366,7 @@ nnoremap <leader>gdr :SignifyHunkUndo<CR>
 " Fugitive
 set diffopt+=vertical
 
-nmap <silent><leader>gb :Gblame<cr>
+nmap <silent><leader>gb :Git blame<cr>
 
 nmap <leader>ge :Gedit<Space>
 " nmap <leader>gdd :Gdiff<Space>
@@ -376,9 +386,9 @@ nmap <leader>vl :sp<cr><C-^><cr>
 nmap <leader>hl :vsp<cr><C-^><cr>
 
 " Vim-test
-nmap <silent> <leader><C-t> :TestNearest<CR>
-nmap <silent> <leader><C-f> :TestFile<CR>
-nmap <silent> <leader><C-l> :TestLast<CR>
+" nmap <silent> <leader><C-t> :TestNearest<CR>
+" nmap <silent> <leader><C-f> :TestFile<CR>
+" nmap <silent> <leader><C-l> :TestLast<CR>
 
 " start interactive EasyAlign in visual mode
 vmap <Enter> <Plug>(EasyAlign)
@@ -389,8 +399,7 @@ nmap <leader>l <Plug>(EasyAlign)
 nnoremap <leader>ar :VtrAttachToPane<cr>
 nnoremap <leader>kr :VtrKillRunner<cr>
 nnoremap <leader>sl :VtrSendLinesToRunner<cr>
-nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd': 'rc'}<cr>
-nnoremap <leader>ry :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd': 'rpy'}<cr>
+nnoremap <leader>rt :VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rtw'}<cr>
 
 " barrow from unimpaired
 nmap ]<Space> o<ESC>

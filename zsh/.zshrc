@@ -159,7 +159,7 @@ alias pru='rpu'
 # Npm
 alias n='npm'
 alias nw='npm run watch'
-alias cnw='NERV_BASE="/nerv_ck" nw'
+alias cnw='npm run watch NERV_BASE="/nerv_ck"'
 
 # Yarn
 alias ys='yarn start'
@@ -174,7 +174,7 @@ alias ka='cd ~/proj/nerv_asuka'
 alias eva='cd eva/asuka'
 alias agl='cd ~/proj/angel'
 alias ame='cd ~/proj/amoeba'
-alias adm='cd ~/proj/nerv/clojure/adam'
+alias ad='cd clojure/adam'
 
 alias ch_pw='rails runner ~/proj/vagrant/synced/ch_pw.rb'
 alias e_pw='vim ~/proj/vagrant/synced/ch_pw.rb'
@@ -225,6 +225,8 @@ alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 # Leiningen
 alias l='lein'
 alias repl='l repl'
+alias np='clj -M:dev:nrepl'
+alias rtw='clj -M:test:runner --watch'
 
 ########################
 # Jump Into Config File
