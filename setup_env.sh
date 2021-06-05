@@ -25,6 +25,7 @@ stow --verbose git \
   zsh \
   nvim \
   tmux \
+  clojure \
   ruby \
   asdf
 
@@ -34,7 +35,7 @@ cd $HOME
 
 if [ ! -d $asdf_dir ]; then
     echo "Installing asdf..."
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6 $asdf_dir
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0 $asdf_dir
 
     source ~/.zshrc || true
     echo "asdf installation complete"
