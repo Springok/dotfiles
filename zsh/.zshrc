@@ -193,7 +193,7 @@ alias cd_sync='cd /vagrant/synced/'
 
 # Gems
 alias be='bundle exec'
-alias seki='be sidekiq'
+alias seki='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be sidekiq'
 alias stopme='be spring stop'
 alias copm='cop master...'
 alias rake='be rake'
