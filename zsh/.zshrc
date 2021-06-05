@@ -21,9 +21,11 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-history-substring-search
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice as="program" pick="$ZPFX/bin/(fzf|fzf-tmux)" \
-  atclone="./install;cp bin/(fzf|fzf-tmux) $ZPFX/bin"
-zinit light junegunn/fzf
+zinit ice from"gh-r" as"program"
+zinit load junegunn/fzf-bin
+# zinit ice as="program" pick="$ZPFX/bin/(fzf|fzf-tmux)" \
+#   atclone="./install;cp bin/(fzf|fzf-tmux) $ZPFX/bin"
+# zinit light junegunn/fzf
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
