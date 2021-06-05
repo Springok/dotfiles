@@ -65,6 +65,7 @@ zinit light BurntSushi/ripgrep
 source ~/.zshrc_helper
 
 [ -f ~/.ssh/abagile-dev.pem ] && ssh-add ~/.ssh/abagile-dev.pem 2&> /dev/null
+[ -f ~/.ssh/id_pair ] && ssh-add ~/.ssh/id_pair 2&> /dev/null
 
 # Disable flow control then we can use ctrl-s to save in vim
 # Disable flow control commands (keeps C-s from freezing everything)
