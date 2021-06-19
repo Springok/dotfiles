@@ -21,9 +21,11 @@ Plug 'junegunn/vim-easy-align'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'bootleq/vim-cycle'
 Plug 'luochen1990/rainbow'
+
+" Navigation
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-projectionist'
 " Plug 'chaoren/vim-wordmotion'
 
@@ -85,13 +87,17 @@ Plug 'tpope/vim-bundler'
 "================================================
 " Clojure
 "================================================
-Plug 'guns/vim-clojure-static'
-" Plug 'guns/vim-clojure-highlight'
+" Plug 'guns/vim-clojure-static'
 " Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-salve'
+" Plug 'guns/vim-clojure-highlight'
+
+" Plug 'tpope/vim-salve'
+
 Plug 'Olical/conjure', {'tag': 'v4.2.0'}
+
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 
 call plug#end()
@@ -189,19 +195,11 @@ vnoremap p "_dP
 let g:conjure#log#hud#width = 1
 let g:conjure#log#hud#anchor = "SE"
 
-" vim-clojure-static
-let g:clojure_align_multiline_strings = 1
-" let g:clojure_fold = 1
-
-" word means word, override the setup in vim-clojure-static
+" " word means word, override the setup in vim-clojure-static
 " autocmd FileType clojure setlocal iskeyword+=?,*,!,+,/,=,<,>,$
 autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal iskeyword-=/
 " autocmd FileType clojure setlocal iskeyword-=:
-
-" vim-clojure-highlight
-let g:clojure_highlight_local_vars = 1
-let g:clojure_highlight_references = 1
 
 " CtrlSF
  let g:ctrlsf_default_view_mode = 'compact'
@@ -424,15 +422,6 @@ let g:user_emmet_settings = {
 \}
 
 let g:user_emmet_leader_key='<C-E>'
-
-"================================================
-" Clojure
-"================================================
-" a few extra mappings for fireplace
-" evaluate top level form
-au BufEnter *.clj nnoremap <buffer> cpt :Eval<CR>
-" show last evaluation in temp file
-au BufEnter *.clj nnoremap <buffer> cpl :Last<CR>
 
 "================================================
 " Theme
