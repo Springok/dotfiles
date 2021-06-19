@@ -294,7 +294,9 @@ noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<C
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>rg :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
-nnoremap <leader>fC :Files app/concepts<CR>
+nnoremap <leader>fe :Files app/concepts<CR>
+nnoremap <leader>fm :Files app/models<CR>
+nnoremap <leader>fapi :Files app/controllers/api<CR>
 let g:fzf_preview_window = 'right:30%'
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
 
