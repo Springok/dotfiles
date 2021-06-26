@@ -77,7 +77,7 @@ stty stop undef
 # . $HOME/.asdf/completions/asdf.bash
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
 
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
@@ -159,25 +159,13 @@ alias proj='cd ~/proj'
 alias krpu='rpu kill'
 alias pru='rpu'
 
-# Npm
-alias n='npm'
-alias nw='npm run watch'
-alias cnw='npm run watch NERV_BASE="/nerv_ck"'
-
-# Yarn
-alias ys='yarn start'
-alias yf="yarn prettier --config .prettierrc --write 'src/**/*.{js,jsx,json,css,scss,md}'"
-alias yt='yarn test'
-alias ycop='yarn eslint --fix-dry-run src/'
-
 # Nerv Projects
 alias ck='cd ~/proj/nerv_ck'
 alias hk='cd ~/proj/nerv'
-alias ka='cd ~/proj/nerv_asuka'
-alias eva='cd eva/asuka'
 alias agl='cd ~/proj/angel'
 alias ame='cd ~/proj/amoeba'
-alias ad='cd clojure/adam'
+alias adam='cd clojure/adam'
+alias asuka='cd eva/asuka'
 
 alias ch_pw='rails runner ~/proj/vagrant/synced/ch_pw.rb'
 alias e_pw='vim ~/proj/vagrant/synced/ch_pw.rb'
@@ -193,7 +181,8 @@ alias cd_sync='cd /vagrant/synced/'
 
 # Gems
 alias be='bundle exec'
-alias seki='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be sidekiq'
+alias rse='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be sidekiq'
+alias rsk='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be rake sneakers:run'
 alias stopme='be spring stop'
 alias copm='cop master...'
 alias rake='be rake'
@@ -228,8 +217,14 @@ alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 # Leiningen
 alias l='lein'
 alias repl='l repl'
-alias np='clj -M:dev:nrepl'
-alias rtw='clj -M:test:runner --watch'
+
+# Adam
+alias ran='clj -M:dev:nrepl'
+alias rat='clj -M:test:runner --watch'
+
+# Asuka
+alias rwh='NERV_BASE=/nerv npm run watch'
+alias rwc='NERV_BASE=/nerv_ck npm run watch'
 
 ########################
 # Jump Into Config File
