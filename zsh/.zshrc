@@ -77,7 +77,8 @@ stty stop undef
 # . $HOME/.asdf/completions/asdf.bash
 
 # User configuration
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/postgresql@10/bin:/usr/local/opt/erlang@23/bin:$PATH
 
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
