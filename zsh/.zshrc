@@ -85,6 +85,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+export EDITOR='nvim'
+
 # For pair
 pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -p $2 -t ${3:-vagrant}@localhost 'tmux attach' }
 pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:dev.localhost:22 -t $1 'watch -en 10 who' }
@@ -163,6 +165,7 @@ alias pru='rpu'
 # Nerv Projects
 alias ck='cd ~/proj/nerv_ck'
 alias hk='cd ~/proj/nerv'
+alias sg='cd ~/proj/nerv_sg'
 alias agl='cd ~/proj/angel'
 alias ame='cd ~/proj/amoeba'
 alias adam='cd clojure/adam'
@@ -226,6 +229,12 @@ alias rat='clj -M:test:runner --watch'
 # Asuka
 alias rwh='NERV_BASE=/nerv npm run watch'
 alias rwc='NERV_BASE=/nerv_ck npm run watch'
+alias rws='NERV_BASE=/nerv_sg npm run watch'
+
+# Tmuxinator
+alias t='tmuxinator'
+alias work='t s work'
+alias wadam='t s work_adam'
 
 ########################
 # Jump Into Config File
