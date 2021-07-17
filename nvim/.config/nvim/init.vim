@@ -50,7 +50,7 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 " Javascript/HTML
 "================================================
 Plug 'kchmck/vim-coffee-script'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'slim-template/vim-slim'
@@ -414,13 +414,13 @@ vmap <silent> gs <Plug>CycleNext
 "================================================
 " Javascript
 "================================================
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends': 'jsx'
-\  },
-\}
+" let g:user_emmet_settings = {
+" \  'javascript.jsx' : {
+" \      'extends': 'jsx'
+" \  },
+" \}
 
-let g:user_emmet_leader_key='<C-E>'
+" let g:user_emmet_leader_key='<C-E>'
 
 "================================================
 " Theme
