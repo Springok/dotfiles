@@ -333,6 +333,7 @@ noremap <leader>in mmgg=G'm
 
 " Insert Debugger
 autocmd FileType clojure nmap <buffer> <leader>p o(js/console.log<Space>
+autocmd Filetype gitcommit nmap <buffer> <leader>p oSee merge request metis/nerv!
 nmap <leader>p obinding.pry<ESC>^
 
 " momeorized for multiple copy
