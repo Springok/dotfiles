@@ -44,7 +44,23 @@ Plug 'tpope/vim-cucumber'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'majutsushi/tagbar' " list all methods in a file
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+
+Plug 'hrsh7th/nvim-compe' " Autocomplete
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.source = {
+      \ 'path': v:true,
+      \ 'buffer': v:true,
+      \ 'nvim_lsp': v:true,
+      \ 'conjure': v:true,
+      \ }
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm()
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+Plug 'tami5/compe-conjure'
 
 "================================================
 " Javascript/HTML
@@ -212,12 +228,6 @@ autocmd FileType clojure setlocal iskeyword-=/
        \ "vsplit"  : "gs"
        \ }
 
-" let g:sexp_enable_insert_mode_mappings = 0
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
-set completeopt-=preview
-"
-"
 let g:ale_linters = {
 \   'ruby': ['rubocop', 'ruby'],
 \   'clojure': ['clj-kondo'],
