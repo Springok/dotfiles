@@ -289,8 +289,10 @@ noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<C
 
 " fzf search
 nnoremap <C-p> :GFiles<CR>
+" nnoremap <C-p> :Files <C-R>=expand('%:h')<CR><CR>
 nnoremap <leader>rg :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fl :Files<CR>
 nnoremap <leader>fe :Files app/concepts<CR>
 nnoremap <leader>fm :Files app/models<CR>
 nnoremap <leader>fapi :Files app/controllers/api<CR>
