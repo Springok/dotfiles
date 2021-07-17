@@ -24,6 +24,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'bootleq/vim-cycle'
 Plug 'luochen1990/rainbow'
 
+Plug 'ssh://git@gitlab.abagile.com:7788/chiao.chuang/vim-abagile.git'
+
 " Navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-projectionist'
@@ -255,11 +257,6 @@ let test#ruby#minitest#options = '--verbose'
 " override default ignore comment and string in vim-easy-align
 let g:easy_align_ignore_groups = []
 
-"================= Helper =================
-for f in split(globpath('~/dotfiles/script/vim', '*.vim'), '\n')
-  exe 'source' f
-endfor
-
 " run sql file to give your the result table!
 " usage: <leader_key>p + j, l, r
 function! s:init_qrpsqlpq()
@@ -287,7 +284,7 @@ endif
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>] :TagbarToggle<CR>
-nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+nnoremap <leader><space> :call abagile#whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " fzf search
