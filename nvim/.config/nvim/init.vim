@@ -343,13 +343,14 @@ cnoremap w!! %!sudo tee > /dev/null %
 noremap <leader>in mmgg=G'm
 
 " Insert Debugger
-autocmd FileType clojure nmap <buffer> <leader>p o(js/console.log<Space>
-autocmd Filetype gitcommit nmap <buffer> <leader>p oSee merge request metis/nerv!
-nmap <leader>p obinding.pry<ESC>^
+autocmd FileType clojure nmap <buffer> <leader>pp o(prn<Space>
+autocmd FileType clojure nmap <buffer> <leader>pc o(js/console.log<Space>
+autocmd Filetype gitcommit nmap <buffer> <leader>pp oSee merge request metis/nerv!
+nmap <leader>pp obinding.pry<ESC>^
 
 " momeorized for multiple copy
-nmap <leader>c "ay
-nmap <leader>vv "ap
+" nmap <leader>c "ay
+" nmap <leader>vv "ap
 
 " use system clipboard
 noremap <Leader>Y "+y
@@ -370,6 +371,9 @@ imap <C-s> <esc>:w<CR>
 " Close current buffer
 nmap <leader>q <esc>:bw<cr>
 imap <leader>q <esc>:bw<cr>
+
+nmap <leader>bd <esc>:bd!<cr>
+imap <leader>bd <esc>:bd!<cr>
 
 " in all modes hit ,, can return to normal mode
 noremap  ,, <C-\><C-N>
@@ -416,6 +420,9 @@ vmap <Enter> <Plug>(EasyAlign)
 " start interactive EasyAlign for a motion/text object (e.g. <leader>eaip)
 nmap <leader>l <Plug>(EasyAlign)
 
+" Vim Tmux Navigator
+let g:tmux_navigator_disable_when_zoomed = 1
+
 " Vim Tmux Runner
 nnoremap <leader>ar :VtrAttachToPane<cr>
 nnoremap <leader>kr :VtrKillRunner<cr>
@@ -461,11 +468,11 @@ set showtabline=2
 " colorscheme gruvbox   " lightline: gruvbox
 " colorscheme one       " lightline: one
 " colorscheme onedark   " lightline: onedark
-" colorscheme nord      " lightline: nord
+colorscheme nord      " lightline: nord
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 " colorscheme ayu       " l lightline: ayu_light / ayu_mirage
-colorscheme dracula   " lightline: dracula
+" colorscheme dracula   " lightline: dracula
 " colorscheme iceberg   " lightline: iceberg
 set background=dark
 
