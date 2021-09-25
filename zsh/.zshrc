@@ -1,7 +1,6 @@
 ########################
 # Zplug
-########################
-### Added by Zinit's installer
+######################## ## Added by Zinit's installer
 # install zinit, if necessary
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -30,7 +29,8 @@ zinit load junegunn/fzf-bin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g '!{.git,.clj-kondo,node_modules}/*''
 
 # Load the pure theme, with zsh-async library that's bundled with it.
 # zinit ice pick"async.zsh" src"pure.zsh"
@@ -77,8 +77,10 @@ stty stop undef
 # . $HOME/.asdf/completions/asdf.bash
 
 # User configuration
-# export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/postgresql@10/bin:/usr/local/opt/erlang@23/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/postgresql@10/bin:/usr/local/opt/erlang@23/bin:$PATH
+#
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
