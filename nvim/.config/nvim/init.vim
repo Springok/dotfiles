@@ -22,7 +22,6 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'bootleq/vim-cycle'
-Plug 'luochen1990/rainbow'
 
 Plug 'ssh://git@gitlab.abagile.com:7788/chiao.chuang/vim-abagile.git'
 
@@ -37,9 +36,10 @@ Plug 'tpope/vim-projectionist'
 Plug 'dyng/ctrlsf.vim'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 Plug 'bootleq/vim-qrpsqlpq'
-Plug 'thinca/vim-quickrun'
-Plug 'janko-m/vim-test'
+Plug 'thinca/vim-quickrun', {'commit': 'c980977f1d77b3285937b9d7b5baa964fc9ed7f5'}
+" Plug 'janko-m/vim-test'
 Plug 'tpope/vim-cucumber'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
@@ -51,16 +51,17 @@ let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.source = {
       \ 'path': v:true,
+      \ 'spell': v:true,
       \ 'buffer': v:true,
       \ 'nvim_lsp': v:true,
+      \ 'nvim_lua': v:true,
       \ 'conjure': v:true,
       \ }
 inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm()
+inoremap <silent><expr> <CR>      compe#confirm('<C-y>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-Plug 'tami5/compe-conjure'
 
 "================================================
 " Javascript/HTML
@@ -105,18 +106,26 @@ Plug 'tpope/vim-bundler'
 "================================================
 " Clojure
 "================================================
-" Plug 'guns/vim-clojure-static'
-" Plug 'tpope/vim-fireplace'
-" Plug 'guns/vim-clojure-highlight'
-
-" Plug 'tpope/vim-salve'
-
-Plug 'Olical/conjure', {'tag': 'v4.2.0'}
-
+Plug 'luochen1990/rainbow'
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'tpope/vim-fireplace' " Navigating and Comprehending
 
-Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+" ==== Conjure ====
+Plug 'Olical/conjure', {'tag': 'v4.21.0'}
+Plug 'clojure-vim/vim-jack-in'
+Plug 'tami5/compe-conjure'
+
+let g:conjure#log#hud#width = 0.7
+let g:conjure#log#hud#height = 0.7
+let g:conjure#log#hud#anchor = "SE"
+let g:conjure#highlight#enable = 'true'
+" let g:conjure#mapping#prefix = ",c"
+let g:conjure#log#botright = 'true'
+nnoremap ,ccs :ConjureShadowSelect app<CR>
+" ==================
+"
 
 call plug#end()
 
@@ -143,6 +152,8 @@ set nohlsearch
 set relativenumber
 set noswapfile                                               " disable .swp files creation in vim
 set hidden                                                   " allow you to switch between buffers without saving
+set splitright
+
 " set colorcolumn=80
 
 au BufNewFile,BufRead ssh_config,*/.ssh/config.d/*  setf sshconfig
@@ -209,19 +220,19 @@ vnoremap p "_dP
 " Plugin
 "================================================
 
-" conjure
-let g:conjure#log#hud#width = 1
-let g:conjure#log#hud#anchor = "SE"
-
-" " word means word, override the setup in vim-clojure-static
 " autocmd FileType clojure setlocal iskeyword+=?,*,!,+,/,=,<,>,$
 autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal iskeyword-=/
+
+" setlocal path+=eva/asuka/src
+" setlocal path+=eva/asuka/resources
+" setlocal suffixesadd+=.clj,.cljs,.cljc
+
 " autocmd FileType clojure setlocal iskeyword-=:
 
 " CtrlSF
  let g:ctrlsf_default_view_mode = 'compact'
- let g:ctrlsf_ignore_dir = ['vendor/assets', 'public/eva/js/', 'cljs-runtime', 'node_modules']
+ let g:ctrlsf_ignore_dir = ['vendor/assets', 'public/eva/js/', 'cljs-runtime', 'node_modules', 'db']
  let g:ctrlsf_indent = 2
  let g:ctrlsf_mapping = {
        \ "split"   : "gi",
