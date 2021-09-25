@@ -22,3 +22,5 @@
 [user]
   email = wenchuan.lin@abagile.com
   name  = spring
+[pull]
+	rebase = false
