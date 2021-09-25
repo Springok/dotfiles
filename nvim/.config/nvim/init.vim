@@ -77,7 +77,6 @@ Plug 'ap/vim-css-color'
 "================================================
 " Git
 "================================================
-" Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
@@ -302,21 +301,18 @@ endif
 "================================================
 " Shortcut
 "================================================
-nnoremap <leader>d :NERDTreeToggle<CR>
-nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <leader>dd :NERDTreeToggle<CR>
+nnoremap <leader>df :NERDTreeFind<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call abagile#whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " fzf search
+" https://github.com/junegunn/fzf.vim#commands
 nnoremap <C-p> :GFiles<CR>
 " nnoremap <C-p> :Files <C-R>=expand('%:h')<CR><CR>
-nnoremap <leader>rg :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fl :Files<CR>
-nnoremap <leader>fe :Files app/concepts<CR>
-nnoremap <leader>fm :Files app/models<CR>
-nnoremap <leader>fapi :Files app/controllers/api<CR>
 let g:fzf_preview_window = 'right:30%'
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
 
@@ -372,23 +368,17 @@ imap <C-s> <esc>:w<CR>
 nmap <leader>q <esc>:bw<cr>
 imap <leader>q <esc>:bw<cr>
 
-nmap <leader>bd <esc>:bd!<cr>
-imap <leader>bd <esc>:bd!<cr>
-
 " in all modes hit ,, can return to normal mode
 noremap  ,, <C-\><C-N>
 noremap!  ,, <C-\><C-N>
-
-" vim-gitgutter
-" nnoremap <leader>gg :GitGutterToggle<CR>
 
 " vim-signify (replace vim-gitgutter)
 nnoremap <leader>gg :SignifyToggle<CR>
 nnoremap <leader>gh :SignifyToggleHighlight<CR>
 nnoremap <leader>gdd :SignifyHunkDiff<CR>
-nnoremap <leader>gdr :SignifyHunkUndo<CR>
+nnoremap <leader>gu :SignifyHunkUndo<CR>
 
-" Fugitive
+" fugitive
 set diffopt+=vertical
 
 nmap <silent><leader>gb :Git blame<cr>
