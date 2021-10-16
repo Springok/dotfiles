@@ -63,6 +63,14 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+" list all snippets for current filetype
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsEditSplit="vertical"
+
 "================================================
 " Javascript/HTML
 "================================================
@@ -333,7 +341,6 @@ noremap <leader>in mmgg=G'm
 
 " Insert Debugger
 autocmd FileType clojure nmap <buffer> <leader>p o(prn<Space>
-autocmd FileType clojure nmap <buffer> <leader>js o(js/console.log<Space>
 autocmd Filetype gitcommit nmap <buffer> <leader>p oSee merge request metis/nerv!
 nmap <leader>p obinding.pry<ESC>^
 
