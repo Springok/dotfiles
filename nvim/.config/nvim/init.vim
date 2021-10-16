@@ -332,10 +332,10 @@ cnoremap w!! %!sudo tee > /dev/null %
 noremap <leader>in mmgg=G'm
 
 " Insert Debugger
-autocmd FileType clojure nmap <buffer> <leader>pp o(prn<Space>
-autocmd FileType clojure nmap <buffer> <leader>pc o(js/console.log<Space>
-autocmd Filetype gitcommit nmap <buffer> <leader>pp oSee merge request metis/nerv!
-nmap <leader>pp obinding.pry<ESC>^
+autocmd FileType clojure nmap <buffer> <leader>p o(prn<Space>
+autocmd FileType clojure nmap <buffer> <leader>js o(js/console.log<Space>
+autocmd Filetype gitcommit nmap <buffer> <leader>p oSee merge request metis/nerv!
+nmap <leader>p obinding.pry<ESC>^
 
 " momeorized for multiple copy
 " nmap <leader>c "ay
