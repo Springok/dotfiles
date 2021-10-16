@@ -28,7 +28,7 @@ Plug 'ssh://git@gitlab.abagile.com:7788/chiao.chuang/vim-abagile.git'
 " Navigation
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-projectionist'
-" Plug 'chaoren/vim-wordmotion'
+Plug 'tpope/vim-unimpaired'
 
 "================================================
 " Dev Tools
@@ -411,10 +411,6 @@ nnoremap <leader>ar :VtrAttachToPane<cr>
 nnoremap <leader>kr :VtrKillRunner<cr>
 nnoremap <leader>sl :VtrSendLinesToRunner<cr>
 nnoremap <leader>rt :VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rtw'}<cr>
-
-" barrow from unimpaired
-nmap ]<Space> o<ESC>
-nmap [<Space> O<ESC>
 
 " run commands in vim
 nmap <leader>ss :!rpu<enter>
