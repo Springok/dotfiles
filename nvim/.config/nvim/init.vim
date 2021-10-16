@@ -86,14 +86,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
-Plug 'joshdick/onedark.vim'
-Plug 'cocopon/iceberg.vim'
-Plug 'rakr/vim-one'
-Plug 'haishanh/night-owl.vim'
-Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'dracula/vim'
+Plug 'Mofiqul/vscode.nvim', { 'branch': 'main' }
 
 "================================================
 " Ruby/Rails
@@ -454,20 +447,11 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 set noshowmode
 set showtabline=2
 
-" colorscheme night-owl " lightline: night-owl
-" colorscheme gruvbox   " lightline: gruvbox
-" colorscheme one       " lightline: one
-" colorscheme onedark   " lightline: onedark
-colorscheme nord      " lightline: nord
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" colorscheme ayu       " l lightline: ayu_light / ayu_mirage
-" colorscheme dracula   " lightline: dracula
-" colorscheme iceberg   " lightline: iceberg
-set background=dark
+let g:vscode_style = "dark"
+colorscheme vscode
 
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'ayu_dark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
       \ },
