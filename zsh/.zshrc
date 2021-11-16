@@ -1,63 +1,45 @@
 ########################
-# Zplug
-######################## ## Added by Zinit's installer
-# install zinit, if necessary
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+# Zim
+########################
+
+# Remove older command from the history if a duplicate is to be added.
+setopt HIST_IGNORE_ALL_DUPS
+
+# -----------------
+# Zim configuration
+# -----------------
+
+# asdf setting
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
+
+# --------------------
+# Module configuration
+# --------------------
+
+# Set a custom prefix for the generated aliases. The default prefix is 'G'.
+zstyle ':zim:git' aliases-prefix 'g'
+
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# ------------------
+# Initialize modules
+# ------------------
+
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  # Update static initialization script if it does not exist or it's outdated, before sourcing it
+  source ${ZIM_HOME}/zimfw.zsh init -q
 fi
+source ${ZIM_HOME}/init.zsh
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+# }}} End configuration added by Zim install
 
-### End of Zinit's installer chunk
-
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-history-substring-search
-zinit light zdharma/fast-syntax-highlighting
-
-zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
-# zinit ice as="program" pick="$ZPFX/bin/(fzf|fzf-tmux)" \
-#   atclone="./install;cp bin/(fzf|fzf-tmux) $ZPFX/bin"
-# zinit light junegunn/fzf
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden'
-# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g '!{.git,.clj-kondo,node_modules}/*''
-
-# Load the pure theme, with zsh-async library that's bundled with it.
-# zinit ice pick"async.zsh" src"pure.zsh"
-# zinit light sindresorhus/pure
-
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# need to install svn, `sudo apt-get install subversion`
-# keep git after pure, don't know why
-zinit ice svn
-zinit snippet PZT::modules/git
-
-zinit snippet PZT::modules/environment
-zinit snippet PZT::modules/completion
-zinit snippet PZT::modules/history
-zinit snippet PZT::modules/rsync
-zinit snippet PZT::modules/directory
-
-zinit snippet PZT::modules/ssh
-zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_ed25519'
-
-zinit ice pick'bin/*.zsh'
-zinit light 'bootleq/zsh-cop'
-
-# BurntSushi/ripgrep
-zinit ice as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
-zinit light BurntSushi/ripgrep
 ########################
 # General
 ########################
@@ -71,10 +53,6 @@ source ~/.zshrc_helper
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef
-
-# asdf setting
-. $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
 
 # User configuration
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
@@ -268,6 +246,10 @@ bindkey -v
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
+export FZF_TMUX=1
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g '!{.git,.clj-kondo,node_modules}/*''
+
 # module widget remap
 export FZF_COMPLETION_TRIGGER=';'
 bindkey '^r' fzf-history-widget
@@ -276,5 +258,4 @@ bindkey '^F' autosuggest-accept
 bindkey '^p' history-substring-search-up
 bindkey '^n' history-substring-search-down
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
