@@ -213,10 +213,21 @@ nmap j gj
 nmap k gk
 nnoremap ,gv V`]
 
+" Keeping it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
 noremap <C-n> <C-i>
 
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
+
+nnoremap Y yg_
+
+" moving text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 "================================================
 " Plugin
@@ -351,12 +362,15 @@ nmap <leader>p obinding.pry<ESC>^
 " nmap <leader>vv "ap
 
 " use system clipboard
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+vnoremap <Leader>y "+y
+nnoremap <Leader>P "+p
+nnoremap <Leader>y "+y
 
 " window
 nmap <leader>w <C-w>
 nmap <leader>wf <C-w>f<C-w>H
+" nnoremap <Leader>+ :vertical resize +10<CR>
+" nnoremap <Leader>- :vertical resize -10<CR>
 
 " buffer switch
 nnoremap <silent> <tab> :bn<CR>
@@ -406,6 +420,10 @@ nmap <leader>hl :vsp<cr><C-^><cr>
 " nmap <silent> <leader><C-t> :TestNearest<CR>
 " nmap <silent> <leader><C-f> :TestFile<CR>
 " nmap <silent> <leader><C-l> :TestLast<CR>
+
+" abagile-test
+nnoremap <silent> <Leader>tl :call abagile#rails#test_tmux('h')
+nnoremap <silent> <Leader>tf :call abagile#rails#test_tmux('h', 1)
 
 " start interactive EasyAlign in visual mode
 vmap <Enter> <Plug>(EasyAlign)
