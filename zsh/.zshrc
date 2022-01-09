@@ -82,13 +82,6 @@ fi
 alias sshc='e ~/.ssh/config'
 alias setup_tags='ctags -R'
 
-# For vagrant
-alias va=vagrant
-alias vup='va up'
-alias vssh='va ssh'
-alias vhalt='va halt'
-alias vhlat='va halt'
-
 case `uname` in
   Darwin)
     alias ls='ls -G'
@@ -151,15 +144,17 @@ alias sg='cd ~/proj/nerv_sg'
 alias agl='cd ~/proj/angel'
 alias ame='cd ~/proj/amoeba'
 alias adam='cd clojure/projects/adam'
-alias asuka='cd eva/asuka'
+alias illy='cd clojure/projects/illy'
+alias asuka='cd clojure/projects/asuka'
+alias cpro='cd clojure/projects'
+alias aoc='cd ~/proj/advent-of-code'
 
-alias ch_pw='rails runner ~/proj/vagrant/synced/ch_pw.rb'
-alias e_pw='vim ~/proj/vagrant/synced/ch_pw.rb'
-alias e_db='vim ~/proj/vagrant/user/db_mapping.yml'
-alias dump_db='~/proj/vagrant/scripts/db_dump.rb && ch_pw'
-alias dump_db_f='~/proj/vagrant/scripts/db_dump.rb -f && ch_pw'
-alias dump_db2='~/proj/vagrant/scripts/dump_db.zsh'
-alias cd_sync='cd /vagrant/synced/'
+alias ch_pw='rails runner ~/proj/snippets/db/ch_pw.rb'
+alias e_pw='vim ~/proj/snippets/db/ch_pw.rb'
+alias e_db='vim ~/proj/snippets/db/db_mapping.yml'
+alias dump_db='~/proj/vm/scripts/db_dump.rb && ch_pw'
+alias dump_db_f='~/proj/vm/scripts/db_dump.rb -f && ch_pw'
+alias dump_db2='~/proj/vm/scripts/dump_db.zsh'
 
 # remote dev machine
 # alias ch_pw='rails runner ~/synced/ch_pw.rb'
@@ -217,7 +212,7 @@ alias rws='NERV_BASE=/nerv_sg npm run watch'
 # Tmuxinator
 alias t='tmuxinator'
 alias work='t s work'
-alias wadam='t s work_adam'
+# alias wadam='t s work_adam'
 
 ########################
 # Jump Into Config File
