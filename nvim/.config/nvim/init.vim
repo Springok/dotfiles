@@ -53,7 +53,6 @@ let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.source = {
       \ 'path': v:true,
-      \ 'spell': v:true,
       \ 'buffer': v:true,
       \ 'nvim_lsp': v:true,
       \ 'nvim_lua': v:true,
@@ -407,7 +406,7 @@ nmap <leader>gdw :Gdiff<cr>
 nmap <leader>gdi :Gdiff HEAD<cr>
 " reset the diff with working area in Gdiff mode
 " nmap <leader>gdr :diffget<cr>
-nmap <leader>gs :Gstatus<cr>
+nmap <leader>gs :Git<cr>
 
 " Rails
 nmap <leader>aa :A<CR>
