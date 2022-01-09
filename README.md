@@ -8,22 +8,16 @@ install `zsh` first, and set Zsh as your default shell: `chsh -s /bin/zsh`
 
 then run:
 
-`git clone`
+`git clone git@github.com:Springok/dotfiles.git ~/dotfiles`
 
-`cd dotfiles`
-
-`./setup_env.sh`
+`~/dotfiles/setup_env.zsh`
 
 ## TODO
 
-1. private stow
+### scripts
 
-2. script enhancement
+ 1. upgrade tig
 
-   1. upgrade tig
+ 2. diff-highlight
 
-   2. diff-highlight
-
-   3. config tmux
-
-   4. install neovim
+ 3. config tmux

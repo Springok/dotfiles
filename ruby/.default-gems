@@ -5,3 +5,4 @@ rails
 thor
 awesome_print
 mailcatcher
+tmuxinator

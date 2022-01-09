@@ -1,9 +1,3 @@
-" Install Vim Plug at first setup
-" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-let g:python_host_prog = $HOME . '/.asdf/installs/python/2.7.18/bin/python'
-let g:python3_host_prog = $HOME . '/.asdf/installs/python/3.6.9/bin/python'
-
 call plug#begin()
 
 Plug 'dstein64/vim-startuptime'
@@ -21,10 +15,16 @@ Plug 'junegunn/vim-easy-align'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'bootleq/vim-cycle'
-Plug 'luochen1990/rainbow'
-" Plug 'chaoren/vim-wordmotion'
+
+Plug 'ssh://git@gitlab.abagile.com:7788/chiao.chuang/vim-abagile.git'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+" Navigation
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-unimpaired'
 
 "================================================
 " Dev Tools
@@ -32,20 +32,45 @@ Plug 'luochen1990/rainbow'
 Plug 'dyng/ctrlsf.vim'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 Plug 'bootleq/vim-qrpsqlpq'
-Plug 'thinca/vim-quickrun'
-Plug 'janko-m/vim-test'
+Plug 'thinca/vim-quickrun', {'commit': 'c980977f1d77b3285937b9d7b5baa964fc9ed7f5'}
+" Plug 'janko-m/vim-test'
 Plug 'tpope/vim-cucumber'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'majutsushi/tagbar' " list all methods in a file
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+
+Plug 'hrsh7th/nvim-compe' " Autocomplete
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.source = {
+      \ 'path': v:true,
+      \ 'buffer': v:true,
+      \ 'nvim_lsp': v:true,
+      \ 'nvim_lua': v:true,
+      \ 'conjure': v:true,
+      \ }
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<C-y>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+" list all snippets for current filetype
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsEditSplit="vertical"
 
 "================================================
 " Javascript/HTML
 "================================================
 Plug 'kchmck/vim-coffee-script'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'slim-template/vim-slim'
@@ -55,7 +80,6 @@ Plug 'ap/vim-css-color'
 "================================================
 " Git
 "================================================
-" Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
@@ -65,14 +89,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
-Plug 'joshdick/onedark.vim'
-Plug 'cocopon/iceberg.vim'
-Plug 'rakr/vim-one'
-Plug 'haishanh/night-owl.vim'
-Plug 'morhetz/gruvbox'
-Plug 'arcticicestudio/nord-vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'dracula/vim'
+Plug 'Mofiqul/vscode.nvim', { 'branch': 'main' }
 
 "================================================
 " Ruby/Rails
@@ -84,14 +101,26 @@ Plug 'tpope/vim-bundler'
 "================================================
 " Clojure
 "================================================
-Plug 'guns/vim-clojure-static'
-" Plug 'guns/vim-clojure-highlight'
-" Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-salve'
-Plug 'Olical/conjure', {'tag': 'v4.2.0'}
+Plug 'luochen1990/rainbow'
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+Plug 'tpope/vim-fireplace' " Navigating and Comprehending
+
+" ==== Conjure ====
+Plug 'Olical/conjure', {'tag': 'v4.21.0'}
+Plug 'clojure-vim/vim-jack-in'
+Plug 'tami5/compe-conjure'
+
+let g:conjure#log#hud#width = 0.7
+let g:conjure#log#hud#height = 0.7
+let g:conjure#log#hud#anchor = "SE"
+let g:conjure#highlight#enable = 'true'
+" let g:conjure#mapping#prefix = ",c"
+let g:conjure#log#botright = 'true'
+nnoremap ,ccs :ConjureShadowSelect app<CR>
+" ==================
+"
 
 call plug#end()
 
@@ -118,6 +147,8 @@ set nohlsearch
 set relativenumber
 set noswapfile                                               " disable .swp files creation in vim
 set hidden                                                   " allow you to switch between buffers without saving
+set splitright
+
 " set colorcolumn=80
 
 au BufNewFile,BufRead ssh_config,*/.ssh/config.d/*  setf sshconfig
@@ -173,45 +204,47 @@ noremap H ^
 noremap L $
 nmap j gj
 nmap k gk
+nnoremap ,gv V`]
+
+" Keeping it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
 
 noremap <C-n> <C-i>
 
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
 
+nnoremap Y yg_
+
+" moving text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 "================================================
 " Plugin
 "================================================
 
-" vim-clojure-static
-let g:clojure_align_multiline_strings = 1
-" let g:clojure_fold = 1
-
-" word means word, override the setup in vim-clojure-static
 " autocmd FileType clojure setlocal iskeyword+=?,*,!,+,/,=,<,>,$
 autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal iskeyword-=/
-" autocmd FileType clojure setlocal iskeyword-=:
 
-" vim-clojure-highlight
-let g:clojure_highlight_local_vars = 1
-let g:clojure_highlight_references = 1
+" setlocal path+=eva/asuka/src
+" setlocal path+=eva/asuka/resources
+" setlocal suffixesadd+=.clj,.cljs,.cljc
+
+" autocmd FileType clojure setlocal iskeyword-=:
 
 " CtrlSF
  let g:ctrlsf_default_view_mode = 'compact'
- let g:ctrlsf_ignore_dir = ['vendor/assets', 'public/eva/js/', 'cljs-runtime', 'node_modules']
+ let g:ctrlsf_ignore_dir = ['vendor/assets', 'public/eva/js/', 'cljs-runtime', 'node_modules', 'db']
  let g:ctrlsf_indent = 2
  let g:ctrlsf_mapping = {
        \ "split"   : "gi",
        \ "vsplit"  : "gs"
        \ }
 
-" let g:sexp_enable_insert_mode_mappings = 0
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
-set completeopt-=preview
-"
-"
 let g:ale_linters = {
 \   'ruby': ['rubocop', 'ruby'],
 \   'clojure': ['clj-kondo'],
@@ -251,11 +284,6 @@ let test#ruby#minitest#options = '--verbose'
 " override default ignore comment and string in vim-easy-align
 let g:easy_align_ignore_groups = []
 
-"================= Helper =================
-for f in split(globpath('~/dotfiles/script/vim', '*.vim'), '\n')
-  exe 'source' f
-endfor
-
 " run sql file to give your the result table!
 " usage: <leader_key>p + j, l, r
 function! s:init_qrpsqlpq()
@@ -280,17 +308,18 @@ endif
 "================================================
 " Shortcut
 "================================================
-nnoremap <leader>d :NERDTreeToggle<CR>
-nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <leader>dd :NERDTreeToggle<CR>
+nnoremap <leader>df :NERDTreeFind<CR>
 nnoremap <leader>] :TagbarToggle<CR>
-nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+nnoremap <leader><space> :call abagile#whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " fzf search
+" https://github.com/junegunn/fzf.vim#commands
 nnoremap <C-p> :GFiles<CR>
-nnoremap <leader>rg :Rg<CR>
+" nnoremap <C-p> :Files <C-R>=expand('%:h')<CR><CR>
 nnoremap <leader>fb :Buffers<CR>
-nnoremap <leader>fC :Files app/concepts<CR>
+nnoremap <leader>fl :Files<CR>
 let g:fzf_preview_window = 'right:30%'
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
 
@@ -317,16 +346,24 @@ cnoremap w!! %!sudo tee > /dev/null %
 noremap <leader>in mmgg=G'm
 
 " Insert Debugger
-autocmd FileType clojure nmap <buffer> <leader>p o(js/console.log<Space>
+autocmd FileType clojure nmap <buffer> <leader>p o(prn<Space>
+autocmd Filetype gitcommit nmap <buffer> <leader>p oSee merge request metis/nerv!
 nmap <leader>p obinding.pry<ESC>^
 
 " momeorized for multiple copy
-nmap <leader>c "ay
-nmap <leader>vv "ap
+" nmap <leader>c "ay
+" nmap <leader>vv "ap
+
+" use system clipboard
+vnoremap <Leader>y "+y
+nnoremap <Leader>P "+p
+nnoremap <Leader>y "+y
 
 " window
 nmap <leader>w <C-w>
 nmap <leader>wf <C-w>f<C-w>H
+" nnoremap <Leader>+ :vertical resize +10<CR>
+" nnoremap <Leader>- :vertical resize -10<CR>
 
 " buffer switch
 nnoremap <silent> <tab> :bn<CR>
@@ -344,19 +381,16 @@ imap <leader>q <esc>:bw<cr>
 noremap  ,, <C-\><C-N>
 noremap!  ,, <C-\><C-N>
 
-" vim-gitgutter
-" nnoremap <leader>gg :GitGutterToggle<CR>
-
 " vim-signify (replace vim-gitgutter)
 nnoremap <leader>gg :SignifyToggle<CR>
 nnoremap <leader>gh :SignifyToggleHighlight<CR>
 nnoremap <leader>gdd :SignifyHunkDiff<CR>
-nnoremap <leader>gdr :SignifyHunkUndo<CR>
+nnoremap <leader>gu :SignifyHunkUndo<CR>
 
-" Fugitive
+" fugitive
 set diffopt+=vertical
 
-nmap <silent><leader>gb :Gblame<cr>
+nmap <silent><leader>gb :Git blame<cr>
 
 nmap <leader>ge :Gedit<Space>
 " nmap <leader>gdd :Gdiff<Space>
@@ -366,7 +400,7 @@ nmap <leader>gdw :Gdiff<cr>
 nmap <leader>gdi :Gdiff HEAD<cr>
 " reset the diff with working area in Gdiff mode
 " nmap <leader>gdr :diffget<cr>
-nmap <leader>gs :Gstatus<cr>
+nmap <leader>gs :Git<cr>
 
 " Rails
 nmap <leader>aa :A<CR>
@@ -376,25 +410,27 @@ nmap <leader>vl :sp<cr><C-^><cr>
 nmap <leader>hl :vsp<cr><C-^><cr>
 
 " Vim-test
-nmap <silent> <leader><C-t> :TestNearest<CR>
-nmap <silent> <leader><C-f> :TestFile<CR>
-nmap <silent> <leader><C-l> :TestLast<CR>
+" nmap <silent> <leader><C-t> :TestNearest<CR>
+" nmap <silent> <leader><C-f> :TestFile<CR>
+" nmap <silent> <leader><C-l> :TestLast<CR>
+
+" abagile-test
+nnoremap <silent> <Leader>tl :call abagile#rails#test_tmux('h')
+nnoremap <silent> <Leader>tf :call abagile#rails#test_tmux('h', 1)
 
 " start interactive EasyAlign in visual mode
 vmap <Enter> <Plug>(EasyAlign)
 " start interactive EasyAlign for a motion/text object (e.g. <leader>eaip)
 nmap <leader>l <Plug>(EasyAlign)
 
+" Vim Tmux Navigator
+let g:tmux_navigator_disable_when_zoomed = 1
+
 " Vim Tmux Runner
 nnoremap <leader>ar :VtrAttachToPane<cr>
 nnoremap <leader>kr :VtrKillRunner<cr>
 nnoremap <leader>sl :VtrSendLinesToRunner<cr>
-nnoremap <leader>rc :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd': 'rc'}<cr>
-nnoremap <leader>ry :VtrOpenRunner {'orientation': 'h', 'percentage': 45, 'cmd': 'rpy'}<cr>
-
-" barrow from unimpaired
-nmap ]<Space> o<ESC>
-nmap [<Space> O<ESC>
+nnoremap <leader>rt :VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rtw'}<cr>
 
 " run commands in vim
 nmap <leader>ss :!rpu<enter>
@@ -408,22 +444,13 @@ vmap <silent> gs <Plug>CycleNext
 "================================================
 " Javascript
 "================================================
-let g:user_emmet_settings = {
-\  'javascript.jsx' : {
-\      'extends': 'jsx'
-\  },
-\}
+" let g:user_emmet_settings = {
+" \  'javascript.jsx' : {
+" \      'extends': 'jsx'
+" \  },
+" \}
 
-let g:user_emmet_leader_key='<C-E>'
-
-"================================================
-" Clojure
-"================================================
-" a few extra mappings for fireplace
-" evaluate top level form
-au BufEnter *.clj nnoremap <buffer> cpt :Eval<CR>
-" show last evaluation in temp file
-au BufEnter *.clj nnoremap <buffer> cpl :Last<CR>
+" let g:user_emmet_leader_key='<C-E>'
 
 "================================================
 " Theme
@@ -436,20 +463,11 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 set noshowmode
 set showtabline=2
 
-" colorscheme night-owl " lightline: night-owl
-" colorscheme gruvbox   " lightline: gruvbox
-" colorscheme one       " lightline: one
-" colorscheme onedark   " lightline: onedark
-" colorscheme nord      " lightline: nord
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" colorscheme ayu       " l lightline: ayu_light / ayu_mirage
-colorscheme dracula   " lightline: dracula
-" colorscheme iceberg   " lightline: iceberg
-set background=dark
+let g:vscode_style = "dark"
+colorscheme vscode
 
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'ayu_dark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
       \ },
@@ -479,6 +497,81 @@ hi SpellBad ctermbg=20
 
 " keep set secure on the last line
 set secure " safer working with script files in the current directory
+
+function! s:case_tx_subs_camel(w) "{{{
+  let w = substitute(a:w, '-', '_', 'g')
+  return substitute(w, '_\([a-z]\)', '\u\1', 'g')
+endfunction "}}}
+
+function! s:case_tx_subs_kekab(w) "{{{
+  let w = s:case_tx_subs_snake(a:w)
+  return tr(w, '_', '-')
+endfunction "}}}
+
+function! s:case_tx_subs_snake(w) "{{{
+  let w = substitute(a:w, '-', '_', 'g')
+  return substitute(w, '\C[A-Z]', '_\L\0', 'g')
+endfunction "}}}
+
+let s:case_tx_patterns = {
+      \ 'snake': '_',
+      \ 'kekab': '-',
+      \ 'camel': '\C[a-z][A-Z]',
+      \ }
+
+function! WordTransform()
+  let save_isk = &l:iskeyword
+  let cases = get(b:, 'case_tx_cases', ['snake', 'camel'])
+
+  try
+    let &l:isk = '@,48-57,-,_'
+    let w = expand("<cword>")
+    let x = ''
+    let c = strpart(getline('.'), col('.') - 1, 1)
+
+    for [k, pattern] in items(s:case_tx_patterns)
+      if match(w, pattern) > -1
+        let next_k = get(repeat(cases, 2), index(cases, k) + 1)
+        let x = call(function('s:case_tx_subs_' . next_k), [w])
+        silent! call repeat#set(',x') " must match your mapping to WordTransform()
+        break
+      end
+    endfor
+
+    if x == w || empty(x)
+      echohl WarningMsg | echomsg "Nothing to transform." | echohl None
+      return
+    endif
+
+    if match(w, c) < 0   " cursor might sit before keyword
+      execute "normal! f" . strpart(w, 0, 1)
+      execute "normal! \"_ciw\<C-R>=x\<CR>"
+    else
+      execute "normal! \"_ciw\<C-R>=x\<CR>"
+    endif
+  finally
+    let &l:isk = save_isk
+  endtry
+endfunction
+let b:case_tx_cases = ['snake', 'kekab', 'camel']
+nnoremap <silent> <LocalLeader>x :call WordTransform()<CR>
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after
 " let &packpath = &runtimepath
