@@ -2,5 +2,5 @@ java zulu-8.58.0.13
 clojure 1.10.3.981
 rust 1.40.0
 golang 1.13
-ruby 2.7.0
+ruby 2.7.4
 nodejs 16.13.1
