@@ -205,6 +205,7 @@ alias ran='clj -M:dev:nrepl'
 alias rat='clj -M:test:runner --watch'
 
 # Asuka
+alias rw='npm run watch'
 alias rwh='NERV_BASE=/nerv npm run watch'
 alias rwc='NERV_BASE=/nerv_ck npm run watch'
 alias rws='NERV_BASE=/nerv_sg npm run watch'
