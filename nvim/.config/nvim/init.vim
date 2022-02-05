@@ -18,7 +18,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'bootleq/vim-cycle'
 
 Plug 'ssh://git@gitlab.abagile.com:7788/chiao.chuang/vim-abagile.git'
-
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Navigation
@@ -41,22 +40,22 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'majutsushi/tagbar' " list all methods in a file
 
-Plug 'hrsh7th/nvim-compe' " Autocomplete
-set completeopt=menuone,noselect
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.source = {
-      \ 'path': v:true,
-      \ 'buffer': v:true,
-      \ 'nvim_lsp': v:true,
-      \ 'nvim_lua': v:true,
-      \ 'conjure': v:true,
-      \ }
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<C-y>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+"================================================
+" Autocomplete
+"================================================
+" Collection of common configurations for the Nvim LSP client
+Plug 'neovim/nvim-lspconfig'
+
+" LSP completion source for nvim-cmp
+Plug 'hrsh7th/cmp-nvim-lsp'
+
+" Other usefull completion sources
+" See hrsh7th's other plugins for more completion sources!
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-buffer'
+
+" Completion framework
+Plug 'hrsh7th/nvim-cmp'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -121,9 +120,7 @@ let g:conjure#log#botright = 'true'
 nnoremap ,ccs :ConjureShadowSelect app<CR>
 " ==================
 "
-
 call plug#end()
-
 "================================================
 " General
 "================================================
@@ -556,7 +553,41 @@ endfunction
 let b:case_tx_cases = ['snake', 'kekab', 'camel']
 nnoremap <silent> <LocalLeader>x :call WordTransform()<CR>
 
+" Setup Completion
+" See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 lua <<EOF
+local cmp = require'cmp'
+
+cmp.setup({
+  -- Enable LSP snippets
+  snippet = {
+    expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body)
+    end,
+  },
+  mapping = {
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    })
+  },
+
+  -- Installed sources
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'path' },
+    { name = 'buffer' },
+    { name = 'conjure' },
+    { name = 'ultisnips' },
+  },
+})
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
@@ -569,9 +600,10 @@ require'nvim-treesitter.configs'.setup {
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
-  },
-}
+    }
+  }
 EOF
+
 
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after
 " let &packpath = &runtimepath
