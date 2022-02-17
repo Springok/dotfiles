@@ -43,27 +43,8 @@ Plug 'majutsushi/tagbar' " list all methods in a file
 "================================================
 " Autocomplete
 "================================================
-" Collection of common configurations for the Nvim LSP client
-Plug 'neovim/nvim-lspconfig'
-
-" LSP completion source for nvim-cmp
-Plug 'hrsh7th/cmp-nvim-lsp'
-
-" Other usefull completion sources
-" See hrsh7th's other plugins for more completion sources!
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-buffer'
-
-" Completion framework
-Plug 'hrsh7th/nvim-cmp'
-
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-let g:UltiSnipsExpandTrigger="<tab>"
-" list all snippets for current filetype
-let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsEditSplit="vertical"
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 
 "================================================
 " Javascript/HTML
@@ -109,7 +90,6 @@ Plug 'tpope/vim-fireplace' " Navigating and Comprehending
 " ==== Conjure ====
 Plug 'Olical/conjure'
 Plug 'clojure-vim/vim-jack-in'
-Plug 'tami5/compe-conjure'
 
 let g:conjure#log#hud#width = 0.7
 let g:conjure#log#hud#height = 0.7
@@ -257,8 +237,11 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 
+set completeopt=menu,menuone,noselect
+
 " Disable documentation window
-set completeopt-=preview
+" set completeopt-=preview
+
 
 let g:rainbow_active = 1
 " default updatetime 4000ms is not good for async update signify
@@ -553,41 +536,7 @@ endfunction
 let b:case_tx_cases = ['snake', 'kekab', 'camel']
 nnoremap <silent> <LocalLeader>x :call WordTransform()<CR>
 
-" Setup Completion
-" See https://github.com/hrsh7th/nvim-cmp#basic-configuration
 lua <<EOF
-local cmp = require'cmp'
-
-cmp.setup({
-  -- Enable LSP snippets
-  snippet = {
-    expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    })
-  },
-
-  -- Installed sources
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'path' },
-    { name = 'buffer' },
-    { name = 'conjure' },
-    { name = 'ultisnips' },
-  },
-})
-
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
