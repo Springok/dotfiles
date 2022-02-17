@@ -107,7 +107,7 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace' " Navigating and Comprehending
 
 " ==== Conjure ====
-Plug 'Olical/conjure', {'tag': 'v4.21.0'}
+Plug 'Olical/conjure'
 Plug 'clojure-vim/vim-jack-in'
 Plug 'tami5/compe-conjure'
 
