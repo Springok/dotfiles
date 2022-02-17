@@ -75,6 +75,8 @@ pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:dev.localhost:22 -t $
 alias e='nvim'
 alias vdiff='nvim -d'
 
+alias cat='bat --style=plain'
+
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
