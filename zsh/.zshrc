@@ -222,9 +222,9 @@ alias work='t s work'
 # Jump Into Config File
 ########################
 alias dot='cd ~/dotfiles'
-alias zshrc='e ~/.zshrc'
+alias zshrc='e ~/dotfiles/zsh/.zshrc'
 alias sozsh='source ~/.zshrc'
-alias vimrc='e ~/.config/nvim/init.vim'
+alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.vim'
 alias en='e .env'
 alias mc='mailcatcher --http-ip 0.0.0.0 ; rse'
 alias kmc='pkill -f mailcatcher'
