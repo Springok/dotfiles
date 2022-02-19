@@ -82,6 +82,7 @@ Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace' " Navigating and Comprehending
+Plug 'clojure-vim/clojure.vim'
 
 Plug 'Olical/conjure'
 Plug 'clojure-vim/vim-jack-in'
@@ -111,6 +112,9 @@ set hidden                                                   " allow you to swit
 set splitright
 
 " set colorcolumn=80
+"
+syntax on
+filetype plugin indent on
 
 au BufNewFile,BufRead ssh_config,*/.ssh/config.d/*  setf sshconfig
 
@@ -411,7 +415,6 @@ set showtabline=2
 " let g:vscode_style = "dark"
 " colorscheme vscode
 
-syntax on
 colorscheme onedark
 
 let g:lightline = {
