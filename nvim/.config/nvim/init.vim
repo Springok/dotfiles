@@ -1,12 +1,9 @@
 call plug#begin()
-
-Plug 'dstein64/vim-startuptime'
-
 "================================================
 " Enhance Vim
 "================================================
 Plug 'austintaylor/vim-indentobject'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
@@ -31,20 +28,18 @@ Plug 'tpope/vim-unimpaired'
 Plug 'dyng/ctrlsf.vim'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dispatch'
-Plug 'radenling/vim-dispatch-neovim'
 Plug 'bootleq/vim-qrpsqlpq'
 Plug 'thinca/vim-quickrun', {'commit': 'c980977f1d77b3285937b9d7b5baa964fc9ed7f5'}
-" Plug 'janko-m/vim-test'
-Plug 'tpope/vim-cucumber'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
-Plug 'majutsushi/tagbar' " list all methods in a file
+Plug 'majutsushi/tagbar'
+
+" Plug 'janko-m/vim-test'
 
 "================================================
 " Autocomplete
 "================================================
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
 
 "================================================
 " Javascript/HTML
@@ -70,6 +65,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Mofiqul/vscode.nvim', { 'branch': 'main' }
+Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 
 "================================================
 " Ruby/Rails
@@ -87,28 +83,16 @@ Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace' " Navigating and Comprehending
 
-" ==== Conjure ====
 Plug 'Olical/conjure'
 Plug 'clojure-vim/vim-jack-in'
 
-let g:conjure#log#hud#width = 0.7
-let g:conjure#log#hud#height = 0.7
-let g:conjure#log#hud#anchor = "SE"
-let g:conjure#highlight#enable = 'true'
-" let g:conjure#mapping#prefix = ",c"
-let g:conjure#log#botright = 'true'
-nnoremap ,ccs :ConjureShadowSelect app<CR>
-" ==================
-"
 call plug#end()
+
 "================================================
 " General
 "================================================
-" set clipboard=unnamed                                        " yank and paste with the system clipboard
-" set directory-=.                                             " don't store swapfiles in the current directory
 set expandtab                                                " expand tabs to spaces
 set ignorecase                                               " case-insensitive search
-set list                                                     " show trailing whitespace
 set number                                                   " show line numbers
 set scrolloff=3                                              " show context above/below cursorline
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
@@ -133,37 +117,22 @@ au BufNewFile,BufRead ssh_config,*/.ssh/config.d/*  setf sshconfig
 " https://github.com/neovim/neovim/issues/7994#issuecomment-388296360
 au InsertLeave * set nopaste
 
-" let g:wordmotion_mappings = {
-"       \ 'w': 'gw',
-"       \ 'b': 'gb',
-"       \ 'e': 'ge',
-"       \ 'ge': '',
-"       \ 'aw': 'gaw',
-"       \ 'iw': 'giw',
-"       \ '<C-R><C-W>': '',
-"       \ 'W': '',
-"       \ 'B': '',
-"       \ 'E': '',
-"       \ 'gE': '',
-"       \ 'aW': '',
-"       \ 'iW': '',
-"       \ '<C-R><C-A>': '',
-"       \ }
-
-" let g:wordmotion_spaces = '_-.'
-
 " fdoc is yaml
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 autocmd BufRead,BufNewFile *.yml setlocal spell
+
 " slim is slim
 autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+
 " git commit textwidth limit
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
-" autocmd BufNewFile,BufRead *.cljs setlocal foldmethod=syntax
-" autocmd BufNewFile,BufRead *.cljs setlocal foldlevel=2
+
+" autocmd FileType clojure setlocal iskeyword+=?,*,!,+,/,=,<,>,$
+autocmd FileType clojure setlocal iskeyword-=.
+autocmd FileType clojure setlocal iskeyword-=/
 
 "================================================
 " Remap
@@ -172,6 +141,7 @@ let mapleader = ','
 
 " sometimes need, to repeat latest f, t, F or T in opposite direction
 noremap \ ,
+
 " Helps when I want to delete something without clobbering my unnamed register.
 nnoremap s "_d
 nnoremap ss "_dd
@@ -203,25 +173,26 @@ vnoremap K :m '<-2<CR>gv=gv
 " Plugin
 "================================================
 
-" autocmd FileType clojure setlocal iskeyword+=?,*,!,+,/,=,<,>,$
-autocmd FileType clojure setlocal iskeyword-=.
-autocmd FileType clojure setlocal iskeyword-=/
+" deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('keyword_patterns', {'clojure': '[\w!$%&*+/:<=>?@\^_~\-\.#]*'})
 
-" setlocal path+=eva/asuka/src
-" setlocal path+=eva/asuka/resources
-" setlocal suffixesadd+=.clj,.cljs,.cljc
+" Disable documentation window
+set completeopt-=preview
 
-" autocmd FileType clojure setlocal iskeyword-=:
+" rainbow
+let g:rainbow_active = 1
 
 " CtrlSF
- let g:ctrlsf_default_view_mode = 'compact'
- let g:ctrlsf_ignore_dir = ['vendor/assets', 'public/eva/js/', 'cljs-runtime', 'node_modules', 'db']
- let g:ctrlsf_indent = 2
- let g:ctrlsf_mapping = {
-       \ "split"   : "gi",
-       \ "vsplit"  : "gs"
-       \ }
+let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_ignore_dir = ['vendor/assets', 'public/eva/js/', 'cljs-runtime', 'node_modules', 'db']
+let g:ctrlsf_indent = 2
+let g:ctrlsf_mapping = {
+\ "split"   : "gi",
+\ "vsplit"  : "gs"
+\ }
 
+" Ale =========
 let g:ale_linters = {
 \   'ruby': ['rubocop', 'ruby'],
 \   'clojure': ['clj-kondo'],
@@ -237,14 +208,7 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 
-set completeopt=menu,menuone,noselect
-
-" Disable documentation window
-" set completeopt-=preview
-
-
-let g:rainbow_active = 1
-" default updatetime 4000ms is not good for async update signify
+" signify: default updatetime 4000ms is not good for async update signify
 set updatetime=100
 
 " extra rails.vim help
@@ -284,6 +248,15 @@ if executable('psql')
   let g:qrpsqlpq_expanded_format_max_lines = -1
   autocmd FileType sql call s:init_qrpsqlpq()
 endif
+
+" Conjure
+let g:conjure#log#hud#width = 0.7
+let g:conjure#log#hud#height = 0.7
+let g:conjure#log#hud#anchor = "SE"
+let g:conjure#highlight#enable = 'true'
+" let g:conjure#mapping#prefix = ",c"
+let g:conjure#log#botright = 'true'
+nnoremap ,ccs :ConjureShadowSelect app<CR>
 
 "================================================
 " Shortcut
@@ -417,20 +390,12 @@ nmap <leader>ss :!rpu<enter>
 nmap <leader>ks :!krpu<enter>
 " nmap <leader>cop :!cop<enter> FIXME: need to find a way to use cop in zshenv
 
-" bootleq cycle
+" vim-cycle
 nmap <silent> gs <Plug>CycleNext
 vmap <silent> gs <Plug>CycleNext
 
-"================================================
-" Javascript
-"================================================
-" let g:user_emmet_settings = {
-" \  'javascript.jsx' : {
-" \      'extends': 'jsx'
-" \  },
-" \}
-
-" let g:user_emmet_leader_key='<C-E>'
+" vim.abagile
+let g:abagile_migrant_structure_fold = 1
 
 "================================================
 " Theme
@@ -443,11 +408,14 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 set noshowmode
 set showtabline=2
 
-let g:vscode_style = "dark"
-colorscheme vscode
+" let g:vscode_style = "dark"
+" colorscheme vscode
+
+syntax on
+colorscheme onedark
 
 let g:lightline = {
-      \ 'colorscheme': 'ayu_dark',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
       \ },
@@ -469,14 +437,34 @@ let g:lightline = {
 let g:lightline#bufferline#show_number     = 1
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#unnamed         = '[No Name]'
-" let g:lightline#bufferline#clickable       = 1
 
-" change SpellBad style, have to do this after colorscheme setup, otherwise
-" will be overwritten
+" change SpellBad style, have to do this after colorscheme setup, otherwise will be overwritten
 hi SpellBad ctermbg=20
 
-" keep set secure on the last line
-set secure " safer working with script files in the current directory
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+    }
+  }
+
+vim.opt.list = true
+
+require("indent_blankline").setup {
+    show_current_context = true,
+    show_current_context_start = true,
+    show_end_of_line = true,
+}
+EOF
 
 function! s:case_tx_subs_camel(w) "{{{
   let w = substitute(a:w, '-', '_', 'g')
@@ -533,27 +521,9 @@ function! WordTransform()
     let &l:isk = save_isk
   endtry
 endfunction
+
 let b:case_tx_cases = ['snake', 'kekab', 'camel']
 nnoremap <silent> <LocalLeader>x :call WordTransform()<CR>
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { "javascript" }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-    }
-  }
-EOF
-
-
-" set runtimepath^=~/.vim runtimepath+=~/.vim/after
-" let &packpath = &runtimepath
-" source ~/.vimrc
+" keep set secure on the last line
+set secure " safer working with script files in the current directory
