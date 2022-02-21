@@ -6,6 +6,7 @@ Plug 'austintaylor/vim-indentobject'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
+" Plug 'RRethy/nvim-treesitter-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
@@ -456,16 +457,15 @@ require'nvim-treesitter.configs'.setup {
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-    }
+    additional_vim_regex_highlighting = { "ruby" },
   }
+}
 
 vim.opt.list = true
 
 require("indent_blankline").setup {
     show_current_context = true,
     show_current_context_start = true,
-    show_end_of_line = true,
 }
 EOF
 
