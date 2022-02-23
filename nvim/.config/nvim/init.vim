@@ -83,7 +83,7 @@ Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace' " Navigating and Comprehending
-Plug 'clojure-vim/clojure.vim'
+" Plug 'clojure-vim/clojure.vim'
 
 Plug 'Olical/conjure'
 Plug 'clojure-vim/vim-jack-in'
@@ -263,6 +263,8 @@ let g:conjure#highlight#enable = 'true'
 let g:conjure#log#botright = 'true'
 nnoremap ,ccs :ConjureShadowSelect app<CR>
 
+let g:sexp_enable_insert_mode_mappings = 0
+
 "================================================
 " Shortcut
 "================================================
@@ -278,7 +280,7 @@ nnoremap <C-p> :GFiles<CR>
 " nnoremap <C-p> :Files <C-R>=expand('%:h')<CR><CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fl :Files<CR>
-let g:fzf_preview_window = 'right:30%'
+let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
 
 " let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
