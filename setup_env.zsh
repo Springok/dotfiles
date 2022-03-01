@@ -2,7 +2,7 @@
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo 'Mac OS X'
-  brew install stow asdf fzf nvim tig tmux httpie htop
+  brew install stow asdf fzf nvim tig tmux httpie htop bat
 
   mkdir -p ~/.config/nvim
 
@@ -27,7 +27,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   echo "You are all set!"
 else
   echo 'Linux (Untested)'
-  sudo apt install stow
+  sudo apt install stow bat
 
   mkdir -p ~/.config/nvim
 
@@ -53,4 +53,6 @@ else
   else
     echo "asdf already installed"
   fi
+
+  echo "You are all set!"
 fi
