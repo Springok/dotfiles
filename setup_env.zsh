@@ -6,6 +6,8 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 
   mkdir -p ~/.config/nvim
 
+  cd ~/dotfiles
+
   stow --verbose git \
     zsh \
     nvim \
@@ -22,6 +24,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 
   nvim +PlugInstall +qall
 
+  echo "You are all set!"
 else
   echo 'Linux (Untested)'
   sudo apt install stow
