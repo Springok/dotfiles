@@ -93,6 +93,7 @@ call plug#end()
 "================================================
 " General
 "================================================
+set undofile
 set expandtab                                                " expand tabs to spaces
 set ignorecase                                               " case-insensitive search
 set number                                                   " show line numbers
@@ -143,6 +144,16 @@ autocmd FileType clojure setlocal iskeyword-=/
 " Remap
 "================================================
 let mapleader = ','
+
+" discard direction keys
+noremap  <up>    <nop>
+noremap  <down>  <nop>
+noremap  <left>  <nop>
+noremap  <right> <nop>
+inoremap <up>    <nop>
+inoremap <down>  <nop>
+inoremap <left>  <nop>
+inoremap <right> <nop>
 
 " sometimes need, to repeat latest f, t, F or T in opposite direction
 noremap \ ,
