@@ -2,13 +2,13 @@
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo 'Mac OS X'
-  brew install stow asdf fzf nvim tig tmux httpie htop bat autojump exa
+  brew install stow asdf fzf nvim tig tmux httpie htop bat autojump exa ripgrep
 
   # https://github.com/junegunn/fzf#using-homebrew
   $(brew --prefix)/opt/fzf/install
 else
   echo 'Linux (Untested)'
-  sudo apt install stow bat
+  sudo apt install stow bat ripgrep autojump exa
 
   # https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
   sudo add-apt-repository ppa:neovim-ppa/stable
