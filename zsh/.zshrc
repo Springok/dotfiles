@@ -94,18 +94,6 @@ fi
 alias sshc='e ~/.ssh/config'
 alias setup_tags='ctags -R'
 
-case `uname` in
-  Darwin)
-    alias ls='ls -G'
-    alias ll='ls -l -a'
-  ;;
-  Linux)
-    alias ls='ls --color=auto'
-    alias ll='ls -l -a'
-    alias grep='grep --color=auto'
-  ;;
-esac
-
 alias grep='grep --color=auto'
 alias rm='rm -i'
 alias cp='cp -i'
@@ -212,6 +200,7 @@ alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 # Leiningen
 alias l='lein'
 alias repl='l repl'
+alias ccop='clj-kondo --lint src --config .clj-kondo/config.edn --cache false'
 
 # Adam
 alias ran='clj -M:dev:nrepl'
@@ -266,5 +255,18 @@ bindkey '^t' fzf-completion
 bindkey '^F' autosuggest-accept
 bindkey '^p' history-substring-search-up
 bindkey '^n' history-substring-search-down
+
+case `uname` in
+  Darwin)
+    alias ls='exa'
+    alias ll='exa -l -a'
+    [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+  ;;
+  Linux)
+    alias ls='ls --color=auto'
+    alias ll='ls -l -a'
+    alias grep='grep --color=auto'
+  ;;
+esac
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

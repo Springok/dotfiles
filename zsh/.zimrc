@@ -43,6 +43,7 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule ssh
 zmodule asdf
 zmodule fzf
+zmodule exa
 
 zmodule sindresorhus/pure --source async.zsh --source pure.zsh
 zmodule bootleq/zsh-cop --source bin/cop.zsh
