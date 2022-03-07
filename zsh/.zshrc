@@ -5,14 +5,6 @@
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
 
-# -----------------
-# Zim configuration
-# -----------------
-
-# asdf setting
-# . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
-
 # --------------------
 # Module configuration
 # --------------------
@@ -63,12 +55,6 @@ source ~/.zshrc_helper
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef
-
-# User configuration
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
-# export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/postgresql@10/bin:/usr/local/opt/erlang@23/bin:$PATH
-#
-export HOMEBREW_NO_AUTO_UPDATE=1
 
 # this setting is also affect language in Vim
 export LC_ALL=en_US.UTF-8
@@ -157,11 +143,6 @@ alias dump_db='~/proj/vm/scripts/db_dump.rb && ch_pw'
 alias dump_db_f='~/proj/vm/scripts/db_dump.rb -f && ch_pw'
 alias dump_db2='~/proj/vm/scripts/dump_db.zsh'
 
-# remote dev machine
-# alias ch_pw='rails runner ~/synced/ch_pw.rb'
-# alias e_pw='vim ~/synced/ch_pw.rb'
-# alias dump_db3='~/vm/scripts/db_dump.rb -f && ch_pw'
-
 # Gems
 alias be='bundle exec'
 alias rse='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be sidekiq'
@@ -197,9 +178,6 @@ alias testba='rails test test/controllers test/concepts test/forms test/models'
 alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 
 # Clojure
-# Leiningen
-alias l='lein'
-alias repl='l repl'
 alias ccop='clj-kondo --lint src --config .clj-kondo/config.edn --cache false'
 
 # Adam
@@ -215,7 +193,6 @@ alias rws='NERV_BASE=/nerv_sg npm run watch'
 # Tmuxinator
 alias t='tmuxinator'
 alias work='t s work'
-# alias wadam='t s work_adam'
 
 ########################
 # Jump Into Config File
@@ -261,6 +238,12 @@ case `uname` in
     alias ls='exa'
     alias ll='exa -l -a'
     [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+    # User configuration
+    export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
+    # export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/postgresql@10/bin:/usr/local/opt/erlang@23/bin:$PATH
+    #
+    export HOMEBREW_NO_AUTO_UPDATE=1
   ;;
   Linux)
     alias ls='ls --color=auto'
