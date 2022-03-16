@@ -93,25 +93,27 @@ call plug#end()
 "================================================
 " General
 "================================================
-set undofile
+" :help options
 set expandtab                                                " expand tabs to spaces
+set hidden                                                   " allow you to switch between buffers without saving
 set ignorecase                                               " case-insensitive search
+set nocursorline
+set nohlsearch
+set noswapfile                                               " disable .swp files creation in vim
+set nowrap
+set nrformats+=alpha
 set number                                                   " show line numbers
+set relativenumber
 set scrolloff=3                                              " show context above/below cursorline
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 set showcmd
 set smartcase                                                " case-sensitive search if any caps
 set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
+set splitright
 set tabstop=8                                                " actual tabs occupy 8 characters
+set undofile
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmode=longest,list,full
-set nowrap
-set nocursorline
-set nohlsearch
-set relativenumber
-set noswapfile                                               " disable .swp files creation in vim
-set hidden                                                   " allow you to switch between buffers without saving
-set splitright
 
 " set colorcolumn=80
 "
@@ -343,6 +345,7 @@ nnoremap <silent> <S-tab> :bp<CR>
 " Note that remapping C-s requires flow control to be disabled (in .zshrc)
 nmap <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
+vmap <C-s> <esc>:w<CR>
 
 " Close current buffer
 nmap <leader>q <esc>:bw<cr>
