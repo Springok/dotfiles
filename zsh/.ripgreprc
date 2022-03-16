@@ -5,3 +5,15 @@
 --colors=match:fg:black
 --colors=match:bg:yellow
 --colors=match:style:nobold
+
+# Exclude directories.
+--glob=!{.git,.svn,node_modules,tealdeer,Trash,vendor}
+
+# Don't print lines longer than this limit.
+--max-columns=444
+
+# Searches case insensitively.
+--smart-case
+
+# Sort by file path.
+--sort=path
