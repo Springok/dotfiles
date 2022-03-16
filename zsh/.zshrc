@@ -90,6 +90,8 @@ alias px='ps aux'
 alias ep='exit'
 alias ag=rg
 
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
 # Git
 alias gs='git status'
 alias gcom='git checkout master'
@@ -136,6 +138,7 @@ alias asuka='cd clojure/projects/asuka'
 alias cpro='cd clojure/projects'
 alias aoc='cd ~/proj/advent-of-code'
 
+# be careful with the folder position
 alias ch_pw='rails runner ~/proj/snippets/db/ch_pw.rb'
 alias e_pw='vim ~/proj/snippets/db/ch_pw.rb'
 alias e_db='vim ~/proj/snippets/db/db_mapping.yml'
