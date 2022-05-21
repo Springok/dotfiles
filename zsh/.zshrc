@@ -80,6 +80,7 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 alias sshc='e ~/.ssh/config'
+alias sshc_p='e ~/.ssh/config.d/prod'
 alias setup_tags='ctags -R'
 
 alias grep='grep --color=auto'
@@ -107,13 +108,18 @@ alias gdd='gwd origin/master...'
 alias goc='gco'
 alias gddd='gwd origin/master...'
 alias gdde='e `gddd --name-only --relative`'
-alias gddc='tig origin/master...'
+alias gddm='tig origin/master..'
+alias gdda='gdd clojure/projects/adam'
+alias gdds='gdd clojure/projects/asuka'
+alias gddc='gdd clojure/components'
 alias gle='e `gcs --pretty=format: --name-only`'
 alias gddn='gddd --name-only --relative | cat'
 alias gwe='e `git diff --name-only --relative`'
 alias gie='e `git diff --cached --name-only --relative`'
 alias gbs='git branch | grep -v spring'
 alias gbt='git checkout nerv_ck'
+
+alias lg='lazygit'
 
 # JavaScript
 alias nodejs=node
@@ -140,14 +146,6 @@ alias asuka='cd clojure/projects/asuka'
 alias cpro='cd clojure/projects'
 alias aoc='cd ~/proj/advent-of-code'
 
-# be careful with the folder position
-alias ch_pw='rails runner ~/proj/snippets/db/ch_pw.rb'
-alias e_pw='vim ~/proj/snippets/db/ch_pw.rb'
-alias e_db='vim ~/proj/snippets/db/db_mapping.yml'
-alias dump_db='~/proj/vm/scripts/db_dump.rb && ch_pw'
-alias dump_db_f='~/proj/vm/scripts/db_dump.rb -f && ch_pw'
-alias dump_db2='~/proj/vm/scripts/dump_db.zsh'
-
 # Gems
 alias be='bundle exec'
 alias rse='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be sidekiq'
@@ -156,9 +154,17 @@ alias stopme='be spring stop'
 alias copm='cop master...'
 alias rake='be rake'
 
+# be careful with the folder position
+alias ch_pw='be rails runner ~/proj/snippets/db/ch_pw.rb'
+alias e_pw='vim ~/proj/snippets/db/ch_pw.rb'
+alias e_db='vim ~/proj/snippets/db/db_mapping.yml'
+alias dump_db='~/proj/vm/scripts/db_dump.rb && ch_pw'
+alias dump_db_f='~/proj/vm/scripts/db_dump.rb -f && ch_pw'
+alias dump_db2='~/proj/vm/scripts/dump_db.zsh'
+
 # Rails
-alias rc='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` rails console'
-alias rct='rails console test'
+alias rc='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be rails console'
+alias rct='be rails console test'
 alias rch="tail -f ~/.pry_history | grep -v 'exit'"
 
 alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
@@ -184,6 +190,7 @@ alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
 
 # Clojure
 alias ccop='clj-kondo --lint src --config .clj-kondo/config.edn --cache false'
+alias ccup='brew reinstall clj-kondo'
 
 # Adam
 alias ran='clj -M:dev:nrepl'
