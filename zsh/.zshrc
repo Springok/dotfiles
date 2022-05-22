@@ -68,10 +68,10 @@ pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/de
 pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:dev.localhost:22 -t $1 'watch -en 10 who' }
 
 # Use nvim
+alias e='nvim'
 alias vdiff='nvim -d'
 alias lvim='nvim -u ~/proj/wconfig/init.lua'
 alias lvimrc='lvim ~/proj/wconfig/init.lua'
-alias e='lvim'
 
 alias cat='bat --style=plain'
 
