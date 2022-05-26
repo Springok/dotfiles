@@ -110,6 +110,7 @@ set softtabstop=2                                            " insert mode tab a
 set splitright
 set tabstop=8                                                " actual tabs occupy 8 characters
 set undofile
+set signcolumn=yes
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmode=longest,list,full
 

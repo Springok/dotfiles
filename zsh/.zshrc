@@ -234,8 +234,9 @@ bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
 export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden'
-# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g '!{.git,.clj-kondo,node_modules}/*''
+# https://github.com/sharkdp/fd#integration-with-other-programs
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
+export FZF_DEFAULT_OPTS="--ansi"
 
 # module widget remap
 export FZF_COMPLETION_TRIGGER=';'
