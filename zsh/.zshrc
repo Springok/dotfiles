@@ -70,8 +70,6 @@ pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:dev.localhost:22 -t $
 # Use nvim
 alias e='nvim'
 alias vdiff='nvim -d'
-alias lvim='nvim -u ~/proj/wconfig/init.lua'
-alias lvimrc='lvim ~/proj/wconfig/init.lua'
 
 alias cat='bat --style=plain'
 
@@ -138,13 +136,8 @@ alias pru='rpu'
 alias ck='cd ~/proj/nerv_ck'
 alias hk='cd ~/proj/nerv'
 alias sg='cd ~/proj/nerv_sg'
-alias agl='cd ~/proj/angel'
-alias ame='cd ~/proj/amoeba'
 alias adam='cd clojure/projects/adam'
-alias illy='cd clojure/projects/illy'
 alias asuka='cd clojure/projects/asuka'
-alias cpro='cd clojure/projects'
-alias aoc='cd ~/proj/advent-of-code'
 
 # Gems
 alias be='bundle exec'
@@ -155,9 +148,9 @@ alias copm='cop master...'
 alias rake='be rake'
 
 # be careful with the folder position
-alias ch_pw='be rails runner ~/proj/snippets/db/ch_pw.rb'
-alias e_pw='vim ~/proj/snippets/db/ch_pw.rb'
-alias e_db='vim ~/proj/snippets/db/db_mapping.yml'
+alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
+alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
+alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
 alias dump_db='~/proj/vm/scripts/db_dump.rb && ch_pw'
 alias dump_db_f='~/proj/vm/scripts/db_dump.rb -f && ch_pw'
 alias dump_db2='~/proj/vm/scripts/dump_db.zsh'
@@ -213,6 +206,7 @@ alias dot='cd ~/dotfiles'
 alias zshrc='e ~/dotfiles/zsh/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.vim'
+# alias vimrc='e ~/proj/wconfig/init.lua'
 alias en='e .env'
 alias mc='mailcatcher --http-ip 0.0.0.0 ; rse'
 alias kmc='pkill -f mailcatcher'
