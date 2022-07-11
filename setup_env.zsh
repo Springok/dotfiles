@@ -2,7 +2,7 @@
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo 'Mac OS X'
-  brew install stow asdf fzf nvim tig tmux httpie htop bat autojump exa ripgrep
+  brew install stow asdf fzf nvim tig tmux httpie htop bat zoxide exa ripgrep
 
   # https://github.com/junegunn/fzf#using-homebrew
   $(brew --prefix)/opt/fzf/install

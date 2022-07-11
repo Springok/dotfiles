@@ -246,11 +246,12 @@ bindkey '^F' autosuggest-accept
 bindkey '^p' history-substring-search-up
 bindkey '^n' history-substring-search-down
 
+eval "$(zoxide init zsh --cmd j)"
+
 case `uname` in
   Darwin)
     alias ls='exa'
     alias ll='exa -l -a'
-    [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
     # User configuration
     export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
