@@ -1,14 +1,19 @@
 #!/usr/bin/env zsh
 
+# TODO:
+# diff-highlight
+# tmux-color256
+# install tpm
+
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo 'Mac OS X'
-  brew install stow asdf fzf nvim tig tmux httpie htop bat zoxide exa ripgrep
+  brew install stow asdf fzf nvim tig tmux httpie htop bat zoxide exa ripgrep wget gsed gtime
 
   # https://github.com/junegunn/fzf#using-homebrew
   $(brew --prefix)/opt/fzf/install
 else
-  echo 'Linux (Untested)'
-  sudo apt install stow bat ripgrep autojump exa
+  echo 'Linux (Script untested)'
+  sudo apt install stow bat ripgrep autojump exa wget
 
   # https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
   sudo add-apt-repository ppa:neovim-ppa/stable
@@ -31,7 +36,7 @@ else
   fi
 fi
 
-echo 'Setup Development Perferences (Nvim, zsh....)'
+echo 'Setup Development Perferences (Nvim, Zim....)'
 
 mkdir -p ~/.config/nvim
 
