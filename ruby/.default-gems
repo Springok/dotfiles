@@ -1,6 +1,5 @@
 bundler
 pry
-gem-ctags
 awesome_print
 mailcatcher
-tmuxinator
+# tmuxinator
