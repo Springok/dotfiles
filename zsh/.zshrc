@@ -247,11 +247,15 @@ case `uname` in
     alias ls='exa'
     alias ll='exa -l -a'
 
-    # User configuration
-    export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/libpq/bin:/usr/local/opt/erlang@23/bin:$PATH
-    # export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/postgresql@10/bin:/usr/local/opt/erlang@23/bin:$PATH
-    #
     export HOMEBREW_NO_AUTO_UPDATE=1
+
+    # postgresql / libpq configuration
+    export PATH=$HOME/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/postgresql@10/bin:$PATH
+
+    # setting for Ruby installation
+    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+    export optflags="-Wno-error=implicit-function-declaration"
+
   ;;
   Linux)
     alias ls='ls --color=auto'
