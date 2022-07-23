@@ -148,12 +148,21 @@ alias copm='cop master...'
 alias rake='be rake'
 
 # be careful with the folder position
-alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
-alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
-alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
-alias dump_db='~/proj/vm/scripts/db_dump.rb && ch_pw'
-alias dump_db_f='~/proj/vm/scripts/db_dump.rb -f && ch_pw'
-alias dump_db2='~/proj/vm/scripts/dump_db.zsh'
+if [[ -d ~/proj/vm ]]; then
+  alias e_db='vim ~/proj/vm/user/db_mapping.yml'
+
+  alias db_dump='~/proj/vm/scripts/db_dump.rb && ch_pw'
+  alias dump_db='~/proj/vm/scripts/dump_db.zsh'
+  alias ch_pw='be rails runner ~/proj/vm/scripts/nerv/change_passwords.rb'
+  alias e_pw='vim ~/proj/vm/scripts/nerv/change_passwords.rb'
+else
+  echo "[Reminder] You need to clone vm project from Gitlab to get scripts for alias."
+fi
+
+if [[ -d ~/proj/wscripts ]]; then
+  alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
+  alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
+fi
 
 # Rails
 alias rc='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be rails console'
