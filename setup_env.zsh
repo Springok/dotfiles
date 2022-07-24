@@ -1,10 +1,5 @@
 #!/usr/bin/env zsh
 
-# TODO:
-# diff-highlight
-# tmux-color256
-# install tpm
-
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo 'Mac OS X'
   brew install stow asdf fzf nvim git tig tmux httpie htop bat zoxide exa ripgrep wget gsed gtime
@@ -50,12 +45,28 @@ stow --verbose git \
   ruby \
   asdf
 
-# Install Vim Plug at first setup
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if [[ ! -f $HOME/.vim/autoload/plug.vim ]]; then
+  echo 'Install Vim Plug at first setup'
 
-pip3 install pynvim
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-nvim +PlugInstall +qall
+  pip3 install pynvim
+
+  nvim +PlugInstall +qall
+fi
+
+# https://github.com/tmux-plugins/tpm
+if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
+  echo 'Setup Tmux Plugin Manager(TMP)'
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  tmux source ~/.tmux.conf
+
+  echo 'Press tmux prefix key + I to install tmux plugins'
+fi
+
+# tmux-color256
+# https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
+# sudo /usr/bin/tic -x ./tmux-256color.src
 
 echo "You are all set!"
