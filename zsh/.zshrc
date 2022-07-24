@@ -160,6 +160,7 @@ else
 fi
 
 if [[ -d ~/proj/wscripts ]]; then
+  alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
   alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
   alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
 fi
