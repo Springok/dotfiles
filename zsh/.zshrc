@@ -259,7 +259,15 @@ case `uname` in
     export HOMEBREW_NO_AUTO_UPDATE=1
 
     # postgresql / libpq configuration
-    export PATH=$HOME/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/postgresql@10/bin:$PATH
+    # export PATH=$HOME/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/postgresql@10/bin:$PATH
+
+    # only works in ZSH
+    path=(
+      /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/
+      /opt/homebrew/opt/libpq/bin
+      /opt/homebrew/opt/postgresql@10/bin
+      $path
+    )
 
     # setting for Ruby installation
     export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
