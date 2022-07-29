@@ -270,9 +270,13 @@ case `uname` in
       $path
     )
 
-    # setting for Ruby installation
+    # setting for Ruby 2.5.9 installation
     export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
     export optflags="-Wno-error=implicit-function-declaration"
+
+    # setting for Ruby 2.1.5 installation
+    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
+    # export CFLAGS="-Wno-error=implicit-function-declaration"
 
   ;;
   Linux)
