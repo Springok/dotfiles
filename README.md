@@ -6,40 +6,10 @@ Table of Contents
 * [dotfiles](#dotfile)
    * [Introduction](#introduction)
    * [Tools](#tools)
-      * [Zsh](#zsh)
-      * [Zim](#zim)
-      * [Neovim](#neovim)
-      * [Tmux](#tmux)
-      * [stow](#stow)
-      * [asdf](#asdf)
-      * [fzf](#fzf)
-      * [ripgrep](#ripgrep)
-      * [bat](#bat)
-      * [zoxide](#zoxide)
-      * [exa](#exa)
-      * [wget](#wget)
-      * [httpie](#httpie)
-      * [tig](#tig)
-      * [diff-highlight](#diff-highlight)
-      * [htop](#htop)
-      * [gnu-sed / gnu-time](#gnu-sed--gnu-time)
    * [Preference](#preference)
-      * [General](#general)
-      * [Zsh - .zimrc / .zshrc](#zsh---zimrc--zshrc)
-      * [Tmux - tmux.conf](#tmux---tmuxconf)
-      * [NeoVim - init.vim](#neovim---initvim)
-      * [Git - tigrc](#git---tigrc)
-      * [Ruby - default - gems / pryrc](#ruby---default---gems--pryrc)
-      * [Clojure - deps.edn](#clojure---depsedn)
    * [Installation](#installation)
-      * [Things ain’t automated in setup script](#things-aint-automated-in-setup-script)
    * [FAQ](#faq)
    * [Great Resources](#great-resources)
-      * [General](#general-1)
-      * [Vim / Neovim](#vim--neovim)
-      * [Tmux](#tmux-1)
-      * [Ruby](#ruby)
-      * [Clojure](#clojure)
 
 ## Introduction
 - Tools / Preference for my development workflow
@@ -102,8 +72,8 @@ Table of Contents
 > GNU Wget is a [free software](https://www.gnu.org/philosophy/free-sw) package for retrieving files using HTTP, HTTPS, FTP and FTPS, the most widely used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, `cron` jobs, terminals without X-Windows support, etc.
 
 ### httpie
-[httpie/httpie: As easy as /aitch-tee-tee-pie/ 🥧 Modern, user-friendly command-line HTTP client for the API era. JSON support, colors, sessions, downloads, plugins & more](https://github.com/httpie/httpie)
-[HTTPie 3.2.1 (latest) docs](https://httpie.io/docs/cli)
+- [httpie/httpie: As easy as /aitch-tee-tee-pie/ 🥧 Modern, user-friendly command-line HTTP client for the API era. JSON support, colors, sessions, downloads, plugins & more](https://github.com/httpie/httpie)
+- [HTTPie 3.2.1 (latest) docs](https://httpie.io/docs/cli)
  > Its goal is to make CLI interaction with web services as human-friendly as possible. HTTPie is designed for testing, debugging, and generally interacting with APIs & HTTP servers. The `http` & `https` commands allow for creating and sending arbitrary HTTP requests. They use simple and natural syntax and provide formatted and colorized output.
 
 ---
@@ -120,14 +90,14 @@ Table of Contents
 ---
 
 ### htop
-[htop - an interactive process viewer](https://htop.dev/)
-[htop-dev/htop: htop - an interactive process viewer](https://github.com/htop-dev/htop)
+- [htop - an interactive process viewer](https://htop.dev/)
+- [htop-dev/htop: htop - an interactive process viewer](https://github.com/htop-dev/htop)
 > a cross-platform interactive process viewer. It is a text-mode application (for console or X terminals) and requires ncurses.
 > `htop` allows scrolling the list of processes vertically and horizontally to see their full command lines and related information like memory and CPU consumption. Also system wide information, like load average or swap usage, is shown.
 
 ### gnu-sed / gnu-time
-[GNU sed - GNU Project - Free Software Foundation](https://www.gnu.org/software/sed/)
-[GNU Time - GNU Project - Free Software Foundation](https://www.gnu.org/software/time/)
+- [GNU sed - GNU Project - Free Software Foundation](https://www.gnu.org/software/sed/)
+- [GNU Time - GNU Project - Free Software Foundation](https://www.gnu.org/software/time/)
 
 We will need gsed / gtime in some scripts of our projects
 
