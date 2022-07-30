@@ -1,20 +1,17 @@
 # dotfiles
+- Tools / Preference for my development workflow
+- Tmux x Neovim x Zsh
+- Script for quick development environment restore
 
 Table of Contents
 =================
 
-* [dotfiles](#dotfile)
-   * [Introduction](#introduction)
-   * [Tools](#tools)
-   * [Preference](#preference)
-   * [Installation](#installation)
-   * [FAQ](#faq)
-   * [Great Resources](#great-resources)
-
-## Introduction
-- Tools / Preference for my development workflow
-- Tmux x Neovim x Zsh
-- Script for quick development environment restore
+* [Introduction](#introduction)
+* [Tools](#tools)
+* [Preference](#preference)
+* [Installation](#installation)
+* [FAQ](#faq)
+* [Great Resources](#great-resources)
 
 ## Tools
 
@@ -66,6 +63,7 @@ Table of Contents
 [exa · a modern replacement for ls](https://the.exa.website/)
 > **exa** is an improved file lister with more features and better defaults. It uses colours to distinguish file types and metadata. It knows about symlinks, extended attributes, and Git. And it’s small, fast, and just one single binary.
 
+---
 
 ### wget
 [Wget - GNU Project - Free Software Foundation](https://www.gnu.org/software/wget/)
@@ -107,7 +105,6 @@ We will need gsed / gtime in some scripts of our projects
 - disable homebrew auto update
 - enable vim mode in command line
 
-
 ### Zsh - .zimrc / .zshrc
 - zmodule setup in `.zimrc`
 - aliases / ENV setup in `.zshrc` / `.zshenv` (for run commands in vim)
@@ -140,6 +137,7 @@ We will need gsed / gtime in some scripts of our projects
 ### Clojure - deps.edn
 - [seancorfield/dot-clojure: My .clojure/deps.edn file](https://github.com/seancorfield/dot-clojure)
 
+
 ## Installation
 
 install `zsh` first, and set `zsh`  as your default shell
@@ -155,7 +153,7 @@ then run:
 ### Things ain’t automated in setup script
 - Install tmux plugins
     - `prefix key + I` after running setup script
-- install tmux-color256 (or you can use `xterm-256color` in `tmux.conf`)
+- install `tmux-color256` (or you can use `xterm-256color` in `tmux.conf`)
     - `sudo /usr/bin/tic -x ./tmux-256color.src`
 - Install fonts
     - `brew tap homebrew/cask-fonts
@@ -170,8 +168,6 @@ then run:
     - Private project vim-abagile.git
     - proj?
 
-
-
 ## Great Resources
 
 ### General
@@ -182,9 +178,11 @@ then run:
 ### Vim / Neovim
 
 ### Tmux
+- [Getting Started · tmux/tmux Wiki](https://github.com/tmux/tmux/wiki/Getting-Started)
 - [Tmux Cheat Sheet & Quick Reference](https://tmuxcheatsheet.com/)
 
 ### Ruby
+
 
 ### Clojure
 - [seancorfield/clj-new: Generate new projects based on clj, Boot, or Leiningen Templates!](https://github.com/seancorfield/clj-new)
