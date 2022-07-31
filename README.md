@@ -1,3 +1,5 @@
+<div align="center">
+
 # dotfiles
 
 - Tools / Preference for my development workflow
@@ -5,6 +7,8 @@
 - Script for quick development environment restore
 
 [Tools](#tools) / [Installation](#installation) / [Preference](#preference) / [FAQ](#faq) / [Commands](#commands) / [Great Resources](#great-resources)
+
+</div>
 
 ## Tools
 
