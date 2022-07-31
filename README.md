@@ -114,8 +114,8 @@ then run:
 - install `tmux-color256` (or you can use `xterm-256color` in `tmux.conf`)
     - `sudo /usr/bin/tic -x ./tmux-256color.src`
 - Install fonts
-    - `brew tap homebrew/cask-fonts
-    - `brew install --cask font-hack-nerd-font
+    - `brew tap homebrew/cask-fonts`
+    - `brew install --cask font-hack-nerd-font`
     - https://www.nerdfonts.com/
 
 ## Preference
@@ -129,13 +129,13 @@ then run:
 - aliases / ENV setup in `.zshrc` / `.zshenv` (for run commands in vim)
 
 ### Tmux - tmux.conf
-- remap prefix key to `
+- remap prefix key to ```
 
 ### NeoVim - init.vim
 - remap mapleader to `,`
 - ale-linters will need dependencies
-    - clj-kondo
-    - rubocop
+    - `clj-kondo`
+    - `rubocop`
 
 ### Git - tigrc
 [tigrc(5) · Tig - Text-mode interface for Git](https://jonas.github.io/tig/doc/tigrc.5.html)
