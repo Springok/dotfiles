@@ -275,6 +275,16 @@ case `uname` in
     export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
     export optflags="-Wno-error=implicit-function-declaration"
 
+    listening() {
+      if [ $# -eq 0 ]; then
+        lsof -iTCP -sTCP:LISTEN -n -P
+      elif [ $# -eq 1 ]; then
+        lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+      else
+        echo "Usage: listening [pattern]"
+      fi
+    }
+
     # setting for Ruby 2.1.5 installation
     # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
     # export CFLAGS="-Wno-error=implicit-function-declaration"
