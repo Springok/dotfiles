@@ -125,9 +125,6 @@ alias nodejs=node
 ########################
 # Project Related
 ########################
-
-alias proj='cd ~/proj'
-
 # export USE_BOOTSNAP=1
 alias krpu='rpu kill'
 alias pru='rpu'
