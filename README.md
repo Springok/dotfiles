@@ -1,10 +1,10 @@
-<div align="center">
-
 # dotfiles
 
 - Tools / Preference for my development workflow
 - Tmux x Neovim x Zsh
 - Script for quick development environment restore
+
+<div align="center">
 
 [Tools](#tools) / [Installation](#installation) / [Preference](#preference) / [FAQ](#faq) / [Commands](#commands) / [Great Resources](#great-resources)
 
@@ -158,18 +158,18 @@ then run:
 
 
 ##  FAQ
--  I saw the `proj` folder in some aliases mappings in `.zshrc`, what is it?
+I saw the `proj` folder in some aliases mappings in `.zshrc`, what is it?
 > `~/proj` is my personal preference to store the projects from work, life, it is not configurable at the moment, sorry about that.
 
 
-- I saw the `vm` / `wscript` folders in some aliases mappings in `.zshrc`, what are they?
+I saw the `vm` / `wscript` folders in some aliases mappings in `.zshrc`, what are they?
 > `vm` is a private project, own by our team, it contains many helpers related to our main project, and `wscript` is my private project, which is not ready to be public now, feel free remove these aliases, likewise `vim-abagile.git` is our private project too, feel free remove it from the list of vim plugins.
 
 
-- Do I have to clone the `dotfiles` repository to the home directory(`~`)?
+Do I have to clone the `dotfiles` repository to the home directory(`~`)?
 > Yep, because I use `stow` as the softlink manager, and most of these configs, should be putted in the home directory,  by default, invoke `stow`  in the `~/dotfiles` , will put these configs to the parent of current folder, which is home directory `~` .
 
-- Why install `git` via `brew` again? I think we have `git` in macOS by default?
+Why install `git` via `brew` again? I think we have `git` in macOS by default?
 > Yep, we have it by default, however the it doesn't come with `diff-highlight`, so ...
 
 ## Commands
