@@ -221,6 +221,13 @@ alias en='e .env'
 alias mc='mailcatcher --http-ip 0.0.0.0 ; rse'
 alias kmc='pkill -f mailcatcher'
 
+########################
+# exa
+########################
+alias ls='exa'
+alias ll='exa -l -a'
+alias tree='exa --tree'
+
 # Git pager setting
 export LESS=R
 
@@ -254,9 +261,6 @@ eval "$(zoxide init zsh --cmd j)"
 
 case `uname` in
   Darwin)
-    alias ls='exa'
-    alias ll='exa -l -a'
-
     export HOMEBREW_NO_AUTO_UPDATE=1
 
     # postgresql / libpq configuration
@@ -280,8 +284,6 @@ case `uname` in
 
   ;;
   Linux)
-    alias ls='ls --color=auto'
-    alias ll='ls -l -a'
     alias grep='grep --color=auto'
   ;;
 esac
