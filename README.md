@@ -1,17 +1,10 @@
 # dotfiles
+
 - Tools / Preference for my development workflow
 - Tmux x Neovim x Zsh
 - Script for quick development environment restore
 
-Table of Contents
-=================
-
-* [Introduction](#introduction)
-* [Tools](#tools)
-* [Preference](#preference)
-* [Installation](#installation)
-* [FAQ](#faq)
-* [Great Resources](#great-resources)
+[Tools](#tools) / [Installation](#installation) / [Preference](#preference) / [FAQ](#faq) / [Commands](#commands) / [Great Resources](#great-resources)
 
 ## Tools
 
@@ -99,6 +92,28 @@ Table of Contents
 
 We will need gsed / gtime in some scripts of our projects
 
+## Installation
+
+install `zsh` first, and set `zsh`  as your default shell
+
+`chsh -s /bin/zsh`
+
+then run:
+
+`git clone git@github.com:Springok/dotfiles.git ~/dotfiles`
+
+`~/dotfiles/setup_env.zsh`
+
+### Things ain’t automated in setup script
+- Install tmux plugins
+    - `prefix key + I` after running setup script
+- install `tmux-color256` (or you can use `xterm-256color` in `tmux.conf`)
+    - `sudo /usr/bin/tic -x ./tmux-256color.src`
+- Install fonts
+    - `brew tap homebrew/cask-fonts
+    - `brew install --cask font-hack-nerd-font
+    - https://www.nerdfonts.com/
+
 ## Preference
 
 ### General
@@ -138,35 +153,44 @@ We will need gsed / gtime in some scripts of our projects
 - [seancorfield/dot-clojure: My .clojure/deps.edn file](https://github.com/seancorfield/dot-clojure)
 
 
-## Installation
-
-install `zsh` first, and set `zsh`  as your default shell
-
-`chsh -s /bin/zsh`
-
-then run:
-
-`git clone git@github.com:Springok/dotfiles.git ~/dotfiles`
-
-`~/dotfiles/setup_env.zsh`
-
-### Things ain’t automated in setup script
-- Install tmux plugins
-    - `prefix key + I` after running setup script
-- install `tmux-color256` (or you can use `xterm-256color` in `tmux.conf`)
-    - `sudo /usr/bin/tic -x ./tmux-256color.src`
-- Install fonts
-    - `brew tap homebrew/cask-fonts
-    - `brew install --cask font-hack-nerd-font
-    - https://www.nerdfonts.com/
-
-
 ##  FAQ
+-  I saw the `proj` folder in some aliases mappings in `.zshrc`, what is it?
+> `~/proj` is my personal preference to store the projects from work, life, it is not configurable at the moment, sorry about that.
 
-    - What is vm?
-    - What is wscript?
-    - Private project vim-abagile.git
-    - proj?
+
+- I saw the `vm` / `wscript` folders in some aliases mappings in `.zshrc`, what are they?
+> `vm` is a private project, own by our team, it contains many helpers related to our main project, and `wscript` is my private project, which is not ready to be public now, feel free remove these aliases, likewise `vim-abagile.git` is our private project too, feel free remove it from the list of vim plugins.
+
+
+- Do I have to clone the `dotfiles` repository to the home directory(`~`)?
+> Yep, because I use `stow` as the softlink manager, and most of these configs, should be putted in the home directory,  by default, invoke `stow`  in the `~/dotfiles` , will put these configs to the parent of current folder, which is home directory `~` .
+
+- Why install `git` via `brew` again? I think we have `git` in macOS by default?
+> Yep, we have it by default, however the it doesn't come with `diff-highlight`, so ...
+
+## Commands
+
+(TODO)
+
+### Navigation
+- tmux
+    - window
+    - pane
+- vim
+    - window
+    - pane
+    - buffer
+- shell
+    - directory
+- Integration
+
+### Command Lines / Aliases
+- search (rg / fzf)
+- git
+
+### Cheatsheet
+- [Tmux Cheat Sheet & Quick Reference](https://tmuxcheatsheet.com/)
+- [vim-sexp cheatsheet](https://gist.github.com/cszentkiralyi/a9a4e78dc746e29e0cc8)
 
 ## Great Resources
 
@@ -176,13 +200,15 @@ then run:
 - [Managing dotfiles with GNU Stow | Bastian Venthur's Blog](https://venthur.de/2021-12-19-managing-dotfiles-with-stow.html)
 
 ### Vim / Neovim
+- [Vim: from foe to friend in 9 minutes | by Omer Hamerman | ProdOpsIO | Medium](https://medium.com/prodopsio/vim-from-foe-to-friend-in-9-minutes-ddc020151647)
+- [How To Learn Vim: A Four Week Plan | by Peter Jang | Actualize | Medium](https://medium.com/actualize-network/how-to-learn-vim-a-four-week-plan-cd8b376a9b85)
+- [rockerBOO/awesome-neovim: Collections of awesome neovim plugins.](https://github.com/rockerBOO/awesome-neovim#awesome-neovim-)
 
 ### Tmux
 - [Getting Started · tmux/tmux Wiki](https://github.com/tmux/tmux/wiki/Getting-Started)
-- [Tmux Cheat Sheet & Quick Reference](https://tmuxcheatsheet.com/)
 
 ### Ruby
-
+- [tpope/vim-rails: rails.vim: Ruby on Rails power tools](https://github.com/tpope/vim-rails)
 
 ### Clojure
 - [seancorfield/clj-new: Generate new projects based on clj, Boot, or Leiningen Templates!](https://github.com/seancorfield/clj-new)
