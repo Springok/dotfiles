@@ -1,13 +1,10 @@
 #!/usr/bin/env zsh
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  echo 'Mac OS X'
+  echo 'You are in Mac OS X...'
   brew install stow asdf fzf nvim git tig tmux httpie htop bat zoxide exa ripgrep wget gnu-sed gnu-time
-
-  # https://github.com/junegunn/fzf#using-homebrew
-  $(brew --prefix)/opt/fzf/install
 else
-  echo 'Linux (Script untested)'
+  echo 'Linux (Script untested)...'
   sudo apt install stow bat ripgrep autojump exa wget
 
   # https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
@@ -31,7 +28,7 @@ else
   fi
 fi
 
-echo 'Setup Development Perferences (Nvim, Zim....)'
+echo 'Setup Development Perferences (Nvim, Zim...)...'
 
 mkdir -p ~/.config/nvim
 
@@ -45,8 +42,12 @@ stow --verbose git \
   ruby \
   asdf
 
-if [[ ! -f $HOME/.vim/autoload/plug.vim ]]; then
-  echo 'Install Vim Plug at first setup'
+echo "starting asdf installation..."
+asdf install
+
+# https://github.com/junegunn/vim-plug#neovim
+if [[ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]; then
+  echo 'Install Vim Plug at first setup...'
 
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -58,15 +59,20 @@ fi
 
 # https://github.com/tmux-plugins/tpm
 if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
-  echo 'Setup Tmux Plugin Manager(TMP)'
+  echo 'Setup Tmux Plugin Manager(TMP)...'
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   tmux source ~/.tmux.conf
 
-  echo 'Press tmux prefix key + I to install tmux plugins'
+  echo 'Please Press tmux prefix key + I to install tmux plugins'
 fi
+
+# https://github.com/junegunn/fzf#using-homebrew
+$(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc
 
 # tmux-color256
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
 # sudo /usr/bin/tic -x ./tmux-256color.src
+
+source ~/.zshrc
 
 echo "You are all set!"
