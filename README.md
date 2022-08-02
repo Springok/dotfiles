@@ -94,12 +94,12 @@ Why install `git` via `brew` again? I think we have `git` in macOS by default?
 
 ### Navigation
 - seamless moves in tmux / vim
-    - `h`, `j`, `k`, `l`
     - `ctrl` +  `h`,`j`, `k`, `l`
 - tmux
     - window - prefix key + `<space>` , prefix key + `<number>`
     - pane - `ctrl` +  `h`,`j`, `k`, `l`
 - vim
+    - `h`, `j`, `k`, `l`
     - window - `ctrl` + `j`, `k`
     - buffer - `<tab>`, `<S-tab>`
     - file explorer (nerdtree / nvimtree)
