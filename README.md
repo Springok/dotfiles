@@ -6,11 +6,11 @@
 
 <div align="center">
 
-[Installation](#installation) / [Preference](#preference) / [FAQ](#faq) / [Commands](#commands) / [Tools](#tools) / [Great Resources](#great-resources)
+🔧[Installation](#installation) / ⚙[Preference](#preference) / 🙋‍♀️🙋 [FAQ](#faq) / ⌨️[Commands](#commands) / 🧰 [Tools](#tools) / 📚[Great Resources](#great-resources)
 
 </div>
 
-## Installation
+## 🔧Installation
 
 install `zsh` first, and set `zsh`  as your default shell
 
@@ -32,7 +32,7 @@ then run:
     - `brew install --cask font-hack-nerd-font`
     - https://www.nerdfonts.com/
 
-## Preference
+## ⚙Preference
 
 ### General
 - disable homebrew auto update
@@ -43,7 +43,7 @@ then run:
 - aliases / ENV setup in `.zshrc` / `.zshenv` (for run commands in vim)
 
 ### Tmux - tmux.conf
-- remap prefix key to ```
+- remap prefix key to `` ` ``
 
 ### NeoVim - init.vim
 - remap mapleader to `,`
@@ -71,7 +71,8 @@ then run:
 - [seancorfield/dot-clojure: My .clojure/deps.edn file](https://github.com/seancorfield/dot-clojure)
 
 
-##  FAQ
+## FAQ 
+
 I saw the `proj` folder in some aliases mappings in `.zshrc`, what is it?
 > `~/proj` is my personal preference to store the projects from work, life, it is not configurable at the moment, sorry about that.
 
@@ -87,6 +88,7 @@ Why install `git` via `brew` again? I think we have `git` in macOS by default?
 > Yep, we have it by default, however the it doesn't come with `diff-highlight`, so ...
 
 ## Commands
+
 
 (TODO)
 
@@ -121,7 +123,7 @@ Why install `git` via `brew` again? I think we have `git` in macOS by default?
 - Clojure  - [vim-sexp cheatsheet](https://gist.github.com/cszentkiralyi/a9a4e78dc746e29e0cc8)
 
 
-## Tools
+## 🧰Tools
 
 ### Zsh
 [Z shell - Wikipedia](https://en.wikipedia.org/wiki/Z_shell)
@@ -207,7 +209,7 @@ Why install `git` via `brew` again? I think we have `git` in macOS by default?
 
 We will need gsed / gtime in some scripts of our projects
 
-## Great Resources
+## 📚Great Resources
 
 ### General
 - [Dotfiles – What is a Dotfile and How to Create it in Mac and Linux](https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/)
