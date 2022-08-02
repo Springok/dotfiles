@@ -91,24 +91,35 @@ Why install `git` via `brew` again? I think we have `git` in macOS by default?
 (TODO)
 
 ### Navigation
+- seamless moves in tmux / vim
+    - `h`, `j`, `k`, `l`
+    - `ctrl` +  `h`,`j`, `k`, `l`
 - tmux
-    - window
-    - pane
+    - window - prefix key + `<space>` , prefix key + `<number>`
+    - pane - `ctrl` +  `h`,`j`, `k`, `l`
 - vim
-    - window
-    - pane
-    - buffer
+    - window - `ctrl` + `j`, `k`
+    - buffer - `<tab>`, `<S-tab>`
+    - file explorer (nerdtree / nvimtree)
+        - toggle tree - `,dd`
+    - jump to a file - `ctrl + p`
+    - within a line -  `H`, `L`
+    - within a buffer - `gg`, `G`, `{`, `}`, `<number>` + `j`, `k`
+    - in the Rails project
+        - relative, alternative files - `:R` `:A`
+        - controller, models, ... - `:Econtroller _`
 - shell
-    - directory
-- Integration
+    - directory - `cd`, `j`
 
-### Command Lines / Aliases
-- search (rg / fzf)
-- git
+### Command Lines(cli) / Aliases
+- `.vimrc` / `tmux.conf` / `.zshrc`
+- zsh history -  `ctrl + r`
+- git - `gfm`, `gc`, `gs`
 
 ### Cheatsheet
-- [Tmux Cheat Sheet & Quick Reference](https://tmuxcheatsheet.com/)
-- [vim-sexp cheatsheet](https://gist.github.com/cszentkiralyi/a9a4e78dc746e29e0cc8)
+- Tmux - [Tmux Cheat Sheet & Quick Reference](https://tmuxcheatsheet.com/)
+- Clojure  - [vim-sexp cheatsheet](https://gist.github.com/cszentkiralyi/a9a4e78dc746e29e0cc8)
+
 
 ## Tools
 
