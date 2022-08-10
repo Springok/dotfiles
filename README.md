@@ -23,6 +23,8 @@ then run:
 `~/dotfiles/setup_env.zsh`
 
 ### Things ain’t automated in setup script
+- [Important!] Use your own email / username in `.gitconfig`
+
 - Install tmux plugins
     - `prefix key + I` after running setup script
 - install `tmux-color256` (or you can use `xterm-256color` in `tmux.conf`)
