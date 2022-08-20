@@ -42,6 +42,9 @@ stow --verbose git \
   ruby \
   asdf
 
+echo "starting asdf plugins installation..."
+cat ~/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -I{} asdf plugin add {}
+
 echo "starting asdf installation..."
 asdf install
 
