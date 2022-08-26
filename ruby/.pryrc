@@ -1,6 +1,6 @@
-require 'awesome_print'
+require 'amazing_print'
 
-AwesomePrint.pry!
+AmazingPrint.pry!
 
 Pry.config.commands.alias_command('at', 'whereami')
 Pry.config.commands.alias_command 'ep', 'exit-program'
