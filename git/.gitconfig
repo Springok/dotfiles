@@ -20,8 +20,5 @@
   newNormal = green bold
   newHighlight = green bold 22
 
-[user]
-  email = wenchuan.lin@abagile.com
-  name  = spring
 [pull]
-	rebase = false
+  rebase = false
