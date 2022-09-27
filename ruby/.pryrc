@@ -1,6 +1,10 @@
-require 'amazing_print'
-
-AmazingPrint.pry!
+if defined? Nerv
+  require 'amazing_print'
+  AmazingPrint.pry!
+else
+  require 'awesome_print'
+  AwesomePrint.pry!
+end
 
 Pry.config.commands.alias_command('at', 'whereami')
 Pry.config.commands.alias_command 'ep', 'exit-program'
@@ -99,27 +103,4 @@ if defined? Nerv
 
   Pry.commands.alias_command('=', 'nerv-resource')
   Pry.commands.alias_command(/=((?:#{Nerv::Pry::RESOURCE_TYPES.keys.join('|')})\w*)/, "nerv-resource")
-
-  # change-password {{{
-  Pry::Commands.create_command 'change-password' do
-    group 'Nerv'
-    description 'Change user password for development convenience'
-
-    banner <<-BANNER
-      Usage: change-password mt000439     Change user with specific login_id
-             change-password              Change users (predefined within snippet)
-    BANNER
-
-    def process
-      login = args.shift
-      login.downcase!
-      cmd = <<-END.gsub(/^\s{4}/, '')
-          User.find_by!(login_id: '#{login}').tap do |u|
-            u.skip_confirmation! unless u.confirmed?
-            u.update!(password: '#{Nerv::Pry::DEV_PASSWORD}')
-          end
-      END
-      eval_string << cmd
-    end
-  end
 end
