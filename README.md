@@ -73,7 +73,7 @@ then run:
 - [seancorfield/dot-clojure: My .clojure/deps.edn file](https://github.com/seancorfield/dot-clojure)
 
 
-## FAQ 
+## FAQ
 
 I saw the `proj` folder in some aliases mappings in `.zshrc`, what is it?
 > `~/proj` is my personal preference to store the projects from work, life, it is not configurable at the moment, sorry about that.
