@@ -125,10 +125,11 @@ alias nodejs=node
 ########################
 # Project Related
 ########################
-# export USE_BOOTSNAP=1
 export DISABLE_SPRING=1
 alias krpu='rpu kill'
 alias pru='rpu'
+
+alias rss='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` rails server'
 
 # Nerv Projects
 alias ck='cd ~/proj/nerv_ck'
@@ -169,7 +170,6 @@ alias rct='be rails console test'
 alias rch="tail -f ~/.pry_history | grep -v 'exit'"
 
 alias skip_env="SKIP_PATCHING_MIGRATION='skip_any_patching_related_migrations'"
-alias disboot="USE_BOOTSNAP=0"
 alias mig='rails db:migrate'
 alias migs='rails db:migrate:status'
 alias roll='rails db:rollback'
@@ -273,9 +273,13 @@ case `uname` in
       $path
     )
 
-    # setting for Ruby 2.5.9 installation
-    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+    export CFLAGS="-Wno-error=implicit-function-declaration"
     export optflags="-Wno-error=implicit-function-declaration"
+    # setting for Ruby 2.5.9 installation
+    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+    # setting for Ruby 2.1.5 / 2.2.3 installation
+    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
 
     listening() {
       if [ $# -eq 0 ]; then
@@ -286,11 +290,6 @@ case `uname` in
         echo "Usage: listening [pattern]"
       fi
     }
-
-    # setting for Ruby 2.1.5 installation
-    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
-    # export CFLAGS="-Wno-error=implicit-function-declaration"
-
   ;;
   Linux)
     alias grep='grep --color=auto'
