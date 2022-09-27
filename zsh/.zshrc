@@ -66,7 +66,6 @@ export EDITOR='nvim'
 # For pair
 pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -p $2 -t ${3:-vagrant}@localhost 'tmux attach' }
 pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22 -t $1 'watch -en 10 who' }
-# pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:dev.localhost:22 -t $1 'watch -en 10 who' }
 
 # Use nvim
 alias e='nvim'
@@ -127,6 +126,7 @@ alias nodejs=node
 # Project Related
 ########################
 # export USE_BOOTSNAP=1
+export DISABLE_SPRING=1
 alias krpu='rpu kill'
 alias pru='rpu'
 
@@ -174,11 +174,12 @@ alias mig='rails db:migrate'
 alias migs='rails db:migrate:status'
 alias roll='rails db:rollback'
 alias rock!='rails db:migrate:redo STEP=1'
+alias test_db_seed='rails db:seed RAILS_ENV=test'
 alias smig='skip_env mig'
 
 alias unlog='gunzip `rg -g production.log -w`'
-alias olog='tail -f log/development.log'
-alias otlog='tail -f log/test.log'
+alias olog='e log/development.log'
+alias otlog='e log/test.log'
 alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log/development.log'
 alias ctlog='cat /dev/null >! log/lograge_test.log && cat /dev/null >! log/test.log'
 
@@ -213,8 +214,8 @@ alias work='t s work'
 alias dot='cd ~/dotfiles'
 alias zshrc='e ~/dotfiles/zsh/.zshrc'
 alias sozsh='source ~/.zshrc'
-alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.vim'
-# alias vimrc='e ~/proj/wconfig/init.lua'
+# alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.vim'
+alias vimrc='e ~/proj/wconfig/init.lua'
 alias en='e .env'
 alias mc='mailcatcher --http-ip 0.0.0.0 ; rse'
 alias kmc='pkill -f mailcatcher'
@@ -266,7 +267,7 @@ case `uname` in
 
     # only works in ZSH
     path=(
-      /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/
+      /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight
       /opt/homebrew/opt/libpq/bin
       /opt/homebrew/opt/postgresql@10/bin
       $path
