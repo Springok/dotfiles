@@ -2,4 +2,5 @@ bundler
 pry
 amazing_print
 mailcatcher
+thor
 # tmuxinator
