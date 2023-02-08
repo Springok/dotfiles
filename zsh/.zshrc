@@ -71,7 +71,7 @@ pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22 -t $1 'w
 alias e='nvim'
 alias vdiff='nvim -d'
 
-alias cat='bat --style=plain'
+alias cat='bat'
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
@@ -131,10 +131,14 @@ alias pru='rpu'
 
 alias rss='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` rails server'
 
+alias aoc='cd ~/proj/advent-of-code'
+
 # Nerv Projects
 alias ck='cd ~/proj/nerv_ck'
 alias hk='cd ~/proj/nerv'
 alias sg='cd ~/proj/nerv_sg'
+alias amoeba='cd ~/proj/amoeba'
+alias angel='cd ~/proj/angel'
 alias adam='cd clojure/projects/adam'
 alias asuka='cd clojure/projects/asuka'
 
@@ -147,6 +151,7 @@ alias copm='cop master...'
 alias rake='be rake'
 
 # be careful with the folder position
+alias db_time='ll /tmp/(^amoeba|nerv)_*.custom'
 if [[ -d ~/proj/vm ]]; then
   alias e_db='vim ~/proj/vm/user/db_mapping.yml'
 
@@ -176,6 +181,7 @@ alias roll='rails db:rollback'
 alias rock!='rails db:migrate:redo STEP=1'
 alias test_db_seed='rails db:seed RAILS_ENV=test'
 alias smig='skip_env mig'
+alias rgm='rails generate migration'
 
 alias unlog='gunzip `rg -g production.log -w`'
 alias olog='e log/development.log'
@@ -217,7 +223,7 @@ alias sozsh='source ~/.zshrc'
 # alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.vim'
 alias vimrc='e ~/proj/wconfig/init.lua'
 alias en='e .env'
-alias mc='mailcatcher --http-ip 0.0.0.0 ; rse'
+alias mc='mailcatcher --http-ip 0.0.0.0; rse'
 alias kmc='pkill -f mailcatcher'
 
 ########################
