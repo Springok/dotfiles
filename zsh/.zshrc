@@ -279,13 +279,17 @@ case `uname` in
       $path
     )
 
-    export CFLAGS="-Wno-error=implicit-function-declaration"
-    export optflags="-Wno-error=implicit-function-declaration"
+    # enable ruby 2.7 deprecation warning
+    export RUBYOPT='-W:deprecated'
+
+    # export CFLAGS="-Wno-error=implicit-function-declaration"
+    # export optflags="-Wno-error=implicit-function-declaration"
+
     # setting for Ruby 2.5.9 installation
     # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
     # setting for Ruby 2.1.5 / 2.2.3 installation
-    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
+    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
 
     listening() {
       if [ $# -eq 0 ]; then
