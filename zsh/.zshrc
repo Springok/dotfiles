@@ -302,4 +302,22 @@ case `uname` in
   ;;
 esac
 
+function _cop_ruby() {
+  local exts=('rb,thor,builder,jbuilder,pryrc')
+  local excludes=':(top,exclude)db/schema.rb'
+  local extra_options='--display-cop-names'
+
+  if [[ $# -gt 0 ]]; then
+    local files=$(eval "noglob git diff $@ --diff-filter=d --name-only -- *.{$exts} $excludes")
+  else
+    local files=$(eval "noglob git status --porcelain -- *.{$exts} $excludes | sed -e '/^\s\?[DRC] /d' -e 's/^.\{3\}//g'")
+  fi
+
+  if [[ -n "$files" ]]; then
+    echo $files | xargs bundle exec rubocop `echo $extra_options`
+  else
+    echo 'Nothing to check (rubocop).'
+  fi
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
