@@ -1,3 +1,6 @@
 .lsp/
 .DS_Store
 .clojure/
+
+# https://github.com/clj-kondo/clj-kondo/commit/47997a735f1107e0f7bf7e7c43f0dd3d69a1bd1d
+**/.clj-kondo/.cache
