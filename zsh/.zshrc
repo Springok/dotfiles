@@ -266,7 +266,7 @@ eval "$(zoxide init zsh --cmd j)"
 
 case `uname` in
   Darwin)
-    export HOMEBREW_NO_AUTO_UPDATE=1
+    export HOMEBREW_NO_AUTO_UPDATE=1 # https://docs.brew.sh/Manpage
 
     # postgresql / libpq configuration
     # export PATH=$HOME/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/postgresql@10/bin:$PATH
