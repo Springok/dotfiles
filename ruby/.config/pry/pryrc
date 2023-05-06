@@ -1,10 +1,5 @@
-if defined? Nerv
-  require 'amazing_print'
-  AmazingPrint.pry!
-else
-  require 'awesome_print'
-  AwesomePrint.pry!
-end
+require 'amazing_print'
+AmazingPrint.pry!
 
 Pry.config.commands.alias_command('at', 'whereami')
 Pry.config.commands.alias_command 'ep', 'exit-program'

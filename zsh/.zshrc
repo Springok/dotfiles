@@ -92,6 +92,7 @@ alias ep='exit'
 alias ag=rg
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Git
 alias gs='git status'
