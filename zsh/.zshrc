@@ -281,7 +281,8 @@ case `uname` in
     )
 
     # enable ruby 2.7 deprecation warning
-    export RUBYOPT='-W:deprecated'
+    # export RUBYOPT='-W:deprecated'
+    export RUBYOPT=''
 
     # export CFLAGS="-Wno-error=implicit-function-declaration"
     # export optflags="-Wno-error=implicit-function-declaration"
