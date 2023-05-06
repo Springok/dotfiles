@@ -320,7 +320,7 @@ function _cop_ruby() {
   fi
 
   if [[ -n "$files" ]]; then
-    echo $files | xargs bundle exec rubocop `echo $extra_options`
+    echo $files | xargs bundle exec rubocop `echo $extra_options` --format pacman
   else
     echo 'Nothing to check (rubocop).'
   fi
