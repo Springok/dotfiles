@@ -23,10 +23,10 @@ zmodule duration-info
 zmodule git-info
 
 # Additional completion definitions for Zsh.
-# zmodule zsh-users/zsh-completions
+zmodule zsh-users/zsh-completions
 # Enables and configures smart and extensive tab completion.
 # completion must be sourced after zsh-users/zsh-completions
-# zmodule completion
+zmodule completion
 # Fish-like autosuggestions for Zsh.
 zmodule zsh-users/zsh-autosuggestions
 # Fish-like syntax highlighting for Zsh.
