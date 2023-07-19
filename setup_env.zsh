@@ -2,7 +2,8 @@
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo 'You are in Mac OS X...'
-  brew install stow asdf fzf nvim git tig tmux httpie htop bat zoxide exa ripgrep wget gnu-sed gnu-time fd duf
+  echo 'Install developer tools in general'
+  brew install stow asdf fzf nvim git tig tmux httpie htop bat zoxide exa ripgrep wget gnu-sed gnu-time fd duf docker docker-completion coreutils
 else
   echo 'Linux (Script untested)...'
   sudo apt install stow bat ripgrep autojump exa wget

@@ -215,6 +215,9 @@ alias rws='NERV_BASE=/nerv_sg npm run watch'
 alias t='tmuxinator'
 alias work='t s work'
 
+# DevOps
+alias dk='docker'
+alias dc='docker compose'
 ########################
 # Jump Into Config File
 ########################
