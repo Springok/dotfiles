@@ -31,17 +31,20 @@ fi
 
 echo 'Setup Development Perferences (Nvim, Zim...)...'
 
-mkdir -p ~/.config/nvim
+folders=("git" "tig" "nvim" "pry" "tmux" "tmuxinator" "ctags" "zim")
+
+for folder in "${folders[@]}"; do
+  mkdir -p $HOME/.config/"$folder"
+done
 
 cd ~/dotfiles
 
-stow --verbose git \
-  zsh \
+stow --verbose asdf \
+  git \
   nvim \
-  tmux \
-  clojure \
   ruby \
-  asdf
+  tmux \
+  zsh \
 
 echo "starting asdf plugins installation..."
 cat ~/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -I{} asdf plugin add {}
@@ -62,10 +65,10 @@ if [[ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]
 fi
 
 # https://github.com/tmux-plugins/tpm
-if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
+if [[ ! -d $HOME/.config/tmux/plugins/tpm ]]; then
   echo 'Setup Tmux Plugin Manager(TMP)...'
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  tmux source ~/.tmux.conf
+  git clone https://github.com/tmux-plugins/tpm $HOME/.config/tmux/plugins/tpm
+  tmux source $HOME/.config/tmux/tmux.conf
 
   echo 'Please Press tmux prefix key + I to install tmux plugins'
 fi
