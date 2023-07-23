@@ -12,7 +12,7 @@
 
 ## 🔧Installation
 
-install `zsh` first, and set `zsh`  as your default shell
+install `zsh` first, and set `zsh` as your default shell
 
 `chsh -s /bin/zsh`
 
@@ -20,7 +20,7 @@ then run:
 
 `git clone git@github.com:Springok/dotfiles.git ~/dotfiles`
 
-`~/dotfiles/setup_env.zsh`
+`~/dotfiles/install.zsh`
 
 ### Things ain’t automated in setup script
 - [Important!] Use your own email / username in `.gitconfig`
