@@ -313,7 +313,9 @@ keymap("v", "<C-s>", "<esc>:w<CR>", opts)
 
 -- Close current buffer
 keymap("n", "<leader>q", "<esc>:bw<cr>", opts)
+keymap("n", "<leader>x", "<esc>:bw<cr>", opts)
 keymap("i", "<leader>q", "<esc>:bw<cr>", opts)
+keymap("i", "<leader>x", "<esc>:bw<cr>", opts)
 
 --  in all modes hit ,, can return to normal mode
 keymap("n", ",,", "<C-\\><C-N>", opts)

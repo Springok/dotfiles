@@ -217,7 +217,8 @@ alias work='t s work'
 
 # DevOps
 alias dk='docker'
-alias dc='docker compose'
+alias dco='docker compose'
+alias dcn='docker container'
 ########################
 # Jump Into Config File
 ########################

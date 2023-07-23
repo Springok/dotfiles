@@ -101,12 +101,11 @@ local function on_attach(bufnr)
   -- You will need to insert "your code goes here" for any mappings with a custom action_cb
   vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
-  -- vim.keymap.set('n', 'x', api.node.navigate.parent_close, opts('Close Directory'))
+  vim.keymap.set('n', '<leader>x', api.node.navigate.parent_close, opts('Close Directory'))
   vim.keymap.set('n', '<C-c>', api.tree.close, opts('Close'))
   vim.keymap.set('n', 'h', api.node.open.horizontal, opts('Open: Horizontal Split'))
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
   vim.keymap.set('n', 'm', api.fs.rename_sub, opts('Rename: Omit Filename'))
-
 end
 
 
