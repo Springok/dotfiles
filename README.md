@@ -86,9 +86,6 @@ I saw the `vm` / `wscript` folders in some aliases mappings in `.zshrc`, what ar
 Do I have to clone the `dotfiles` repository to the home directory(`~`)?
 > Yep, because I use `stow` as the softlink manager, and most of these configs, should be putted in the home directory,  by default, invoke `stow`  in the `~/dotfiles` , will put these configs to the parent of current folder, which is home directory `~` .
 
-Why install `git` via `brew` again? I think we have `git` in macOS by default?
-> Yep, we have it by default, however the it doesn't come with `diff-highlight`, so ...
-
 ## Commands
 
 
@@ -192,8 +189,11 @@ Why install `git` via `brew` again? I think we have `git` in macOS by default?
 [Introduction · Tig - Text-mode interface for Git](https://jonas.github.io/tig/)
 > Tig is an ncurses-based text-mode interface for git. It functions mainly as a Git repository browser, but can also assist in staging changes for commit at chunk level and act as a pager for output from various Git commands.
 
+### diff-so-fancy
+[so-fancy/diff-so-fancy: Good-lookin' diffs. Actually… nah… The best-lookin' diffs.🎉](https://github.com/so-fancy/diff-so-fancy)
+> `diff-so-fancy` strives to make your diffs human readable instead of machine readable. This helps improve code quality and helps you spot defects faster.
 
-### diff-highlight
+### diff-highlight(archived)
 [git and diff-highlight | michaelheap.com](https://michaelheap.com/git-and-diff-highlight/#:~:text=diff%2Dhighlight%20is%20a%20contrib,%2C%20not%20entire%20lines%2Fparagraphs.)
 > diff-highlight is a contrib script that ships with git. It's a better way to visualise a diff when the changes are small words, not entire lines/paragraphs.
 
