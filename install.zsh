@@ -3,7 +3,7 @@
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo 'You are in Mac OS X...'
   echo 'Install developer tools in general'
-  brew install stow asdf fzf nvim git tig tmux httpie htop bat zoxide exa ripgrep wget gnu-sed gnu-time fd duf docker docker-completion coreutils diff-so-fancy
+  brew install stow asdf fzf nvim git tig tmux httpie htop bat zoxide exa ripgrep wget gnu-sed gnu-time fd duf docker docker-completion coreutils diff-so-fancy git-delta
 else
   echo 'Linux (Script untested)...'
   sudo apt install stow bat ripgrep autojump exa wget
@@ -45,8 +45,6 @@ stow --verbose asdf \
   ruby \
   tmux \
   zsh \
-
-cp ./git/.config/git/config ${HOME}/.config/git/config
 
 # TODO: hint for setup git user
 # git config --global user.name "Your Name"

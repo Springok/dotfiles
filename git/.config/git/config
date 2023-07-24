@@ -1,10 +1,17 @@
 [push]
   default = simple
 
+[pull]
+  rebase = false
+
 [core]
   editor = nvim
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta --diff-so-fancy | less
+  ; pager = diff-so-fancy | less --tabs=4 -RFX
   excludesfile = ./.gitignore_global
+
+[include]
+  path = ./user_config
 
 [color]
   ui = true
@@ -16,19 +23,27 @@
   newHighlight = green bold 22
 
 [color "diff"]
-    meta = 11
-    frag = magenta bold
-    func = 146 bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-
-[diff-so-fancy]
-    markEmptyLines = false
-
-[pull]
-  rebase = false
+  meta = 11
+  frag = magenta bold
+  func = 146 bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 
 [interactive]
-  diffFilter = diff-so-fancy --patch
+  diffFilter = delta --color-only
+  ; diffFilter = diff-so-fancy --patch
+
+[diff-so-fancy]
+  markEmptyLines = false
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
