@@ -142,6 +142,7 @@ alias amoeba='cd ~/proj/amoeba'
 alias angel='cd ~/proj/angel'
 alias adam='cd clojure/projects/adam'
 alias asuka='cd clojure/projects/asuka'
+alias obsi='cd /Users/$(whoami)/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Main'
 
 # Gems
 alias be='bundle exec'
