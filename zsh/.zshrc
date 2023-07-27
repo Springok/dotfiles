@@ -132,17 +132,17 @@ alias pru='rpu'
 
 alias rss='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` rails server'
 
-alias aoc='cd ~/proj/advent-of-code'
+alias aoc='j ~/proj/advent-of-code'
 
 # Nerv Projects
-alias ck='cd ~/proj/nerv_ck'
-alias hk='cd ~/proj/nerv'
-alias sg='cd ~/proj/nerv_sg'
-alias amoeba='cd ~/proj/amoeba'
-alias angel='cd ~/proj/angel'
-alias adam='cd clojure/projects/adam'
-alias asuka='cd clojure/projects/asuka'
-alias obsi='cd /Users/$(whoami)/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Main'
+alias ck='j ~/proj/nerv_ck'
+alias hk='j ~/proj/nerv'
+alias sg='j ~/proj/nerv_sg'
+alias amoeba='j ~/proj/amoeba'
+alias angel='j ~/proj/angel'
+alias adam='j clojure/projects/adam'
+alias asuka='j clojure/projects/asuka'
+alias obsi='j /Users/$(whoami)/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Main'
 
 # Gems
 alias be='bundle exec'
@@ -223,7 +223,7 @@ alias dcn='docker container'
 ########################
 # Jump Into Config File
 ########################
-alias dot='cd ~/dotfiles'
+alias dot='j ~/dotfiles'
 alias zshrc='e ~/dotfiles/zsh/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.lua'
