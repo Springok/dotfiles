@@ -270,7 +270,7 @@ vim.keymap.set('v', "<Enter>", "<Plug>(EasyAlign)")
 --  start interactive EasyAlign for a motion/text object (e.g. <leader>eaip)
 vim.keymap.set('n', "<leader>l", "<Plug>(EasyAlign)")
 
-vim.keymap.set('n', "<leader>V", ":luafile ~/proj/wconfig/init.lua<CR>:echo 'vimrc reloaded'<CR>")
+vim.keymap.set('n', "<leader>V", ":luafile ~/.config/nvim/init.lua<CR>:echo 'vimrc reloaded!'<CR>")
 
 -- Telescope
 keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').git_files()<cr>", opts)
