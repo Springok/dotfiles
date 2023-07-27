@@ -356,7 +356,18 @@ keymap('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
 keymap('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
 
 -- Abagile vim
+vim.g.abagile_rails_test_runner = 0
 keymap("n", "<leader><space>", ":call abagile#whitespace#strip_trailing()<cr>", opts)
+
+-- Vim Test
+vim.g["test#strategy"] = "vtr"
+
+keymap("n", "<leader>tn", ":TestNearest<CR>", opts)
+keymap("n", "<leader>tf", ":TestFile<CR>", opts)
+keymap("n", "<leader>tl", ":TestLast<CR>", opts)
+keymap("n", "<leader>ta", ":TestSuite<cr>", opts)
+keymap("n", "<leader>tg", ":TestVisit<cr>", opts)
+
 
 keymap("n", "<Leader>]", ":Vista<cr>", opts)
 

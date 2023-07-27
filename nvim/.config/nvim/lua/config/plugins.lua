@@ -148,6 +148,7 @@ return packer.startup(function()
 
   use 'christoomey/vim-tmux-navigator'
   use 'christoomey/vim-tmux-runner'
+  use 'vim-test/vim-test'
 
   use { 'Mofiqul/vscode.nvim', branch = 'main' }
   use 'navarasu/onedark.nvim'
