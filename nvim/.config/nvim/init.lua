@@ -263,7 +263,7 @@ vim.keymap.set('n', '<leader>ar', ":VtrAttachToPane<CR>")
 vim.keymap.set('n', '<leader>kr', ":VtrKillRunner<CR>")
 vim.keymap.set('n', '<leader>ur', ":VtrUnsetRunnerPane<CR>")
 vim.keymap.set('n', '<leader>sl', ":VtrSendLinesToRunner<CR>")
-vim.keymap.set('n', '<leader>rc', ":VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rc'}<CR>")
+vim.keymap.set('n', '<leader>rc', ":VtrUnsetRunnerPane<CR>:VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rc'}<CR>")
 
 -- start interactive EasyAlign in visual mode
 vim.keymap.set('v', "<Enter>", "<Plug>(EasyAlign)")
