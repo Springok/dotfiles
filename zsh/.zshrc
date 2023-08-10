@@ -119,6 +119,7 @@ alias gwe='e `git diff --name-only --relative`'
 alias gie='e `git diff --cached --name-only --relative`'
 alias gbs='git branch | grep -v spring'
 alias gbt='git checkout nerv_ck'
+alias gff='git checkout -b $(git branch --show-current)-fork'
 
 alias lg='lazygit'
 
