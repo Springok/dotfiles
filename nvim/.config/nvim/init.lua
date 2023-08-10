@@ -23,9 +23,9 @@ require "config.bufferline"
 -- vim.g.vscode_style = "dark"
 -- vim.cmd [[colorscheme vscode]]
 -- vim.cmd [[colorscheme tokyonight]]
--- vim.g.material_style = "darker"
--- vim.cmd [[colorscheme material]]
-vim.cmd [[colorscheme catppuccin]]
+vim.g.material_style = "darker"
+vim.cmd [[colorscheme material]]
+-- vim.cmd [[colorscheme catppuccin]]
 
 -- =================
 --      Plugins
