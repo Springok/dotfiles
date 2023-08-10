@@ -71,8 +71,7 @@ local function lsp_keymaps(bufnr)
   keymap("n", "<localleader>lt", vim.lsp.buf.type_definition, opts)
   keymap("n", "<localleader>lh", vim.lsp.buf.signature_help, opts)
   keymap("n", "<localleader>ln", vim.lsp.buf.rename, opts)
-  keymap("n", "<localleader>la", vim.lsp.buf.code_action, opts)
-  keymap("v", "<localleader>la", vim.lsp.buf.range_code_action, opts)
+  keymap({"v", "n"}, "<localleader>la", vim.lsp.buf.code_action, opts)
   keymap("n", "<localleader>lf", vim.lsp.buf.format, opts)
 
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
