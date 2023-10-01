@@ -235,11 +235,11 @@ alias mc='mailcatcher --http-ip 0.0.0.0; rse'
 alias kmc='pkill -f mailcatcher'
 
 ########################
-# exa
+# eza
 ########################
-alias ls='exa'
-alias ll='exa -l -a'
-alias tree='exa --tree'
+alias ls='eza'
+alias ll='eza -l -a'
+alias tree='eza --tree'
 
 # Git pager setting
 export LESS=R

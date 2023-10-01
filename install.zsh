@@ -3,10 +3,10 @@
 if [[ "$(uname -s)" == "Darwin" ]]; then
   echo 'You are in Mac OS X...'
   echo 'Install developer tools in general'
-  brew install stow asdf fzf nvim git tig tmux httpie htop bat zoxide exa ripgrep wget gnu-sed gnu-time fd duf docker docker-completion coreutils diff-so-fancy git-delta
+  brew install stow asdf fzf nvim git tig tmux httpie htop bat zoxide eza ripgrep wget gnu-sed gnu-time fd duf docker coreutils diff-so-fancy git-delta pandoc
 else
   echo 'Linux (Script untested)...'
-  sudo apt install stow bat ripgrep autojump exa wget
+  sudo apt install stow bat ripgrep autojump eza wget
 
   # https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
   sudo add-apt-repository ppa:neovim-ppa/stable
