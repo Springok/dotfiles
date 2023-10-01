@@ -23,9 +23,9 @@ require "config.bufferline"
 -- vim.g.vscode_style = "dark"
 -- vim.cmd [[colorscheme vscode]]
 -- vim.cmd [[colorscheme tokyonight]]
-vim.g.material_style = "darker"
-vim.cmd [[colorscheme material]]
--- vim.cmd [[colorscheme catppuccin]]
+-- vim.g.material_style = "darker"
+-- vim.cmd [[colorscheme material]]
+vim.cmd [[colorscheme catppuccin]]
 
 -- =================
 --      Plugins
@@ -278,7 +278,7 @@ keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",
 keymap("n", "<leader>fl", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
-keymap("n", "<leader>fo", "<cmd>lua require('telescope.builtin').live_grep({grep_open_files=true})<cr>", opts)
+keymap("n", "<leader>fo", "<cmd>lua require('telescope.builtin').live_grep({prompt_title = 'find string in open buffers...', grep_open_files=true})<cr>", opts)
 keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opts)
 
@@ -365,6 +365,7 @@ keymap("n", "<leader><space>", ":call abagile#whitespace#strip_trailing()<cr>", 
 vim.g["test#strategy"] = "vtr"
 
 keymap("n", "<leader>tn", ":TestNearest<CR>", opts)
+keymap("n", "<leader>tc", ":TestNearest<CR>", opts)
 keymap("n", "<leader>tf", ":TestFile<CR>", opts)
 keymap("n", "<leader>tl", ":TestLast<CR>", opts)
 keymap("n", "<leader>ta", ":TestSuite<cr>", opts)
