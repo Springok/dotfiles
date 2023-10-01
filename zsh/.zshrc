@@ -139,7 +139,7 @@ alias aoc='j ~/proj/advent-of-code'
 
 # Nerv Projects
 alias ck='j ~/proj/nerv_ck'
-alias hk='j ~/proj/nerv'
+alias hk='j ~/proj/nerv_hk'
 alias sg='j ~/proj/nerv_sg'
 alias amoeba='j ~/proj/amoeba'
 alias angel='j ~/proj/angel'
@@ -160,7 +160,8 @@ alias db_time='ll /tmp/(^amoeba|nerv)_*.custom'
 if [[ -d ~/proj/vm ]]; then
   alias e_db='vim ~/proj/vm/user/db_mapping.yml'
 
-  alias db_dump='~/proj/vm/scripts/db_dump.rb && ch_pw'
+  alias db_dump_for_docker='DOCKER_CONTAINER_NAME=nerv_hq-postgres-1 DB_USER="-U nerv" ~/proj/vm/scripts/db_dump_docker.rb && ch_pw'
+  # alias db_dump='~/proj/vm/scripts/db_dump.rb && ch_pw'
   alias dump_db='~/proj/vm/scripts/dump_db.zsh'
   alias ch_pw='be rails runner ~/proj/vm/scripts/nerv/change_passwords.rb'
   alias e_pw='vim ~/proj/vm/scripts/nerv/change_passwords.rb'
@@ -211,7 +212,7 @@ alias rat='clj -M:test:runner --watch'
 
 # Asuka
 alias rw='npm run watch'
-alias rwh='NERV_BASE=/nerv npm run watch'
+alias rwh='NERV_BASE=/nerv_hk npm run watch'
 alias rwc='NERV_BASE=/nerv_ck npm run watch'
 alias rws='NERV_BASE=/nerv_sg npm run watch'
 
@@ -231,8 +232,8 @@ alias zshrc='e ~/dotfiles/zsh/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.lua'
 alias en='e .env'
-alias mc='mailcatcher --http-ip 0.0.0.0; rse'
-alias kmc='pkill -f mailcatcher'
+# alias mc='mailcatcher --http-ip 0.0.0.0; rse'
+# alias kmc='pkill -f mailcatcher'
 
 ########################
 # eza

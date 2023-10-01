@@ -1,7 +1,43 @@
 # /Users/springok/.config/tmuxinator/work.yml
 
 name: work
-root: ~/proj/nerv/
+root: ~/proj/nerv_hk/
+
+windows:
+  - nerv-hk:
+      layout: main-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - vim .
+        - adam
+        - asuka
+  - nerv-ck:
+      layout: main-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - ck
+        - ck;adam
+        - ck;asuka
+  - nerv-sg:
+      layout: main-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - sg
+        - sg;adam
+        - sg;asuka
+  - amoeba:
+      layout: main-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - amoeba
 
 # Optional tmux socket
 # socket_name: foo
@@ -44,14 +80,3 @@ root: ~/proj/nerv/
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
-windows:
-  - editor:
-      layout: main-vertical
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - vim .
-        - rc
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
