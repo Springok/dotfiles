@@ -180,6 +180,7 @@ vim.cmd [[
   augroup end
   augroup _yml
     autocmd!
+    autocmd FileType eruby.yaml set filetype=yaml
     autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
     autocmd BufRead,BufNewFile *.yml setlocal spell
   augroup end
