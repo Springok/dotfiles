@@ -160,8 +160,7 @@ alias db_time='ll /tmp/(^amoeba|nerv)_*.custom'
 if [[ -d ~/proj/vm ]]; then
   alias e_db='vim ~/proj/vm/user/db_mapping.yml'
 
-  alias db_dump_for_docker='DOCKER_CONTAINER_NAME=nerv_hq-postgres-1 DB_USER="-U nerv" ~/proj/vm/scripts/db_dump_docker.rb && ch_pw'
-  # alias db_dump='~/proj/vm/scripts/db_dump.rb && ch_pw'
+  alias db_dump='~/proj/vm/scripts/db_dump.rb && ch_pw'
   alias dump_db='~/proj/vm/scripts/dump_db.zsh'
   alias ch_pw='be rails runner ~/proj/vm/scripts/nerv/change_passwords.rb'
   alias e_pw='vim ~/proj/vm/scripts/nerv/change_passwords.rb'
@@ -273,18 +272,17 @@ bindkey '^n' history-substring-search-down
 
 eval "$(zoxide init zsh --cmd j)"
 
+# use localhost / nerv for postgres service running in docker
+export PGHOST=localhost
+export PGUSER=nerv
+
 case `uname` in
   Darwin)
     export HOMEBREW_NO_AUTO_UPDATE=1 # https://docs.brew.sh/Manpage
 
-    # postgresql / libpq configuration
-    # export PATH=$HOME/bin:/opt/homebrew/opt/libpq/bin:/opt/homebrew/opt/postgresql@10/bin:$PATH
-
     # only works in ZSH
     path=(
       /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight
-      /opt/homebrew/opt/libpq/bin
-      /opt/homebrew/opt/postgresql@10/bin
       $path
     )
 
