@@ -95,13 +95,10 @@ local function on_attach(bufnr)
   vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
   -- END_DEFAULT_ON_ATTACH
 
-
-  -- Mappings migrated from view.mappings.list
-  --
   -- You will need to insert "your code goes here" for any mappings with a custom action_cb
   vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
-  vim.keymap.set('n', '<leader>x', api.node.navigate.parent_close, opts('Close Directory'))
+  vim.keymap.set('n', 'x', api.node.navigate.parent_close, opts('Close Directory'))
   vim.keymap.set('n', '<C-c>', api.tree.close, opts('Close'))
   vim.keymap.set('n', 'h', api.node.open.horizontal, opts('Open: Horizontal Split'))
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
@@ -165,21 +162,9 @@ nvim_tree.setup {
     },
   },
    view = {
-    hide_root_folder = false,
     side = "left",
     number = false,
     relativenumber = false,
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = {"<CR>", "o" }, action = "edit" },
-        { key = "x", action = "close_node" },
-        { key = "<C-c>", action = "close" },
-        { key = "h", action = "split" },
-        { key = "v", action = "vsplit" },
-        { key = "m", action = "full_rename" },
-      },
-    },
     float = {
       enable = false,
       open_win_config = function()
@@ -207,6 +192,7 @@ nvim_tree.setup {
     end,
   },
   renderer = {
+    -- root_folder_label = false,
     icons = {
       glyphs = {
         default = "",
