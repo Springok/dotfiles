@@ -138,10 +138,17 @@ vim.g.easy_align_ignore_groups = {}
 -- vim.g.abagile_migrant_structure_fold = 1
 
 -- indent_blankline
-vim.g.indent_blankline_enabled = "v:false"
-require("indent_blankline").setup {
-  show_current_context = true,
-  show_current_context_start = true,
+local highlight = {
+    "CursorColumn",
+    "Whitespace",
+}
+require("ibl").setup {
+    indent = { highlight = highlight, char = "" },
+    whitespace = {
+        highlight = highlight,
+        remove_blankline_trail = false,
+    },
+    scope = { enabled = false },
 }
 
 -- sexp
@@ -292,7 +299,7 @@ keymap("c", "w!!", "%!sudo tee > /dev/null %", opts)
 
 -- indenting
 keymap("n", "<leader>in", "mmgg=G'm", opts)
-keymap("n", "<Leader>it", ":IndentBlanklineToggle<cr>", opts)
+keymap("n", "<Leader>it", ":IBLToggle<cr>", opts)
 keymap("n", "<leader>p", "obinding.pry<ESC>^", term_opts)
 
 -- use system clipboard
