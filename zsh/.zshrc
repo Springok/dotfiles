@@ -134,6 +134,7 @@ alias nodejs=node
 export DISABLE_SPRING=1
 alias krpu='rpu kill'
 alias pru='rpu'
+alias spru='skip_mig_warn=1 rpu'
 
 alias rss='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` rails server'
 
