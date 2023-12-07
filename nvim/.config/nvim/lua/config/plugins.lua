@@ -84,7 +84,13 @@ return packer.startup(function()
 
   -- highlight parenthesis
   use "HiPhish/rainbow-delimiters.nvim"
-  -- use 'andymass/vim-matchup' -- disable as it cause error when typing [ or ( in clj file
+  use {
+    'andymass/vim-matchup', -- disable as it cause error when typing [ or ( in clj file
+    setup = function()
+      -- may set any options here
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end
+  }
 
   -- CSS #fff
   use {
