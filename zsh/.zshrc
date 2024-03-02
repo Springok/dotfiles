@@ -343,4 +343,7 @@ then
   compinit
 fi
 
+# fix issue on puma start in deamon mode
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
