@@ -349,6 +349,9 @@ keymap('n', '<leader>td', ':Gitsigns toggle_deleted<CR>', opts)
 keymap('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
 keymap('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
 
+-- git-blame
+keymap('n', '<leader>tb', ':GitBlameToggle<CR>', opts)
+
 -- Abagile vim
 vim.g.abagile_rails_test_runner = 0
 keymap("n", "<leader><space>", ":call abagile#whitespace#strip_trailing()<cr>", opts)

@@ -135,6 +135,7 @@ return packer.startup(function()
   -- Git
   use "lewis6991/gitsigns.nvim"
   use 'tpope/vim-fugitive' -- Git commands
+  use 'f-person/git-blame.nvim' -- Git commands
 
   -- Ruby
   use 'tpope/vim-rails' -- only load when opening Ruby file
