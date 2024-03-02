@@ -117,7 +117,7 @@ return packer.startup(function()
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/mason.nvim" -- simple to use language server installer
   use "williamboman/mason-lspconfig.nvim"
-  use "jose-elias-alvarez/null-ls.nvim" -- ale alternative
+  use "nvimtools/none-ls.nvim" -- ale alternative
   use {
     'seblj/nvim-echo-diagnostics',
     config = function()
