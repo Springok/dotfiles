@@ -118,15 +118,7 @@ return packer.startup(function()
   use "williamboman/mason.nvim" -- simple to use language server installer
   use "williamboman/mason-lspconfig.nvim"
   use "nvimtools/none-ls.nvim" -- ale alternative
-  use {
-    'seblj/nvim-echo-diagnostics',
-    config = function()
-      require("echo-diagnostics").setup {
-        show_diagnostic_number = true,
-        show_diagnostic_source = false,
-      }
-    end
-  }
+  use "folke/trouble.nvim"
 
   -- Tagbar alternative
   use 'liuchengxu/vista.vim'
