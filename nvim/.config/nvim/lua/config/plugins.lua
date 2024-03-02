@@ -52,6 +52,10 @@ return packer.startup(function()
 
   use "ssh://git@gitlab.abagile.com:7788/chiao.chuang/vim-abagile.git"
 
+  use({
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter/nvim-treesitter' },
+  })
   -- search and replace
   use 'windwp/nvim-spectre'
 

@@ -61,6 +61,15 @@ vim.g.rainbow_delimiters = {
   },
 }
 
+-- TreeSJ
+local tsj = require('treesj')
+
+tsj.setup({
+  ---If line after join will be longer than max value,
+  ---@type number If line after join will be longer than max value, node will not be formatted
+  max_join_length = 400,
+})
+
 -- ============================
 --      Settings / options
 -- ============================
@@ -71,17 +80,17 @@ local options = {
   cursorline     = false,
   hlsearch       = false,
   swapfile       = false, -- disable .swp files creation in vim vim.opt.wrap = false
-  number         = true, -- show line numbers
+  number         = true,  -- show line numbers
   relativenumber = true,
-  scrolloff      = 8, -- show context above/below cursorline
-  shiftwidth     = 2, -- normal mode indentation commands use 2 spaces
+  scrolloff      = 8,     -- show context above/below cursorline
+  shiftwidth     = 2,     -- normal mode indentation commands use 2 spaces
   showcmd        = true,
-  smartcase      = true, -- case-sensitive search if any caps
-  softtabstop    = 2, -- insert mode tab and backspace use 2 spaces
+  smartcase      = true,  -- case-sensitive search if any caps
+  softtabstop    = 2,     -- insert mode tab and backspace use 2 spaces
   splitright     = true,
-  tabstop        = 8, -- actual tabs occupy 8 characters
+  tabstop        = 8,     -- actual tabs occupy 8 characters
   undofile       = true,
-  smartindent    = true, -- Insert indents automatically
+  smartindent    = true,  -- Insert indents automatically
   wildmode       = 'longest,list,full',
   termguicolors  = true,
   completeopt    = { "menuone", "noselect" }, -- mostly just for cmp
@@ -111,16 +120,16 @@ vim.g.easy_align_ignore_groups = {}
 
 -- indent_blankline
 local highlight = {
-    "CursorColumn",
-    "Whitespace",
+  "CursorColumn",
+  "Whitespace",
 }
 require("ibl").setup {
-    indent = { highlight = highlight, char = "" },
-    whitespace = {
-        highlight = highlight,
-        remove_blankline_trail = false,
-    },
-    scope = { enabled = false },
+  indent = { highlight = highlight, char = "" },
+  whitespace = {
+    highlight = highlight,
+    remove_blankline_trail = false,
+  },
+  scope = { enabled = false },
 }
 
 -- sexp
@@ -244,7 +253,8 @@ vim.keymap.set('n', '<leader>ar', ":VtrAttachToPane<CR>")
 vim.keymap.set('n', '<leader>kr', ":VtrKillRunner<CR>")
 vim.keymap.set('n', '<leader>ur', ":VtrUnsetRunnerPane<CR>")
 vim.keymap.set('n', '<leader>sl', ":VtrSendLinesToRunner<CR>")
-vim.keymap.set('n', '<leader>rc', ":VtrUnsetRunnerPane<CR>:VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rc'}<CR>")
+vim.keymap.set('n', '<leader>rc',
+  ":VtrUnsetRunnerPane<CR>:VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rc'}<CR>")
 
 -- start interactive EasyAlign in visual mode
 vim.keymap.set('v', "<Enter>", "<Plug>(EasyAlign)")
@@ -259,7 +269,9 @@ keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",
 keymap("n", "<leader>fl", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
-keymap("n", "<leader>fo", "<cmd>lua require('telescope.builtin').live_grep({prompt_title = 'find string in open buffers...', grep_open_files=true})<cr>", opts)
+keymap("n", "<leader>fo",
+  "<cmd>lua require('telescope.builtin').live_grep({prompt_title = 'find string in open buffers...', grep_open_files=true})<cr>",
+  opts)
 keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opts)
 
