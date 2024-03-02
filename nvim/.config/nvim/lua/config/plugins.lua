@@ -44,7 +44,7 @@ return packer.startup(function()
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
-  use { "akinsho/bufferline.nvim", tag = "v2.*" }
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
   use 'nvim-lualine/lualine.nvim'
   use "moll/vim-bbye"
 
