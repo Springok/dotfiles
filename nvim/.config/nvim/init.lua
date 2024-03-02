@@ -212,6 +212,7 @@ keymap("n", "ss", '"_dd', opts)
 vim.cmd [[
   noremap H ^
   noremap L $
+  nnoremap <space><space> <c-^>
 ]]
 
 -- keymap("n", "H", '^', opts)
