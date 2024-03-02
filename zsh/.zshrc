@@ -221,6 +221,7 @@ alias rws='NERV_BASE=/nerv_sg npm run watch'
 # Tmuxinator
 alias t='tmuxinator'
 alias work='t s work'
+alias deploy='t s deploy'
 
 # DevOps
 alias dk='docker'
