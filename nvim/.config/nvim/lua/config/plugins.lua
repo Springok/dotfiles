@@ -40,11 +40,11 @@ packer.init {
 
 return packer.startup(function()
   use 'wbthomason/packer.nvim' -- Packer can manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
-  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+  use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
   use 'nvim-lualine/lualine.nvim'
   use "moll/vim-bbye"
 
@@ -88,9 +88,9 @@ return packer.startup(function()
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
-        require("nvim-autopairs").setup {}
+      require("nvim-autopairs").setup {}
     end
-}
+  }
 
   -- CSS #fff
   use {
@@ -101,10 +101,10 @@ return packer.startup(function()
   }
 
   -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "hrsh7th/nvim-cmp"         -- The completion plugin
+  use "hrsh7th/cmp-buffer"       -- buffer completions
+  use "hrsh7th/cmp-path"         -- path completions
+  use "hrsh7th/cmp-cmdline"      -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "PaterJason/cmp-conjure"
@@ -114,10 +114,10 @@ return packer.startup(function()
   use "rafamadriz/friendly-snippets"
 
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
+  use "neovim/nvim-lspconfig"   -- enable LSP
   use "williamboman/mason.nvim" -- simple to use language server installer
   use "williamboman/mason-lspconfig.nvim"
-  use "nvimtools/none-ls.nvim" -- ale alternative
+  use "nvimtools/none-ls.nvim"  -- ale alternative
   use "folke/trouble.nvim"
 
   -- Tagbar alternative
@@ -139,7 +139,15 @@ return packer.startup(function()
   use 'slim-template/vim-slim'
 
   use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  })
   use "tpope/vim-endwise"
   use 'junegunn/vim-easy-align'
   use 'pedrohdz/vim-yaml-folds'
