@@ -343,7 +343,6 @@ keymap('v', '<leader>hr', ':Gitsigns reset_hunk<CR>', opts)
 keymap('n', '<leader>gdi', ':Gitsigns diffthis<CR>', opts)
 keymap('n', '<leader>gdd', ':Gitsigns diffthis ~<CR>', opts)
 keymap('n', '<leader>tg', ':Gitsigns toggle_signs<CR>', opts)
-keymap('n', '<leader>tb', ':Gitsigns toggle_current_line_blame<CR>', opts)
 keymap('n', '<leader>td', ':Gitsigns toggle_deleted<CR>', opts)
 
 -- gitsigns, Text object
