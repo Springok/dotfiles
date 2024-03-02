@@ -114,7 +114,7 @@ telescope.setup {
     },
     git_files = {
       theme = "ivy",
-      previewer = false,
+      previewer = true,
     },
     lsp_references = {
       theme = "dropdown"
