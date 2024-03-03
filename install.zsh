@@ -39,6 +39,7 @@ for folder in "${folders[@]}"; do
 done
 
 cd ~/dotfiles
+cp ./git/.config/git/user_config.sample ~/.config/git/user_config
 
 stow --verbose asdf \
   git \
@@ -46,10 +47,6 @@ stow --verbose asdf \
   ruby \
   tmux \
   zsh \
-
-# TODO: hint for setup git user
-# git config --global user.name "Your Name"
-# git config --global user.email "your.email@example.com"
 
 echo "starting asdf plugins installation..."
 cat ~/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -I{} asdf plugin add {}
@@ -87,4 +84,6 @@ $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc
 
 source ~/.zshrc
 
-echo "You are all set!"
+echo "[Important!] Use your own email / username in ~/.config/git/user_config"
+
+echo "Then You are all set!"

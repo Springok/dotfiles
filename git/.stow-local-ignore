@@ -1,3 +1,3 @@
 # https://www.gnu.org/software/stow/manual/stow.html#Ignore-Lists
 
-.config/git/user_config
+# .config/git/user_config

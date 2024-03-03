@@ -23,7 +23,7 @@ then run:
 `~/dotfiles/install.zsh`
 
 ### Things ain’t automated in setup script
-- [Important!] Use your own email / username in `.gitconfig`
+- [Important!] Use your own email / username in `~/.config/git/user_config`
 
 - Install tmux plugins
     - `prefix key + I` after running setup script
