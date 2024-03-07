@@ -1,3 +1,5 @@
+if true then return {} end
+
 local fn = vim.fn
 
 -- Automatically install packer
