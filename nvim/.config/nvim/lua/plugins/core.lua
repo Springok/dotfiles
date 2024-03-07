@@ -112,7 +112,6 @@ return {
 	"junegunn/vim-easy-align",
 	"pedrohdz/vim-yaml-folds",
 
-	"christoomey/vim-tmux-navigator",
 	"christoomey/vim-tmux-runner",
 	"vim-test/vim-test",
 
