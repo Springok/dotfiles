@@ -1,5 +1,5 @@
 -- require "config.plugins"
-require "config.lazy"
+require("config.lazy")
 -- require "config.cmp"
 -- require "config.lsp"
 -- require "config.telescope"
@@ -19,7 +19,7 @@ require "config.lazy"
 -- vim.cmd [[colorscheme tokyonight]]
 -- vim.g.material_style = "darker"
 -- vim.cmd [[colorscheme material]]
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd([[colorscheme catppuccin]])
 
 -- =================
 --      Plugins
@@ -27,84 +27,84 @@ vim.cmd [[colorscheme catppuccin]]
 
 -- Vista, not working, not sure why...
 vim.g.vista_executive_for = {
-  clj = "nvim_lsp",
-  cljs = "nvim_lsp"
+	clj = "nvim_lsp",
+	cljs = "nvim_lsp",
 }
 
 -- rainbow_delimiters, This module contains a number of default definitions
-local rainbow_delimiters = require 'rainbow-delimiters'
+local rainbow_delimiters = require("rainbow-delimiters")
 
 vim.g.rainbow_delimiters = {
-  strategy = {
-    [''] = rainbow_delimiters.strategy['global'],
-    vim = rainbow_delimiters.strategy['local'],
-  },
-  query = {
-    [''] = 'rainbow-delimiters',
-    lua = 'rainbow-blocks',
-  },
-  highlight = {
-    'RainbowDelimiterRed',
-    'RainbowDelimiterYellow',
-    'RainbowDelimiterBlue',
-    'RainbowDelimiterOrange',
-    'RainbowDelimiterGreen',
-    'RainbowDelimiterViolet',
-    'RainbowDelimiterCyan',
-  },
+	strategy = {
+		[""] = rainbow_delimiters.strategy["global"],
+		vim = rainbow_delimiters.strategy["local"],
+	},
+	query = {
+		[""] = "rainbow-delimiters",
+		lua = "rainbow-blocks",
+	},
+	highlight = {
+		"RainbowDelimiterRed",
+		"RainbowDelimiterYellow",
+		"RainbowDelimiterBlue",
+		"RainbowDelimiterOrange",
+		"RainbowDelimiterGreen",
+		"RainbowDelimiterViolet",
+		"RainbowDelimiterCyan",
+	},
 }
 
 -- TreeSJ
-local tsj = require('treesj')
+local tsj = require("treesj")
 
 tsj.setup({
-  ---If line after join will be longer than max value,
-  ---@type number If line after join will be longer than max value, node will not be formatted
-  max_join_length = 400,
+	---If line after join will be longer than max value,
+	---@type number If line after join will be longer than max value, node will not be formatted
+	max_join_length = 400,
 })
 
 -- ============================
 --      Settings / options
 -- ============================
 local options = {
-  expandtab      = true, -- expand tabs to spaces
-  hidden         = true, -- allow you to switch between buffers without saving
-  ignorecase     = true, -- case-insensitive search
-  cursorline     = false,
-  hlsearch       = false,
-  swapfile       = false, -- disable .swp files creation in vim vim.opt.wrap = false
-  number         = true,  -- show line numbers
-  relativenumber = true,
-  scrolloff      = 8,     -- show context above/below cursorline
-  shiftwidth     = 2,     -- normal mode indentation commands use 2 spaces
-  showcmd        = true,
-  smartcase      = true,  -- case-sensitive search if any caps
-  softtabstop    = 2,     -- insert mode tab and backspace use 2 spaces
-  splitright     = true,
-  tabstop        = 8,     -- actual tabs occupy 8 characters
-  undofile       = true,
-  smartindent    = true,  -- Insert indents automatically
-  wildmode       = 'longest,list,full',
-  termguicolors  = true,
-  completeopt    = { "menuone", "noselect" }, -- mostly just for cmp
-  updatetime     = 250,
-  signcolumn     = "yes",
-  wildignore     = 'log/**,node_modules/**,target/**,tmp/**,*.rbc',
-  list           = true,
-  -- foldmethod     = "expr",
-  -- foldexpr       = "nvim_treesitter#foldexpr()",
+	expandtab = true, -- expand tabs to spaces
+	hidden = true, -- allow you to switch between buffers without saving
+	ignorecase = true, -- case-insensitive search
+	cursorline = false,
+	hlsearch = false,
+	swapfile = false, -- disable .swp files creation in vim vim.opt.wrap = false
+	number = true, -- show line numbers
+	relativenumber = true,
+	scrolloff = 8, -- show context above/below cursorline
+	shiftwidth = 2, -- normal mode indentation commands use 2 spaces
+	showcmd = true,
+	smartcase = true, -- case-sensitive search if any caps
+	softtabstop = 2, -- insert mode tab and backspace use 2 spaces
+	splitright = true,
+	tabstop = 8, -- actual tabs occupy 8 characters
+	undofile = true,
+	smartindent = true, -- Insert indents automatically
+	wildmode = "longest,list,full",
+	termguicolors = true,
+	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
+	updatetime = 250,
+	signcolumn = "yes",
+	wildignore = "log/**,node_modules/**,target/**,tmp/**,*.rbc",
+	list = true,
+	-- foldmethod     = "expr",
+	-- foldexpr       = "nvim_treesitter#foldexpr()",
 }
 
 for k, v in pairs(options) do
-  vim.opt[k] = v
+	vim.opt[k] = v
 end
 
 vim.opt.nrformats = vim.opt.nrformats + "alpha"
-vim.opt.diffopt   = vim.opt.diffopt + "vertical"
+vim.opt.diffopt = vim.opt.diffopt + "vertical"
 
 -- change SpellBad style, have to do this after colorscheme setup, otherwise will be overwritten
-vim.cmd [[hi SpellBad ctermbg=20]]
-vim.cmd [[hi Winseparator guibg=none]]
+vim.cmd([[hi SpellBad ctermbg=20]])
+vim.cmd([[hi Winseparator guibg=none]])
 
 -- vim-easy-align
 -- default ignore comment and string
@@ -113,32 +113,32 @@ vim.g.easy_align_ignore_groups = {}
 
 -- indent_blankline
 local highlight = {
-  "CursorColumn",
-  "Whitespace",
+	"CursorColumn",
+	"Whitespace",
 }
-require("ibl").setup {
-  indent = { highlight = highlight, char = "" },
-  whitespace = {
-    highlight = highlight,
-    remove_blankline_trail = false,
-  },
-  scope = { enabled = false },
-}
+require("ibl").setup({
+	indent = { highlight = highlight, char = "" },
+	whitespace = {
+		highlight = highlight,
+		remove_blankline_trail = false,
+	},
+	scope = { enabled = false },
+})
 
 -- sexp
 vim.g.sexp_enable_insert_mode_mappings = 0
 
 -- Conjure
-vim.g['conjure#log#hud#width'] = 0.7
-vim.g['conjure#log#hud#height'] = 0.7
-vim.g['conjure#log#hud#anchor'] = "SE"
-vim.g['conjure#highlight#enable'] = 'true'
-vim.g['conjure#log#botright'] = 'true'
+vim.g["conjure#log#hud#width"] = 0.7
+vim.g["conjure#log#hud#height"] = 0.7
+vim.g["conjure#log#hud#anchor"] = "SE"
+vim.g["conjure#highlight#enable"] = "true"
+vim.g["conjure#log#botright"] = "true"
 
 -- ==================
 --      Autocmd
 -- ==================
-vim.cmd [[
+vim.cmd([[
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
@@ -177,7 +177,7 @@ vim.cmd [[
     autocmd FileType clojure setlocal iskeyword-=/
     autocmd FileType clojure nmap <buffer> <leader>p i(debux.core/dbg<Space>
   augroup end
-]]
+]])
 
 -- ===================
 --      keymaps
@@ -189,7 +189,7 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- Remap leader key
-vim.g.mapleader = ','
+vim.g.mapleader = ","
 -- vim.g.maplocalleader = " "
 
 --  discard direction keys
@@ -211,22 +211,22 @@ keymap("n", "s", '"_d', opts)
 keymap("n", "ss", '"_dd', opts)
 
 -- " navigating
-vim.cmd [[
+vim.cmd([[
   noremap H ^
   noremap L $
   nnoremap <space><space> <c-^>
-]]
+]])
 
 -- keymap("n", "H", '^', opts)
 -- keymap("n", "L", '$', opts)
-keymap("n", "j", 'gj', term_opts)
-keymap("n", "k", 'gk', term_opts)
-keymap("n", ",gv", 'V`', opts)
+keymap("n", "j", "gj", term_opts)
+keymap("n", "k", "gk", term_opts)
+keymap("n", ",gv", "V`", opts)
 
 -- " Keeping it centered
-keymap("n", "n", 'nzzzv', opts)
-keymap("n", "N", 'Nzzzv', opts)
-keymap("n", "J", 'mzJ`z', opts)
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
+keymap("n", "J", "mzJ`z", opts)
 
 keymap("n", "<C-n>", "<C-i>", opts)
 
@@ -242,19 +242,22 @@ keymap("v", "p", '"_dP', opts)
 -- vim.g['tmux_navigator_disable_when_zoomed'] = 1
 
 -- " Vim Tmux Runner
-vim.keymap.set('n', '<leader>ar', ":VtrAttachToPane<CR>")
-vim.keymap.set('n', '<leader>kr', ":VtrKillRunner<CR>")
-vim.keymap.set('n', '<leader>ur', ":VtrUnsetRunnerPane<CR>")
-vim.keymap.set('n', '<leader>sl', ":VtrSendLinesToRunner<CR>")
-vim.keymap.set('n', '<leader>rc',
-  ":VtrUnsetRunnerPane<CR>:VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rc'}<CR>")
+vim.keymap.set("n", "<leader>ar", ":VtrAttachToPane<CR>")
+vim.keymap.set("n", "<leader>kr", ":VtrKillRunner<CR>")
+vim.keymap.set("n", "<leader>ur", ":VtrUnsetRunnerPane<CR>")
+vim.keymap.set("n", "<leader>sl", ":VtrSendLinesToRunner<CR>")
+vim.keymap.set(
+	"n",
+	"<leader>rc",
+	":VtrUnsetRunnerPane<CR>:VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rc'}<CR>"
+)
 
 -- start interactive EasyAlign in visual mode
-vim.keymap.set('v', "<Enter>", "<Plug>(EasyAlign)")
+vim.keymap.set("v", "<Enter>", "<Plug>(EasyAlign)")
 --  start interactive EasyAlign for a motion/text object (e.g. <leader>eaip)
-vim.keymap.set('n', "<leader>l", "<Plug>(EasyAlign)")
+vim.keymap.set("n", "<leader>l", "<Plug>(EasyAlign)")
 
-vim.keymap.set('n', "<leader>V", ":luafile ~/.config/nvim/init.lua<CR>:echo 'vimrc reloaded!'<CR>")
+vim.keymap.set("n", "<leader>V", ":luafile ~/.config/nvim/init.lua<CR>:echo 'vimrc reloaded!'<CR>")
 
 -- Telescope
 keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').git_files()<cr>", opts)
@@ -262,9 +265,12 @@ keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",
 keymap("n", "<leader>fl", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
-keymap("n", "<leader>fo",
-  "<cmd>lua require('telescope.builtin').live_grep({prompt_title = 'find string in open buffers...', grep_open_files=true})<cr>",
-  opts)
+keymap(
+	"n",
+	"<leader>fo",
+	"<cmd>lua require('telescope.builtin').live_grep({prompt_title = 'find string in open buffers...', grep_open_files=true})<cr>",
+	opts
+)
 keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opts)
 
@@ -325,25 +331,25 @@ keymap("n", "<leader>hl", ":vsp<cr><C-^><cr>", opts)
 keymap("n", "<leader>gb", ":Git blame<cr>", opts)
 
 -- gitsigns, Navigation
-keymap('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
-keymap('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+keymap("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+keymap("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
 
 -- gitsigns, Actions
-keymap('n', '<leader>hp', ':Gitsigns preview_hunk<CR>', opts)
-keymap('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', opts)
-keymap('v', '<leader>hr', ':Gitsigns reset_hunk<CR>', opts)
+keymap("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", opts)
+keymap("n", "<leader>hr", ":Gitsigns reset_hunk<CR>", opts)
+keymap("v", "<leader>hr", ":Gitsigns reset_hunk<CR>", opts)
 
-keymap('n', '<leader>gdi', ':Gitsigns diffthis<CR>', opts)
-keymap('n', '<leader>gdd', ':Gitsigns diffthis ~<CR>', opts)
-keymap('n', '<leader>tg', ':Gitsigns toggle_signs<CR>', opts)
-keymap('n', '<leader>td', ':Gitsigns toggle_deleted<CR>', opts)
+keymap("n", "<leader>gdi", ":Gitsigns diffthis<CR>", opts)
+keymap("n", "<leader>gdd", ":Gitsigns diffthis ~<CR>", opts)
+keymap("n", "<leader>tg", ":Gitsigns toggle_signs<CR>", opts)
+keymap("n", "<leader>td", ":Gitsigns toggle_deleted<CR>", opts)
 
 -- gitsigns, Text object
-keymap('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
-keymap('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
+keymap("o", "ih", ":<C-U>Gitsigns select_hunk<CR>", opts)
+keymap("x", "ih", ":<C-U>Gitsigns select_hunk<CR>", opts)
 
 -- git-blame
-keymap('n', '<leader>tb', ':GitBlameToggle<CR>', opts)
+keymap("n", "<leader>tb", ":GitBlameToggle<CR>", opts)
 
 -- Abagile vim
 vim.g.abagile_rails_test_runner = 0
@@ -358,7 +364,6 @@ keymap("n", "<leader>tf", ":TestFile<CR>", opts)
 keymap("n", "<leader>tl", ":TestLast<CR>", opts)
 keymap("n", "<leader>ta", ":TestSuite<cr>", opts)
 keymap("n", "<leader>tg", ":TestVisit<cr>", opts)
-
 
 keymap("n", "<Leader>]", ":Vista<cr>", opts)
 
