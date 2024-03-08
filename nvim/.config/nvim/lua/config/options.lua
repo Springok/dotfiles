@@ -51,14 +51,14 @@ local highlight = {
   "CursorColumn",
   "Whitespace",
 }
--- require("ibl").setup({
--- 	indent = { highlight = highlight, char = "" },
--- 	whitespace = {
--- 		highlight = highlight,
--- 		remove_blankline_trail = false,
--- 	},
--- 	scope = { enabled = false },
--- })
+require("ibl").setup({
+  indent = { highlight = highlight, char = "" },
+  whitespace = {
+    highlight = highlight,
+    remove_blankline_trail = false,
+  },
+  scope = { enabled = false },
+})
 
 -- sexp
 vim.g.sexp_enable_insert_mode_mappings = 0
