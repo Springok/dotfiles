@@ -6,7 +6,7 @@ return {
 
   "lewis6991/impatient.nvim",
 
-  -- "ssh://git@gitlab.abagile.com:7788/chiao.chuang/vim-abagile.git",
+  { url = "ssh://git@gitlab.abagile.com:7788/chiao.chuang/vim-abagile.git"},
 
   {
     "Wansmer/treesj",
