@@ -41,31 +41,3 @@ vim.opt.diffopt = vim.opt.diffopt + "vertical"
 vim.cmd([[hi SpellBad ctermbg=20]])
 vim.cmd([[hi Winseparator guibg=none]])
 
--- vim-easy-align
--- default ignore comment and string
-vim.g.easy_align_ignore_groups = {}
--- vim.g.abagile_migrant_structure_fold = 1
-
--- indent_blankline
-local highlight = {
-  "CursorColumn",
-  "Whitespace",
-}
-require("ibl").setup({
-  indent = { highlight = highlight, char = "" },
-  whitespace = {
-    highlight = highlight,
-    remove_blankline_trail = false,
-  },
-  scope = { enabled = false },
-})
-
--- sexp
-vim.g.sexp_enable_insert_mode_mappings = 0
-
--- Conjure
-vim.g["conjure#log#hud#width"] = 0.7
-vim.g["conjure#log#hud#height"] = 0.7
-vim.g["conjure#log#hud#anchor"] = "SE"
-vim.g["conjure#highlight#enable"] = "true"
-vim.g["conjure#log#botright"] = "true"

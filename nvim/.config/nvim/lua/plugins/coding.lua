@@ -30,7 +30,12 @@ return {
     event = "VeryLazy",
   },
   "tpope/vim-endwise",
-  "junegunn/vim-easy-align",
+  {"junegunn/vim-easy-align",
+  config = function()
+    -- default ignore comment and string
+    vim.g.easy_align_ignore_groups = {}
+  end
+  },
 
   "austintaylor/vim-indentobject",
 
@@ -129,8 +134,21 @@ return {
 
   -- Clojure
   "gpanders/nvim-parinfer",
-  "guns/vim-sexp",
   "tpope/vim-sexp-mappings-for-regular-people",
-  "Olical/conjure",
   "clojure-vim/vim-jack-in",
+
+  {"Olical/conjure",
+  config = function()
+    vim.g["conjure#log#hud#width"] = 0.7
+    vim.g["conjure#log#hud#height"] = 0.7
+    vim.g["conjure#log#hud#anchor"] = "SE"
+    vim.g["conjure#highlight#enable"] = "true"
+    vim.g["conjure#log#botright"] = "true"
+  end
+  },
+  {"guns/vim-sexp",
+      config = function ()
+        vim.g.sexp_enable_insert_mode_mappings = 0
+      end
+  },
 }

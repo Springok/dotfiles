@@ -34,7 +34,7 @@ return {
       }
     end
   },
-  { 
+  {
     "akinsho/bufferline.nvim",
     version = "*",
     config = function()
