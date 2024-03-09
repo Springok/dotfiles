@@ -1,8 +1,38 @@
 return {
-  { "Mofiqul/vscode.nvim", branch = "main" },
-  "navarasu/onedark.nvim",
-  "folke/tokyonight.nvim",
-  { "marko-cerovac/material.nvim", branch = "main" },
-  "projekt0n/github-nvim-theme",
-  { "catppuccin/nvim", name = "catppuccin" },
+  {
+    "Mofiqul/vscode.nvim",
+    branch = "main",
+    config = function()
+      -- vim.g.vscode_style = "dark"
+      -- vim.cmd [[colorscheme vscode]]
+    end
+  },
+  {
+    "navarasu/onedark.nvim",
+    config = function()
+      -- vim.g.onedark_config = { style = "warmer" }
+      -- vim.cmd [[colorscheme onedark]]
+    end
+  },
+  {
+    "folke/tokyonight.nvim",
+    config = function()
+      -- vim.cmd [[colorscheme tokyonight]]
+    end
+  },
+  {
+    "marko-cerovac/material.nvim",
+    branch = "main",
+    config = function()
+      -- vim.g.material_style = "darker"
+      -- vim.cmd [[colorscheme material]]
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    config = function()
+      vim.cmd([[colorscheme catppuccin]])
+    end,
+  },
 }
