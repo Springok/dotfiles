@@ -40,4 +40,3 @@ vim.opt.diffopt = vim.opt.diffopt + "vertical"
 -- change SpellBad style, have to do this after colorscheme setup, otherwise will be overwritten
 vim.cmd([[hi SpellBad ctermbg=20]])
 vim.cmd([[hi Winseparator guibg=none]])
-
