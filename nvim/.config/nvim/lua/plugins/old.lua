@@ -10,13 +10,6 @@ return {
   -- Remove spacing
   "McAuleyPenney/tidy.nvim",
 
-  -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
-  "nvim-treesitter/playground",
-
   -- LSP
   "neovim/nvim-lspconfig", -- enable LSP
   "williamboman/mason.nvim", -- simple to use language server installer
