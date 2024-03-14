@@ -287,6 +287,7 @@ case `uname` in
     # only works in ZSH
     path=(
       /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight
+      /opt/homebrew/opt/libpq/bin
       $path
     )
 
