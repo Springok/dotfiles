@@ -40,20 +40,37 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      -- indent_blankline
-      local highlight = {
-        "CursorColumn",
-        "Whitespace",
-      }
+      -- local highlight = {
+      --   "CursorColumn",
+      --   "Whitespace",
+      -- }
       require("ibl").setup({
-        indent = { highlight = highlight, char = "" },
+        -- indent = { highlight = highlight, char = "" },
         whitespace = {
-          highlight = highlight,
-          remove_blankline_trail = false,
+          -- highlight = highlight,
+          remove_blankline_trail = true,
+        },
+        indent = {
+          char = "│",
+          tab_char = "│",
         },
         scope = { enabled = false },
+        exclude = {
+          filetypes = {
+            "help",
+            "alpha",
+            "dashboard",
+            "neo-tree",
+            "Trouble",
+            "trouble",
+            "lazy",
+            "mason",
+            "notify",
+            "toggleterm",
+            "lazyterm",
+          },
+        },
       })
-
     end
   },
 
@@ -61,7 +78,7 @@ return {
   -- Vista, not working, not sure why...
   {
     "liuchengxu/vista.vim",
-    config= function()
+    config = function()
       vim.g.vista_executive_for = {
         clj = "nvim_lsp",
         cljs = "nvim_lsp",

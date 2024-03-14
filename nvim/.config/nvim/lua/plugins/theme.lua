@@ -32,7 +32,15 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
-      vim.cmd([[colorscheme catppuccin]])
+      -- vim.cmd([[colorscheme catppuccin]])
     end,
   },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function ()
+      vim.o.background = "dark" -- or "light" for light mode
+      vim.cmd([[colorscheme gruvbox]])
+    end
+  }
 }
