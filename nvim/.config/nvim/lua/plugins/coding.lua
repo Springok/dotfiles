@@ -8,8 +8,7 @@ return {
     "Wansmer/treesj",
     config = function()
       require("treesj").setup({
-        ---If line after join will be longer than max value,
-        ---@type number If line after join will be longer than max value, node will not be formatted
+        max_join_length = 500
       })
     end,
   },
