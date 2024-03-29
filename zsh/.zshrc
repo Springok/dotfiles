@@ -164,6 +164,7 @@ if [[ -d ~/proj/vm ]]; then
   alias e_db='vim ~/proj/vm/user/db_mapping.yml'
 
   alias db_dump='~/proj/vm/scripts/db_dump.rb && ch_pw'
+  alias adb_dump='PGPORT=15432 ~/proj/vm/scripts/db_dump.rb && ch_pw'
   alias dump_db='~/proj/vm/scripts/dump_db.zsh'
   alias ch_pw='be rails runner ~/proj/vm/scripts/nerv/change_passwords.rb'
   alias e_pw='vim ~/proj/vm/scripts/nerv/change_passwords.rb'
