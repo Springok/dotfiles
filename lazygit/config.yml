@@ -1,0 +1,18 @@
+gui:
+  # stuff relating to the UI
+  # windowSize: 'full'
+  showIcons: true
+  sidePanelWidth: 0.25
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+  # paging:
+  #   colorArg: always
+  #   pager: diff-so-fancy
+  commit:
+    verbose: always
+keybinding:
+  universal:
+    quit: null
+    return: 'q'

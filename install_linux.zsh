@@ -25,7 +25,7 @@ fi
 
 echo 'Setup Development Perferences (Nvim, Zim...)...'
 
-folders=("git" "tig" "nvim" "pry" "tmux" "tmuxinator" "ctags" "zim" "clojure" "ruby")
+folders=("git" "tig" "nvim" "pry" "tmux" "tmuxinator" "ctags" "zim" "clojure" "ruby" "lazygit" "bat")
 
 for folder in "${folders[@]}"; do
   mkdir -p $HOME/.config/"$folder"
