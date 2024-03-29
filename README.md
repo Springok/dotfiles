@@ -20,7 +20,13 @@ then run:
 
 `git clone git@github.com:Springok/dotfiles.git ~/dotfiles`
 
-`~/dotfiles/install.zsh`
+### Mac OS
+
+`~/dotfiles/install_linux.zsh`
+
+### Linux (Ubuntu)
+
+`~/dotfiles/install_mac_os.zsh`
 
 ### Things ain’t automated in setup script
 - [Important!] Use your own email / username in `~/.config/git/user_config`
