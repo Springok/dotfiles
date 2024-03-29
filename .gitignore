@@ -1,3 +1,7 @@
 tmux/.config/tmuxinator/deploy.yml
 
 git/.config/git/user_config
+
+**/.clj-kondo/.cache
+.lsp/
+.cpcache/

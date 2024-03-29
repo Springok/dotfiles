@@ -8,7 +8,7 @@ brew install jq yq
 
 echo 'Setup Development Perferences (Nvim, Zim...)...'
 
-folders=("git" "tig" "nvim" "pry" "tmux" "tmuxinator" "ctags" "zim")
+folders=("git" "tig" "nvim" "pry" "tmux" "tmuxinator" "ctags" "zim" "clojure" "ruby")
 
 for folder in "${folders[@]}"; do
   mkdir -p $HOME/.config/"$folder"
