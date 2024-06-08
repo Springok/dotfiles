@@ -90,6 +90,7 @@ alias aq='ag -F'
 alias px='ps aux'
 alias ep='exit'
 alias ag=rg
+alias rh='fc -R'
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export XDG_CONFIG_HOME="$HOME/.config"
