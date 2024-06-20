@@ -3,7 +3,7 @@ return {
   { "nvim-telescope/telescope-ui-select.nvim" },
   {
     "nvim-telescope/telescope.nvim",
-    tag = '0.1.5',
+    tag = '0.1.8',
     config = function()
       local actions = require("telescope.actions")
       local tele = require("telescope")
