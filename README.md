@@ -22,11 +22,11 @@ then run:
 
 ### Mac OS
 
-`~/dotfiles/install/linux.zsh`
+`~/dotfiles/install/mac_os.zsh`
 
 ### Linux (Ubuntu)
 
-`~/dotfiles/install/mac_os.zsh`
+`~/dotfiles/install/linux.zsh`
 
 ### Things ain’t automated in setup script
 - [Important!] Use your own email / username in `~/.config/git/user_config`
