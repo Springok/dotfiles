@@ -57,7 +57,7 @@ keymap("v", "p", '"_dP', opts)
 -- vim.g['tmux_navigator_disable_when_zoomed'] = 1
 
 -- " Vim Tmux Runner
-vim.keymap.set("n", "<leader>ar", ":VtrAttachToPane<CR>")
+vim.keymap.set("n", "<leader>ar", ":!tmux display-panes<CR> :VtrAttachToPane<CR>")
 vim.keymap.set("n", "<leader>kr", ":VtrKillRunner<CR>")
 vim.keymap.set("n", "<leader>ur", ":VtrUnsetRunnerPane<CR>")
 vim.keymap.set("n", "<leader>sl", ":VtrSendLinesToRunner<CR>")
