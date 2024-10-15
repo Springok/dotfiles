@@ -5,32 +5,39 @@ root: ~/proj/nerv_hk/
 
 windows:
   - nerv-hk:
-      layout: main-horizontal
+      layout: main-vertical
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - vim .
+        - lg
+        - rc
+        - bin/dev js
         - adam
-        - asuka
+        - asuka;rwh
   - nerv-ck:
-      layout: main-horizontal
+      layout: main-vertical
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - ck
+        - ck;rc
+        - ck;bin/dev js
         - ck;adam
         - ck;asuka
   - nerv-sg:
-      layout: main-horizontal
+      layout: main-vertical
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - sg
-        - sg;adam
-        - sg;asuka
+        - sg;rc
+        - sg;bin/dev js
+        - sg;adam;ran
+        - sg;asuka;rws
   - amoeba:
       layout: main-horizontal
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
