@@ -34,8 +34,8 @@ vim.cmd([[
 
 -- keymap("n", "H", '^', opts)
 -- keymap("n", "L", '$', opts)
-keymap("n", "j", "gj", term_opts)
-keymap("n", "k", "gk", term_opts)
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
 keymap("n", ",gv", "V`", opts)
 
 -- " Keeping it centered
