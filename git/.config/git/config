@@ -4,6 +4,9 @@
 [pull]
   rebase = false
 
+[commit]
+  verbose = true
+
 [core]
   editor = nvim
   pager = delta --diff-so-fancy | less

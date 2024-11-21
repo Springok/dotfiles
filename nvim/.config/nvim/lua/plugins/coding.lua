@@ -79,7 +79,19 @@ return {
 
   -- Git
   "tpope/vim-fugitive",
-  "f-person/git-blame.nvim",
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+    },
+    config = function()
+      require("neogit").setup({
+        kind = "vsplit",
+      })
+    end,
+  },
+  -- "f-person/git-blame.nvim",
   {
     "lewis6991/gitsigns.nvim",
     config = function()

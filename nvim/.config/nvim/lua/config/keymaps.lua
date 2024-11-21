@@ -100,6 +100,7 @@ keymap("c", "w!!", "%!sudo tee > /dev/null %", opts)
 keymap("n", "<leader>in", "mmgg=G'm", opts)
 keymap("n", "<Leader>it", ":IBLToggle<cr>", opts)
 keymap("n", "<leader>p", "obinding.pry<ESC>^", term_opts)
+keymap("n", "<leader>mr", "oSee merge request metis/nerv!", term_opts)
 
 -- use system clipboard
 keymap("v", "<Leader>y", '"+y', opts)
@@ -144,6 +145,8 @@ keymap("n", "<leader>hl", ":vsp<cr><C-^><cr>", opts)
 -- Git related plugins,
 -- fugitive
 keymap("n", "<leader>gb", ":Git blame<cr>", opts)
+keymap("n", "<Leader>gs", "<cmd>lua require('neogit').open()<CR>", opts)
+keymap("n", "<Leader>gB", ":Telescope git_branches<CR>", opts)
 
 -- gitsigns, Navigation
 keymap("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
