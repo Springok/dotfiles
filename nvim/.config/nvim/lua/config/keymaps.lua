@@ -155,6 +155,7 @@ keymap("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true 
 -- gitsigns, Actions
 keymap("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", opts)
 keymap("n", "<leader>hr", ":Gitsigns reset_hunk<CR>", opts)
+keymap("n", "<leader>hR", ":Gitsigns reset_buffer<CR>", opts)
 keymap("v", "<leader>hr", ":Gitsigns reset_hunk<CR>", opts)
 
 keymap("n", "<leader>gdi", ":Gitsigns diffthis<CR>", opts)
