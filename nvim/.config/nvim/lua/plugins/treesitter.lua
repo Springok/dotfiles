@@ -120,6 +120,9 @@ return {
         enable = true,
         enable_autocmd = false,
       },
+      endwise = {
+        enable = true,
+      },
     },
     config = function(_, opts)
       if type(opts.ensure_installed) == "table" then

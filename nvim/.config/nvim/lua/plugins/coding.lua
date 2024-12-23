@@ -32,7 +32,6 @@ return {
       })
     end
   },
-  "tpope/vim-endwise",
   {
     "junegunn/vim-easy-align",
     config = function()
