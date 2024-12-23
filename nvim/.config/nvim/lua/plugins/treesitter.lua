@@ -52,7 +52,10 @@ return {
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     opts = {
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { 'ruby' },
+      },
       indent = { enable = false },
       ensure_installed = {
         "bash",
