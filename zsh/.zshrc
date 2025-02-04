@@ -75,6 +75,7 @@ alias cat='bat'
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
+  alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 fi
 
 alias sshc='e ~/.ssh/config'
