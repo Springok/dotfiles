@@ -12,6 +12,7 @@ return {
         bg_padding = 0,
         watermark = nil,
         mac_window_bar = false,
+        save_path = "~/proj/tmp/codesnap/"
         -- has_breadcrumbs = true,
         -- show_workspace = true,
         -- has_line_number = true,
