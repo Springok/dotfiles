@@ -1,5 +1,6 @@
 return {
   -- Navigation
+  "tpope/vim-projectionist",
   "tpope/vim-unimpaired",
 
   { url = "ssh://git@gitlab.abagile.com:7788/abagile/vim-abagile.git" },
