@@ -1,8 +1,4 @@
 return {
-  -- Navigation
-  "tpope/vim-projectionist",
-  "tpope/vim-unimpaired",
-
   { url = "ssh://git@gitlab.abagile.com:7788/abagile/vim-abagile.git" },
 
   {
@@ -182,4 +178,7 @@ return {
       vim.g.sexp_enable_insert_mode_mappings = 0
     end
   },
+  -- Navigation
+  "tpope/vim-projectionist",
+  "tpope/vim-unimpaired",
 }
