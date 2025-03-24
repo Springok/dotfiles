@@ -226,7 +226,11 @@ return {
       config = function()
         require('mini.icons').setup()
         local mini_files = require("mini.files")
-        mini_files.setup{
+        mini_files.setup {
+          options = {
+            -- Whether to use for editing directories
+            use_as_default_explorer = false,
+          },
           windows = {
             -- Maximum number of windows to show side by side
             max_number = math.huge,
