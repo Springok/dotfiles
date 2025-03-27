@@ -179,6 +179,9 @@ return {
     end
   },
   -- Navigation
-  "tpope/vim-projectionist",
+  {
+    "tpope/vim-projectionist",
+    ft = "clojure"
+  },
   "tpope/vim-unimpaired",
 }
