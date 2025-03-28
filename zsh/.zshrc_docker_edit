@@ -1,0 +1,41 @@
+########################
+# Project Related
+########################
+export DISABLE_SPRING=1
+export PGHOST=localhost
+export PGUSER=nerv
+
+# Nerv Projects
+alias ck='j /proj/nerv_ck'
+alias hk='j /proj/nerv_hk'
+alias sg='j /proj/nerv_sg'
+alias amoeba='j /proj/amoeba'
+alias angel='j /proj/angel'
+alias adam='j clojure/projects/adam'
+alias asuka='j clojure/projects/asuka'
+
+if [[ -d /project/vm ]]; then
+  alias e_db='vim /project/vm/user/db_mapping.yml'
+
+  alias db_dump='j ~;/current/edit/scripts/dump_db.sh'
+  alias ch_pw='be rails runner /project/vm/scripts/nerv/change_passwords.rb'
+  alias e_pw='vim /project/vm/scripts/nerv/change_passwords.rb'
+fi
+
+if [[ -d ~/proj/wscripts ]]; then
+  alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
+  alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
+  alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
+fi
+
+
+########################
+# Jump Into Config File
+########################
+alias dot='j ~/.dotfiles_core'
+alias zshrc='e ~/.dotfiles_core/zsh/.zshrc'
+alias sozsh='exec zsh'
+alias vimrc='e ~/.dotfiles_core/nvim/.config/nvim/init.lua'
+alias en='e .env'
+
+# vim: ft=zsh

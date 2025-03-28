@@ -130,55 +130,11 @@ alias ld='lazydocker'
 # JavaScript
 alias nodejs=node
 
-########################
-# Project Related
-########################
-export DISABLE_SPRING=1
-alias krpu='rpu kill'
-alias pru='rpu'
-alias spru='skip_mig_warn=1 rpu'
-
-alias rss='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` rails server'
-
-alias aoc='j ~/proj/advent-of-code'
-
-# Nerv Projects
-alias ck='j ~/proj/nerv_ck'
-alias hk='j ~/proj/nerv_hk'
-alias sg='j ~/proj/nerv_sg'
-alias amoeba='j ~/proj/amoeba'
-alias angel='j ~/proj/angel'
-alias adam='j clojure/projects/adam'
-alias asuka='j clojure/projects/asuka'
-alias obsi='j /Users/$(whoami)/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Main'
-
-# Gems
+# Ruby Gems
 alias be='bundle exec'
-alias rse='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be sidekiq'
-alias rsk='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be rake sneakers:run'
 alias stopme='be spring stop'
 alias copm='cop master...'
 alias rake='be rake'
-
-# be careful with the folder position
-alias db_time='ll /tmp/(^amoeba|nerv)_*.custom'
-if [[ -d ~/proj/vm ]]; then
-  alias e_db='vim ~/proj/vm/user/db_mapping.yml'
-
-  alias db_dump='~/proj/vm/scripts/db_dump.rb && ch_pw'
-  alias adb_dump='PGPORT=15432 ~/proj/vm/scripts/db_dump.rb && ch_pw'
-  alias dump_db='~/proj/vm/scripts/dump_db.zsh'
-  alias ch_pw='be rails runner ~/proj/vm/scripts/nerv/change_passwords.rb'
-  alias e_pw='vim ~/proj/vm/scripts/nerv/change_passwords.rb'
-else
-  echo "[Reminder] You need to clone vm project from Gitlab to get scripts for alias."
-fi
-
-if [[ -d ~/proj/wscripts ]]; then
-  alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
-  alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
-  alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
-fi
 
 # Rails
 alias rc='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be rails console'
@@ -200,46 +156,16 @@ alias otlog='e log/test.log'
 alias clog='cat /dev/null >! log/lograge_development.log && cat /dev/null >! log/development.log'
 alias ctlog='cat /dev/null >! log/lograge_test.log && cat /dev/null >! log/test.log'
 
-# Test
 alias mi='rails test'
 alias testba='rails test test/controllers test/concepts test/forms test/models'
 
-# Amoeba
-alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
-
 # Clojure
 alias ccop='clj-kondo --lint src --config .clj-kondo/config.edn --cache false'
-alias ccup='brew reinstall clj-kondo'
-
-# Adam
-alias ran='clj -M:dev:nrepl'
-alias rat='clj -M:test:runner --watch'
-
-# Asuka
-alias rw='npm run watch'
-alias rwh='NERV_BASE=/nerv_hk npm run watch'
-alias rwc='NERV_BASE=/nerv_ck npm run watch'
-alias rws='NERV_BASE=/nerv_sg npm run watch'
-
-# Tmuxinator
-alias t='tmuxinator'
-alias work='t s work'
-alias deploy='t s deploy'
 
 # DevOps
 alias dk='docker'
 alias dco='docker compose'
 alias dcn='docker container'
-########################
-# Jump Into Config File
-########################
-alias dot='j ~/dotfiles'
-alias zshrc='e ~/dotfiles/zsh/.zshrc'
-alias sozsh='source ~/.zshrc'
-alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.lua'
-alias en='e .env'
-# alias mc='mailcatcher --http-ip 0.0.0.0; rse'
-# alias kmc='pkill -f mailcatcher'
 
 ########################
 # eza
@@ -279,76 +205,13 @@ bindkey '^n' history-substring-search-down
 
 eval "$(zoxide init zsh --cmd j)"
 
-# use localhost / nerv for postgres service running in docker
-export PGHOST=localhost
-export PGUSER=nerv
-
 case `uname` in
-  Darwin)
-    export HOMEBREW_NO_AUTO_UPDATE=1 # https://docs.brew.sh/Manpage
-
-    # only works in ZSH
-    path=(
-      /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight
-      /opt/homebrew/opt/libpq/bin
-      $path
-    )
-
-    # enable ruby 2.7 deprecation warning
-    # export RUBYOPT='-W:deprecated'
-    export RUBYOPT=''
-
-    # export CFLAGS="-Wno-error=implicit-function-declaration"
-    # export optflags="-Wno-error=implicit-function-declaration"
-
-    # setting for Ruby 2.5.9 installation
-    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
-    # setting for Ruby 2.1.5 / 2.2.3 installation
-    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
-
-    listening() {
-      if [ $# -eq 0 ]; then
-        lsof -iTCP -sTCP:LISTEN -n -P
-      elif [ $# -eq 1 ]; then
-        lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
-      else
-        echo "Usage: listening [pattern]"
-      fi
-    }
-  ;;
   Linux)
-    alias grep='grep --color=auto'
+    echo 'Load config for docker dev env'
+    source ~/.zshrc_docker_edit
+  ;;
+  Darwin)
+    echo 'Load config for mac host env'
+    source ~/.zshrc_mac_host
   ;;
 esac
-
-function _cop_ruby() {
-  local exts=('rb,thor,builder,jbuilder,pryrc')
-  local excludes=':(top,exclude)db/schema.rb'
-  local extra_options='--display-cop-names'
-
-  if [[ $# -gt 0 ]]; then
-    local files=$(eval "noglob git diff $@ --diff-filter=d --name-only -- *.{$exts} $excludes")
-  else
-    local files=$(eval "noglob git status --porcelain -- *.{$exts} $excludes | sed -e '/^\s\?[DRC] /d' -e 's/^.\{3\}//g'")
-  fi
-
-  if [[ -n "$files" ]]; then
-    echo $files | xargs bundle exec rubocop `echo $extra_options` --format pacman
-  else
-    echo 'Nothing to check (rubocop).'
-  fi
-}
-
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
-
-# fix issue on puma start in deamon mode
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
