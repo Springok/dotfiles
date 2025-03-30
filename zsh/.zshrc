@@ -125,7 +125,7 @@ alias gff='git checkout -b $(git branch --show-current)-fork'
 alias glcs='git rev-parse --short=12 HEAD'
 
 alias lg='lazygit'
-alias ld='lazydocker'
+alias lzd='lazydocker'
 
 # JavaScript
 alias nodejs=node
