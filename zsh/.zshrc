@@ -207,11 +207,9 @@ eval "$(zoxide init zsh --cmd j)"
 
 case `uname` in
   Linux)
-    echo 'Load config for docker dev env'
     source ~/.zshrc_docker_edit
   ;;
   Darwin)
-    echo 'Load config for mac host env'
     source ~/.zshrc_mac_host
   ;;
 esac
