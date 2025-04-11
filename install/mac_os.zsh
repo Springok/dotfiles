@@ -22,7 +22,7 @@ stow --verbose asdf \
   nvim \
   ruby \
   tmux \
-  zsh \
+  zsh-mac-host \
 
 echo "starting asdf plugins installation..."
 cat ~/.tool-versions | cut -d' ' -f1 | grep "^[^\#]" | xargs -I{} asdf plugin add {}

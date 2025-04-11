@@ -1,0 +1,35 @@
+# default setting
+--colors=line:fg:yellow
+--colors=line:style:bold
+--colors=path:fg:green
+--colors=path:style:bold
+--colors=match:fg:black
+--colors=match:bg:yellow
+--colors=match:style:nobold
+
+# setting 2
+# --colors=path:bg:0x3b,0x3b,0x3b
+# --colors=path:fg:white
+# --colors=line:fg:0xf2,0xc2,0x60
+# --colors=match:bg:0x2b,0x83,0xa6
+# --colors=match:fg:0xff,0xff,0xff
+# --colors=match:style:nobold
+
+# setting 1
+# --colors=match:bg:0xff,0x7f,0x00
+# --colors=match:fg:white
+# --colors=line:none
+# --colors=line:fg:magenta
+# --colors=path:fg:green
+
+# Exclude directories.
+--glob=!{.git,.svn,node_modules,tealdeer,Trash,vendor}
+
+# Don't print lines longer than this limit.
+--max-columns=444
+
+# Searches case insensitively.
+--smart-case
+
+# Sort by file path.
+--sort=path

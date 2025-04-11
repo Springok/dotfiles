@@ -1,0 +1,123 @@
+# From Upcase tmux course
+tmt(){
+session_name="$(basename "$PWD" | tr . -)"
+
+session_exists() {
+  tmux list-sessions | sed -E 's/:.*$//' | grep -q "^$session_name$"
+}
+
+not_in_tmux() {
+  [ -z "$TMUX" ]
+}
+
+if not_in_tmux; then
+  tmux new-session -As "$session_name"
+else
+  if ! session_exists; then
+    (TMUX='' tmux new-session -Ad -s "$session_name")
+  fi
+  tmux switch-client -t "$session_name"
+fi
+}
+
+# 重啟 puma/unicorn（非 daemon 模式，用於 pry debug）
+rpy() {
+  if bundle show pry-remote > /dev/null 2>&1; then
+    bundle exec pry-remote
+  else
+    rpu pry
+  fi
+}
+
+# 重啟 puma/unicorn
+#
+# - rpu       → 啟動或重啟（如果已有 pid）
+# - rpu kill  → 殺掉 process，不重啟
+# - rpu xxx   → xxx 參數會被丟給 pumactl（不支援 unicorn）
+rpu() {
+  emulate -L zsh
+  if [[ -d tmp ]]; then
+    local action=$1
+    local pid
+    local animal
+
+    if [[ -f config/puma.rb ]]; then
+      animal='puma'
+    elif [[ -f config/unicorn.rb ]]; then
+      animal='unicorn'
+    else
+      echo "No puma/unicorn directory, aborted."
+      return 1
+    fi
+
+    if [[ -r tmp/pids/$animal.pid && -n $(ps h -p `cat tmp/pids/$animal.pid` | tr -d ' ') ]]; then
+      pid=`cat tmp/pids/$animal.pid`
+    fi
+
+    if [[ -n $action ]]; then
+      case "$action" in
+        pry)
+          if [[ -n $pid ]]; then
+            kill -9 $pid && echo "Process killed ($pid)."
+          fi
+          rserver_restart $animal
+          ;;
+        kill)
+          if [[ -n $pid ]]; then
+            kill -9 $pid && echo "Process killed ($pid)."
+          else
+            echo "No process found."
+          fi
+          ;;
+        *)
+          if [[ -n $pid ]]; then
+            # TODO: control unicorn
+            pumactl -p $pid $action
+          else
+            echo 'ERROR: "No running PID (tmp/pids/puma.pid).'
+          fi
+      esac
+    else
+      if [[ -n $pid ]]; then
+        # Alternatives:
+        # pumactl -p $pid restart
+        # kill -USR2 $pid && echo "Process killed ($pid)."
+
+        # kill -9 (SIGKILL) for force kill
+        kill -9 $pid && echo "Process killed ($pid)."
+        rserver_restart $animal $([[ "$animal" == 'puma' ]] && echo '-d' || echo '-D')
+      else
+        rserver_restart $animal $([[ "$animal" == 'puma' ]] && echo '-d' || echo '-D')
+      fi
+    fi
+  else
+    echo 'ERROR: "tmp" directory not found.'
+  fi
+}
+
+rserver_restart() {
+  # what is this for?
+  local app=${$(pwd):t}
+  [[ ! $app =~ '^(amoeba|cam)' ]] && app='nerv' # support app not named 'nerv' (e.g., nerv2)
+
+  case "$1" in
+    puma)
+      shift
+      RAILS_RELATIVE_URL_ROOT=/`basename $PWD` bundle exec puma -C config/puma.rb config.ru $*
+      ;;
+    unicorn)
+      shift
+      RAILS_RELATIVE_URL_ROOT=/$app bundle exec unicorn -c config/unicorn.rb $* && echo 'unicorn running'
+      ;;
+    *)
+      echo 'invalid argument'
+  esac
+}
+
+cbr() {
+  # git fetch
+  local branches branch
+  branches=$(git branch -a) &&
+  branch=$(echo "$branches" | fzf) &&
+  git switch $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
+}

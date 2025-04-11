@@ -351,4 +351,8 @@ fi
 # fix issue on puma start in deamon mode
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
+#
+export MAC_OS_HOME=$HOME
+export MAC_OS_PROJECT=$HOME/project
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
