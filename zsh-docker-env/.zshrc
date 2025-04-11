@@ -46,8 +46,6 @@ source ${ZIM_HOME}/init.zsh
 # General
 ########################
 
-source ~/.zshrc_helper
-
 [ -f ~/.ssh/abagile-dev.pem ] && ssh-add ~/.ssh/abagile-dev.pem 2&> /dev/null
 [ -f ~/.ssh/id_pair ] && ssh-add ~/.ssh/id_pair 2&> /dev/null
 
@@ -62,10 +60,6 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 export EDITOR='nvim'
-
-# For pair
-pairg() { ssh -t $1 ssh -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -p $2 -t ${3:-vagrant}@localhost 'tmux attach' }
-pairh() { ssh -S none -o 'ExitOnForwardFailure=yes' -R $2\:localhost:22 -t $1 'watch -en 10 who' }
 
 # Use nvim
 alias e='nvim'
@@ -134,23 +128,38 @@ alias nodejs=node
 # Project Related
 ########################
 export DISABLE_SPRING=1
-alias krpu='rpu kill'
-alias pru='rpu'
-alias spru='skip_mig_warn=1 rpu'
-
-alias rss='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` rails server'
-
-alias aoc='j ~/proj/advent-of-code'
 
 # Nerv Projects
-alias ck='j ~/proj/nerv_ck'
-alias hk='j ~/proj/nerv_hk'
-alias sg='j ~/proj/nerv_sg'
-alias amoeba='j ~/proj/amoeba'
-alias angel='j ~/proj/angel'
+alias ck='j /proj/nerv_ck'
+alias hk='j /proj/nerv_hk'
+alias sg='j /proj/nerv_sg'
+alias amoeba='j /proj/amoeba'
+alias angel='j /proj/angel'
 alias adam='j clojure/projects/adam'
 alias asuka='j clojure/projects/asuka'
-alias obsi='j /Users/$(whoami)/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Main'
+
+if [[ -d /project/vm ]]; then
+  alias e_db='vim /project/vm/user/db_mapping.yml'
+
+  alias db_dump='j ~;/current/edit/scripts/dump_db.sh'
+  alias ch_pw='be rails runner /project/vm/scripts/nerv/change_passwords.rb'
+  alias e_pw='vim /project/vm/scripts/nerv/change_passwords.rb'
+fi
+
+if [[ -d ~/proj/wscripts ]]; then
+  alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
+  alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
+  alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
+fi
+
+########################
+# Jump Into Config File
+########################
+alias dot='j ~/.dotfiles_core'
+alias zshrc='e ~/.dotfiles_core/zsh/.zshrc'
+alias sozsh='exec zsh'
+alias vimrc='e ~/.dotfiles_core/nvim/.config/nvim/init.lua'
+alias en='e .env'
 
 # Gems
 alias be='bundle exec'
@@ -221,25 +230,10 @@ alias rwh='NERV_BASE=/nerv_hk npm run watch'
 alias rwc='NERV_BASE=/nerv_ck npm run watch'
 alias rws='NERV_BASE=/nerv_sg npm run watch'
 
-# Tmuxinator
-alias t='tmuxinator'
-alias work='t s work'
-alias deploy='t s deploy'
-
 # DevOps
 alias dk='docker'
 alias dco='docker compose'
 alias dcn='docker container'
-########################
-# Jump Into Config File
-########################
-alias dot='j ~/dotfiles'
-alias zshrc='e ~/dotfiles/zsh/.zshrc'
-alias sozsh='source ~/.zshrc'
-alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.lua'
-alias en='e .env'
-# alias mc='mailcatcher --http-ip 0.0.0.0; rse'
-# alias kmc='pkill -f mailcatcher'
 
 ########################
 # eza
@@ -264,64 +258,13 @@ bindkey -v
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
-export FZF_TMUX=1
-# https://github.com/sharkdp/fd#integration-with-other-programs
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
-export FZF_DEFAULT_OPTS="--ansi"
-
-# module widget remap
-export FZF_COMPLETION_TRIGGER=';'
-bindkey '^r' fzf-history-widget
-bindkey '^t' fzf-completion
-bindkey '^F' autosuggest-accept
-bindkey '^p' history-substring-search-up
-bindkey '^n' history-substring-search-down
-
 eval "$(zoxide init zsh --cmd j)"
 
-# use localhost / nerv for postgres service running in docker
+# extra PG env for accessing psql easier in e2 container
+export PGUSER=psql
 export PGHOST=localhost
-export PGUSER=nerv
 
-case `uname` in
-  Darwin)
-    export HOMEBREW_NO_AUTO_UPDATE=1 # https://docs.brew.sh/Manpage
-
-    # only works in ZSH
-    path=(
-      /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight
-      /opt/homebrew/opt/libpq/bin
-      $path
-    )
-
-    # enable ruby 2.7 deprecation warning
-    # export RUBYOPT='-W:deprecated'
-    export RUBYOPT=''
-
-    # export CFLAGS="-Wno-error=implicit-function-declaration"
-    # export optflags="-Wno-error=implicit-function-declaration"
-
-    # setting for Ruby 2.5.9 installation
-    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
-    # setting for Ruby 2.1.5 / 2.2.3 installation
-    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
-
-    listening() {
-      if [ $# -eq 0 ]; then
-        lsof -iTCP -sTCP:LISTEN -n -P
-      elif [ $# -eq 1 ]; then
-        lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
-      else
-        echo "Usage: listening [pattern]"
-      fi
-    }
-  ;;
-  Linux)
-    alias grep='grep --color=auto'
-  ;;
-esac
-
+# for zmodule bootleq/zsh-cop --source bin/cop.zsh
 function _cop_ruby() {
   local exts=('rb,thor,builder,jbuilder,pryrc')
   local excludes=':(top,exclude)db/schema.rb'
@@ -340,19 +283,86 @@ function _cop_ruby() {
   fi
 }
 
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+cbr() {
+  # git fetch
+  local branches branch
+  branches=$(git branch -a) &&
+  branch=$(echo "$branches" | fzf) &&
+  git switch $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
+}
+# for echo highlight color
+err='\\033[0;31m'
+hl='\\033[0;32m'
+nc='\\033[0m'
 
-  autoload -Uz compinit
-  compinit
-fi
+# shortcut on pointing diff compose file and using lazydocker
+ld() {
+  case "\${1:-not_specify}" in
+    not_specify)
+      lazydocker
+      ;;
+    hq)
+      lazydocker -f "/current/hq/compose.yml"
+      ;;
+    hk|ck|sg|ave_ck)
+      lazydocker -f "/current/sites/nerv_by_site_code/\$1/compose.yml"
+      ;;
+    *)
+      if [[ -f "/current/sites/\$1/compose.yml" ]]; then
+        lazydocker -f "/current/sites/\$1/compose.yml"
+      else
+       echo "docker compose file not exist, please try again!"
+      fi
+      ;;
+  esac
+}
 
-# fix issue on puma start in deamon mode
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+# shortcut to swap different cache folder for jumping between nerv/amoeba/angel development
+sc() {
+  # default if /cache is real folder or softlink, if /cache is real folder, should exit now
+  # or it may be accidentally clear
+  if [ -e /cache ] && [ ! -L /cache ]; then
+    echo -e "\${err}Error: /cache folder is not a softlink, this script may not working on this condition, now exit!\${nc}"
+    # exit 1
+  else
+    [ -L /cache ] && rm /cache;
+    case "\${1:-default}" in
+      default)
+        echo -e "\${hl}swap to use 'default' cache folder\${nc}"
+        ln -s /cache-default /cache
+        [ -n "\$TMUX" ] && tmux set-option -g @cache-name 'cache-default'
+        ;;
+      amoeba)
+        echo "\${hl}swap to use 'amoeba' cache folder\${nc}"
+        ln -s /cache-amoeba /cache
+        [ -n "\$TMUX" ] && tmux set-option -g @cache-name 'cache-amoeba'
+        ;;
+      angel)
+        echo "\${hl}swap to use 'angel' cache folder\${nc}"
+        ln -s /cache-angel /cache
+        [ -n "\$TMUX" ] && tmux set-option -g @cache-name 'cache-angel'
+        ;;
+      *)
+        # echo "\${err}Error: cache '\$1' not exists, please try again!\${nc}"
+        ;;
+    esac
+  fi
+}
 
-#
-export MAC_OS_HOME=$HOME
-export MAC_OS_PROJECT=$HOME/project
+# init softlink if not exists
+[ ! -e /cache ] && sc
+
+export FZF_TMUX=1
+# https://github.com/sharkdp/fd#integration-with-other-programs
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
+export FZF_DEFAULT_OPTS="--ansi"
+
+# module widget remap
+export FZF_COMPLETION_TRIGGER=';'
+bindkey '^r' fzf-history-widget
+bindkey '^t' fzf-completion
+bindkey '^F' autosuggest-accept
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
