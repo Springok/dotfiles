@@ -49,7 +49,7 @@ end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local servers = { "jsonls", "lua_ls", "clojure_lsp", "tailwindcss", "eslint", "ruby_lsp" }
+local servers = { "jsonls", "lua_ls", "clojure_lsp", "tailwindcss", "eslint" }
 
 require("mason").setup()
 require("mason-lspconfig").setup {
