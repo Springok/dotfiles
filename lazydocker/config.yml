@@ -1,0 +1,13 @@
+gui:
+  returnImmediately: true
+
+customCommands:
+  containers:
+    - name: "rails console >"
+      attach: true
+      command: 'docker exec -it {{ .Container.ID }} bundle exec rails c'
+      serviceNames: []
+    - name: "attach        >"
+      attach: true
+      command: 'docker attach --sig-proxy=false --detach-keys=ctrl-d {{ .Container.ID }}'
+      serviceNames: []
