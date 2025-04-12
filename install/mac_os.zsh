@@ -22,6 +22,7 @@ stow --verbose asdf \
   nvim \
   ruby \
   tmux \
+  tmuxinator \
   zsh-mac-host \
 
 echo "starting asdf plugins installation..."
