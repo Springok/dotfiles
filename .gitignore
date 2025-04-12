@@ -1,4 +1,4 @@
-tmux/.config/tmuxinator/deploy.yml
+tmuxinator/.config/deploy.yml
 
 git/.config/git/user_config
 
