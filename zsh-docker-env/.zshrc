@@ -49,6 +49,12 @@ source ${ZIM_HOME}/init.zsh
 [ -f ~/.ssh/abagile-dev.pem ] && ssh-add ~/.ssh/abagile-dev.pem 2&> /dev/null
 [ -f ~/.ssh/id_pair ] && ssh-add ~/.ssh/id_pair 2&> /dev/null
 
+if [[ ! -d /root/.config/tmux/plugins/tpm ]]; then
+  echo 'Setup Tmux Plugin Manager(TMP)...'
+  git clone https://github.com/tmux-plugins/tpm /root/.config/tmux/plugins/tpm
+  tmux source /root/.config/tmux/tmux.conf
+  echo 'Please Press tmux prefix key + I to install tmux plugins'
+fi
 # Disable flow control then we can use ctrl-s to save in vim
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
