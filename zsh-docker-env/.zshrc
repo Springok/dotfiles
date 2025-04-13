@@ -342,4 +342,10 @@ bindkey '^F' autosuggest-accept
 bindkey '^p' history-substring-search-up
 bindkey '^n' history-substring-search-down
 
+
+if [[ -f ~/.dotfiles_core/zsh-docker-env/custom/.zshrc ]]; then
+  echo 'Loading costomized zshrc...'
+  source ~/.dotfiles_core/zsh-docker-env/custom/.zshrc
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
