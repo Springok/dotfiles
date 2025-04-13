@@ -162,7 +162,7 @@ fi
 # Jump Into Config File
 ########################
 alias dot='j ~/.dotfiles_core'
-alias zshrc='e ~/.dotfiles_core/zsh/.zshrc'
+alias zshrc='e ~/.dotfiles_core/zsh-docker-env/.zshrc'
 alias sozsh='exec zsh'
 alias vimrc='e ~/.dotfiles_core/nvim/.config/nvim/init.lua'
 alias en='e .env'
@@ -344,7 +344,6 @@ bindkey '^n' history-substring-search-down
 
 
 if [[ -f ~/.dotfiles_core/zsh-docker-env/custom/.zshrc ]]; then
-  echo 'Loading costomized zshrc...'
   source ~/.dotfiles_core/zsh-docker-env/custom/.zshrc
 fi
 
