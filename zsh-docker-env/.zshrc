@@ -175,26 +175,6 @@ alias stopme='be spring stop'
 alias copm='cop master...'
 alias rake='be rake'
 
-# be careful with the folder position
-alias db_time='ll /tmp/(^amoeba|nerv)_*.custom'
-if [[ -d ~/proj/vm ]]; then
-  alias e_db='vim ~/proj/vm/user/db_mapping.yml'
-
-  alias db_dump='~/proj/vm/scripts/db_dump.rb && ch_pw'
-  alias adb_dump='PGPORT=15432 ~/proj/vm/scripts/db_dump.rb && ch_pw'
-  alias dump_db='~/proj/vm/scripts/dump_db.zsh'
-  alias ch_pw='be rails runner ~/proj/vm/scripts/nerv/change_passwords.rb'
-  alias e_pw='vim ~/proj/vm/scripts/nerv/change_passwords.rb'
-else
-  echo "[Reminder] You need to clone vm project from Gitlab to get scripts for alias."
-fi
-
-if [[ -d ~/proj/wscripts ]]; then
-  alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
-  alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
-  alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
-fi
-
 # Rails
 alias rc='RAILS_RELATIVE_URL_ROOT=/`basename $PWD` be rails console'
 alias rct='be rails console test'
@@ -219,9 +199,6 @@ alias ctlog='cat /dev/null >! log/lograge_test.log && cat /dev/null >! log/test.
 alias mi='rails test'
 alias testba='rails test test/controllers test/concepts test/forms test/models'
 
-# Amoeba
-alias ku='[[ -f tmp/pids/unicorn.pid ]] && kill `cat tmp/pids/unicorn.pid`'
-
 # Clojure
 alias ccop='clj-kondo --lint src --config .clj-kondo/config.edn --cache false'
 alias ccup='brew reinstall clj-kondo'
@@ -229,12 +206,6 @@ alias ccup='brew reinstall clj-kondo'
 # Adam
 alias ran='clj -M:dev:nrepl'
 alias rat='clj -M:test:runner --watch'
-
-# Asuka
-alias rw='npm run watch'
-alias rwh='NERV_BASE=/nerv_hk npm run watch'
-alias rwc='NERV_BASE=/nerv_ck npm run watch'
-alias rws='NERV_BASE=/nerv_sg npm run watch'
 
 # DevOps
 alias dk='docker'
