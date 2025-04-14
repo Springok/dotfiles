@@ -268,9 +268,24 @@ cbr() {
   git switch $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
 }
 
-source /current/edit/scripts/swap_cache.zsh
-source /current/edit/scripts/lazydocker.zsh
-source /current/edit/scripts/cop.zsh
+SCRIPT_DIR="/current/edit/scripts"  # Change this to your target folder
+
+script_list=(
+  "swap_cache.zsh"
+  "lazydocker.zsh"
+  "cop.zsh"
+)
+
+for script in $script_list; do
+  full_path="$SCRIPT_DIR/$script"
+
+  if [[ -f "$full_path" ]]; then
+    echo "Sourcing $script" > /dev/null
+    source "$full_path"
+  else
+    echo "⚠️  Skipping $script (not found at $full_path)"
+  fi
+done
 
 export FZF_TMUX=1
 # https://github.com/sharkdp/fd#integration-with-other-programs
