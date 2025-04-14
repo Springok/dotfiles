@@ -267,66 +267,10 @@ cbr() {
   branch=$(echo "$branches" | fzf) &&
   git switch $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
 }
-# shortcut on pointing diff compose file and using lazydocker
-ld() {
-  case "${1:-not_specify}" in
-    not_specify)
-      lazydocker
-      ;;
-    hq)
-      lazydocker -f "/current/hq/compose.yml"
-      ;;
-    hk|ck|sg|ave_ck)
-      lazydocker -f "/current/sites/nerv_by_site_code/$1/compose.yml"
-      ;;
-    *)
-      if [[ -f "/current/sites/$1/compose.yml" ]]; then
-        lazydocker -f "/current/sites/$1/compose.yml"
-      else
-       echo "docker compose file not exist, please try again!"
-      fi
-      ;;
-  esac
-}
 
-# shortcut to swap different cache folder for jumping between nerv/amoeba/angel development
-sc() {
-  # for echo highlight color
-  err='\033[0;31m'
-  hl='\033[0;32m'
-  nc='\033[0m'
-  # default if /cache is real folder or softlink, if /cache is real folder, should exit now
-  # or it may be accidentally clear
-  if [ -e /cache ] && [ ! -L /cache ]; then
-    echo -e "${err}Error: /cache folder is not a softlink, this script may not working on this condition, now exit!${nc}"
-    # exit 1
-  else
-    [ -L /cache ] && rm /cache;
-    case "${1:-default}" in
-      default)
-        echo -e "${hl}swap to use 'default' cache folder${nc}"
-        ln -s /cache-default /cache
-        [ -n $TMUX ] && tmux set-option -g @cache-name 'cache-default'
-        ;;
-      amoeba)
-        echo "${hl}swap to use 'amoeba' cache folder${nc}"
-        ln -s /cache-amoeba /cache
-        [ -n "$TMUX" ] && tmux set-option -g @cache-name 'cache-amoeba'
-        ;;
-      angel)
-        echo "${hl}swap to use 'angel' cache folder${nc}"
-        ln -s /cache-angel /cache
-        [ -n "$TMUX" ] && tmux set-option -g @cache-name 'cache-angel'
-        ;;
-      *)
-        echo "${err}Error: cache '$1' not exists, please try again!${nc}"
-        ;;
-    esac
-  fi
-}
-
-# init softlink if not exists
-[ ! -e /cache ] && sc
+source /current/edit/scripts/swap_cache.zsh
+source /current/edit/scripts/lazydocker.zsh
+source /current/edit/scripts/cop.zsh
 
 export FZF_TMUX=1
 # https://github.com/sharkdp/fd#integration-with-other-programs
@@ -346,4 +290,4 @@ if [[ -f ~/.dotfiles_core/zsh-docker-env/custom/.zshrc ]]; then
   source ~/.dotfiles_core/zsh-docker-env/custom/.zshrc
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
