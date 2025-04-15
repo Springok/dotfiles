@@ -234,12 +234,10 @@ alias dcn='docker container'
 # Jump Into Config File
 ########################
 alias dot='j ~/dotfiles'
-alias zshrc='e ~/dotfiles/zsh/.zshrc'
+alias zshrc='e ~/dotfiles/zsh-mac-host/.zshrc'
 alias sozsh='source ~/.zshrc'
 alias vimrc='e ~/dotfiles/nvim/.config/nvim/init.lua'
 alias en='e .env'
-# alias mc='mailcatcher --http-ip 0.0.0.0; rse'
-# alias kmc='pkill -f mailcatcher'
 
 ########################
 # eza
@@ -282,45 +280,37 @@ eval "$(zoxide init zsh --cmd j)"
 # use localhost / nerv for postgres service running in docker
 export PGHOST=localhost
 export PGUSER=nerv
+export HOMEBREW_NO_AUTO_UPDATE=1 # https://docs.brew.sh/Manpage
 
-case `uname` in
-  Darwin)
-    export HOMEBREW_NO_AUTO_UPDATE=1 # https://docs.brew.sh/Manpage
+# only works in ZSH
+path=(
+  /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight
+  /opt/homebrew/opt/libpq/bin
+  $path
+)
 
-    # only works in ZSH
-    path=(
-      /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight
-      /opt/homebrew/opt/libpq/bin
-      $path
-    )
+# enable ruby 2.7 deprecation warning
+# export RUBYOPT='-W:deprecated'
+export RUBYOPT=''
 
-    # enable ruby 2.7 deprecation warning
-    # export RUBYOPT='-W:deprecated'
-    export RUBYOPT=''
+# export CFLAGS="-Wno-error=implicit-function-declaration"
+# export optflags="-Wno-error=implicit-function-declaration"
 
-    # export CFLAGS="-Wno-error=implicit-function-declaration"
-    # export optflags="-Wno-error=implicit-function-declaration"
+# setting for Ruby 2.5.9 installation
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-    # setting for Ruby 2.5.9 installation
-    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+# setting for Ruby 2.1.5 / 2.2.3 installation
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
 
-    # setting for Ruby 2.1.5 / 2.2.3 installation
-    # export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.0)"
-
-    listening() {
-      if [ $# -eq 0 ]; then
-        lsof -iTCP -sTCP:LISTEN -n -P
-      elif [ $# -eq 1 ]; then
-        lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
-      else
-        echo "Usage: listening [pattern]"
-      fi
-    }
-  ;;
-  Linux)
-    alias grep='grep --color=auto'
-  ;;
-esac
+listening() {
+  if [ $# -eq 0 ]; then
+    lsof -iTCP -sTCP:LISTEN -n -P
+  elif [ $# -eq 1 ]; then
+    lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+  else
+    echo "Usage: listening [pattern]"
+  fi
+}
 
 function _cop_ruby() {
   local exts=('rb,thor,builder,jbuilder,pryrc')
@@ -350,5 +340,8 @@ fi
 
 # fix issue on puma start in deamon mode
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+export MAC_OS_HOME=$HOME
+export MAC_OS_PROJECT=$HOME/proj
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
