@@ -47,28 +47,24 @@ local on_attach = function(client, bufnr)
   lsp_highlight_document(client)
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-local servers = { "jsonls", "lua_ls", "clojure_lsp", "tailwindcss", "eslint" }
-
-require("mason").setup()
-require("mason-lspconfig").setup {
-  ensure_installed = servers
+require("mason").setup{
+  -- registries = {
+  --   "github:mason-org/mason-registry@2024-12-30-ripe-blouse",
+  -- },
 }
 
-for _, server in pairs(servers) do
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-  local has_custom_opts, server_custom_opts = pcall(require, "config.lsp.settings." .. server)
-  if has_custom_opts then
-    opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
-  end
-  lspconfig[server].setup(opts)
+local registry = require 'mason-registry'
+
+-- Try to get the lua-language-server package
+local ok, lua_ls = pcall(registry.get_package, "lua-language-server")
+if not ok then
+  vim.notify("Failed to load lua-language-server from Mason registry", vim.log.levels.ERROR)
+  return
 end
 
-local registry = require 'mason-registry'
+-- Override the source version
+lua_ls.spec.source.id = "pkg:github/LuaLS/lua-language-server@3.13.5"
+
 for _, package_name in ipairs { 'lua-language-server', 'stylua' } do
   local ok, package = pcall(function()
     return registry.get_package(package_name)
@@ -80,3 +76,24 @@ for _, package_name in ipairs { 'lua-language-server', 'stylua' } do
     }
   end
 end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local servers = { "jsonls", "lua_ls", "clojure_lsp", "tailwindcss", "eslint" }
+
+require("mason-lspconfig").setup {
+  ensure_installed = servers,
+  automatic_installation = false,
+  handlers = {
+    function(server_name)
+      local opts = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
+      local has_custom_opts, server_custom_opts = pcall(require, "config.lsp.settings." .. server_name)
+      if has_custom_opts then
+        opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
+      end
+      require('lspconfig')[server_name].setup(opts)
+    end,
+  },
+}
