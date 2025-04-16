@@ -164,7 +164,7 @@ fi
 alias dot='j ~/.dotfiles_core'
 alias zshrc='e ~/.dotfiles_core/zsh-docker-env/.zshrc'
 alias sozsh='exec zsh'
-alias vimrc='e ~/.dotfiles_core/nvim/.config/nvim/init.lua'
+alias vimrc='dot;e ~/.dotfiles_core/nvim/.config/nvim/init.lua'
 alias en='e .env'
 
 # Gems
