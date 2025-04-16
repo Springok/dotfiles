@@ -48,22 +48,22 @@ local on_attach = function(client, bufnr)
 end
 
 require("mason").setup{
-  -- registries = {
-  --   "github:mason-org/mason-registry@2024-12-30-ripe-blouse",
-  -- },
+  registries = {
+    "github:mason-org/mason-registry@2024-12-30-ripe-blouse",
+  },
 }
 
 local registry = require 'mason-registry'
 
--- Try to get the lua-language-server package
-local ok, lua_ls = pcall(registry.get_package, "lua-language-server")
-if not ok then
-  vim.notify("Failed to load lua-language-server from Mason registry", vim.log.levels.ERROR)
-  return
-end
+-- -- Try to get the lua-language-server package
+-- local ok, lua_ls = pcall(registry.get_package, "lua-language-server")
+-- if not ok then
+--   vim.notify("Failed to load lua-language-server from Mason registry", vim.log.levels.ERROR)
+--   return
+-- end
 
 -- Override the source version
-lua_ls.spec.source.id = "pkg:github/LuaLS/lua-language-server@3.13.5"
+-- lua_ls.spec.source.id = "pkg:github/LuaLS/lua-language-server@3.13.5"
 
 for _, package_name in ipairs { 'lua-language-server', 'stylua' } do
   local ok, package = pcall(function()
