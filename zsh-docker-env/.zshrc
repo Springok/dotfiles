@@ -139,6 +139,7 @@ export DISABLE_SPRING=1
 alias ck='j /proj/nerv_ck'
 alias hk='j /proj/nerv_hk'
 alias sg='j /proj/nerv_sg'
+alias ave='j /proj/nerv_ave_ck'
 alias amoeba='j /proj/amoeba'
 alias angel='j /proj/angel'
 alias adam='j clojure/projects/adam'
@@ -305,4 +306,5 @@ if [[ -f ~/.dotfiles_core/zsh-docker-env/custom/.zshrc ]]; then
   source ~/.dotfiles_core/zsh-docker-env/custom/.zshrc
 fi
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
