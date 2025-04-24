@@ -78,7 +78,7 @@ for _, package_name in ipairs { 'lua-language-server', 'stylua' } do
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local servers = { "jsonls", "lua_ls", "clojure_lsp", "tailwindcss", "eslint" }
+local servers = { "jsonls", "lua_ls", "clojure_lsp", "eslint" }
 
 require("mason-lspconfig").setup {
   ensure_installed = servers,
