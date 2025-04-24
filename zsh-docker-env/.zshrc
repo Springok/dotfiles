@@ -123,6 +123,8 @@ alias gbs='git branch | grep -v spring'
 alias gbt='git checkout nerv_ck'
 alias gff='git checkout -b $(git branch --show-current)-fork'
 alias glcs='git rev-parse --short=12 HEAD'
+alias glg='git log --all --grep'
+alias gls='git log -S -p'
 
 alias lg='lazygit'
 alias lzd='lazydocker'
