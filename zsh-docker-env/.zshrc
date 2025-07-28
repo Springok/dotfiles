@@ -155,15 +155,16 @@ alias asuka='j clojure/projects/asuka'
 if [[ -d /project/vm ]]; then
   alias e_db='vim /project/vm/user/db_mapping.yml'
 
-  alias db_dump='j ~;/current/edit/scripts/dump_db.sh'
+  alias db_dump='/current/edit/scripts/dump_db.sh'
+  alias adb_dump='/current/edit/scripts/dump_db_amoeba.sh'
   alias ch_pw='be rails runner /project/vm/scripts/nerv/change_passwords.rb'
   alias e_pw='vim /project/vm/scripts/nerv/change_passwords.rb'
 fi
 
-if [[ -d ~/proj/wscripts ]]; then
-  alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
-  alias ch_pw='be rails runner ~/proj/wscripts/db/ch_pw.rb'
-  alias e_pw='vim ~/proj/wscripts/db/ch_pw.rb'
+if [[ -d /project/wscripts ]]; then
+  # alias e_db='vim ~/proj/wscripts/db/db_mapping.yml'
+  alias ch_pw='be rails runner /project/wscripts/db/ch_pw.rb'
+  alias e_pw='vim /project/wscripts/db/ch_pw.rb'
 fi
 
 ########################
