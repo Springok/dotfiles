@@ -1,8 +1,8 @@
 return {
   -- LSP
-  "neovim/nvim-lspconfig",   -- enable LSP
-  "williamboman/mason.nvim", -- simple to use language server installer
-  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig", -- enable LSP
+  { "mason-org/mason.nvim",           version = "^1.0.0" },
+  { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
   "folke/trouble.nvim",
   {
     "nvimtools/none-ls.nvim",
