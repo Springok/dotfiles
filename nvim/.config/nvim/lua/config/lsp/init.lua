@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
@@ -28,15 +26,30 @@ local function lsp_keymaps(bufnr)
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
+  opts.desc = "Show documentation for what is under cursor"
   keymap("n", "K", vim.lsp.buf.hover, opts)
+
+  opts.desc = "Go to declaration"
   keymap("n", "gD", vim.lsp.buf.declaration, opts)
+
+  opts.desc = "Show LSP definitions"
   keymap("n", "gd", vim.lsp.buf.definition, opts)
+
+  opts.desc = "Show LSP implementations"
   keymap("n", "<localleader>li", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", opts)
+
+  opts.desc = "Show LSP references"
   keymap("n", "<localleader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
   keymap("n", "<localleader>lt", vim.lsp.buf.type_definition, opts)
-  keymap("n", "<localleader>lh", vim.lsp.buf.signature_help, opts)
+
+  opts.desc = "Smart rename"
   keymap("n", "<localleader>ln", vim.lsp.buf.rename, opts)
+
+  keymap("n", "<localleader>lh", vim.lsp.buf.signature_help, opts)
+
+  opts.desc = "See available code actions"
   keymap({ "v", "n" }, "<localleader>la", vim.lsp.buf.code_action, opts)
+
   keymap("n", "<localleader>lf", vim.lsp.buf.format, opts)
 
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
@@ -47,7 +60,7 @@ local on_attach = function(client, bufnr)
   lsp_highlight_document(client)
 end
 
-require("mason").setup{
+require("mason").setup {
   registries = {
     "github:mason-org/mason-registry@2024-12-30-ripe-blouse",
   },
