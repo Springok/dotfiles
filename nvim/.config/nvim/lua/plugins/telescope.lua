@@ -13,7 +13,7 @@ return {
           prompt_prefix = " ",
           selection_caret = " ",
           path_display = { "truncate" },
-          vimgrep_arguments = { "rg", "--column", "--line-number", "--no-heading", "--color=never", "--ignore" },
+          vimgrep_arguments = { "rg", "--column", "--line-number", "--no-heading", "--color=never", "--ignore", "--hidden" },
 
           -- layout setup copied from TJ DeVries
           layout_config = {
