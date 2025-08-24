@@ -39,7 +39,10 @@ return {
   "hrsh7th/cmp-path",         -- path completions
   "hrsh7th/cmp-cmdline",      -- cmdline completions
   "saadparwaiz1/cmp_luasnip", -- snippet completions
-  "hrsh7th/cmp-nvim-lsp",
+  {
+    "hrsh7th/cmp-nvim-lsp",
+    commit = "a8912b88ce488f411177fc8aed358b04dc246d7b"
+  },
   "PaterJason/cmp-conjure",
 
   -- snippets
