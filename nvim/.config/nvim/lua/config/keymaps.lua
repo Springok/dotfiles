@@ -188,3 +188,8 @@ keymap("n", "<Leader>]", ":Vista<cr>", opts)
 
 -- Spectre, search and replace
 keymap("v", "<leader>fc", "<cmd>lua require('spectre').open_visual()<CR>", opts)
+
+-- Toggle diagnostic
+-- https://medium.com/@jacksmithxyz/creating-a-diagnostics-toggle-in-neovim-f026af2dfe03
+vim.keymap.set("n", "<leader>de", "<cmd>lua vim.diagnostic.enable()<cr>")
+vim.keymap.set("n", "<leader>dd", "<cmd>lua vim.diagnostic.disable()<cr>")

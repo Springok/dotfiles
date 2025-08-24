@@ -35,6 +35,10 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+vim.diagnostic.enable(false)
+
+-- vim.diagnostic.config({ virtual_text = false })
+
 vim.opt.nrformats = vim.opt.nrformats + "alpha"
 vim.opt.diffopt = vim.opt.diffopt + "vertical"
 
