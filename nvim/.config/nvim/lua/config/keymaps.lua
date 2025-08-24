@@ -21,9 +21,9 @@ keymap("i", "<right>", "<nop>", opts)
 -- sometimes need, to repeat latest f, t, F or T in opposite direction
 keymap("", "\\", ",", opts)
 
--- " Helps when I want to delete something without clobbering my unnamed register.
-keymap("n", "s", '"_d', opts)
-keymap("n", "ss", '"_dd', opts)
+-- -- " Helps when I want to delete something without clobbering my unnamed register.
+-- keymap("n", "s", '"_d', opts)
+-- keymap("n", "ss", '"_dd', opts)
 
 -- " navigating
 vim.cmd([[
