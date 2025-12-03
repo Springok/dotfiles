@@ -62,9 +62,9 @@ vim.keymap.set("n", "<leader>kr", ":VtrKillRunner<CR>")
 vim.keymap.set("n", "<leader>ur", ":VtrUnsetRunnerPane<CR>")
 vim.keymap.set("n", "<leader>sl", ":VtrSendLinesToRunner<CR>")
 vim.keymap.set(
-    "n",
-    "<leader>rc",
-    ":VtrUnsetRunnerPane<CR>:VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rc'}<CR>"
+  "n",
+  "<leader>rc",
+  ":VtrUnsetRunnerPane<CR>:VtrOpenRunner {'orientation': 'v', 'percentage': 15, 'cmd': 'rc'}<CR>"
 )
 
 -- start interactive EasyAlign in visual mode
@@ -81,10 +81,10 @@ keymap("n", "<leader>fl", "<cmd>lua require('telescope.builtin').find_files()<cr
 keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 keymap(
-    "n",
-    "<leader>fo",
-    "<cmd>lua require('telescope.builtin').live_grep({prompt_title = 'find string in open buffers...', grep_open_files=true})<cr>",
-    opts
+  "n",
+  "<leader>fo",
+  "<cmd>lua require('telescope.builtin').live_grep({prompt_title = 'find string in open buffers...', grep_open_files=true})<cr>",
+  opts
 )
 keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opts)
@@ -201,4 +201,4 @@ function ToggleDiagnostics()
 end
 
 -- Example keymap: <leader>d
-vim.keymap.set("n", "<leader>dt", ToggleDiagnostics, { desc = "Toggle diagnostics globally" })
+vim.keymap.set("n", "<leader>d", ToggleDiagnostics, { desc = "Toggle diagnostics globally" })
