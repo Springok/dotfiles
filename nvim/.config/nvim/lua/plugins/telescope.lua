@@ -119,7 +119,7 @@ return {
             previewer = true,
           },
           lsp_references = {
-            theme = "dropdown"
+            theme = "ivy"
           },
           -- Default configuration for builtin pickers goes here:
           -- picker_name = {
