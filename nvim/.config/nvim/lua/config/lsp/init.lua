@@ -40,16 +40,20 @@ local function lsp_keymaps(bufnr)
 
   opts.desc = "Show LSP references"
   keymap("n", "<localleader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
+
+  opts.desc = "Show Type definition"
   keymap("n", "<localleader>lt", vim.lsp.buf.type_definition, opts)
 
   opts.desc = "Smart rename"
   keymap("n", "<localleader>ln", vim.lsp.buf.rename, opts)
 
+  opts.desc = "Signature Help"
   keymap("n", "<localleader>lh", vim.lsp.buf.signature_help, opts)
 
   opts.desc = "See available code actions"
   keymap({ "v", "n" }, "<localleader>la", vim.lsp.buf.code_action, opts)
 
+  opts.desc = "Formatting"
   keymap("n", "<localleader>lf", vim.lsp.buf.format, opts)
 
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
@@ -90,7 +94,9 @@ for _, package_name in ipairs { 'lua-language-server', 'stylua' } do
   end
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local servers = { "jsonls", "lua_ls", "clojure_lsp", "eslint", "gopls", "ruby_lsp", "rubocop" }
 
 require("mason-lspconfig").setup {

@@ -64,6 +64,7 @@ return {
         "clojure",
         "csv",
         "diff",
+        "go",
         "git_config",
         "gitcommit",
         "gitignore",
