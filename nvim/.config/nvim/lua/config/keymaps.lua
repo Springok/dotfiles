@@ -192,7 +192,7 @@ keymap("v", "<leader>fc", "<cmd>lua require('spectre').open_visual()<CR>", opts)
 -- Toggle diagnostic
 function ToggleDiagnostics()
   if vim.diagnostic.is_enabled() then
-    vim.diagnostic.disable()
+    vim.diagnostic.enable(false)
     print("Diagnostics disabled (global)")
   else
     vim.diagnostic.enable()
