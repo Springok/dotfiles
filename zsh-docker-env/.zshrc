@@ -313,6 +313,6 @@ bindkey '^n' history-substring-search-down
 if [[ -f ~/.dotfiles_core/zsh-docker-env/custom/.zshrc ]]; then
   source ~/.dotfiles_core/zsh-docker-env/custom/.zshrc
 fi
-
+export RUBY_LSP_BYPASS_TYPECHECKER=true
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
