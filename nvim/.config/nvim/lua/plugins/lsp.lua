@@ -13,7 +13,7 @@ return {
         "clojure_lsp",
         "eslint",
         "gopls",
-        "ruby_lsp",
+        -- "ruby_lsp",
         "rubocop"
       },
     },
