@@ -309,6 +309,7 @@ bindkey '^F' autosuggest-accept
 bindkey '^p' history-substring-search-up
 bindkey '^n' history-substring-search-down
 
+export PATH="$HOME/.local/bin:$PATH"
 
 if [[ -f ~/.dotfiles_core/zsh-docker-env/custom/.zshrc ]]; then
   source ~/.dotfiles_core/zsh-docker-env/custom/.zshrc
