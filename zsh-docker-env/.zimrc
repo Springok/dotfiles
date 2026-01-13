@@ -44,6 +44,6 @@ zmodule fzf
 zmodule exa
 
 zmodule prompt-pwd
-zmodule asciiship
+zmodule eriner
 
 zmodule bootleq/zsh-cop --source bin/cop.zsh
