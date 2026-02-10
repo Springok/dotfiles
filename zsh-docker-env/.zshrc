@@ -152,6 +152,7 @@ alias angel='j /proj/angel'
 alias adam='j clojure/projects/adam'
 alias asuka='j clojure/projects/asuka'
 
+alias db_time='ll /download/db_dumps/(^amoeba|nerv)_*.custom'
 if [[ -d /project/vm ]]; then
   alias e_db='vim /project/vm/user/db_mapping.yml'
 
