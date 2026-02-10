@@ -330,6 +330,8 @@ function _cop_ruby() {
   fi
 }
 
+export PATH="$HOME/.local/bin:$PATH"
+
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
