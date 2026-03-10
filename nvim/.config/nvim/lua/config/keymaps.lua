@@ -184,8 +184,6 @@ keymap("n", "<leader>tl", ":TestLast<CR>", opts)
 keymap("n", "<leader>ta", ":TestSuite<cr>", opts)
 keymap("n", "<leader>tg", ":TestVisit<cr>", opts)
 
-keymap("n", "<Leader>]", ":Vista<cr>", opts)
-
 -- Spectre, search and replace
 keymap("v", "<leader>fc", "<cmd>lua require('spectre').open_visual()<CR>", opts)
 
