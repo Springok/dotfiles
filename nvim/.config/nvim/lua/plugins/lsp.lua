@@ -7,7 +7,7 @@ return {
         "html",
         "cssls",
         "tailwindcss",
-        "lua_ls",
+        -- "lua_ls",
         "eslint",
         "jsonls",
         "clojure_lsp",
@@ -38,7 +38,7 @@ return {
     opts = {
       ensure_installed = {
         "prettier", -- prettier formatter
-        "stylua",   -- lua formatter
+        -- "stylua",   -- lua formatter
         "isort",    -- python formatter
         "black",    -- python formatter
         "pylint",
