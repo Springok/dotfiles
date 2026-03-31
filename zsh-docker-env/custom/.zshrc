@@ -47,3 +47,8 @@ dc() {
       ;;
   esac
 }
+
+function yolo() {
+  export DOCKER_WORKING_DIR="$PWD"
+  docker compose -f /current/edit/e2/compose.yml run --rm yolo zsh -ic "IS_SANDBOX=1 claude --dangerously-skip-permissions"
+}
