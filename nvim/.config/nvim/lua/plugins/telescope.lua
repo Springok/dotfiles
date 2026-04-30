@@ -144,6 +144,7 @@ return {
       }
       tele.load_extension("ui-select")
       tele.load_extension('fzf')
+      tele.load_extension("aerial")
     end,
   }
 }
