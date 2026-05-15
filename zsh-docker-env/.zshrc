@@ -128,6 +128,7 @@ alias gls='git log -S -p'
 
 alias lg='lazygit'
 alias lzd='lazydocker'
+alias run_illy='j /project/hakka/services/illy; docker compose run --rm illy'
 
 # JavaScript
 alias nodejs=node
