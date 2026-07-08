@@ -3,7 +3,7 @@ return {
   { "nvim-telescope/telescope-ui-select.nvim" },
   {
     "nvim-telescope/telescope.nvim",
-    tag = '0.1.8',
+    version = "*",
     config = function()
       local actions = require("telescope.actions")
       local tele = require("telescope")
@@ -144,6 +144,7 @@ return {
       }
       tele.load_extension("ui-select")
       tele.load_extension('fzf')
+      tele.load_extension("aerial")
     end,
   }
 }

@@ -21,6 +21,29 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # ------------------
+# Initialize scripts
+# ------------------
+
+SCRIPT_DIR="/current/edit/scripts"  # Change this to your target folder
+
+script_list=(
+  "swap_cache.zsh"
+  "lazydocker.zsh"
+  "cop.zsh"
+)
+
+for script in $script_list; do
+  full_path="$SCRIPT_DIR/$script"
+
+  if [[ -f "$full_path" ]]; then
+    echo "Sourcing $script" > /dev/null
+    source "$full_path"
+  else
+    echo "⚠️  Skipping $script (not found at $full_path)"
+  fi
+done
+
+# ------------------
 # Initialize modules
 # ------------------
 # reference: https://zimfw.sh/docs/install/
@@ -251,25 +274,6 @@ eval "$(zoxide init zsh --cmd j)"
 export PGUSER=psql
 export PGHOST=localhost
 
-# for zmodule bootleq/zsh-cop --source bin/cop.zsh
-function _cop_ruby() {
-  local exts=('rb,thor,builder,jbuilder,pryrc')
-  local excludes=':(top,exclude)db/schema.rb'
-  local extra_options='--display-cop-names'
-
-  if [[ $# -gt 0 ]]; then
-    local files=$(eval "noglob git diff $@ --diff-filter=d --name-only -- *.{$exts} $excludes")
-  else
-    local files=$(eval "noglob git status --porcelain -- *.{$exts} $excludes | sed -e '/^\s\?[DRC] /d' -e 's/^.\{3\}//g'")
-  fi
-
-  if [[ -n "$files" ]]; then
-    echo $files | xargs bundle exec rubocop `echo $extra_options` --format pacman
-  else
-    echo 'Nothing to check (rubocop).'
-  fi
-}
-
 cbr() {
   # git fetch
   local branches branch
@@ -277,25 +281,6 @@ cbr() {
   branch=$(echo "$branches" | fzf) &&
   git switch $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
 }
-
-SCRIPT_DIR="/current/edit/scripts"  # Change this to your target folder
-
-script_list=(
-  "swap_cache.zsh"
-  "lazydocker.zsh"
-  "cop.zsh"
-)
-
-for script in $script_list; do
-  full_path="$SCRIPT_DIR/$script"
-
-  if [[ -f "$full_path" ]]; then
-    echo "Sourcing $script" > /dev/null
-    source "$full_path"
-  else
-    echo "⚠️  Skipping $script (not found at $full_path)"
-  fi
-done
 
 export FZF_TMUX=1
 # https://github.com/sharkdp/fd#integration-with-other-programs

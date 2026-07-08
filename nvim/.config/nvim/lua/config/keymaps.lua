@@ -200,3 +200,6 @@ end
 
 -- Example keymap: <leader>d
 vim.keymap.set("n", "<leader>d", ToggleDiagnostics, { desc = "Toggle diagnostics globally" })
+
+vim.keymap.set("n", "<leader>]", "<cmd>AerialToggle!<CR>")
+
